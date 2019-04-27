@@ -1,4 +1,4 @@
-package go_vkapi
+package objects
 
 //###########################################################
 // Photos related API objects

@@ -1,4 +1,4 @@
-package go_vkapi
+package objects
 
 //###########################################################
 // Account related API objects

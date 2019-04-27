@@ -67,16 +67,13 @@ func (vk *VKApi) SendRequest(method string, parameters map[string]string) ([]byt
 }
 
 func NewApiWithToken(token string) *VKApi {
-	envApiVer, envApiUrl := os.Getenv("VK_API_VERSION"), os.Getenv("VK_API_URL")
-	locApiVer, locApiUrl := apiVersion, apiUrl
-
-	if len(envApiVer) > 0 {
-		locApiVer = envApiVer
-	}
+	envApiUrl := os.Getenv("VK_API_URL")
+	locApiUrl := apiUrl
 
 	if len(envApiUrl) > 0 {
 		locApiUrl = envApiUrl
 	}
+
 	return &VKApi{userToken: token,
 		apiVersion: locApiVer,
 		apiUrl:     locApiUrl,

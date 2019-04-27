@@ -1,12 +1,15 @@
 package go_vkapi
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 type Account struct {
 	*VKApi
 }
 
-func (a *Account) GetAccountInfo(fields string) (*AccountInfo, error) {
+func (a *Account) GetAccountInfo(fields string) (*objects.AccountInfo, error) {
 	if len(fields) == 0 {
 		fields = "country,lang"
 	}
@@ -18,7 +21,7 @@ func (a *Account) GetAccountInfo(fields string) (*AccountInfo, error) {
 		return nil, err
 	}
 
-	var accInfo AccountInfo
+	var accInfo objects.AccountInfo
 
 	if err := json.Unmarshal(info, &accInfo); err != nil {
 		return nil, err
@@ -27,6 +30,6 @@ func (a *Account) GetAccountInfo(fields string) (*AccountInfo, error) {
 	return &accInfo, nil
 }
 
-func (a *Account) GetAccountProfile() (*AccountUserSettings, error) {
-	return &AccountUserSettings{}, nil
+func (a *Account) GetAccountProfile() (*objects.AccountUserSettings, error) {
+	return &objects.AccountUserSettings{}, nil
 }
