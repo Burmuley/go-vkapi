@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 const (
@@ -66,5 +67,18 @@ func (vk *VKApi) SendRequest(method string, parameters map[string]string) ([]byt
 }
 
 func NewApiWithToken(token string) *VKApi {
-	return &VKApi{userToken: token}
+	envApiVer, envApiUrl := os.Getenv("VK_API_VERSION"), os.Getenv("VK_API_URL")
+	locApiVer, locApiUrl := apiVersion, apiUrl
+
+	if len(envApiVer) > 0 {
+		locApiVer = envApiVer
+	}
+
+	if len(envApiUrl) > 0 {
+		locApiUrl = envApiUrl
+	}
+	return &VKApi{userToken: token,
+		apiVersion: locApiVer,
+		apiUrl:     locApiUrl,
+	}
 }
