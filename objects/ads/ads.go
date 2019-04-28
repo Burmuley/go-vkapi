@@ -1,8 +1,5 @@
-package objects
+package ads
 
 /////////////////////////////////////////////////////////////
-// Wall related API objects	                               //
+// ADS related API objects	                               //
 /////////////////////////////////////////////////////////////
-
-type WallCommentAttachments struct {
-}

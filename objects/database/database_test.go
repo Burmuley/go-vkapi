@@ -1,4 +1,4 @@
-package objects
+package database
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 )
 
 func TestDatabaseCityMarshalling(t *testing.T) {
-	a := &DatabaseCity{Area: "test_area", Region: "test_region", Important: true}
+	a := &City{Area: "test_area", Region: "test_region", Important: true}
 	a.ID = 1
 	a.Title = "test_title"
 
@@ -17,7 +17,7 @@ func TestDatabaseCityMarshalling(t *testing.T) {
 
 	tst := "{\"id\":1,\"title\":\"test_title\",\"area\":\"test_area\",\"region\":\"test_region\",\"important\":1}"
 
-	tstDBC := &DatabaseCity{}
+	tstDBC := &City{}
 
 	b := json.Unmarshal([]byte(tst), tstDBC)
 

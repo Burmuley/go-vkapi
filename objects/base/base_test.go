@@ -1,4 +1,4 @@
-package objects
+package base
 
 import (
 	"fmt"
@@ -32,7 +32,7 @@ func errorCheck(t *testing.T, err error) {
 }
 
 func TestBaseBoolInt_ToJson(t *testing.T) {
-	//var bbiTrue, bbiFalse BaseBoolInt = true, false
+	//var bbiTrue, bbiFalse BoolInt = true, false
 	//
 	//bbiTrueExpect, bbiFalseExpect := "1", "0"
 	//
