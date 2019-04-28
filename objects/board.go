@@ -27,8 +27,8 @@ func (b *BoardDefaultOrder) GetName() string {
 }
 
 func (b *BoardDefaultOrder) MarshalJSON() ([]byte, error) {
-	if *b < -2 || *b > 2 {
-		return []byte{}, fmt.Errorf("value is not in range -2...2")
+	if *b < -2 || *b > 2 || *b == 0 {
+		return []byte{}, fmt.Errorf("value is not in range [-2, -1, 1, 2]")
 	}
 
 	return []byte{byte(*b)}, nil
