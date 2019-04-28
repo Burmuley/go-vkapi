@@ -6,3 +6,6 @@ package objects
 
 type PhotosPhoto struct {
 }
+
+type PhotosPhotoSizes struct {
+}
