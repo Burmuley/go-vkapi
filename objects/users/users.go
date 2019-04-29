@@ -6,3 +6,6 @@ package users
 
 type UserFull struct {
 }
+
+type UserMin struct {
+}
