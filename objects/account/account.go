@@ -6,9 +6,9 @@ import (
 	"gitlab.com/Burmuley/go-vkapi/objects/users"
 )
 
-//###########################################################
-// Account related API objects
-//###########################################################
+/////////////////////////////////////////////////////////////
+// Account related API objects                             //
+/////////////////////////////////////////////////////////////
 
 // Counters represents `account_account_counters` API object
 type Counters struct {
