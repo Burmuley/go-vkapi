@@ -9,7 +9,7 @@ type Account struct {
 	*VKApi
 }
 
-func (a *Account) GetAccountInfo(fields string) (*account.Info, error) {
+func (a *Account) GetInfo(fields string) (*account.Info, error) {
 	if len(fields) == 0 {
 		fields = "country,lang"
 	}
@@ -30,6 +30,18 @@ func (a *Account) GetAccountInfo(fields string) (*account.Info, error) {
 	return &accInfo, nil
 }
 
-func (a *Account) GetAccountProfile() (*account.UserSettings, error) {
-	return &account.UserSettings{}, nil
+func (a *Account) GetProfileInfo() (*account.UserSettings, error) {
+	profile, err := a.SendRequest("account.getProfileInfo", make(map[string]string, 1))
+
+	if err != nil {
+		return &account.UserSettings{}, err
+	}
+
+	var profileInfo account.UserSettings
+
+	if err := json.Unmarshal(profile, &profileInfo); err != nil {
+		return &account.UserSettings{}, err
+	}
+
+	return &profileInfo, nil
 }

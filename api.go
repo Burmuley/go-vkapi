@@ -75,7 +75,7 @@ func NewApiWithToken(token string) *VKApi {
 	}
 
 	return &VKApi{userToken: token,
-		apiVersion: locApiVer,
+		apiVersion: apiVersion,
 		apiUrl:     locApiUrl,
 	}
 }
