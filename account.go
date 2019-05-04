@@ -1,47 +1,53 @@
 package go_vkapi
 
 import (
-	"encoding/json"
 	"gitlab.com/Burmuley/go-vkapi/objects/account"
+	"strings"
 )
 
 type Account struct {
 	*VKApi
 }
 
-func (a *Account) GetInfo(fields string) (*account.Info, error) {
-	if len(fields) == 0 {
-		fields = "country,lang"
+func (a *Account) GetInfo(fields ...string) (*account.Info, error) {
+	params := map[string]string{"fields": strings.Join(fields, ",")}
+	info := &account.Info{}
+
+	if err := a.SendObjRequest("account.getInfo", params, info); err != nil {
+		return &account.Info{}, err
 	}
 
-	params := map[string]string{"fields": fields}
-	info, err := a.SendRequest("account.getInfo", params)
-
-	if err != nil {
-		return nil, err
-	}
-
-	var accInfo account.Info
-
-	if err := json.Unmarshal(info, &accInfo); err != nil {
-		return nil, err
-	}
-
-	return &accInfo, nil
+	return info, nil
 }
 
 func (a *Account) GetProfileInfo() (*account.UserSettings, error) {
-	profile, err := a.SendRequest("account.getProfileInfo", make(map[string]string, 1))
+	profile := &account.UserSettings{}
 
-	if err != nil {
+	if err := a.SendObjRequest("account.getProfileInfo", make(map[string]string, 0), profile); err != nil {
 		return &account.UserSettings{}, err
 	}
 
-	var profileInfo account.UserSettings
+	return profile, nil
+}
 
-	if err := json.Unmarshal(profile, &profileInfo); err != nil {
-		return &account.UserSettings{}, err
+func (a *Account) GetPushSettings(deviceId string) (*account.PushSettings, error) {
+	params := map[string]string{"device_id": deviceId}
+	pushSettings := &account.PushSettings{}
+
+	if err := a.SendObjRequest("account.getPushSettings", params, pushSettings); err != nil {
+		return &account.PushSettings{}, err
 	}
 
-	return &profileInfo, nil
+	return pushSettings, nil
+}
+
+func (a *Account) GetCounters() (*account.Counters, error) {
+	counters := &account.Counters{}
+
+	if err := a.SendObjRequest("account.getCounters", map[string]string{}, counters); err != nil {
+		return &account.Counters{}, err
+	}
+
+	return counters, nil
+
 }

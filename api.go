@@ -19,7 +19,9 @@ type VKApi struct {
 	apiUrl     string
 }
 
-func (vk *VKApi) SendRequest(method string, parameters map[string]string) ([]byte, error) {
+// SendAPIRequest calls defined method of the VK API with the defined parameters
+// Returns slice of bytes with API response
+func (vk *VKApi) SendAPIRequest(method string, parameters map[string]string) ([]byte, error) {
 	//Format API endpoint
 	u, err := url.Parse(apiUrl + method)
 
@@ -64,6 +66,20 @@ func (vk *VKApi) SendRequest(method string, parameters map[string]string) ([]byt
 	}
 
 	return apiResp.Response, nil
+}
+
+func (vk *VKApi) SendObjRequest(method string, params map[string]string, object interface{}) error {
+	info, err := vk.SendAPIRequest(method, params)
+
+	if err != nil {
+		return err
+	}
+
+	if err := json.Unmarshal(info, &object); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func NewApiWithToken(token string) *VKApi {

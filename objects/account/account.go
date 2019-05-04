@@ -12,16 +12,19 @@ import (
 
 // Counters represents `account_account_counters` API object
 type Counters struct {
-	AppRequests        int `json:"app_requests"`
-	Events             int `json:"events"`
-	Friends            int `json:"friends"`
-	FriendsSuggestions int `json:"friends_suggestions"`
-	Gifts              int `json:"gifts"`
-	Groups             int `json:"groups"`
-	Messages           int `json:"messages"`
-	Notifications      int `json:"notifications"`
-	Photos             int `json:"photos"`
-	Videos             int `json:"videos"`
+	AppRequests            int `json:"app_requests"`
+	SDKRequests            int `json:"sdk"`
+	Events                 int `json:"events"`
+	Friends                int `json:"friends"`
+	FriendsSuggestions     int `json:"friends_suggestions"`
+	FriendsRecommendations int `json:"friends_recommendations"`
+	Gifts                  int `json:"gifts"`
+	Groups                 int `json:"groups"`
+	Messages               int `json:"messages"`
+	Notifications          int `json:"notifications"`
+	Photos                 int `json:"photos"`
+	Videos                 int `json:"videos"`
+	MenuBadge              int `json:"menu_discover_badge"`
 }
 
 // Info type represents 'account_info' API objects

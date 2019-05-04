@@ -1,7 +1,8 @@
 package go_vkapi
 
 type VK interface {
-	SendRequest(method string, parameters map[string]string) ([]byte, error)
+	SendAPIRequest(method string, parameters map[string]string) ([]byte, error)
+	SendObjRequest(method string, params map[string]string, object interface{}) error
 }
 
 type VKPrimitiveObject interface {
