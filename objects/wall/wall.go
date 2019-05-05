@@ -41,8 +41,8 @@ type CommentAttachment struct {
 	Audio       audio.AudioFull       `json:"audio"`
 	Doc         docs.Doc              `json:"doc"`
 	Link        base.Link             `json:"link"`
-	Market      market.MarketItem     `json:"market"`
-	MarketAlbum market.MarketAlbum    `json:"market_market_album"`
+	Market      market.Item           `json:"market"`
+	MarketAlbum market.Album          `json:"market_market_album"`
 	Note        AttachedNote          `json:"note"`
 	Page        pages.WikipageFull    `json:"page"`
 	Photo       photos.Photo          `json:"photo"`
@@ -183,8 +183,8 @@ type WallpostAttachment struct {
 	Event       events.EventAttach     `json:"event"`
 	Graffiti    Graffiti               `json:"graffiti"`
 	Link        base.Link              `json:"link"`
-	Market      market.MarketItem      `json:"market"`
-	MarketAlbum market.MarketAlbum     `json:"market_album"`
+	Market      market.Item            `json:"market"`
+	MarketAlbum market.Album           `json:"market_album"`
 	Note        AttachedNote           `json:"note"`
 	Page        pages.WikipageFull     `json:"page"`
 	Photo       photos.Photo           `json:"photo"`
