@@ -9,3 +9,6 @@ type Photo struct {
 
 type PhotoSizes struct {
 }
+
+type Album struct {
+}

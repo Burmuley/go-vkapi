@@ -52,12 +52,12 @@ type Topic struct {
 
 // TopicComment represents `board_topic_comment` API object
 type TopicComment struct {
-	Attachments []wall.CommentAttachments `json:"attachments"`
-	Date        int                       `json:"date"`
-	AuthorID    int                       `json:"from_id"`
-	ID          int                       `json:"id"`
-	RealOffset  int                       `json:"real_offset"`
-	Text        string                    `json:"text"`
+	Attachments []wall.CommentAttachment `json:"attachments"`
+	Date        int                      `json:"date"`
+	AuthorID    int                      `json:"from_id"`
+	ID          int                      `json:"id"`
+	RealOffset  int                      `json:"real_offset"`
+	Text        string                   `json:"text"`
 }
 
 // TopicPoll represents `board_topic_poll` API object

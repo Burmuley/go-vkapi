@@ -236,8 +236,8 @@ func (b *Sex) GetName() string {
 	}
 }
 
-// BaseSticker represents `base_sticker` API object
-type BaseSticker struct {
+// Sticker represents `base_sticker` API object
+type Sticker struct {
 	Images    []Image `json:"images"`
 	ImagesBck []Image `json:"images_with_background"`
 	ProductID int     `json:"product_id"`

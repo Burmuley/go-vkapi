@@ -22,3 +22,10 @@ type Section struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
+
+// MarketItem represents `market_market_item` API object
+type MarketItem struct {
+}
+
+type MarketAlbum struct {
+}

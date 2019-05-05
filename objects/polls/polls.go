@@ -6,3 +6,6 @@ package polls
 
 type Answer struct {
 }
+
+type Poll struct {
+}
