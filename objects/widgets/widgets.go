@@ -7,6 +7,10 @@ import (
 	"gitlab.com/Burmuley/go-vkapi/objects/wall"
 )
 
+/////////////////////////////////////////////////////////////
+// Widgets related API objects	                           //
+/////////////////////////////////////////////////////////////
+
 type CommentMediaType string
 
 func (c *CommentMediaType) MarshalJSON() ([]byte, error) {

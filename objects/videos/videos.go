@@ -2,6 +2,10 @@ package videos
 
 import "gitlab.com/Burmuley/go-vkapi/objects/base"
 
+/////////////////////////////////////////////////////////////
+// Videos related API objects	                           //
+/////////////////////////////////////////////////////////////
+
 // SaveResult represents `video_save_result` API objects
 type SaveResult struct {
 	Description string `json:"description"` // Video description
