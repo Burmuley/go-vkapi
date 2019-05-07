@@ -4,5 +4,8 @@ package groups
 // Groups related API objects	                           //
 /////////////////////////////////////////////////////////////
 
+type Group struct {
+}
+
 type GroupFullMemberStatus struct {
 }
