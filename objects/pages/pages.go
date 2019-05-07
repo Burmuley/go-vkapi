@@ -19,7 +19,6 @@ func (p *PrivacySettings) GetName() string {
 		return "everyone"
 	default:
 		return "unknown"
-
 	}
 }
 
