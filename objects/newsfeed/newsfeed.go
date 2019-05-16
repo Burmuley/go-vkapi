@@ -1,7 +1,7 @@
 package newsfeed
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/audio"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/groups"
@@ -14,16 +14,7 @@ import (
 type CommentsFilters string
 
 func (c *CommentsFilters) MarshalJSON() ([]byte, error) {
-	switch *c {
-	case "post",
-		"photo",
-		"video",
-		"topic",
-		"note":
-		return []byte(*c), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*c), "post", "photo", "video", "topic", "note")
 }
 
 func (c *CommentsFilters) GetName() string {
@@ -44,19 +35,8 @@ type EventActivity struct {
 type Filters string
 
 func (f *Filters) MarshalJSON() ([]byte, error) {
-	switch *f {
-	case "post",
-		"photo",
-		"photo_tag",
-		"wall_photo",
-		"friend",
-		"note",
-		"audio",
-		"video":
-		return []byte(*f), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*f), "post", "photo", "photo_tag", "wall_photo", "friend",
+		"note", "audio", "video")
 }
 
 func (f *Filters) GetName() string {
@@ -67,17 +47,7 @@ func (f *Filters) GetName() string {
 type IgnoreItemType string
 
 func (i *IgnoreItemType) MarshalJSON() ([]byte, error) {
-	switch *i {
-	case "wall",
-		"tag",
-		"profilephoto",
-		"video",
-		"photo",
-		"audio":
-		return []byte(*i), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*i), "wall", "tag", "profilephoto", "video", "photo", "audio")
 }
 
 func (i *IgnoreItemType) GetName() string {
@@ -207,14 +177,7 @@ type ItemWallpost struct {
 type ItemWallpostType string
 
 func (i *ItemWallpostType) MarshalJSON() ([]byte, error) {
-	switch *i {
-	case "post",
-		"copy",
-		"reply":
-		return []byte(*i), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*i), "post", "copy", "reply")
 }
 
 func (i *ItemWallpostType) GetName() string {
@@ -256,20 +219,9 @@ type Item struct {
 type ItemType string
 
 func (i *ItemType) MarshalJSON() ([]byte, error) {
-	switch *i {
-	case "post",
-		"photo",
-		"photo_tag",
-		"wall_photo",
-		"friend",
-		"note",
-		"audio",
-		"video",
-		"topic":
-		return []byte(*i), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*i), "post",
+		"photo", "photo_tag", "wall_photo", "friend", "note", "audio",
+		"video", "topic")
 }
 
 func (i *ItemType) GetName() string {

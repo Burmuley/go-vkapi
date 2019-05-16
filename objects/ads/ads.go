@@ -455,3 +455,9 @@ type TargetGroup struct {
 	Name          string `json:"name"`           // Group name
 	Pixel         string `json:"pixel"`          // Pixel code
 }
+
+// Users represents `ads_users` API object
+type Users struct {
+	Accesses []Accesses `json:"accesses"`
+	ID       int        `json:"user_id"` // User ID
+}
