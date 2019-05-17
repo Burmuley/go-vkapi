@@ -58,7 +58,7 @@ type VideoAlbumFull struct {
 	OwnerID     int          `json:"owner_id"`     // Album owner's ID
 	Photo160    string       `json:"photo_160"`    // URL of the preview image with 160px in width
 	Photo320    string       `json:"photo_320"`    // URL of the preview image with 320spx in width
-	Privacy     Privacy      `json:"privacy"`      // Album privacy settings
+	Privacy     string       `json:"privacy"`      // Album privacy settings
 	Title       string       `json:"title"`        // Album title
 	UpdatedTime int          `json:"updated_time"` // Date when the album has been updated last time in Unixtime
 }

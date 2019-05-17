@@ -1,7 +1,7 @@
 package wall
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/audio"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/docs"
@@ -55,13 +55,8 @@ type CommentAttachment struct {
 type CommentAttachmentType string
 
 func (c *CommentAttachmentType) MarshalJSON() ([]byte, error) {
-	switch *c {
-	case "photo", "video", "audio", "doc",
-		"link", "note", "page", "market_market_album",
-		"market", "sticker":
-		return []byte(*c), nil
-	}
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*c), "photo", "video", "audio", "doc", "link", "note", "page",
+		"market_market_album", "market", "sticker")
 }
 
 func (c *CommentAttachmentType) GetName() string {
@@ -87,13 +82,7 @@ type Graffiti struct {
 type PostSourceType string
 
 func (p *PostSourceType) MarshalJSON() ([]byte, error) {
-	switch *p {
-	case "vk", "widget", "api",
-		"rss", "sms":
-		return []byte(*p), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*p), "vk", "widget", "api", "rss", "sms")
 }
 
 func (p *PostSourceType) GetName() string {
@@ -112,13 +101,7 @@ type PostSource struct {
 type PostType string
 
 func (p *PostType) MarshalJSON() ([]byte, error) {
-	switch *p {
-	case "post", "copy", "reply",
-		"postpone", "suggest":
-		return []byte(*p), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*p), "post", "copy", "reply", "postpone", "suggest")
 }
 
 func (p *PostType) GetName() string {
@@ -199,15 +182,8 @@ type WallpostAttachment struct {
 type WallpostAttachmentType string
 
 func (w *WallpostAttachmentType) MarshalJSON() ([]byte, error) {
-	switch *w {
-	case "photo", "posted_photo", "audio", "video", "doc",
-		"link", "graffiti", "note", "app", "poll", "page",
-		"album", "photos_list", "market_market_album", "market",
-		"event":
-		return []byte(*w), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*w), "photo", "posted_photo", "audio", "video", "doc", "link",
+		"graffiti", "note", "app", "poll", "page", "album", "photos_list", "market_market_album", "market", "event")
 }
 
 func (w *WallpostAttachmentType) GetName() string {
