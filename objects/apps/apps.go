@@ -1,7 +1,7 @@
 package apps
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/photos"
 )
 
@@ -50,11 +50,7 @@ type Leaderboard struct {
 type AppLeaderboardType int
 
 func (a *AppLeaderboardType) MarshalJSON() ([]byte, error) {
-	if *a < 0 || *a > 2 {
-		return []byte{}, fmt.Errorf("value is not in range [0..2]")
-	}
-
-	return []byte{byte(*a)}, nil
+	return objects.GetIntFromRange(int(*a), 0, 2, true)
 }
 
 func (a *AppLeaderboardType) GetName() string {
@@ -74,18 +70,8 @@ func (a *AppLeaderboardType) GetName() string {
 type AppType string
 
 func (a *AppType) MarshalJSON() ([]byte, error) {
-	switch *a {
-	case "app",
-		"game",
-		"site",
-		"standalone",
-		"vk_app",
-		"community_app",
-		"html5_game":
-		return []byte(*a), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*a), "app", "game", "site", "standalone", "vk_app",
+		"community_app", "html5_game")
 }
 
 func (a *AppType) GetName() string {

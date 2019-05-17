@@ -1,7 +1,7 @@
 package messages
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/audio"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/docs"
@@ -117,15 +117,7 @@ type ConversationPeer struct {
 type ConversationPeerType string
 
 func (c *ConversationPeerType) MarshalJSON() ([]byte, error) {
-	switch *c {
-	case "chat",
-		"email",
-		"user",
-		"group":
-		return []byte(*c), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*c), "chat", "email", "user", "group")
 }
 
 func (c *ConversationPeerType) GetName() string {
@@ -188,21 +180,8 @@ type HistoryMessageAttachment struct {
 type HistoryMessageAttachmentType string
 
 func (h *HistoryMessageAttachmentType) MarshalJSON() ([]byte, error) {
-	switch *h {
-	case "photo",
-		"video",
-		"audio",
-		"doc",
-		"link",
-		"market",
-		"wall",
-		"share",
-		"graffiti",
-		"audio_message":
-		return []byte(*h), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*h), "photo", "video", "audio", "doc", "link", "market",
+		"wall", "share", "graffiti", "audio_message")
 }
 
 func (h *HistoryMessageAttachmentType) GetName() string {
@@ -300,20 +279,9 @@ type MessageActionPhoto struct {
 type MessageActionStatus string
 
 func (m *MessageActionStatus) MarshalJSON() ([]byte, error) {
-	switch *m {
-	case "chat_photo_update",
-		"chat_photo_remove",
-		"chat_create",
-		"chat_title_update",
-		"chat_invite_user",
-		"chat_kick_user",
-		"chat_pin_message",
-		"chat_unpin_message",
-		"chat_invite_user_by_link":
-		return []byte(*m), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*m), "chat_photo_update", "chat_photo_remove", "chat_create",
+		"chat_title_update", "chat_invite_user", "chat_kick_user", "chat_pin_message", "chat_unpin_message",
+		"chat_invite_user_by_link")
 }
 
 func (m *MessageActionStatus) GetName() string {
@@ -342,24 +310,8 @@ type Attachment struct {
 type AttachmentType string
 
 func (a *AttachmentType) MarshalJSON() ([]byte, error) {
-	switch *a {
-	case "photo",
-		"audio",
-		"video",
-		"doc",
-		"link",
-		"market",
-		"market_album",
-		"gift",
-		"sticker",
-		"wall",
-		"wall_reply",
-		"graffiti",
-		"audio_message":
-		return []byte(*a), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*a), "photo", "audio", "video", "doc", "link", "market",
+		"market_album", "gift", "sticker", "wall", "wall_reply", "graffiti", "audio_message")
 }
 
 func (a *AttachmentType) GetName() string {

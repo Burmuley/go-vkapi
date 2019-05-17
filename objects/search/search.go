@@ -1,7 +1,7 @@
 package search
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/groups"
 	"gitlab.com/Burmuley/go-vkapi/objects/users"
@@ -25,18 +25,8 @@ type Hint struct {
 type Section string
 
 func (s *Section) MarshalJSON() ([]byte, error) {
-	switch *s {
-	case "groups",
-		"events",
-		"publics",
-		"correspondents",
-		"people",
-		"friends",
-		"mutual_friends":
-		return []byte(*s), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*s), "groups", "events", "publics", "correspondents", "people",
+		"friends", "mutual_friends")
 }
 
 func (s *Section) GetName() string {
@@ -47,12 +37,7 @@ func (s *Section) GetName() string {
 type Type string
 
 func (t *Type) MarshalJSON() ([]byte, error) {
-	switch *t {
-	case "group", "profile":
-		return []byte(*t), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*t), "group", "profile")
 }
 
 func (t *Type) GetName() string {

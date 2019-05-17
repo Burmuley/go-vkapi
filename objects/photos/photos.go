@@ -1,7 +1,7 @@
 package photos
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/wall"
 )
@@ -35,12 +35,7 @@ type Image struct {
 type ImageType string
 
 func (i *ImageType) MarshalJSON() ([]byte, error) {
-	switch *i {
-	case "s", "m", "x", "o", "p", "q", "r", "y", "z", "w":
-		return []byte(*i), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*i), "s", "m", "x", "o", "p", "q", "r", "y", "z", "w")
 }
 
 func (i *ImageType) GetName() string {
@@ -192,12 +187,7 @@ type PhotoSizes struct {
 type PhotoSizesType string
 
 func (p *PhotoSizesType) MarshalJSON() ([]byte, error) {
-	switch *p {
-	case "s", "m", "x", "o", "p", "q", "r", "y", "z", "w":
-		return []byte(*p), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*p), "s", "m", "x", "o", "p", "q", "r", "y", "z", "w")
 }
 
 func (p *PhotoSizesType) GetName() string {

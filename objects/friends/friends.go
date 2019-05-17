@@ -1,7 +1,7 @@
 package friends
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/users"
 )
@@ -14,11 +14,7 @@ import (
 type FriendStatusStatus int
 
 func (f *FriendStatusStatus) MarshalJSON() ([]byte, error) {
-	if *f < 0 || *f > 3 {
-		return []byte{}, fmt.Errorf("value not in range 0..3")
-	}
-
-	return []byte{byte(*f)}, nil
+	return objects.GetIntFromRange(int(*f), 0, 3, true)
 }
 
 func (f *FriendStatusStatus) GetName() string {
