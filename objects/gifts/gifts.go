@@ -1,6 +1,8 @@
 package gifts
 
-import "fmt"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // Gifts related API objects	                           //
@@ -18,11 +20,7 @@ type Layout struct {
 type GiftPrivacy int
 
 func (g *GiftPrivacy) MarshalJSON() ([]byte, error) {
-	if *g < 0 || *g > 2 {
-		return []byte{}, fmt.Errorf("value not in range 0..2")
-	}
-
-	return []byte{byte(*g)}, nil
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GiftPrivacy) GetName() string {

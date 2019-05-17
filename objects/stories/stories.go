@@ -1,7 +1,7 @@
 package stories
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/photos"
 	"gitlab.com/Burmuley/go-vkapi/objects/videos"
@@ -69,12 +69,7 @@ type StatsStat struct {
 type StatsState string
 
 func (s *StatsState) MarshalJSON() ([]byte, error) {
-	switch *s {
-	case "on", "off", "hidden":
-		return []byte(*s), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*s), "on", "off", "hidden")
 }
 
 func (s *StatsState) GetName() string {
@@ -85,12 +80,7 @@ func (s *StatsState) GetName() string {
 type Type string
 
 func (t *Type) MarshalJSON() ([]byte, error) {
-	switch *t {
-	case "photo", "video":
-		return []byte(*t), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*t), "photo", "video")
 }
 
 func (t *Type) GetName() string {
@@ -107,31 +97,9 @@ type Video struct {
 type UploadLinkText string
 
 func (u *UploadLinkText) MarshalJSON() ([]byte, error) {
-	switch *u {
-	case "to_store",
-		"vote",
-		"more",
-		"book",
-		"order",
-		"enroll",
-		"fill",
-		"signup",
-		"buy",
-		"ticket",
-		"write",
-		"open",
-		"learn_more",
-		"view",
-		"go_to",
-		"contact",
-		"watch",
-		"play",
-		"install",
-		"read":
-		return []byte(*u), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*u), "to_store", "vote", "more", "book", "order", "enroll",
+		"fill", "signup", "buy", "ticket", "write", "open", "learn_more", "view", "go_to", "contact", "watch",
+		"play", "install", "read")
 }
 
 func (u *UploadLinkText) GetName() string {

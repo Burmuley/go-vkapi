@@ -1,7 +1,7 @@
 package widgets
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/users"
 	"gitlab.com/Burmuley/go-vkapi/objects/wall"
@@ -14,12 +14,7 @@ import (
 type CommentMediaType string
 
 func (c *CommentMediaType) MarshalJSON() ([]byte, error) {
-	switch *c {
-	case "audio", "photo", "video":
-		return []byte(*c), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*c), "audio", "photo", "video")
 }
 
 func (c *CommentMediaType) GetName() string {

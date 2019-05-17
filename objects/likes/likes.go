@@ -1,6 +1,8 @@
 package likes
 
-import "fmt"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // Likes related API objects	                           //
@@ -10,23 +12,8 @@ import "fmt"
 type Type string
 
 func (t *Type) MarshalJSON() ([]byte, error) {
-	switch *t {
-	case "post",
-		"comment",
-		"photo",
-		"audio",
-		"video",
-		"note",
-		"market",
-		"photo_comment",
-		"video_comment",
-		"topic_comment",
-		"market_comment",
-		"sitepage":
-		return []byte(*t), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*t), "post", "comment", "photo", "audio", "video", "note",
+		"market", "photo_comment", "video_comment", "topic_comment", "market_comment", "sitepage")
 }
 
 func (t *Type) GetName() string {

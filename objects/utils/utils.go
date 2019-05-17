@@ -1,17 +1,14 @@
 package utils
 
-import "fmt"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 // DomainResolvedType represents `utils_domain_resolved_type` API object
 type DomainResolvedType string
 
 func (d *DomainResolvedType) MarshalJSON() ([]byte, error) {
-	switch *d {
-	case "user", "group", "application", "page":
-		return []byte(*d), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*d), "user", "group", "application", "page")
 }
 
 func (d *DomainResolvedType) GetName() string {
@@ -38,12 +35,7 @@ type LastShortenedLink struct {
 type LinkCheckedStatus string
 
 func (l *LinkCheckedStatus) MarshalJSON() ([]byte, error) {
-	switch *l {
-	case "banned", "not_banned", "processing":
-		return []byte(*l), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*l), "banned", "not_banned", "processing")
 }
 
 func (l *LinkCheckedStatus) GetName() string {

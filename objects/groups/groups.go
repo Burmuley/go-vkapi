@@ -2,6 +2,7 @@ package groups
 
 import (
 	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/market"
 	"gitlab.com/Burmuley/go-vkapi/objects/users"
@@ -53,16 +54,8 @@ type AddressTimetableDay struct {
 type AddressWorkInfoStatus string
 
 func (a *AddressWorkInfoStatus) MarshalJSON() ([]byte, error) {
-	switch *a {
-	case "no_information",
-		"temporarily_closed",
-		"always_opened",
-		"timetable",
-		"forever_closed":
-		return []byte(*a), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*a), "no_information", "temporarily_closed",
+		"always_opened", "timetable", "forever_closed")
 }
 
 func (a *AddressWorkInfoStatus) GetName() string {
@@ -140,22 +133,13 @@ type Cover struct {
 type Fields string
 
 func (f *Fields) MarshalJSON() ([]byte, error) {
-	switch *f {
-	case "market", "member_status", "is_favorite", "is_subscribed",
-		"city", "country", "verified", "description",
-		"wiki_page", "members_count", "counters", "cover",
-		"can_post", "can_see_all_posts", "activity", "fixed_post",
-		"can_create_topic", "can_upload_video", "has_photo", "status",
-		"main_album_id", "links", "contacts", "site",
-		"main_section", "trending", "can_message", "is_messages_blocked",
-		"can_send_notify", "online_status", "start_date", "finish_date",
-		"age_limits", "ban_info", "action_button", "author_id",
-		"phone", "has_market_app", "addresses", "live_covers",
-		"is_adult", "can_subscribe_posts":
-		return []byte(*f), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*f), "market", "member_status", "is_favorite", "is_subscribed",
+		"city", "country", "verified", "description", "wiki_page", "members_count", "counters", "cover",
+		"can_post", "can_see_all_posts", "activity", "fixed_post", "can_create_topic", "can_upload_video", "has_photo",
+		"status", "main_album_id", "links", "contacts", "site", "main_section", "trending", "can_message",
+		"is_messages_blocked", "can_send_notify", "online_status", "start_date", "finish_date", "age_limits",
+		"ban_info", "action_button", "author_id", "phone", "has_market_app", "addresses", "live_covers", "is_adult",
+		"can_subscribe_posts")
 }
 
 func (f *Fields) GetName() string {
@@ -166,18 +150,8 @@ func (f *Fields) GetName() string {
 type Filter string
 
 func (f *Filter) MarshalJSON() ([]byte, error) {
-	switch *f {
-	case "admin",
-		"editor",
-		"moder",
-		"groups",
-		"publics",
-		"events",
-		"has_addresses":
-		return []byte(*f), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in valid range")
+	return objects.GetStringFromRange(string(*f), "admin", "editor", "moder", "groups", "publics",
+		"events", "has_addresses")
 }
 
 func (f *Filter) GetName() string {
@@ -207,11 +181,7 @@ type Group struct {
 type GroupAccess int
 
 func (g *GroupAccess) MarshalJSON() ([]byte, error) {
-	if *g >= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupAccess) GetName() string {
@@ -231,11 +201,7 @@ func (g *GroupAccess) GetName() string {
 type GroupAdminLevel int
 
 func (g *GroupAdminLevel) MarshalJSON() ([]byte, error) {
-	if *g >= 1 && *g <= 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 1..3")
+	return objects.GetIntFromRange(int(*g), 1, 3, true)
 }
 
 func (g *GroupAdminLevel) GetName() string {
@@ -255,11 +221,7 @@ func (g *GroupAdminLevel) GetName() string {
 type GroupAgeLimits int
 
 func (g *GroupAgeLimits) MarshalJSON() ([]byte, error) {
-	if *g >= 1 && *g <= 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 1..3")
+	return objects.GetIntFromRange(int(*g), 1, 3, true)
 }
 
 func (g *GroupAgeLimits) GetName() string {
@@ -279,11 +241,7 @@ func (g *GroupAgeLimits) GetName() string {
 type GroupAudio int
 
 func (g *GroupAudio) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupAudio) GetName() string {
@@ -331,11 +289,7 @@ type CategoryType struct {
 type GroupDocs int
 
 func (g *GroupDocs) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupDocs) GetName() string {
@@ -396,11 +350,7 @@ type GroupFull struct {
 type GroupFullAgeLimits int
 
 func (g *GroupFullAgeLimits) MarshalJSON() ([]byte, error) {
-	if *g >= 1 && *g <= 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 1..3")
+	return objects.GetIntFromRange(int(*g), 1, 3, true)
 }
 
 func (g *GroupFullAgeLimits) GetName() string {
@@ -420,11 +370,7 @@ func (g *GroupFullAgeLimits) GetName() string {
 type GroupFullMainSection int
 
 func (g *GroupFullMainSection) MarshalJSON() ([]byte, error) {
-	if *g >= 0 && *g <= 5 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 1..3")
+	return objects.GetIntFromRange(int(*g), 0, 5, true)
 }
 
 func (g *GroupFullMainSection) GetName() string {
@@ -450,11 +396,7 @@ func (g *GroupFullMainSection) GetName() string {
 type GroupFullMemberStatus int
 
 func (g *GroupFullMemberStatus) MarshalJSON() ([]byte, error) {
-	if *g >= 0 && *g <= 5 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 1..3")
+	return objects.GetIntFromRange(int(*g), 0, 5, true)
 }
 
 func (g *GroupFullMemberStatus) GetName() string {
@@ -480,11 +422,7 @@ func (g *GroupFullMemberStatus) GetName() string {
 type GroupClosed int
 
 func (g *GroupClosed) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupClosed) GetName() string {
@@ -542,11 +480,7 @@ func (g *GroupMarketCurrency) GetName() string {
 type GroupPhotos int
 
 func (g *GroupPhotos) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupPhotos) GetName() string {
@@ -573,14 +507,7 @@ type GroupPublicCategoryList struct {
 type GroupRole string
 
 func (g *GroupRole) MarshalJSON() ([]byte, error) {
-	switch *g {
-	case "moderator",
-		"editor",
-		"administrator":
-		return []byte(*g), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*g), "moderator", "editor", "administrator")
 }
 
 func (g *GroupRole) GetName() string {
@@ -622,11 +549,7 @@ func (g *GroupSubject) MarshalJSON() ([]byte, error) {
 		return []byte{}, err
 	}
 
-	if intG >= 1 && intG <= 42 {
-		return []byte(*g), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range 1..42")
+	return objects.GetIntFromRange(intG, 1, 42, true)
 }
 
 func (g *GroupSubject) GetName() string {
@@ -730,11 +653,7 @@ func (g *GroupSubject) GetName() string {
 type GroupTopics int
 
 func (g *GroupTopics) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupTopics) GetName() string {
@@ -754,12 +673,7 @@ func (g *GroupTopics) GetName() string {
 type GroupType string
 
 func (g *GroupType) MarshalJSON() ([]byte, error) {
-	switch *g {
-	case "group", "page", "event":
-		return []byte(*g), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*g), "group", "page", "event")
 }
 
 func (g *GroupType) GetName() string {
@@ -770,11 +684,7 @@ func (g *GroupType) GetName() string {
 type GroupVideo int
 
 func (g *GroupVideo) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupVideo) GetName() string {
@@ -794,11 +704,7 @@ func (g *GroupVideo) GetName() string {
 type GroupWall int
 
 func (g *GroupWall) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 4 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 3, true)
 }
 
 func (g *GroupWall) GetName() string {
@@ -820,11 +726,7 @@ func (g *GroupWall) GetName() string {
 type GroupWiki int
 
 func (g *GroupWiki) MarshalJSON() ([]byte, error) {
-	if *g <= 0 && *g < 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 0..2")
+	return objects.GetIntFromRange(int(*g), 0, 2, true)
 }
 
 func (g *GroupWiki) GetName() string {
@@ -860,11 +762,7 @@ type GroupXtrInvitedBy struct {
 type GroupXtrInvitedByAdminLevel int
 
 func (g *GroupXtrInvitedByAdminLevel) MarshalJSON() ([]byte, error) {
-	if *g >= 1 && *g <= 3 {
-		return []byte{byte(*g)}, nil
-	}
-
-	return []byte{}, fmt.Errorf("value should be within range 1..3")
+	return objects.GetIntFromRange(int(*g), 1, 3, true)
 }
 
 func (g *GroupXtrInvitedByAdminLevel) GetName() string {
@@ -884,12 +782,7 @@ func (g *GroupXtrInvitedByAdminLevel) GetName() string {
 type GroupXtrInvitedByType string
 
 func (g *GroupXtrInvitedByType) MarshalJSON() ([]byte, error) {
-	switch *g {
-	case "group", "page", "event":
-		return []byte(*g), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*g), "group", "page", "event")
 }
 
 func (g *GroupXtrInvitedByType) GetName() string {
@@ -994,15 +887,7 @@ type MemberRole struct {
 type MemberRoleStatus string
 
 func (m *MemberRoleStatus) MarshalJSON() ([]byte, error) {
-	switch *m {
-	case "moderator",
-		"editor",
-		"administrator",
-		"creator":
-		return []byte(*m), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*m), "moderator", "editor", "administrator", "creator")
 }
 
 func (m *MemberRoleStatus) GetName() string {
@@ -1034,12 +919,7 @@ type OnlineStatus struct {
 type OnlineStatusType string
 
 func (o *OnlineStatusType) MarshalJSON() ([]byte, error) {
-	switch *o {
-	case "none", "online", "answer_mark":
-		return []byte(*o), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*o), "none", "online", "answer_mark")
 }
 
 func (o *OnlineStatusType) GetName() string {
@@ -1058,12 +938,7 @@ type OwnerXtrBanInfo struct {
 type XtrBanInfoType string
 
 func (x *XtrBanInfoType) MarshalJSON() ([]byte, error) {
-	switch *x {
-	case "group", "profile":
-		return []byte(*x), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*x), "group", "profile")
 }
 
 func (x *XtrBanInfoType) GetName() string {
@@ -1074,12 +949,7 @@ func (x *XtrBanInfoType) GetName() string {
 type RoleOptions string
 
 func (r *RoleOptions) MarshalJSON() ([]byte, error) {
-	switch *r {
-	case "moderator", "editor", "administrator", "creator":
-		return []byte(*r), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in allowed range")
+	return objects.GetStringFromRange(string(*r), "moderator", "editor", "administrator", "creator")
 }
 
 func (r *RoleOptions) GetName() string {
