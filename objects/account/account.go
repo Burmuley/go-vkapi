@@ -1,7 +1,7 @@
 package account
 
 import (
-	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/objects/base"
 	"gitlab.com/Burmuley/go-vkapi/objects/users"
 )
@@ -70,11 +70,7 @@ type Offer struct {
 type OnOffOptions string
 
 func (o *OnOffOptions) MarshalJSON() ([]byte, error) {
-	if *o != "on" && *o != "off" {
-		return []byte{}, fmt.Errorf("value is not in range ['on', 'off']")
-	}
-
-	return []byte(*o), nil
+	return objects.GetStringFromRange(string(*o), "on", "off")
 }
 
 func (o *OnOffOptions) GetName() string {
@@ -122,12 +118,7 @@ type PushParams struct {
 type PushParamsMode string
 
 func (p *PushParamsMode) MarshalJSON() ([]byte, error) {
-	switch *p {
-	case "on", "off", "no_sound", "no_text":
-		return []byte(*p), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in range ['on', 'off', 'no_sound', 'no_text']")
+	return objects.GetStringFromRange(string(*p), "on", "off", "no_sound", "no_text")
 }
 
 func (p *PushParamsMode) GetName() string {
@@ -138,12 +129,7 @@ func (p *PushParamsMode) GetName() string {
 type PushParamsSettings string
 
 func (p *PushParamsSettings) MarshalJSON() ([]byte, error) {
-	switch *p {
-	case "on", "off", "fr_of_fr":
-		return []byte(*p), nil
-	}
-
-	return []byte{}, fmt.Errorf("value is not in range ['on', 'off', 'fr_of_fr']")
+	return objects.GetStringFromRange(string(*p), "on", "off", "fr_of_fr")
 }
 
 func (p *PushParamsSettings) GetName() string {
