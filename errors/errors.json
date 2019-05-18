@@ -1,0 +1,184 @@
+{
+  "errors": [
+    {
+      "name": "API_ERROR_UNKNOWN",
+      "code": 1,
+      "description": "Unknown error occurred"
+    },
+    {
+      "name": "API_ERROR_DISABLED",
+      "code": 2,
+      "description": "Application is disabled. Enable your application or use test mode"
+    },
+    {
+      "name": "API_ERROR_METHOD",
+      "code": 3,
+      "description": "Unknown method passed"
+    },
+    {
+      "name": "API_ERROR_SIGNATURE",
+      "code": 4,
+      "description": "Incorrect signature"
+    },
+    {
+      "name": "API_ERROR_AUTH",
+      "code": 5,
+      "description": "User authorization failed"
+    },
+    {
+      "name": "API_ERROR_TOO_MANY",
+      "code": 6,
+      "description": "Too many requests per second"
+    },
+    {
+      "name": "API_ERROR_PERMISSION",
+      "code": 7,
+      "description": "Permission to perform this action is denied"
+    },
+    {
+      "name": "API_ERROR_REQUEST",
+      "code": 8,
+      "description": "Invalid request"
+    },
+    {
+      "name": "API_ERROR_FLOOD",
+      "code": 9,
+      "description": "Flood control"
+    },
+    {
+      "name": "API_ERROR_SERVER",
+      "code": 10,
+      "description": "Internal server error"
+    },
+    {
+      "name": "API_ERROR_ENABLED_IN_TEST",
+      "code": 11,
+      "description": "In test mode application should be disabled or user should be authorized"
+    },
+    {
+      "name": "API_ERROR_CAPTCHA",
+      "code": 14,
+      "description": "Captcha needed"
+    },
+    {
+      "name": "API_ERROR_ACCESS",
+      "code": 15,
+      "description": "Access denied"
+    },
+    {
+      "name": "API_ERROR_AUTH_HTTPS",
+      "code": 16,
+      "description": "HTTP authorization failed"
+    },
+    {
+      "name": "API_ERROR_AUTH_VALIDATION",
+      "code": 17,
+      "description": "Validation required"
+    },
+    {
+      "name": "API_ERROR_USER_DELETED",
+      "code": 18,
+      "description": "User was deleted or banned"
+    },
+    {
+      "name": "API_ERROR_METHOD_PERMISSION",
+      "code": 20,
+      "description": "Permission to perform this action is denied for non-standalone applications"
+    },
+    {
+      "name": "API_ERROR_METHOD_ADS",
+      "code": 21,
+      "description": "Permission to perform this action is allowed only for standalone and OpenAPI applications"
+    },
+    {
+      "name": "API_ERROR_METHOD_DISABLED",
+      "code": 23,
+      "description": "This method was disabled"
+    },
+    {
+      "name": "API_ERROR_NEED_CONFIRMATION",
+      "code": 24,
+      "description": "Confirmation required"
+    },
+    {
+      "name": "API_ERROR_NEED_TOKEN_CONFIRMATION",
+      "code": 25,
+      "description": "Token confirmation required"
+    },
+    {
+      "name": "API_ERROR_GROUP_AUTH",
+      "code": 27,
+      "description": "Group authorization failed"
+    },
+    {
+      "name": "API_ERROR_APP_AUTH",
+      "code": 28,
+      "description": "Application authorization failed"
+    },
+    {
+      "name": "API_ERROR_RATE_LIMIT",
+      "code": 29,
+      "description": "Rate limit reached"
+    },
+    {
+      "name": "API_ERROR_PRIVATE_PROFILE",
+      "code": 30,
+      "description": "This profile is private"
+    },
+    {
+      "name": "API_ERROR_PARAM",
+      "code": 100,
+      "description": "One of the parameters specified was missing or invalid"
+    },
+    {
+      "name": "API_ERROR_PARAM_API_ID",
+      "code": 101,
+      "description": "Invalid application API ID"
+    },
+    {
+      "name": "API_ERROR_PARAM_USER_ID",
+      "code": 113,
+      "description": "Invalid user id"
+    },
+    {
+      "name": "API_ERROR_PARAM_TIMESTAMP",
+      "code": 150,
+      "description": "Invalid timestamp"
+    },
+    {
+      "name": "API_ERROR_ACCESS_ALBUM",
+      "code": 200,
+      "description": "Access denied"
+    },
+    {
+      "name": "API_ERROR_ACCESS_AUDIO",
+      "code": 201,
+      "description": "Access denied"
+    },
+    {
+      "name": "API_ERROR_ACCESS_GROUP",
+      "code": 203,
+      "description": "Access to group denied"
+    },
+    {
+      "name": "API_ERROR_ALBUM_FULL",
+      "code": 300,
+      "description": "This album is full"
+    },
+    {
+      "name": "API_ERROR_VOTES_PERMISSION",
+      "code": 500,
+      "description": "Permission denied. You must enable votes processing in application settings"
+    },
+    {
+      "name": "API_ERROR_ADS_PERMISSION",
+      "code": 600,
+      "description": "Permission denied. You have no access to operations specified with given object(s)"
+    },
+    {
+      "name": "API_ERROR_ADS_SPECIFIC",
+      "code": 603,
+      "description": "Some ads error occured"
+    }
+  ]
+}

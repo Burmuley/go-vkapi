@@ -2,6 +2,7 @@ package go_vkapi
 
 import (
 	"encoding/json"
+	"gitlab.com/Burmuley/go-vkapi/responses"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -55,7 +56,7 @@ func (vk *VKApi) SendAPIRequest(method string, parameters map[string]string) ([]
 		return nil, err
 	}
 
-	var apiResp ApiResponse
+	var apiResp responses.ApiRawResponse
 
 	if err := json.Unmarshal(rBody, &apiResp); err != nil {
 		return nil, err
