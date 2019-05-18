@@ -1,55 +1,99 @@
 package objects
 
-import "fmt"
+// DomainResolvedType represents `utils_domain_resolved_type` API object
+type UtilsDomainResolvedType string
 
-//// CheckIntRange function checks if `value` belong to a range defined by `start` and `end`.
-//func CheckIntRange(value, start, end int, incl bool) error {
-//	if incl {
-//		if value >= start && value <= end {
-//			return nil
-//		}
-//	} else {
-//		if value > start && value < end {
-//			return nil
-//		}
-//	}
-//
-//	return fmt.Errorf("value is not in allowed range [%d..%d]", start, end)
-//}
-
-// GetIntFromRange function checks if `value` belong to a range defined by `start` and `end`.
-// Returns int as a byte slice if it belongs to a defined range.
-func GetIntFromRange(value, start, end int, incl bool) ([]byte, error) {
-	if incl {
-		if value >= start && value <= end {
-			return []byte{byte(value)}, nil
-		}
-	} else {
-		if value > start && value < end {
-			return []byte{byte(value)}, nil
-		}
-	}
-
-	return []byte{}, fmt.Errorf("value %d is not in allowed range [%d..%d]", value, start, end)
+func (d *UtilsDomainResolvedType) MarshalJSON() ([]byte, error) {
+	return GetStringFromRange(string(*d), "user", "group", "application", "page")
 }
 
-// GetStringFromRange function checks if `value` belong to a range of string values.
-// Returns string as a byte slice if it belongs to a defined range.
-func GetStringFromRange(value string, strRange ...string) ([]byte, error) {
-	if ok, _ := StringInArray(value, strRange); ok {
-		return []byte(value), nil
-	}
-
-	return []byte{}, fmt.Errorf("value '%s' is not in allowed range", value)
+func (d *UtilsDomainResolvedType) GetName() string {
+	return string(*d)
 }
 
-// StringInArray function checks if string value belongs to an array
-func StringInArray(value string, arr []string) (in bool, ind int) {
-	for ind := range arr {
-		if in = arr[ind] == value; in {
-			return
-		}
-	}
+// DomainResolved represents `utils_domain_resolved` API object
+type UtilsDomainResolved struct {
+	ObjectID int                     `json:"object_id"`
+	Type     UtilsDomainResolvedType `json:"type"`
+}
 
-	return
+// LastShortenedLink represents `utils_last_shortened_link` API object
+type UtilsLastShortenedLink struct {
+	AccessKey string `json:"access_key"`
+	Key       string `json:"key"`
+	ShortURL  string `json:"short_url"`
+	Timestamp int    `json:"timestamp"`
+	URL       string `json:"url"`
+	Views     int    `json:"views"`
+}
+
+// LinkCheckedStatus represents `utils_link_checked_status` API object
+type UtilsLinkCheckedStatus string
+
+func (l *UtilsLinkCheckedStatus) MarshalJSON() ([]byte, error) {
+	return GetStringFromRange(string(*l), "banned", "not_banned", "processing")
+}
+
+func (l *UtilsLinkCheckedStatus) GetName() string {
+	return string(*l)
+}
+
+// LinkChecked represents `utils_link_checked` API object
+type UtilsLinkChecked struct {
+	Link   string                 `json:"link"`
+	Status UtilsLinkCheckedStatus `json:"status"`
+}
+
+// LinkStats represents `utils_link_stats` API object
+type UtilsLinkStats struct {
+	Key   string       `json:"key"` //Link key (characters after vk.cc/)
+	Stats []UtilsStats `json:"stats"`
+}
+
+// LinkStatsExtended represents `utils_link_stats_extended` API object
+type UtilsLinkStatsExtended struct {
+	Key   string               `json:"key"` //Link key (characters after vk.cc/)
+	Stats []UtilsStatsExtended `json:"stats"`
+}
+
+// ShortLink represents `utils_short_link` API object
+type UtilsShortLink struct {
+	AccessKey string `json:"access_key"`
+	Key       string `json:"key"`
+	ShortURL  string `json:"short_url"`
+	URL       string `json:"url"`
+}
+
+// Stats represents `utils_stats` API object
+type UtilsStats struct {
+	Timestamp int `json:"timestamp"`
+	Views     int `json:"views"`
+}
+
+// StatsExtended represents `utils_stats_extended` API object
+type UtilsStatsExtended struct {
+	Cities    []StatsCity    `json:"cities"`
+	Countries []StatsCountry `json:"countries"`
+	SexAge    []StatsSexAge  `json:"sex_age"`
+	Timestamp int            `json:"timestamp"`
+	Views     int            `json:"views"`
+}
+
+// StatsSexAge represents `utils_stats_sex_age` API object
+type UtilsStatsSexAge struct {
+	AgeRange string `json:"age_range"`
+	Female   int    `json:"female"`
+	Male     int    `json:"males"`
+}
+
+//StatsCountry represents `utils_stats_country` API object
+type UtilsStatsCountry struct {
+	CountryID int `json:"country_id"`
+	Views     int `json:"views"`
+}
+
+//StatsCity represents `utils_stats_city` API object
+type UtilsStatsCity struct {
+	CountryID int `json:"city_id"`
+	Views     int `json:"views"`
 }
