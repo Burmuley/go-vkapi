@@ -1,10 +1,13 @@
 package go_vkapi
 
 import (
+	"fmt"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 	"strings"
 )
 
+// Account represents collection of methods related to VK Accounts
 type Account struct {
 	*VKApi
 }
@@ -133,10 +136,11 @@ func (a *Account) GetPushSettings(deviceId string) (*responses.AccountGetPushSet
 //  * deviceYear - device year
 //  * deviceId - unique device ID
 //  * systemVer - string version of device operating system
-//  * settings - Push settings in a special format (vk.com/dev/push_settings)
+//  * settings - Push settings in a special format (see https://vk.com/dev/push_settings)
 //  * sandbox - test run or not
 func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer, settings string,
-	deviceYear int, sandbox bool) (*responses.OkResponse, error) {
+	deviceYear int, sandbox objects.BaseBoolInt) (*responses.OkResponse, error) {
+	fmt.Println(sandbox)
 	panic("implement me!")
 }
 
@@ -202,5 +206,47 @@ func (a *Account) SetOffline() (*responses.OkResponse, error) {
 // Parameters:
 //  * voip - '1' if video calls are available for current device
 func (a *Account) SetOnline(voip bool) (*responses.OkResponse, error) {
+	panic("implement me!")
+}
+
+// SetPushSettings changes push settings
+//
+// Parameters:
+//  * deviceId - Unique device ID
+//  * settings - Push settings in a special format (see https://vk.com/dev/push_settings)
+//  * key - notification key
+//  * value - new value for the key in a special format (see https://vk.com/dev/push_settings)
+func (a *Account) SetPushSettings(deviceId, settings, key string, value []string) (*responses.OkResponse, error) {
+	panic("implement me!")
+}
+
+// SetSilenceMode mutes push notifications for the set period of time
+//
+// Parameters:
+//  * deviceId - unique device ID
+//  * time - time in seconds for what notifications should be disabled. '-1' to disable forever.
+//  * peerId - destination ID. For user: 'User ID', e.g. '12345'.
+//                             For chat: '2000000000' + 'Chat ID', e.g. '2000000001'
+//                             For community: '- Community ID', e.g. '-12345'
+//  * sound - '1' — to enable sound in this dialog, '0' — to disable sound.
+//    Only if 'peer_id' contains user or community ID
+func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (*responses.OkResponse, error) {
+	panic("implement me!")
+}
+
+// Unban unblocks user
+//
+// Parameters:
+//  * ownerId - NO DESCRIPTION
+func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
+	panic("implement me!")
+}
+
+// UnregisterDevice unsubscribes a device from push notifications
+//
+// Parameters:
+//  * deviceId - unique device ID
+//  * sandbox - test request or not
+func (a *Account) UnregisterDevice(deviceId int, sandbox bool) (*responses.OkResponse, error) {
 	panic("implement me!")
 }
