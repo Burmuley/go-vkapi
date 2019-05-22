@@ -10,7 +10,7 @@ func (c *WidgetsCommentMediaType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*c), "audio", "photo", "video")
 }
 
-func (c *WidgetsCommentMediaType) String() string {
+func (c *WidgetsCommentMediaType) GetName() string {
 	return string(*c)
 }
 

@@ -22,7 +22,7 @@ func (s *SearchSection) MarshalJSON() ([]byte, error) {
 		"friends", "mutual_friends")
 }
 
-func (s *SearchSection) String() string {
+func (s *SearchSection) GetName() string {
 	return string(*s)
 }
 
@@ -33,6 +33,6 @@ func (t *SearchType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*t), "group", "profile")
 }
 
-func (t *SearchType) String() string {
+func (t *SearchType) GetName() string {
 	return string(*t)
 }

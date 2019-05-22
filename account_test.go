@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func NewAccount() (*Account, error) {
+func NewTestAccount() (*Account, error) {
 	token, err := getAPITokenEnv()
 
 	if err != nil {
@@ -17,7 +17,7 @@ func NewAccount() (*Account, error) {
 	return &Account{Api}, nil
 }
 func TestAccount_GetProfileInfo(t *testing.T) {
-	VKAcc, err := NewAccount()
+	VKAcc, err := NewTestAccount()
 
 	if err != nil {
 		t.Errorf("%s", err)
@@ -35,7 +35,7 @@ func TestAccount_GetProfileInfo(t *testing.T) {
 }
 
 func TestAccount_GetCounters(t *testing.T) {
-	VKAcc, err := NewAccount()
+	VKAcc, err := NewTestAccount()
 
 	if err != nil {
 		t.Errorf("%s", err)
@@ -49,11 +49,11 @@ func TestAccount_GetCounters(t *testing.T) {
 		t.Fail()
 	}
 
-	fmt.Println(*info)
+	fmt.Println(info)
 }
 
 func TestAccount_GetInfo(t *testing.T) {
-	VKAcc, err := NewAccount()
+	VKAcc, err := NewTestAccount()
 
 	if err != nil {
 		t.Errorf("%s", err)
@@ -72,7 +72,7 @@ func TestAccount_GetInfo(t *testing.T) {
 }
 
 func TestAccount_RegisterDevice(t *testing.T) {
-	VKAcc, err := NewAccount()
+	VKAcc, err := NewTestAccount()
 
 	if err != nil {
 		t.Errorf("%s", err)

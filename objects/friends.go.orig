@@ -11,7 +11,7 @@ func (f *FriendsFriendStatusStatus) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*f), 0, 3, true)
 }
 
-func (f *FriendsFriendStatusStatus) String() string {
+func (f *FriendsFriendStatusStatus) GetName() string {
 	switch *f {
 	case 0:
 		return "not a friend"

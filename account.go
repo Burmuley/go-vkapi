@@ -13,7 +13,10 @@ type Account struct {
 }
 
 // Ban performs blocking operation for user
-func (a *Account) Ban(ownerId int) (*responses.OkResponse, error) {
+//
+// Parameters:
+//  * ownerId - ID of the user to ban
+func (a *Account) Ban(ownerId int) (responses.OkResponse, error) {
 	panic("implement me!")
 }
 
@@ -24,7 +27,7 @@ func (a *Account) Ban(ownerId int) (*responses.OkResponse, error) {
 // 	* changePwdhash - hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
 // 	* oldPwd - Current user password
 // 	* newPwd - New password that will be set as a current
-func (a *Account) ChangePassword(restoreSid, changePwdHash, oldPwd, newPwd string) (*responses.AccountChangePassword, error) {
+func (a *Account) ChangePassword(restoreSid, changePwdHash, oldPwd, newPwd string) (responses.AccountChangePassword, error) {
 	panic("implement me!")
 }
 
@@ -41,7 +44,7 @@ func (a *Account) GetActiveOffers(offset, count int) (responses.AccountGetActive
 //
 // Parameters:
 //  * userId - User ID whose settings information shall be got. By default: current user (0).
-func (a *Account) GetAppPermissions(userId int) (*responses.AccountGetAppPermissions, error) {
+func (a *Account) GetAppPermissions(userId int) (responses.AccountGetAppPermissions, error) {
 	panic("implement me!")
 }
 
@@ -50,7 +53,7 @@ func (a *Account) GetAppPermissions(userId int) (*responses.AccountGetAppPermiss
 // Parameters:
 //  * offset - Offset needed to return a specific subset of results
 //  * count - Number of results to return
-func (a *Account) GetBanned(offset, count int) (*responses.AccountGetBanned, error) {
+func (a *Account) GetBanned(offset, count int) (responses.AccountGetBanned, error) {
 	panic("implement me!")
 }
 
@@ -68,11 +71,11 @@ func (a *Account) GetBanned(offset, count int) (*responses.AccountGetBanned, err
 //              "groups",
 //              "sdk",
 //              "friends_suggestions"
-func (a *Account) GetCounters(filters ...string) (*responses.AccountGetCounters, error) {
-	resp := &responses.AccountGetCounters{}
+func (a *Account) GetCounters(filters ...string) (responses.AccountGetCounters, error) {
+	resp := responses.AccountGetCounters{}
 
 	if err := a.SendObjRequest("account.getCounters", map[string]string{}, resp); err != nil {
-		return &responses.AccountGetCounters{}, err
+		return responses.AccountGetCounters{}, err
 	}
 
 	return resp, nil
@@ -89,12 +92,12 @@ func (a *Account) GetCounters(filters ...string) (*responses.AccountGetCounters,
 //     'intro' — is intro passed by user or not,
 //     'lang' — user language.
 //     By default: all.
-func (a *Account) GetInfo(fields ...string) (*responses.AccountGetInfo, error) {
+func (a *Account) GetInfo(fields ...string) (responses.AccountGetInfo, error) {
 	params := map[string]string{"fields": strings.Join(fields, ",")}
-	resp := &responses.AccountGetInfo{}
+	resp := responses.AccountGetInfo{}
 
 	if err := a.SendObjRequest("account.getInfo", params, resp); err != nil {
-		return &responses.AccountGetInfo{}, err
+		return responses.AccountGetInfo{}, err
 	}
 
 	return resp, nil
@@ -103,11 +106,11 @@ func (a *Account) GetInfo(fields ...string) (*responses.AccountGetInfo, error) {
 // GetProfileInfo returns the current account info
 //
 // Parameters: no
-func (a *Account) GetProfileInfo() (*responses.AccountGetProfileInfo, error) {
-	resp := &responses.AccountGetProfileInfo{}
+func (a *Account) GetProfileInfo() (responses.AccountGetProfileInfo, error) {
+	resp := responses.AccountGetProfileInfo{}
 
 	if err := a.SendObjRequest("account.getProfileInfo", map[string]string{}, resp); err != nil {
-		return &responses.AccountGetProfileInfo{}, err
+		return responses.AccountGetProfileInfo{}, err
 	}
 
 	return resp, nil
@@ -117,12 +120,12 @@ func (a *Account) GetProfileInfo() (*responses.AccountGetProfileInfo, error) {
 //
 // Parameters:
 //  * deviceId - Unique device ID
-func (a *Account) GetPushSettings(deviceId string) (*responses.AccountGetPushSettings, error) {
+func (a *Account) GetPushSettings(deviceId string) (responses.AccountGetPushSettings, error) {
 	params := map[string]string{"device_id": deviceId}
-	resp := &responses.AccountGetPushSettings{}
+	resp := responses.AccountGetPushSettings{}
 
 	if err := a.SendObjRequest("account.getPushSettings", params, resp); err != nil {
-		return &responses.AccountGetPushSettings{}, err
+		return responses.AccountGetPushSettings{}, err
 	}
 
 	return resp, nil
@@ -138,8 +141,8 @@ func (a *Account) GetPushSettings(deviceId string) (*responses.AccountGetPushSet
 //  * systemVer - string version of device operating system
 //  * settings - Push settings in a special format (see https://vk.com/dev/push_settings)
 //  * sandbox - test run or not
-func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer, settings string,
-	deviceYear int, sandbox objects.BaseBoolInt) (*responses.OkResponse, error) {
+func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer, settings objects.AccountPushSettings,
+	deviceYear int, sandbox objects.BaseBoolInt) (responses.OkResponse, error) {
 	fmt.Println(sandbox)
 	panic("implement me!")
 }
@@ -173,7 +176,7 @@ func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer, settin
 //  * status - status text
 func (a *Account) SaveProfileInfo(firstName, lastName, maidenName, screenName string,
 	cancelReqId int, sex, relation, relationPartner int, bdate string, bdateVisible int,
-	homeTown string, countryId, cityId int, status string) (*responses.AccountSaveProfileInfo, error) {
+	homeTown string, countryId, cityId int, status string) (responses.AccountSaveProfileInfo, error) {
 	panic("implement me!")
 }
 
@@ -181,7 +184,7 @@ func (a *Account) SaveProfileInfo(firstName, lastName, maidenName, screenName st
 //
 // Parameters:
 //  * settings - slice of settings in format {name: "name", value: "value"}
-func (a *Account) SetInfo(settings ...struct{ name, value string }) (*responses.OkResponse, error) {
+func (a *Account) SetInfo(settings ...struct{ name, value string }) (responses.OkResponse, error) {
 	panic("implement me!")
 }
 
@@ -190,14 +193,14 @@ func (a *Account) SetInfo(settings ...struct{ name, value string }) (*responses.
 // Parameters:
 //  * userId - user's ID
 //  * name - application screen name
-func (a *Account) SetNameInMenu(userId int, name string) (*responses.OkResponse, error) {
+func (a *Account) SetNameInMenu(userId int, name string) (responses.OkResponse, error) {
 	panic("implement me!")
 }
 
 // SetOffline marks a current user as offline
 //
 // Parameters: none
-func (a *Account) SetOffline() (*responses.OkResponse, error) {
+func (a *Account) SetOffline() (responses.OkResponse, error) {
 	panic("implement me!")
 }
 
@@ -205,7 +208,7 @@ func (a *Account) SetOffline() (*responses.OkResponse, error) {
 //
 // Parameters:
 //  * voip - '1' if video calls are available for current device
-func (a *Account) SetOnline(voip bool) (*responses.OkResponse, error) {
+func (a *Account) SetOnline(voip bool) (responses.OkResponse, error) {
 	panic("implement me!")
 }
 
@@ -216,7 +219,7 @@ func (a *Account) SetOnline(voip bool) (*responses.OkResponse, error) {
 //  * settings - Push settings in a special format (see https://vk.com/dev/push_settings)
 //  * key - notification key
 //  * value - new value for the key in a special format (see https://vk.com/dev/push_settings)
-func (a *Account) SetPushSettings(deviceId, settings, key string, value []string) (*responses.OkResponse, error) {
+func (a *Account) SetPushSettings(deviceId, key string, value []string, settings objects.AccountPushSettings) (responses.OkResponse, error) {
 	panic("implement me!")
 }
 
@@ -230,14 +233,14 @@ func (a *Account) SetPushSettings(deviceId, settings, key string, value []string
 //                             For community: '- Community ID', e.g. '-12345'
 //  * sound - '1' — to enable sound in this dialog, '0' — to disable sound.
 //    Only if 'peer_id' contains user or community ID
-func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (*responses.OkResponse, error) {
+func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (responses.OkResponse, error) {
 	panic("implement me!")
 }
 
 // Unban unblocks user
 //
 // Parameters:
-//  * ownerId - NO DESCRIPTION
+//  * ownerId - ID of the user to ban
 func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
 	panic("implement me!")
 }
@@ -247,6 +250,6 @@ func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
 // Parameters:
 //  * deviceId - unique device ID
 //  * sandbox - test request or not
-func (a *Account) UnregisterDevice(deviceId int, sandbox bool) (*responses.OkResponse, error) {
+func (a *Account) UnregisterDevice(deviceId int, sandbox bool) (responses.OkResponse, error) {
 	panic("implement me!")
 }

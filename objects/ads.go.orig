@@ -12,7 +12,7 @@ func (a *AdsAccessRole) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*a), "admin", "manager", "reports")
 }
 
-func (a *AdsAccessRole) String() string {
+func (a *AdsAccessRole) GetName() string {
 	return string(*a)
 }
 
@@ -37,7 +37,7 @@ func (a *AdsAccountType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*a), "general", "agency")
 }
 
-func (a *AdsAccountType) String() string {
+func (a *AdsAccountType) GetName() string {
 	return string(*a)
 }
 
@@ -72,7 +72,7 @@ func (a *AdsAdApproved) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*a), 0, 3, true)
 }
 
-func (a *AdsAdApproved) String() string {
+func (a *AdsAdApproved) GetName() string {
 	switch *a {
 	case 0:
 		return "not moderated"
@@ -95,7 +95,7 @@ func (a *AdsAdCostType) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*a), 0, 1, true)
 }
 
-func (a *AdsAdCostType) String() string {
+func (a *AdsAdCostType) GetName() string {
 	switch *a {
 	case 0:
 		return "per clicks"
@@ -129,7 +129,7 @@ func (a *AdsAdLayoutCostType) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*a), 0, 1, true)
 }
 
-func (a *AdsAdLayoutCostType) String() string {
+func (a *AdsAdLayoutCostType) GetName() string {
 	switch *a {
 	case 0:
 		return "per clicks"
@@ -148,7 +148,7 @@ func (a *AdsAdStatus) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*a), 0, 2, true)
 }
 
-func (a *AdsAdStatus) String() string {
+func (a *AdsAdStatus) GetName() string {
 	switch *a {
 	case 0:
 		return "stopped"
@@ -180,7 +180,7 @@ func (c *AdsCampaignStatus) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*c), 0, 2, true)
 }
 
-func (c *AdsCampaignStatus) String() string {
+func (c *AdsCampaignStatus) GetName() string {
 	switch *c {
 	case 0:
 		return "stopped"
@@ -196,7 +196,7 @@ func (c *AdsCampaignStatus) String() string {
 // CampaignType represents `ads_campaign_type` API object
 type AdsCampaignType string
 
-func (c *AdsCampaignType) String() string {
+func (c *AdsCampaignType) GetName() string {
 	return string(*c)
 }
 
@@ -226,7 +226,7 @@ func (c *AdsCriteriaSex) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*c), 0, 2, true)
 }
 
-func (c *AdsCriteriaSex) String() string {
+func (c *AdsCriteriaSex) GetName() string {
 	switch *c {
 	case 0:
 		return "any"
@@ -277,7 +277,7 @@ func (o *AdsObjectType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*o), "ad", "campaign", "client", "office")
 }
 
-func (o *AdsObjectType) String() string {
+func (o *AdsObjectType) GetName() string {
 	return string(*o)
 }
 
@@ -376,7 +376,7 @@ func (s *AdsStatsSexValue) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*s), "f", "m")
 }
 
-func (s *AdsStatsSexValue) String() string {
+func (s *AdsStatsSexValue) GetName() string {
 	switch *s {
 	case "f":
 		return "female"
@@ -437,7 +437,7 @@ func (t *AdsTargSuggestionsSchoolsType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*t), "school", "university", "faculty", "chair")
 }
 
-func (t *AdsTargSuggestionsSchoolsType) String() string {
+func (t *AdsTargSuggestionsSchoolsType) GetName() string {
 	return string(*t)
 }
 
