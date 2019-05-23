@@ -53,7 +53,7 @@ type MarketItemFull struct {
 // ItemAvailability represents `market_market_item_availability` API object
 type MarketItemAvailability int
 
-func (m *MarketItemAvailability) GetName() string {
+func (m *MarketItemAvailability) String() string {
 	switch *m {
 	case 0:
 		return "available"

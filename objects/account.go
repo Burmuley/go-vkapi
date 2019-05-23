@@ -43,7 +43,7 @@ type AccountNameRequest struct {
 // NameRequestStatus represents `account_name_request_status` API object
 type AccountNameRequestStatus string
 
-func (n *AccountNameRequestStatus) GetName() string {
+func (n *AccountNameRequestStatus) String() string {
 	return string(*n)
 }
 
@@ -67,7 +67,7 @@ func (o *AccountOnOffOptions) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*o), "on", "off")
 }
 
-func (o *AccountOnOffOptions) GetName() string {
+func (o *AccountOnOffOptions) String() string {
 	return string(*o)
 }
 
@@ -115,7 +115,7 @@ func (p *AccountPushParamsMode) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*p), "on", "off", "no_sound", "no_text")
 }
 
-func (p *AccountPushParamsMode) GetName() string {
+func (p *AccountPushParamsMode) String() string {
 	return string(*p)
 }
 
@@ -126,7 +126,7 @@ func (p *AccountPushParamsSettings) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*p), "on", "off", "fr_of_fr")
 }
 
-func (p *AccountPushParamsSettings) GetName() string {
+func (p *AccountPushParamsSettings) String() string {
 	return string(*p)
 }
 

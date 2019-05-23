@@ -46,7 +46,7 @@ func (c *WallCommentAttachmentType) MarshalJSON() ([]byte, error) {
 		"market_market_album", "market", "sticker")
 }
 
-func (c *WallCommentAttachmentType) GetName() string {
+func (c *WallCommentAttachmentType) String() string {
 	return string(*c)
 }
 
@@ -72,7 +72,7 @@ func (p *WallPostSourceType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*p), "vk", "widget", "api", "rss", "sms")
 }
 
-func (p *WallPostSourceType) GetName() string {
+func (p *WallPostSourceType) String() string {
 	return string(*p)
 }
 
@@ -91,7 +91,7 @@ func (p *WallPostType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*p), "post", "copy", "reply", "postpone", "suggest")
 }
 
-func (p *WallPostType) GetName() string {
+func (p *WallPostType) String() string {
 	return string(*p)
 }
 
@@ -173,7 +173,7 @@ func (w *WallWallpostAttachmentType) MarshalJSON() ([]byte, error) {
 		"graffiti", "note", "app", "poll", "page", "album", "photos_list", "market_market_album", "market", "event")
 }
 
-func (w *WallWallpostAttachmentType) GetName() string {
+func (w *WallWallpostAttachmentType) String() string {
 	return string(*w)
 }
 

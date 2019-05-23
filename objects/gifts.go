@@ -19,7 +19,7 @@ func (g *GiftsGiftPrivacy) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GiftsGiftPrivacy) GetName() string {
+func (g *GiftsGiftPrivacy) String() string {
 	switch *g {
 	case 0:
 		return "name and message for all"

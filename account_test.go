@@ -5,40 +5,42 @@ import (
 	"testing"
 )
 
-//func TestAccount_GetProfileInfo(t *testing.T) {
-//	token, err := getAPITokenEnv()
-//
-//	if err != nil {
-//		t.Errorf("%s", err)
-//		t.Fail()
-//	}
-//
-//	Api := NewApiWithToken(token)
-//
-//	VKAcc := &Account{Api}
-//
-//	info, err := VKAcc.GetProfileInfo()
-//
-//	if err != nil {
-//		t.Errorf("%s", err)
-//		t.Fail()
-//	}
-//
-//	fmt.Println(info)
-//}
-
-func TestAccount_GetCounters(t *testing.T) {
+func NewTestAccount() (*Account, error) {
 	token, err := getAPITokenEnv()
 
 	if err != nil {
-		t.Errorf("%s", err)
-		t.Fail()
-		return
+		return &Account{}, err
 	}
 
 	Api := NewApiWithToken(token)
 
-	VKAcc := &Account{Api}
+	return &Account{Api}, nil
+}
+func TestAccount_GetProfileInfo(t *testing.T) {
+	VKAcc, err := NewTestAccount()
+
+	if err != nil {
+		t.Errorf("%s", err)
+		t.Fail()
+	}
+
+	info, err := VKAcc.GetProfileInfo()
+
+	if err != nil {
+		t.Errorf("%s", err)
+		t.Fail()
+	}
+
+	fmt.Println(info)
+}
+
+func TestAccount_GetCounters(t *testing.T) {
+	VKAcc, err := NewTestAccount()
+
+	if err != nil {
+		t.Errorf("%s", err)
+		t.Fail()
+	}
 
 	info, err := VKAcc.GetCounters()
 
@@ -47,29 +49,37 @@ func TestAccount_GetCounters(t *testing.T) {
 		t.Fail()
 	}
 
-	fmt.Println(*info)
+	fmt.Println(info)
 }
 
-//func TestAccount_GetInfo(t *testing.T) {
-//	token, err := getAPITokenEnv()
-//
-//	if err != nil {
-//		t.Errorf("%s", err)
-//		t.Fail()
-//		return
-//	}
-//
-//	Api := NewApiWithToken(token)
-//
-//	VKAcc := &Account{Api}
-//
-//	info, err := VKAcc.GetInfo()
-//
-//	if err != nil {
-//		t.Errorf("%s", err)
-//		t.Fail()
-//	}
-//
-//	fmt.Println(info)
-//
-//}
+func TestAccount_GetInfo(t *testing.T) {
+	VKAcc, err := NewTestAccount()
+
+	if err != nil {
+		t.Errorf("%s", err)
+		t.Fail()
+	}
+
+	info, err := VKAcc.GetInfo()
+
+	if err != nil {
+		t.Errorf("%s", err)
+		t.Fail()
+	}
+
+	fmt.Println(info)
+
+}
+
+func TestAccount_RegisterDevice(t *testing.T) {
+	VKAcc, err := NewTestAccount()
+
+	if err != nil {
+		t.Errorf("%s", err)
+		t.Fail()
+	}
+
+	info, err := VKAcc.RegisterDevice("", "", "", "", "", 0, true)
+
+	fmt.Println(info)
+}

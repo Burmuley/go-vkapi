@@ -16,7 +16,7 @@ type LeadsChecked struct {
 // Contains information whether user can start the lead
 type LeadsCheckedResult bool
 
-func (c *LeadsCheckedResult) GetName() string {
+func (c *LeadsCheckedResult) String() string {
 	if *c {
 		return "true"
 	}

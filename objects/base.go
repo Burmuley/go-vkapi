@@ -172,7 +172,7 @@ type BaseObjectWithName struct {
 // OkResponse represents `base_ok_response` API object
 type BaseOkResponse int
 
-func (b *BaseOkResponse) GetName() string {
+func (b *BaseOkResponse) String() string {
 	switch *b {
 	case 1:
 		return "ok"
@@ -199,7 +199,7 @@ type BasePlace struct {
 // PropertyExists represents `base_property_exists` API object
 type BasePropertyExists int
 
-func (b *BasePropertyExists) GetName() string {
+func (b *BasePropertyExists) String() string {
 	switch *b {
 	case 1:
 		return "Property exists"
@@ -223,7 +223,7 @@ type BaseRequestParam struct {
 // Sex represents `base_sex` API object
 type BaseSex int
 
-func (b *BaseSex) GetName() string {
+func (b *BaseSex) String() string {
 	switch *b {
 	case 1:
 		return "female"

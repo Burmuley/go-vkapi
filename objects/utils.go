@@ -7,7 +7,7 @@ func (d *UtilsDomainResolvedType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*d), "user", "group", "application", "page")
 }
 
-func (d *UtilsDomainResolvedType) GetName() string {
+func (d *UtilsDomainResolvedType) String() string {
 	return string(*d)
 }
 
@@ -34,7 +34,7 @@ func (l *UtilsLinkCheckedStatus) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*l), "banned", "not_banned", "processing")
 }
 
-func (l *UtilsLinkCheckedStatus) GetName() string {
+func (l *UtilsLinkCheckedStatus) String() string {
 	return string(*l)
 }
 

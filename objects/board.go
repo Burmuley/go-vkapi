@@ -11,7 +11,7 @@ import (
 // DefaultOrder represents `board_default_order` API object
 type BoardDefaultOrder int
 
-func (b *BoardDefaultOrder) GetName() string {
+func (b *BoardDefaultOrder) String() string {
 	switch *b {
 	case 1:
 		return "desc_updated"

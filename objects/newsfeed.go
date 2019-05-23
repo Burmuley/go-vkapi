@@ -7,7 +7,7 @@ func (c *NewsfeedCommentsFilters) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*c), "post", "photo", "video", "topic", "note")
 }
 
-func (c *NewsfeedCommentsFilters) GetName() string {
+func (c *NewsfeedCommentsFilters) String() string {
 	return string(*c)
 }
 
@@ -29,7 +29,7 @@ func (f *NewsfeedFilters) MarshalJSON() ([]byte, error) {
 		"note", "audio", "video")
 }
 
-func (f *NewsfeedFilters) GetName() string {
+func (f *NewsfeedFilters) String() string {
 	return string(*f)
 }
 
@@ -40,7 +40,7 @@ func (i *NewsfeedIgnoreItemType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*i), "wall", "tag", "profilephoto", "video", "photo", "audio")
 }
 
-func (i *NewsfeedIgnoreItemType) GetName() string {
+func (i *NewsfeedIgnoreItemType) String() string {
 	switch *i {
 	case "wall":
 		return "post on the wall"
@@ -170,7 +170,7 @@ func (i *NewsfeedItemWallpostType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*i), "post", "copy", "reply")
 }
 
-func (i *NewsfeedItemWallpostType) GetName() string {
+func (i *NewsfeedItemWallpostType) String() string {
 	return string(*i)
 }
 
@@ -214,7 +214,7 @@ func (i *NewsfeedItemType) MarshalJSON() ([]byte, error) {
 		"video", "topic")
 }
 
-func (i *NewsfeedItemType) GetName() string {
+func (i *NewsfeedItemType) String() string {
 	return string(*i)
 }
 

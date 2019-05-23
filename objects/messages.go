@@ -107,7 +107,7 @@ func (c *MessagesConversationPeerType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*c), "chat", "email", "user", "group")
 }
 
-func (c *MessagesConversationPeerType) GetName() string {
+func (c *MessagesConversationPeerType) String() string {
 	return string(*c)
 }
 
@@ -171,7 +171,7 @@ func (h *MessagesHistoryMessageAttachmentType) MarshalJSON() ([]byte, error) {
 		"wall", "share", "graffiti", "audio_message")
 }
 
-func (h *MessagesHistoryMessageAttachmentType) GetName() string {
+func (h *MessagesHistoryMessageAttachmentType) String() string {
 	return string(*h)
 }
 
@@ -271,7 +271,7 @@ func (m *MessagesMessageActionStatus) MarshalJSON() ([]byte, error) {
 		"chat_invite_user_by_link")
 }
 
-func (m *MessagesMessageActionStatus) GetName() string {
+func (m *MessagesMessageActionStatus) String() string {
 	return string(*m)
 }
 
@@ -301,7 +301,7 @@ func (a *MessagesAttachmentType) MarshalJSON() ([]byte, error) {
 		"market_album", "gift", "sticker", "wall", "wall_reply", "graffiti", "audio_message")
 }
 
-func (a *MessagesAttachmentType) GetName() string {
+func (a *MessagesAttachmentType) String() string {
 	return string(*a)
 }
 

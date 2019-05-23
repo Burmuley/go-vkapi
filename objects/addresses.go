@@ -12,6 +12,6 @@ func (f *AddressesFields) MarshalJSON() ([]byte, error) {
 		"timetable", "phone", "time_offset")
 }
 
-func (f *AddressesFields) GetName() string {
+func (f *AddressesFields) String() string {
 	return string(*f)
 }
