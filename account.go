@@ -1,6 +1,7 @@
 package go_vkapi
 
 import (
+	"encoding/json"
 	"fmt"
 	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
@@ -17,7 +18,14 @@ type Account struct {
 // Parameters:
 //  * ownerId - ID of the user to ban
 func (a *Account) Ban(ownerId int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"owner_id": string(ownerId)}
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.ban", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // ChangePassword changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore] method.
@@ -28,7 +36,19 @@ func (a *Account) Ban(ownerId int) (responses.OkResponse, error) {
 // 	* oldPwd - Current user password
 // 	* newPwd - New password that will be set as a current
 func (a *Account) ChangePassword(restoreSid, changePwdHash, oldPwd, newPwd string) (responses.AccountChangePassword, error) {
-	panic("implement me!")
+	params := map[string]string{
+		"restore_sid":          restoreSid,
+		"change_password_hash": changePwdHash,
+		"old_password":         oldPwd,
+		"new_password":         newPwd,
+	}
+	resp := responses.AccountChangePassword{}
+
+	if err := a.SendObjRequest("account.changePassword", params, resp); err != nil {
+		return responses.AccountChangePassword{}, err
+	}
+
+	return resp, nil
 }
 
 // GetActiveOffers returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes to his balance in the application.
@@ -37,7 +57,17 @@ func (a *Account) ChangePassword(restoreSid, changePwdHash, oldPwd, newPwd strin
 //  * offset - NO DESCRIPTION
 //  * count - Number of results to return
 func (a *Account) GetActiveOffers(offset, count int) (responses.AccountGetActiveOffers, error) {
-	panic("implement me!")
+	params := map[string]string{
+		"offset": string(offset),
+		"count":  string(count),
+	}
+	resp := responses.AccountGetActiveOffers{}
+
+	if err := a.SendObjRequest("account.getActiveOffers", params, resp); err != nil {
+		return responses.AccountGetActiveOffers{}, err
+	}
+
+	return resp, nil
 }
 
 // GetAppPermissions gets settings of the user in this application.
@@ -45,7 +75,14 @@ func (a *Account) GetActiveOffers(offset, count int) (responses.AccountGetActive
 // Parameters:
 //  * userId - User ID whose settings information shall be got. By default: current user (0).
 func (a *Account) GetAppPermissions(userId int) (responses.AccountGetAppPermissions, error) {
-	panic("implement me!")
+	params := map[string]string{"user_id": string(userId)}
+	resp := responses.AccountGetAppPermissions(0)
+
+	if err := a.SendObjRequest("account.getAppPermissions", params, resp); err != nil {
+		return responses.AccountGetAppPermissions(0), err
+	}
+
+	return resp, nil
 }
 
 // GetBanned Returns a user's blacklist
@@ -54,7 +91,17 @@ func (a *Account) GetAppPermissions(userId int) (responses.AccountGetAppPermissi
 //  * offset - Offset needed to return a specific subset of results
 //  * count - Number of results to return
 func (a *Account) GetBanned(offset, count int) (responses.AccountGetBanned, error) {
-	panic("implement me!")
+	params := map[string]string{
+		"offset": string(offset),
+		"count":  string(count),
+	}
+	resp := responses.AccountGetBanned{}
+
+	if err := a.SendObjRequest("account.getBanned", params, resp); err != nil {
+		return responses.AccountGetBanned{}, err
+	}
+
+	return resp, nil
 }
 
 // GetCounters returns non-null values of user counters
@@ -72,9 +119,10 @@ func (a *Account) GetBanned(offset, count int) (responses.AccountGetBanned, erro
 //              "sdk",
 //              "friends_suggestions"
 func (a *Account) GetCounters(filters ...string) (responses.AccountGetCounters, error) {
+	params := map[string]string{"filter": strings.Join(filters, ",")}
 	resp := responses.AccountGetCounters{}
 
-	if err := a.SendObjRequest("account.getCounters", map[string]string{}, resp); err != nil {
+	if err := a.SendObjRequest("account.getCounters", params, resp); err != nil {
 		return responses.AccountGetCounters{}, err
 	}
 
@@ -141,10 +189,39 @@ func (a *Account) GetPushSettings(deviceId string) (responses.AccountGetPushSett
 //  * systemVer - string version of device operating system
 //  * settings - Push settings in a special format (see https://vk.com/dev/push_settings)
 //  * sandbox - test run or not
-func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer, settings objects.AccountPushSettings,
+func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer string,
+	settings objects.AccountPushSettings,
 	deviceYear int, sandbox objects.BaseBoolInt) (responses.OkResponse, error) {
-	fmt.Println(sandbox)
-	panic("implement me!")
+
+	// Fill required parameters
+	params := map[string]string{"token": token, "device_id": deviceId, "sandbox": fmt.Sprint(sandbox)}
+
+	settingsByte, err := json.Marshal(settings)
+	if err != nil {
+		params["settings"] = string(settingsByte)
+	}
+
+	// Fill optional parameters
+	if len(deviceModel) > 0 {
+		params["device_model"] = deviceModel
+	}
+
+	if len(systemVer) > 0 {
+		params["system_version"] = systemVer
+	}
+
+	if deviceYear > 0 {
+		params["device_year"] = string(deviceYear)
+	}
+
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.registerDevice", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
+
 }
 
 // SaveProfileInfo edits current profile info
@@ -185,7 +262,18 @@ func (a *Account) SaveProfileInfo(firstName, lastName, maidenName, screenName st
 // Parameters:
 //  * settings - slice of settings in format {name: "name", value: "value"}
 func (a *Account) SetInfo(settings ...struct{ name, value string }) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := make(map[string]string, 0)
+	for _, v := range settings {
+		params[v.name] = v.value
+	}
+
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.setInfo", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // SetNameInMenu sets an application screen name (up to 17 characters), that is shown to the user in the left menu
@@ -194,14 +282,27 @@ func (a *Account) SetInfo(settings ...struct{ name, value string }) (responses.O
 //  * userId - user's ID
 //  * name - application screen name
 func (a *Account) SetNameInMenu(userId int, name string) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"user_id": string(userId), "name": name}
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.setNameInMenu", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // SetOffline marks a current user as offline
 //
 // Parameters: none
 func (a *Account) SetOffline() (responses.OkResponse, error) {
-	panic("implement me!")
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.setNameInMenu", map[string]string{}, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // SetOnline marks a current user as online
@@ -209,7 +310,14 @@ func (a *Account) SetOffline() (responses.OkResponse, error) {
 // Parameters:
 //  * voip - '1' if video calls are available for current device
 func (a *Account) SetOnline(voip bool) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"voip": fmt.Sprint(voip)}
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.setNameInMenu", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // SetPushSettings changes push settings
@@ -220,7 +328,25 @@ func (a *Account) SetOnline(voip bool) (responses.OkResponse, error) {
 //  * key - notification key
 //  * value - new value for the key in a special format (see https://vk.com/dev/push_settings)
 func (a *Account) SetPushSettings(deviceId, key string, value []string, settings objects.AccountPushSettings) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"device_id": deviceId}
+	settingsByte, err := json.Marshal(settings)
+
+	if err != nil {
+		params["settings"] = string(settingsByte)
+	}
+
+	if len(key) > 0 && len(value) > 0 {
+		params["key"] = key
+		params["value"] = strings.Join(value, ",")
+	}
+
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.setPushSettings", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // SetSilenceMode mutes push notifications for the set period of time
@@ -234,7 +360,20 @@ func (a *Account) SetPushSettings(deviceId, key string, value []string, settings
 //  * sound - '1' — to enable sound in this dialog, '0' — to disable sound.
 //    Only if 'peer_id' contains user or community ID
 func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{
+		"device_id": deviceId,
+		"time":      string(time),
+		"peer_id":   string(peerId),
+		"sound":     string(sound),
+	}
+
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.setSilenceMode", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // Unban unblocks user
@@ -242,7 +381,15 @@ func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (resp
 // Parameters:
 //  * ownerId - ID of the user to ban
 func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"owner_id": string(ownerId)}
+
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.unban", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // UnregisterDevice unsubscribes a device from push notifications
@@ -251,5 +398,13 @@ func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
 //  * deviceId - unique device ID
 //  * sandbox - test request or not
 func (a *Account) UnregisterDevice(deviceId int, sandbox bool) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"device_id": string(deviceId), "sandbox": fmt.Sprint(sandbox)}
+
+	resp := responses.OkResponse{}
+
+	if err := a.SendObjRequest("account.unregisterDevice", params, resp); err != nil {
+		return responses.OkResponse{}, err
+	}
+
+	return resp, nil
 }
