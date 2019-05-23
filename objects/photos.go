@@ -32,7 +32,7 @@ func (i *PhotosImageType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*i), "s", "m", "x", "o", "p", "q", "r", "y", "z", "w")
 }
 
-func (i *PhotosImageType) GetName() string {
+func (i *PhotosImageType) String() string {
 	return string(*i)
 }
 
@@ -184,7 +184,7 @@ func (p *PhotosPhotoSizesType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*p), "s", "m", "x", "o", "p", "q", "r", "y", "z", "w")
 }
 
-func (p *PhotosPhotoSizesType) GetName() string {
+func (p *PhotosPhotoSizesType) String() string {
 	return string(*p)
 }
 

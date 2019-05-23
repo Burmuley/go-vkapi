@@ -243,7 +243,7 @@ type UsersUserMin struct {
 // UserType represents `users_user_type` API object
 type UsersUserType string
 
-func (u *UsersUserType) GetName() string {
+func (u *UsersUserType) String() string {
 	return string(*u)
 }
 

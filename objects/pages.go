@@ -7,7 +7,7 @@ package objects
 // PrivacySettings represents `pages_privacy_settings` API object
 type PagesPrivacySettings int
 
-func (p *PagesPrivacySettings) GetName() string {
+func (p *PagesPrivacySettings) String() string {
 	switch *p {
 	case 0:
 		return "community managers only"

@@ -54,7 +54,7 @@ func (a *GroupsAddressWorkInfoStatus) MarshalJSON() ([]byte, error) {
 		"always_opened", "timetable", "forever_closed")
 }
 
-func (a *GroupsAddressWorkInfoStatus) GetName() string {
+func (a *GroupsAddressWorkInfoStatus) String() string {
 	return string(*a)
 }
 
@@ -76,7 +76,7 @@ type GroupsBanInfo struct {
 // BanInfoReason represents `groups_ban_info_reason` API object
 type GroupsBanInfoReason int
 
-func (b *GroupsBanInfoReason) GetName() string {
+func (b *GroupsBanInfoReason) String() string {
 	switch *b {
 	case 0:
 		return "other"
@@ -138,7 +138,7 @@ func (f *GroupsFields) MarshalJSON() ([]byte, error) {
 		"can_subscribe_posts")
 }
 
-func (f *GroupsFields) GetName() string {
+func (f *GroupsFields) String() string {
 	return string(*f)
 }
 
@@ -150,7 +150,7 @@ func (f *GroupsFilter) MarshalJSON() ([]byte, error) {
 		"events", "has_addresses")
 }
 
-func (f *GroupsFilter) GetName() string {
+func (f *GroupsFilter) String() string {
 	return string(*f)
 }
 
@@ -180,7 +180,7 @@ func (g *GroupsGroupAccess) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupAccess) GetName() string {
+func (g *GroupsGroupAccess) String() string {
 	switch *g {
 	case 0:
 		return "open"
@@ -200,7 +200,7 @@ func (g *GroupsGroupAdminLevel) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 1, 3, true)
 }
 
-func (g *GroupsGroupAdminLevel) GetName() string {
+func (g *GroupsGroupAdminLevel) String() string {
 	switch *g {
 	case 1:
 		return "moderator"
@@ -220,7 +220,7 @@ func (g *GroupsGroupAgeLimits) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 1, 3, true)
 }
 
-func (g *GroupsGroupAgeLimits) GetName() string {
+func (g *GroupsGroupAgeLimits) String() string {
 	switch *g {
 	case 1:
 		return "unlimited"
@@ -240,7 +240,7 @@ func (g *GroupsGroupAudio) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupAudio) GetName() string {
+func (g *GroupsGroupAudio) String() string {
 	switch *g {
 	case 0:
 		return "disabled"
@@ -288,7 +288,7 @@ func (g *GroupsGroupDocs) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupDocs) GetName() string {
+func (g *GroupsGroupDocs) String() string {
 	switch *g {
 	case 0:
 		return "disabled"
@@ -349,7 +349,7 @@ func (g *GroupsGroupFullAgeLimits) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 1, 3, true)
 }
 
-func (g *GroupsGroupFullAgeLimits) GetName() string {
+func (g *GroupsGroupFullAgeLimits) String() string {
 	switch *g {
 	case 1:
 		return "no"
@@ -369,7 +369,7 @@ func (g *GroupsGroupFullMainSection) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 5, true)
 }
 
-func (g *GroupsGroupFullMainSection) GetName() string {
+func (g *GroupsGroupFullMainSection) String() string {
 	switch *g {
 	case 0:
 		return "absent"
@@ -395,7 +395,7 @@ func (g *GroupsGroupFullMemberStatus) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 5, true)
 }
 
-func (g *GroupsGroupFullMemberStatus) GetName() string {
+func (g *GroupsGroupFullMemberStatus) String() string {
 	switch *g {
 	case 0:
 		return "not a member"
@@ -421,7 +421,7 @@ func (g *GroupsGroupClosed) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupClosed) GetName() string {
+func (g *GroupsGroupClosed) String() string {
 	switch *g {
 	case 0:
 		return "open"
@@ -455,7 +455,7 @@ func (g *GroupsGroupMarketCurrency) MarshalJSON() ([]byte, error) {
 	return []byte{}, fmt.Errorf("value should be within list [643, 980, 398, 978, 840]")
 }
 
-func (g *GroupsGroupMarketCurrency) GetName() string {
+func (g *GroupsGroupMarketCurrency) String() string {
 	switch *g {
 	case 643:
 		return "russian rubles"
@@ -479,7 +479,7 @@ func (g *GroupsGroupPhotos) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupPhotos) GetName() string {
+func (g *GroupsGroupPhotos) String() string {
 	switch *g {
 	case 0:
 		return "disabled"
@@ -506,7 +506,7 @@ func (g *GroupsGroupRole) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*g), "moderator", "editor", "administrator")
 }
 
-func (g *GroupsGroupRole) GetName() string {
+func (g *GroupsGroupRole) String() string {
 	return string(*g)
 }
 
@@ -548,7 +548,7 @@ func (g *GroupsGroupSubject) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(intG, 1, 42, true)
 }
 
-func (g *GroupsGroupSubject) GetName() string {
+func (g *GroupsGroupSubject) String() string {
 	intG, err := strconv.Atoi(string(*g))
 
 	if err != nil {
@@ -652,7 +652,7 @@ func (g *GroupsGroupTopics) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupTopics) GetName() string {
+func (g *GroupsGroupTopics) String() string {
 	switch *g {
 	case 0:
 		return "disabled"
@@ -672,7 +672,7 @@ func (g *GroupsGroupType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*g), "group", "page", "event")
 }
 
-func (g *GroupsGroupType) GetName() string {
+func (g *GroupsGroupType) String() string {
 	return string(*g)
 }
 
@@ -683,7 +683,7 @@ func (g *GroupsGroupVideo) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupVideo) GetName() string {
+func (g *GroupsGroupVideo) String() string {
 	switch *g {
 	case 0:
 		return "disabled"
@@ -703,7 +703,7 @@ func (g *GroupsGroupWall) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 3, true)
 }
 
-func (g *GroupsGroupWall) GetName() string {
+func (g *GroupsGroupWall) String() string {
 	switch *g {
 	case 0:
 		return "disabled"
@@ -725,7 +725,7 @@ func (g *GroupsGroupWiki) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 0, 2, true)
 }
 
-func (g *GroupsGroupWiki) GetName() string {
+func (g *GroupsGroupWiki) String() string {
 	switch *g {
 	case 0:
 		return "disabled"
@@ -761,7 +761,7 @@ func (g *GroupsGroupXtrInvitedByAdminLevel) MarshalJSON() ([]byte, error) {
 	return GetIntFromRange(int(*g), 1, 3, true)
 }
 
-func (g *GroupsGroupXtrInvitedByAdminLevel) GetName() string {
+func (g *GroupsGroupXtrInvitedByAdminLevel) String() string {
 	switch *g {
 	case 1:
 		return "moderator"
@@ -781,7 +781,7 @@ func (g *GroupsGroupXtrInvitedByType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*g), "group", "page", "event")
 }
 
-func (g *GroupsGroupXtrInvitedByType) GetName() string {
+func (g *GroupsGroupXtrInvitedByType) String() string {
 	return string(*g)
 }
 
@@ -886,7 +886,7 @@ func (m *GroupsMemberRoleStatus) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*m), "moderator", "editor", "administrator", "creator")
 }
 
-func (m *GroupsMemberRoleStatus) GetName() string {
+func (m *GroupsMemberRoleStatus) String() string {
 	return string(*m)
 }
 
@@ -918,7 +918,7 @@ func (o *GroupsOnlineStatusType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*o), "none", "online", "answer_mark")
 }
 
-func (o *GroupsOnlineStatusType) GetName() string {
+func (o *GroupsOnlineStatusType) String() string {
 	return string(*o)
 }
 
@@ -937,7 +937,7 @@ func (x *GroupsXtrBanInfoType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*x), "group", "profile")
 }
 
-func (x *GroupsXtrBanInfoType) GetName() string {
+func (x *GroupsXtrBanInfoType) String() string {
 	return string(*x)
 }
 
@@ -948,7 +948,7 @@ func (r *GroupsRoleOptions) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*r), "moderator", "editor", "administrator", "creator")
 }
 
-func (r *GroupsRoleOptions) GetName() string {
+func (r *GroupsRoleOptions) String() string {
 	return string(*r)
 }
 

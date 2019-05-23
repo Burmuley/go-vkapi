@@ -65,7 +65,7 @@ func (s *StoriesStatsState) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*s), "on", "off", "hidden")
 }
 
-func (s *StoriesStatsState) GetName() string {
+func (s *StoriesStatsState) String() string {
 	return string(*s)
 }
 
@@ -76,7 +76,7 @@ func (t *StoriesType) MarshalJSON() ([]byte, error) {
 	return GetStringFromRange(string(*t), "photo", "video")
 }
 
-func (t *StoriesType) GetName() string {
+func (t *StoriesType) String() string {
 	return string(*t)
 }
 
@@ -95,6 +95,6 @@ func (u *StoriesUploadLinkText) MarshalJSON() ([]byte, error) {
 		"play", "install", "read")
 }
 
-func (u *StoriesUploadLinkText) GetName() string {
+func (u *StoriesUploadLinkText) String() string {
 	return string(*u)
 }
