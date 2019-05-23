@@ -228,7 +228,6 @@ func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer string,
 //
 // Parameters:
 //  * firstName, lastName, maidenName, screenName - corresponding user's first name, last name,  maiden name (for females only) and screen name (nickname)
-//  * cancelReqId - ID of the name change request to be canceled. If this parameter is sent, all the others are ignored
 //  * sex - user's sex. Possible values:
 //    1 – 'female'
 //    2 – 'male'
@@ -252,9 +251,85 @@ func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer string,
 //  * cityId - user's city ID
 //  * status - status text
 func (a *Account) SaveProfileInfo(firstName, lastName, maidenName, screenName string,
-	cancelReqId int, sex, relation, relationPartner int, bdate string, bdateVisible int,
-	homeTown string, countryId, cityId int, status string) (responses.AccountSaveProfileInfo, error) {
-	panic("implement me!")
+	sex, relation, relationPartner int, bdate string, bdateVisible int, homeTown string,
+	countryId, cityId int, status string) (responses.AccountSaveProfileInfo, error) {
+
+	params := map[string]string{}
+
+	if len(firstName) > 0 {
+		params["first_name"] = firstName
+	}
+
+	if len(lastName) > 0 {
+		params["last_name"] = lastName
+	}
+
+	if len(maidenName) > 0 {
+		params["maiden_name"] = maidenName
+	}
+
+	if len(screenName) > 0 {
+		params["screen_name"] = screenName
+	}
+
+	if sex > 0 {
+		params["sex"] = string(sex)
+	}
+
+	if relation >= 0 || relation <= 8 {
+		params["relation"] = string(relation)
+	}
+
+	if relationPartner > 0 {
+		params["relation_partner_id"] = string(relationPartner)
+	}
+
+	if len(bdate) > 0 {
+		params["bdate"] = bdate
+	}
+
+	if bdateVisible >= 0 || bdateVisible <= 2 {
+		params["bdate_visibility"] = string(bdateVisible)
+	}
+
+	if len(homeTown) > 0 {
+		params["home_town"] = homeTown
+	}
+
+	if countryId > 0 {
+		params["country_id"] = string(countryId)
+	}
+
+	if cityId > 0 {
+		params["city_id"] = string(cityId)
+	}
+
+	if len(status) > 0 {
+		params["status"] = status
+	}
+
+	resp := responses.AccountSaveProfileInfo{}
+
+	if err := a.SendObjRequest("account.saveProfileInfo", params, resp); err != nil {
+		return responses.AccountSaveProfileInfo{}, err
+	}
+
+	return resp, nil
+}
+
+// SaveProfileInfoCancelRequest cancels exiting profile edit request
+//
+// Parameters:
+//  * cancelReqId - ID of the name change request to be canceled. If this parameter is sent, all the others are ignored
+func (a *Account) SaveProfileInfoCancelRequest(cancelReqId int) (responses.AccountSaveProfileInfo, error) {
+	params := map[string]string{"cancel_request_id": string(cancelReqId)}
+	resp := responses.AccountSaveProfileInfo{}
+
+	if err := a.SendObjRequest("account.saveProfileInfo", params, resp); err != nil {
+		return responses.AccountSaveProfileInfo{}, err
+	}
+
+	return resp, nil
 }
 
 // SetInfo allows to edit the current account info
