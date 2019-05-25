@@ -71,15 +71,15 @@ func TestAccount_GetInfo(t *testing.T) {
 
 }
 
-func TestAccount_RegisterDevice(t *testing.T) {
-	VKAcc, err := NewTestAccount()
-
-	if err != nil {
-		t.Errorf("%s", err)
-		t.Fail()
-	}
-
-	info, err := VKAcc.RegisterDevice("", "", "", "", "", 0, true)
-
-	fmt.Println(info)
-}
+//func TestAccount_RegisterDevice(t *testing.T) {
+//	VKAcc, err := NewTestAccount()
+//
+//	if err != nil {
+//		t.Errorf("%s", err)
+//		t.Fail()
+//	}
+//
+//	info, err := VKAcc.RegisterDevice("", "", "", "", "", 0, true)
+//
+//	fmt.Println(info)
+//}

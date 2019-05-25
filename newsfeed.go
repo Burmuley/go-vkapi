@@ -1,6 +1,7 @@
 package go_vkapi
 
 import (
+	"fmt"
 	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
@@ -67,9 +68,24 @@ func (n *Newsfeed) Get() (responses.NewsfeedGetResponse, error) {
 //        'acc' — accusative
 //        'ins' — instrumental
 //        'abl' — prepositional
-func (n *Newsfeed) GetBanned(fields []objects.UsersFields, nameCase string) {
-	params := map[string]string{"extended": "1"}
+func (n *Newsfeed) GetBanned(fields []objects.UsersFields, nameCase string) (responses.NewsfeedGetBanned, error) {
+	params := map[string]string{"extended": "0"}
 
+	if len(nameCase) > 0 {
+		params["name_case"] = nameCase
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	resp := responses.NewsfeedGetBanned{}
+
+	if err := n.SendObjRequest("newsfeed.getBanned", params, resp); err != nil {
+		return responses.NewsfeedGetBanned{}, err
+	}
+
+	return resp, nil
 }
 
 // GetBannedExt returns a list of users and communities banned from the current user's newsfeed
@@ -83,9 +99,24 @@ func (n *Newsfeed) GetBanned(fields []objects.UsersFields, nameCase string) {
 //        'acc' — accusative
 //        'ins' — instrumental
 //        'abl' — prepositional
-func (n *Newsfeed) GetBannedExt(fields []objects.UsersFields, nameCase string) {
-	params := map[string]string{"extended": "0"}
+func (n *Newsfeed) GetBannedExt(fields []objects.UsersFields, nameCase string) (responses.NewsfeedGetBannedExt, error) {
+	params := map[string]string{"extended": "1"}
 
+	if len(nameCase) > 0 {
+		params["name_case"] = nameCase
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	resp := responses.NewsfeedGetBannedExt{}
+
+	if err := n.SendObjRequest("newsfeed.getBanned", params, resp); err != nil {
+		return responses.NewsfeedGetBannedExt{}, err
+	}
+
+	return resp, nil
 }
 
 // GetComments returns a list of comments in the current user's newsfeed
@@ -107,7 +138,47 @@ func (n *Newsfeed) GetBannedExt(fields []objects.UsersFields, nameCase string) {
 //  * fields - additional fields of vk.com/dev/fields|profiles and vk.com/dev/fields_groups|communities to return
 func (n *Newsfeed) GetComments(count, startTime, endTime, lastCommentCount int,
 	filters []objects.NewsfeedCommentsFilters, reposts, startFrom string, fields []objects.BaseUserGroupFields) (responses.NewsfeedGetComments, error) {
-	panic("implement me!")
+	params := map[string]string{}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if startTime > 0 {
+		params["start_time"] = string(startTime)
+	}
+
+	if endTime > 0 {
+		params["end_time"] = string(endTime)
+	}
+
+	if lastCommentCount > 0 {
+		params["last_comments_count"] = string(lastCommentCount)
+	}
+
+	if len(startFrom) > 0 {
+		params["start_from"] = startFrom
+	}
+
+	if len(reposts) > 0 {
+		params["reposts"] = reposts
+	}
+
+	if len(filters) > 0 {
+		params["filters"] = SliceToString(filters)
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	resp := responses.NewsfeedGetComments{}
+
+	if err := n.SendObjRequest("newsfeed.getComments", params, resp); err != nil {
+		return responses.NewsfeedGetComments{}, err
+	}
+
+	return resp, nil
 }
 
 // GetLists returns a list of newsfeeds followed by the current user
@@ -116,16 +187,38 @@ func (n *Newsfeed) GetComments(count, startTime, endTime, lastCommentCount int,
 //  * listIds - numeric list identifiers.
 func (n *Newsfeed) GetLists(listIds []int) (responses.NewsfeedGetLists, error) {
 	params := map[string]string{"extended": "false"}
-	panic("implement me!")
+
+	if len(listIds) > 0 {
+		params["list_ids"] = SliceToString(listIds)
+	}
+
+	resp := responses.NewsfeedGetLists{}
+
+	if err := n.SendObjRequest("newsfeed.getLists", params, resp); err != nil {
+		return responses.NewsfeedGetLists{}, err
+	}
+
+	return resp, nil
 }
 
 // GetListsExt returns an extended list of newsfeeds followed by the current user
 //
 // Parameters:
 //  * listIds - numeric list identifiers.
-func (n *Newsfeed) GetListsExt(listIds []int) (responses.NewsfeedGetLists, error) {
+func (n *Newsfeed) GetListsExt(listIds []int) (responses.NewsfeedGetListsExt, error) {
 	params := map[string]string{"extended": "true"}
-	panic("implement me!")
+
+	if len(listIds) > 0 {
+		params["list_ids"] = SliceToString(listIds)
+	}
+
+	resp := responses.NewsfeedGetListsExt{}
+
+	if err := n.SendObjRequest("newsfeed.getLists", params, resp); err != nil {
+		return responses.NewsfeedGetListsExt{}, err
+	}
+
+	return resp, nil
 }
 
 // GetMentions returns a list of posts on user walls in which the current user is mentioned.
@@ -137,7 +230,35 @@ func (n *Newsfeed) GetListsExt(listIds []int) (responses.NewsfeedGetLists, error
 //  * offset - Offset needed to return a specific subset of posts.
 //  * count - Number of posts to return.
 func (n *Newsfeed) GetMentions(ownerId, startTime, endTime, offset, count int) (responses.NewsfeedGetMentions, error) {
-	panic("implement me!")
+	params := map[string]string{}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if startTime > 0 {
+		params["start_time"] = string(startTime)
+	}
+
+	if endTime > 0 {
+		params["end_time"] = string(endTime)
+	}
+
+	if offset > 0 {
+		params["offset"] = string(offset)
+	}
+
+	if ownerId > 0 {
+		params["owner_id"] = string(ownerId)
+	}
+
+	resp := responses.NewsfeedGetMentions{}
+
+	if err := n.SendObjRequest("newsfeed.getMentions", params, resp); err != nil {
+		return responses.NewsfeedGetMentions{}, err
+	}
+
+	return resp, nil
 }
 
 // GetRecommended returns a list of newsfeeds recommended to the current user
@@ -150,7 +271,39 @@ func (n *Newsfeed) GetMentions(ownerId, startTime, endTime, offset, count int) (
 //  * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
 func (n *Newsfeed) GetRecommended(startTime, endTime, maxPhotos, count int,
 	startFrom string, fields []objects.BaseUserGroupFields) (responses.NewsfeedGetRecommended, error) {
-	panic("implement me!")
+	params := map[string]string{}
+
+	if len(startFrom) > 0 {
+		params["start_from"] = startFrom
+	}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if startTime > 0 {
+		params["start_time"] = string(startTime)
+	}
+
+	if endTime > 0 {
+		params["end_time"] = string(endTime)
+	}
+
+	if maxPhotos > 0 {
+		params["max_photos"] = string(maxPhotos)
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	resp := responses.NewsfeedGetRecommended{}
+
+	if err := n.SendObjRequest("newsfeed.getRecommended", params, resp); err != nil {
+		return responses.NewsfeedGetRecommended{}, err
+	}
+
+	return resp, nil
 }
 
 // GetSuggestedSources returns communities and users that current user is suggested to follow
@@ -161,7 +314,28 @@ func (n *Newsfeed) GetRecommended(startTime, endTime, maxPhotos, count int,
 //  * fields - list of extra fields to be returned. See available fields for [vk.com/dev/fields|users] and [vk.com/dev/fields_groups|communities].
 func (n *Newsfeed) GetSuggestedSources(offset, count int, shuffle bool,
 	fields []objects.BaseUserGroupFields) (responses.NewsfeedGetSuggestedSources, error) {
-	panic("implement me!")
+	params := map[string]string{"shuffle": fmt.Sprint(shuffle)}
+
+	if offset > 0 {
+		params["offset"] = string(offset)
+	}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	var resp responses.NewsfeedGetSuggestedSources
+
+	if err := n.SendObjRequest("newsfeed.getSuggestedSources", params, resp); err != nil {
+		return responses.NewsfeedGetSuggestedSources{}, err
+	}
+
+	return resp, nil
+
 }
 
 // IgnoreItem hides an item from the newsfeed
@@ -175,7 +349,16 @@ func (n *Newsfeed) GetSuggestedSources(offset, count int, shuffle bool,
 //  * ownerId - Item owner's identifier (user or community). Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community.
 //  * itemId - Item identifier
 func (n *Newsfeed) IgnoreItem(itemType string, ownerId, itemId int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"type": itemType, "owner_id": string(ownerId), "item_id": string(itemId)}
+
+	var resp responses.OkResponse
+
+	if err := n.SendObjRequest("newsfeed.ignoreItem", params, resp); err != nil {
+		return responses.OkResponse(0), err
+	}
+
+	return resp, nil
+
 }
 
 // SaveList creates and edits user newsfeed lists
@@ -185,7 +368,23 @@ func (n *Newsfeed) IgnoreItem(itemType string, ownerId, itemId int) (responses.O
 //  * sourceIds - users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
 //  * noReposts - reposts display on and off ('1' is for off)
 func (n *Newsfeed) SaveList(listId int, title string, sourceIds []int, noReposts bool) (responses.NewsfeedSaveList, error) {
-	panic("implement me!")
+	params := map[string]string{"title": title, "no_reposts": fmt.Sprint(noReposts)}
+
+	if listId > 0 {
+		params["list_id"] = string(listId)
+	}
+
+	if len(sourceIds) > 0 {
+		params["source_ids"] = SliceToString(sourceIds)
+	}
+
+	var resp responses.NewsfeedSaveList
+
+	if err := n.SendObjRequest("newsfeed.saveList", params, resp); err != nil {
+		return responses.NewsfeedSaveList(-1), err
+	}
+
+	return resp, nil
 }
 
 // Search returns search results by statuses.
@@ -198,10 +397,40 @@ func (n *Newsfeed) SaveList(listId int, title string, sourceIds []int, noReposts
 //  * endTime - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
 //  * startFrom -
 //  * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-func (n *Newsfeed) Search(query, startFrom string, fields []objects.BaseUserGroupFields, count, startTime, endTime int,
-	latitude, longitude float64) (responses.NewsfeedSearch, error) {
-	params := map[string]string{"extended": "0"}
-	panic("implement me!")
+func (n *Newsfeed) Search(query, startFrom string, count, startTime, endTime int, latitude, longitude float64) (responses.NewsfeedSearch, error) {
+	params := map[string]string{"extended": "0", "q": query}
+
+	if latitude > 0 {
+		params["latitude"] = fmt.Sprint(latitude)
+	}
+
+	if longitude > 0 {
+		params["longitude"] = fmt.Sprint(longitude)
+	}
+
+	if len(startFrom) > 0 {
+		params["start_from"] = startFrom
+	}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if startTime > 0 {
+		params["start_time"] = string(startTime)
+	}
+
+	if endTime > 0 {
+		params["end_time"] = string(endTime)
+	}
+
+	resp := responses.NewsfeedSearch{}
+
+	if err := n.SendObjRequest("newsfeed.search", params, resp); err != nil {
+		return responses.NewsfeedSearch{}, err
+	}
+
+	return resp, nil
 }
 
 // SearchExt returns extended search results by statuses.
@@ -214,9 +443,45 @@ func (n *Newsfeed) Search(query, startFrom string, fields []objects.BaseUserGrou
 //  * end_time - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
 //  * start_from -
 //  * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-func (n *Newsfeed) SearchExt() (responses.NewsfeedSearchExt, error) {
-	params := map[string]string{"extended": "1"}
-	panic("implement me!")
+func (n *Newsfeed) SearchExt(query, startFrom string, fields []objects.BaseUserGroupFields, count, startTime, endTime int,
+	latitude, longitude float64) (responses.NewsfeedSearchExt, error) {
+	params := map[string]string{"extended": "1", "q": query}
+
+	if latitude > 0 {
+		params["latitude"] = fmt.Sprint(latitude)
+	}
+
+	if longitude > 0 {
+		params["longitude"] = fmt.Sprint(longitude)
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	if len(startFrom) > 0 {
+		params["start_from"] = startFrom
+	}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if startTime > 0 {
+		params["start_time"] = string(startTime)
+	}
+
+	if endTime > 0 {
+		params["end_time"] = string(endTime)
+	}
+
+	resp := responses.NewsfeedSearchExt{}
+
+	if err := n.SendObjRequest("newsfeed.search", params, resp); err != nil {
+		return responses.NewsfeedSearchExt{}, err
+	}
+
+	return resp, nil
 }
 
 // UnignoreItem returns a hidden item to the newsfeed
@@ -230,7 +495,14 @@ func (n *Newsfeed) SearchExt() (responses.NewsfeedSearchExt, error) {
 //  * ownerId - Item owner's identifier (user or community), Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community
 //  * itemId - Item identifier
 func (n *Newsfeed) UnignoreItem(itemType objects.NewsfeedIgnoreItemType, ownerId, itemId int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"type": string(itemType), "owner_id": string(ownerId), "item_id": string(itemId)}
+	var resp responses.OkResponse
+
+	if err := n.SendObjRequest("newsfeed.unsubscribe", params, resp); err != nil {
+		return responses.OkResponse(0), err
+	}
+
+	return resp, nil
 }
 
 // Unsubscribe Unsubscribes the current user from specified newsfeeds.
@@ -244,5 +516,12 @@ func (n *Newsfeed) UnignoreItem(itemType objects.NewsfeedIgnoreItemType, ownerId
 //  * ownerId - Object owner ID
 //  * itemId - Object ID
 func (n *Newsfeed) Unsubscribe(objectType string, ownerId, itemId int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"type": objectType, "owner_id": string(ownerId), "item_id": string(itemId)}
+	var resp responses.OkResponse
+
+	if err := n.SendObjRequest("newsfeed.unsubscribe", params, resp); err != nil {
+		return responses.OkResponse(0), err
+	}
+
+	return resp, nil
 }
