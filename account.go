@@ -19,10 +19,10 @@ type Account struct {
 //  * ownerId - ID of the user to ban
 func (a *Account) Ban(ownerId int) (responses.OkResponse, error) {
 	params := map[string]string{"owner_id": string(ownerId)}
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.ban", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -214,10 +214,10 @@ func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer string,
 		params["device_year"] = string(deviceYear)
 	}
 
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.registerDevice", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -342,10 +342,10 @@ func (a *Account) SetInfo(settings ...struct{ name, value string }) (responses.O
 		params[v.name] = v.value
 	}
 
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.setInfo", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -358,10 +358,10 @@ func (a *Account) SetInfo(settings ...struct{ name, value string }) (responses.O
 //  * name - application screen name
 func (a *Account) SetNameInMenu(userId int, name string) (responses.OkResponse, error) {
 	params := map[string]string{"user_id": string(userId), "name": name}
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.setNameInMenu", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -371,10 +371,10 @@ func (a *Account) SetNameInMenu(userId int, name string) (responses.OkResponse, 
 //
 // Parameters: none
 func (a *Account) SetOffline() (responses.OkResponse, error) {
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.setNameInMenu", map[string]string{}, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -386,10 +386,10 @@ func (a *Account) SetOffline() (responses.OkResponse, error) {
 //  * voip - '1' if video calls are available for current device
 func (a *Account) SetOnline(voip bool) (responses.OkResponse, error) {
 	params := map[string]string{"voip": fmt.Sprint(voip)}
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.setNameInMenu", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -415,10 +415,10 @@ func (a *Account) SetPushSettings(deviceId, key string, value []string, settings
 		params["value"] = strings.Join(value, ",")
 	}
 
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.setPushSettings", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -442,10 +442,10 @@ func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (resp
 		"sound":     string(sound),
 	}
 
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.setSilenceMode", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -458,10 +458,10 @@ func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (resp
 func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
 	params := map[string]string{"owner_id": string(ownerId)}
 
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.unban", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
@@ -475,10 +475,10 @@ func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
 func (a *Account) UnregisterDevice(deviceId int, sandbox bool) (responses.OkResponse, error) {
 	params := map[string]string{"device_id": string(deviceId), "sandbox": fmt.Sprint(sandbox)}
 
-	resp := responses.OkResponse{}
+	var resp responses.OkResponse
 
 	if err := a.SendObjRequest("account.unregisterDevice", params, resp); err != nil {
-		return responses.OkResponse{}, err
+		return responses.OkResponse(0), err
 	}
 
 	return resp, nil
