@@ -17,7 +17,23 @@ type Newsfeed struct {
 //  * userIds - int array with user IDs
 //  * groupIds - int array with group IDs
 func (n *Newsfeed) AddBan(userIds []int, groupIds []int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{}
+
+	if len(userIds) > 0 {
+		params["user_ids"] = SliceToString(userIds)
+	}
+
+	if len(groupIds) > 0 {
+		params["group_ids"] = SliceToString(groupIds)
+	}
+
+	var resp responses.OkResponse
+
+	if err := n.SendObjRequest("newsfeed.addBan", params, resp); err != nil {
+		return responses.OkResponse(0), err
+	}
+
+	return resp, nil
 }
 
 // DeleteBan Allows news from previously banned users and communities to be shown in the current user's newsfeed
@@ -26,7 +42,23 @@ func (n *Newsfeed) AddBan(userIds []int, groupIds []int) (responses.OkResponse, 
 //  * userIds - int array with user IDs
 //  * groupIds - int array with group IDs
 func (n *Newsfeed) DeleteBan(userIds []int, groupIds []int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{}
+
+	if len(userIds) > 0 {
+		params["user_ids"] = SliceToString(userIds)
+	}
+
+	if len(groupIds) > 0 {
+		params["group_ids"] = SliceToString(groupIds)
+	}
+
+	var resp responses.OkResponse
+
+	if err := n.SendObjRequest("newsfeed.deleteBan", params, resp); err != nil {
+		return responses.OkResponse(0), err
+	}
+
+	return resp, nil
 }
 
 // DeleteList deletes list
@@ -34,7 +66,15 @@ func (n *Newsfeed) DeleteBan(userIds []int, groupIds []int) (responses.OkRespons
 // Parameters:
 //  * listId - int ID of the list to delete
 func (n *Newsfeed) DeleteList(listId int) (responses.OkResponse, error) {
-	panic("implement me!")
+	params := map[string]string{"list_id": string(listId)}
+
+	var resp responses.OkResponse
+
+	if err := n.SendObjRequest("newsfeed.deleteList", params, resp); err != nil {
+		return responses.OkResponse(0), err
+	}
+
+	return resp, nil
 }
 
 // Get returns data required to show newsfeed for the current user
@@ -53,8 +93,49 @@ func (n *Newsfeed) DeleteList(listId int) (responses.OkResponse, error) {
 //  * count - Number of news items to return (default 50, maximum 100). For auto feed, you can use the 'new_offset' parameter returned by this method
 //  * fields - additional fields of vk.com/dev/fields|profiles and vk.com/dev/fields_groups|communities to return
 //  * section - NO DESCRIPTION
-func (n *Newsfeed) Get() (responses.NewsfeedGetResponse, error) {
-	panic("implement me!")
+func (n *Newsfeed) Get(count, startTime, endTime, maxPhotos int, returnBanned bool,
+	filters []objects.NewsfeedFilters, section, startFrom string, fields []objects.BaseUserGroupFields) (responses.NewsfeedGetResponse, error) {
+	params := map[string]string{}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if startTime > 0 {
+		params["start_time"] = string(startTime)
+	}
+
+	if endTime > 0 {
+		params["end_time"] = string(endTime)
+	}
+
+	if maxPhotos > 0 {
+		params["max_photos"] = string(maxPhotos)
+	}
+
+	if len(startFrom) > 0 {
+		params["start_from"] = startFrom
+	}
+
+	if len(section) > 0 {
+		params["section"] = section
+	}
+
+	if len(filters) > 0 {
+		params["filters"] = SliceToString(filters)
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	resp := responses.NewsfeedGetResponse{}
+
+	if err := n.SendObjRequest("newsfeed.get", params, resp); err != nil {
+		return responses.NewsfeedGetResponse{}, err
+	}
+
+	return resp, nil
 }
 
 // GetBanned returns a list of users and communities banned from the current user's newsfeed
