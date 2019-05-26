@@ -6,7 +6,7 @@ import (
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
-// Apps represents collection of methods related to VK Accounts
+// Apps represents collection of methods related to VK Apps
 type Apps struct {
 	*VKApi
 }

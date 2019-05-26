@@ -6,7 +6,7 @@ import (
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
-// Newsfeed represents collection of methods related to VK Accounts
+// Newsfeed represents collection of methods related to VK Newsfeed
 type Newsfeed struct {
 	*VKApi
 }
