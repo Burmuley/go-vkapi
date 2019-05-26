@@ -13,6 +13,11 @@ import (
 // May take values 'yes' or '1' for true and 'no' and '0' for false
 type BaseBoolInt bool
 
+func (v *BaseBoolInt) String() string {
+	str, _ := v.MarshalJSON()
+	return string(str)
+}
+
 func (v *BaseBoolInt) UnmarshalJSON(b []byte) error {
 	strValue := strings.ToLower(string(b))
 

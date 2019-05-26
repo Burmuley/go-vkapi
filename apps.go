@@ -1,6 +1,7 @@
 package go_vkapi
 
 import (
+	"fmt"
 	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
@@ -24,30 +25,66 @@ func (a *Apps) DeleteAppRequests() (responses.OkResponse, error) {
 // Get returns applications data
 //
 // Parameters:
-//  * app_id - Application ID
-//  * app_ids - List of application ID
+//  * appId - Application ID
+//  * appIds - List of application ID
 //  * platform - platform. Possible values:
 //      'ios' — iOS
 //      'android' — Android
 //      'winphone' — Windows Phone
 //      'web' — приложения на vk.com.
 //      By default: 'web'.
-//  * extended -
-//  * return_friends -
+//  * extended - flag to return extanded fields in response. '1' - to return.
+//  * return_friends - flag show if response should contain list of friends who installed this app
 //  * fields - Profile fields to return. Sample values:
 //      'nickname', 'screen_name''sex', 'bdate' (birthdate), 'city', 'country', 'timezone',
 //      'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online',
 //      'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts',
 //      'can_post', 'universities', (only if return_friends - 1)
-//  * name_case - Case for declension of user name and surname:
+//  * nameCase - Case for declension of user name and surname:
 //      'nom' — nominative (default)
 //      'gen' — genitive
 //      'dat' — dative
 //      'acc' — accusative
 //      'ins' — instrumental
 //      'abl' — prepositional. (only if 'return_friends' = '1')
-func (a *Apps) Get() (responses.AppsGet, error) {
-	panic("implement me!")
+func (a *Apps) Get(appId int, appIds []string, platform, nameCase string, fields []objects.UsersFields,
+	extended, returnFriends objects.BaseBoolInt) (responses.AppsGet, error) {
+
+	params := map[string]string{}
+
+	if appId > 0 {
+		params["app_id"] = string(appId)
+	}
+
+	if len(appIds) > 0 {
+		params["app_ids"] = SliceToString(appIds)
+	}
+
+	if len(platform) > 0 {
+		params["platform"] = platform
+	}
+
+	if len(nameCase) > 0 {
+		params["name_case"] = nameCase
+	}
+
+	if returnFriends && len(fields) > 0 {
+		params["return_friends"] = fmt.Sprint(returnFriends)
+		params["fields"] = SliceToString(fields)
+	}
+
+	if extended {
+		params["extended"] = fmt.Sprint(extended)
+	}
+
+	resp := responses.AppsGet{}
+
+	if err := a.SendObjRequest("apps.get", params, &resp); err != nil {
+		return responses.AppsGet{}, err
+	}
+
+	return resp, nil
+
 }
 
 // GetCatalog returns a list of applications (apps) available to users in the App Catalog
@@ -60,18 +97,69 @@ func (a *Apps) Get() (responses.AppsGet, error) {
 //      'growth_rate' — by growth rate
 //      'popular_week' — popular for one week
 //  * offset - Offset required to return a specific subset of apps.
-//  * count - Number of apps to return.
-//  * platform -
+//  * count - Number of apps to return
+//  * platform - platform to return applications for. Possible values:
+//     'ios' - iOS
+//     'android' - Android
+//     'winphone' — Windows Phone;
+//     'web' — applications on vk.com
+//     'html5' — Direct Games
 //  * extended - '1' — to return additional fields 'screenshots', 'MAU', 'catalog_position', and 'international'.
 //    If set, 'count' must be less than or equal to '100'. '0' — not to return additional fields (default).
-//  * return_friends - NO DESCRIPTION (bool)
+//  * returnFriends - flag show if response should contain list of friends who installed this app
 //  * fields - fields to return
-//  * name_case -
-//  * q - Search query string.
-//  * genre_id - NO DESCRIPTION (int)
+//  * nameCase -
+//  * query - Search query string
+//  * genreId - genre ID
 //  * filter - 'installed' — to return list of installed apps (only for mobile platform).
-func (a *Apps) GetCatalog() (responses.AppsGetCatalog, error) {
-	panic("implement me!")
+func (a *Apps) GetCatalog(sort, platform, nameCase, query, filter string, offset, count, genreId int,
+	extended, returnFriends objects.BaseBoolInt, fields []objects.UsersFields) (responses.AppsGetCatalog, error) {
+
+	params := map[string]string{"extended": fmt.Sprint(extended), "return_friends": fmt.Sprint(returnFriends)}
+
+	if len(sort) > 0 {
+		params["sort"] = sort
+	}
+
+	if len(platform) > 0 {
+		params["platform"] = platform
+	}
+
+	if len(nameCase) > 0 {
+		params["name_case"] = nameCase
+	}
+
+	if len(query) > 0 {
+		params["q"] = query
+	}
+
+	if len(filter) > 0 {
+		params["filter"] = filter
+	}
+
+	if offset > 0 {
+		params["offset"] = string(offset)
+	}
+
+	if count > 0 {
+		params["count"] = string(count)
+	}
+
+	if genreId > 0 {
+		params["genre_id"] = string(genreId)
+	}
+
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
+	}
+
+	resp := responses.AppsGetCatalog{}
+
+	if err := a.SendObjRequest("apps.getCatalog", params, &resp); err != nil {
+		return responses.AppsGetCatalog{}, err
+	}
+
+	return resp, nil
 }
 
 // GetFriendsList creates friends list for requests and invites in current app
