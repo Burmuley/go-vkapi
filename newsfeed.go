@@ -29,7 +29,7 @@ func (n *Newsfeed) AddBan(userIds []int, groupIds []int) (responses.OkResponse, 
 
 	var resp responses.OkResponse
 
-	if err := n.SendObjRequest("newsfeed.addBan", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.addBan", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -54,7 +54,7 @@ func (n *Newsfeed) DeleteBan(userIds []int, groupIds []int) (responses.OkRespons
 
 	var resp responses.OkResponse
 
-	if err := n.SendObjRequest("newsfeed.deleteBan", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.deleteBan", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -70,7 +70,7 @@ func (n *Newsfeed) DeleteList(listId int) (responses.OkResponse, error) {
 
 	var resp responses.OkResponse
 
-	if err := n.SendObjRequest("newsfeed.deleteList", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.deleteList", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -131,7 +131,7 @@ func (n *Newsfeed) Get(count, startTime, endTime, maxPhotos int, returnBanned bo
 
 	resp := responses.NewsfeedGetResponse{}
 
-	if err := n.SendObjRequest("newsfeed.get", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.get", params, &resp); err != nil {
 		return responses.NewsfeedGetResponse{}, err
 	}
 
@@ -162,7 +162,7 @@ func (n *Newsfeed) GetBanned(fields []objects.UsersFields, nameCase string) (res
 
 	resp := responses.NewsfeedGetBanned{}
 
-	if err := n.SendObjRequest("newsfeed.getBanned", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getBanned", params, &resp); err != nil {
 		return responses.NewsfeedGetBanned{}, err
 	}
 
@@ -193,7 +193,7 @@ func (n *Newsfeed) GetBannedExt(fields []objects.UsersFields, nameCase string) (
 
 	resp := responses.NewsfeedGetBannedExt{}
 
-	if err := n.SendObjRequest("newsfeed.getBanned", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getBanned", params, &resp); err != nil {
 		return responses.NewsfeedGetBannedExt{}, err
 	}
 
@@ -255,7 +255,7 @@ func (n *Newsfeed) GetComments(count, startTime, endTime, lastCommentCount int,
 
 	resp := responses.NewsfeedGetComments{}
 
-	if err := n.SendObjRequest("newsfeed.getComments", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getComments", params, &resp); err != nil {
 		return responses.NewsfeedGetComments{}, err
 	}
 
@@ -275,7 +275,7 @@ func (n *Newsfeed) GetLists(listIds []int) (responses.NewsfeedGetLists, error) {
 
 	resp := responses.NewsfeedGetLists{}
 
-	if err := n.SendObjRequest("newsfeed.getLists", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getLists", params, &resp); err != nil {
 		return responses.NewsfeedGetLists{}, err
 	}
 
@@ -295,7 +295,7 @@ func (n *Newsfeed) GetListsExt(listIds []int) (responses.NewsfeedGetListsExt, er
 
 	resp := responses.NewsfeedGetListsExt{}
 
-	if err := n.SendObjRequest("newsfeed.getLists", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getLists", params, &resp); err != nil {
 		return responses.NewsfeedGetListsExt{}, err
 	}
 
@@ -335,7 +335,7 @@ func (n *Newsfeed) GetMentions(ownerId, startTime, endTime, offset, count int) (
 
 	resp := responses.NewsfeedGetMentions{}
 
-	if err := n.SendObjRequest("newsfeed.getMentions", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getMentions", params, &resp); err != nil {
 		return responses.NewsfeedGetMentions{}, err
 	}
 
@@ -380,7 +380,7 @@ func (n *Newsfeed) GetRecommended(startTime, endTime, maxPhotos, count int,
 
 	resp := responses.NewsfeedGetRecommended{}
 
-	if err := n.SendObjRequest("newsfeed.getRecommended", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getRecommended", params, &resp); err != nil {
 		return responses.NewsfeedGetRecommended{}, err
 	}
 
@@ -411,7 +411,7 @@ func (n *Newsfeed) GetSuggestedSources(offset, count int, shuffle bool,
 
 	var resp responses.NewsfeedGetSuggestedSources
 
-	if err := n.SendObjRequest("newsfeed.getSuggestedSources", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.getSuggestedSources", params, &resp); err != nil {
 		return responses.NewsfeedGetSuggestedSources{}, err
 	}
 
@@ -434,7 +434,7 @@ func (n *Newsfeed) IgnoreItem(itemType string, ownerId, itemId int) (responses.O
 
 	var resp responses.OkResponse
 
-	if err := n.SendObjRequest("newsfeed.ignoreItem", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.ignoreItem", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -461,7 +461,7 @@ func (n *Newsfeed) SaveList(listId int, title string, sourceIds []int, noReposts
 
 	var resp responses.NewsfeedSaveList
 
-	if err := n.SendObjRequest("newsfeed.saveList", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.saveList", params, &resp); err != nil {
 		return responses.NewsfeedSaveList(-1), err
 	}
 
@@ -507,7 +507,7 @@ func (n *Newsfeed) Search(query, startFrom string, count, startTime, endTime int
 
 	resp := responses.NewsfeedSearch{}
 
-	if err := n.SendObjRequest("newsfeed.search", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.search", params, &resp); err != nil {
 		return responses.NewsfeedSearch{}, err
 	}
 
@@ -558,7 +558,7 @@ func (n *Newsfeed) SearchExt(query, startFrom string, fields []objects.BaseUserG
 
 	resp := responses.NewsfeedSearchExt{}
 
-	if err := n.SendObjRequest("newsfeed.search", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.search", params, &resp); err != nil {
 		return responses.NewsfeedSearchExt{}, err
 	}
 
@@ -579,7 +579,7 @@ func (n *Newsfeed) UnignoreItem(itemType objects.NewsfeedIgnoreItemType, ownerId
 	params := map[string]string{"type": string(itemType), "owner_id": string(ownerId), "item_id": string(itemId)}
 	var resp responses.OkResponse
 
-	if err := n.SendObjRequest("newsfeed.unsubscribe", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.unsubscribe", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -600,7 +600,7 @@ func (n *Newsfeed) Unsubscribe(objectType string, ownerId, itemId int) (response
 	params := map[string]string{"type": objectType, "owner_id": string(ownerId), "item_id": string(itemId)}
 	var resp responses.OkResponse
 
-	if err := n.SendObjRequest("newsfeed.unsubscribe", params, resp); err != nil {
+	if err := n.SendObjRequest("newsfeed.unsubscribe", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 

@@ -19,9 +19,10 @@ type Account struct {
 //  * ownerId - ID of the user to ban
 func (a *Account) Ban(ownerId int) (responses.OkResponse, error) {
 	params := map[string]string{"owner_id": string(ownerId)}
+
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.ban", params, resp); err != nil {
+	if err := a.SendObjRequest("account.ban", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -44,7 +45,7 @@ func (a *Account) ChangePassword(restoreSid, changePwdHash, oldPwd, newPwd strin
 	}
 	resp := responses.AccountChangePassword{}
 
-	if err := a.SendObjRequest("account.changePassword", params, resp); err != nil {
+	if err := a.SendObjRequest("account.changePassword", params, &resp); err != nil {
 		return responses.AccountChangePassword{}, err
 	}
 
@@ -63,7 +64,7 @@ func (a *Account) GetActiveOffers(offset, count int) (responses.AccountGetActive
 	}
 	resp := responses.AccountGetActiveOffers{}
 
-	if err := a.SendObjRequest("account.getActiveOffers", params, resp); err != nil {
+	if err := a.SendObjRequest("account.getActiveOffers", params, &resp); err != nil {
 		return responses.AccountGetActiveOffers{}, err
 	}
 
@@ -78,7 +79,7 @@ func (a *Account) GetAppPermissions(userId int) (responses.AccountGetAppPermissi
 	params := map[string]string{"user_id": string(userId)}
 	resp := responses.AccountGetAppPermissions(0)
 
-	if err := a.SendObjRequest("account.getAppPermissions", params, resp); err != nil {
+	if err := a.SendObjRequest("account.getAppPermissions", params, &resp); err != nil {
 		return responses.AccountGetAppPermissions(0), err
 	}
 
@@ -97,7 +98,7 @@ func (a *Account) GetBanned(offset, count int) (responses.AccountGetBanned, erro
 	}
 	resp := responses.AccountGetBanned{}
 
-	if err := a.SendObjRequest("account.getBanned", params, resp); err != nil {
+	if err := a.SendObjRequest("account.getBanned", params, &resp); err != nil {
 		return responses.AccountGetBanned{}, err
 	}
 
@@ -122,7 +123,7 @@ func (a *Account) GetCounters(filters ...string) (responses.AccountGetCounters, 
 	params := map[string]string{"filter": strings.Join(filters, ",")}
 	resp := responses.AccountGetCounters{}
 
-	if err := a.SendObjRequest("account.getCounters", params, resp); err != nil {
+	if err := a.SendObjRequest("account.getCounters", params, &resp); err != nil {
 		return responses.AccountGetCounters{}, err
 	}
 
@@ -144,7 +145,7 @@ func (a *Account) GetInfo(fields ...string) (responses.AccountGetInfo, error) {
 	params := map[string]string{"fields": strings.Join(fields, ",")}
 	resp := responses.AccountGetInfo{}
 
-	if err := a.SendObjRequest("account.getInfo", params, resp); err != nil {
+	if err := a.SendObjRequest("account.getInfo", params, &resp); err != nil {
 		return responses.AccountGetInfo{}, err
 	}
 
@@ -157,7 +158,7 @@ func (a *Account) GetInfo(fields ...string) (responses.AccountGetInfo, error) {
 func (a *Account) GetProfileInfo() (responses.AccountGetProfileInfo, error) {
 	resp := responses.AccountGetProfileInfo{}
 
-	if err := a.SendObjRequest("account.getProfileInfo", map[string]string{}, resp); err != nil {
+	if err := a.SendObjRequest("account.getProfileInfo", map[string]string{}, &resp); err != nil {
 		return responses.AccountGetProfileInfo{}, err
 	}
 
@@ -172,7 +173,7 @@ func (a *Account) GetPushSettings(deviceId string) (responses.AccountGetPushSett
 	params := map[string]string{"device_id": deviceId}
 	resp := responses.AccountGetPushSettings{}
 
-	if err := a.SendObjRequest("account.getPushSettings", params, resp); err != nil {
+	if err := a.SendObjRequest("account.getPushSettings", params, &resp); err != nil {
 		return responses.AccountGetPushSettings{}, err
 	}
 
@@ -216,7 +217,7 @@ func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer string,
 
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.registerDevice", params, resp); err != nil {
+	if err := a.SendObjRequest("account.registerDevice", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -310,7 +311,7 @@ func (a *Account) SaveProfileInfo(firstName, lastName, maidenName, screenName st
 
 	resp := responses.AccountSaveProfileInfo{}
 
-	if err := a.SendObjRequest("account.saveProfileInfo", params, resp); err != nil {
+	if err := a.SendObjRequest("account.saveProfileInfo", params, &resp); err != nil {
 		return responses.AccountSaveProfileInfo{}, err
 	}
 
@@ -325,7 +326,7 @@ func (a *Account) SaveProfileInfoCancelRequest(cancelReqId int) (responses.Accou
 	params := map[string]string{"cancel_request_id": string(cancelReqId)}
 	resp := responses.AccountSaveProfileInfo{}
 
-	if err := a.SendObjRequest("account.saveProfileInfo", params, resp); err != nil {
+	if err := a.SendObjRequest("account.saveProfileInfo", params, &resp); err != nil {
 		return responses.AccountSaveProfileInfo{}, err
 	}
 
@@ -344,7 +345,7 @@ func (a *Account) SetInfo(settings ...struct{ name, value string }) (responses.O
 
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.setInfo", params, resp); err != nil {
+	if err := a.SendObjRequest("account.setInfo", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -360,7 +361,7 @@ func (a *Account) SetNameInMenu(userId int, name string) (responses.OkResponse, 
 	params := map[string]string{"user_id": string(userId), "name": name}
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.setNameInMenu", params, resp); err != nil {
+	if err := a.SendObjRequest("account.setNameInMenu", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -388,7 +389,7 @@ func (a *Account) SetOnline(voip bool) (responses.OkResponse, error) {
 	params := map[string]string{"voip": fmt.Sprint(voip)}
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.setNameInMenu", params, resp); err != nil {
+	if err := a.SendObjRequest("account.setNameInMenu", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -417,7 +418,7 @@ func (a *Account) SetPushSettings(deviceId, key string, value []string, settings
 
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.setPushSettings", params, resp); err != nil {
+	if err := a.SendObjRequest("account.setPushSettings", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -444,7 +445,7 @@ func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (resp
 
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.setSilenceMode", params, resp); err != nil {
+	if err := a.SendObjRequest("account.setSilenceMode", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -460,7 +461,7 @@ func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
 
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.unban", params, resp); err != nil {
+	if err := a.SendObjRequest("account.unban", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
@@ -477,7 +478,7 @@ func (a *Account) UnregisterDevice(deviceId int, sandbox bool) (responses.OkResp
 
 	var resp responses.OkResponse
 
-	if err := a.SendObjRequest("account.unregisterDevice", params, resp); err != nil {
+	if err := a.SendObjRequest("account.unregisterDevice", params, &resp); err != nil {
 		return responses.OkResponse(0), err
 	}
 
