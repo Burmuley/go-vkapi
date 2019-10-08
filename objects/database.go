@@ -1,45 +1,67 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package objects
 
-/////////////////////////////////////////////////////////////
-// Database related API objects	                           //
-/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// `database` group of objects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// City represents `database_city` API object
-type DatabaseCity struct {
-	BaseObject
-	Area      string      `json:"area"`
-	Region    string      `json:"region"`
-	Important BaseBoolInt `json:"important"`
-}
-
-// Faculty represents `database_faculty` API object
+// DatabaseFaculty type represents `database_faculty` API object
 type DatabaseFaculty struct {
-	ID    int    `json:"id"`
-	Title string `json:"title"`
+	Id    int    `json:"id"`    // Faculty ID
+	Title string `json:"title"` // Faculty title
 }
 
-// Region represents `database_region` API object
-type DatabaseRegion struct {
-	ID    int    `json:"id"`
-	Title string `json:"title"`
-}
-
-// School represents `database_school` API object
-type DatabaseSchool struct {
-	ID    int    `json:"id"`
-	Title string `json:"title"`
-}
-
-// Station represents `database_station` API object
+// DatabaseStation type represents `database_station` API object
 type DatabaseStation struct {
-	ID     int    `json:"id"`
-	CityID int    `json:"city_id"`
-	Color  string `json:"color"`
-	Name   string `json:"name"`
+	CityId int    `json:"city_id"` // City ID
+	Color  string `json:"color"`   // Hex color code without #
+	Id     int    `json:"id"`      // Station ID
+	Name   string `json:"name"`    // Station name
 }
 
-// University represents `database_university` API object
+// DatabaseSchool type represents `database_school` API object
+type DatabaseSchool struct {
+	Id    int    `json:"id"`    // School ID
+	Title string `json:"title"` // School title
+}
+
+// DatabaseRegion type represents `database_region` API object
+type DatabaseRegion struct {
+	Id    int    `json:"id"`    // Region ID
+	Title string `json:"title"` // Region title
+}
+
+// DatabaseUniversity type represents `database_university` API object
 type DatabaseUniversity struct {
-	ID    int    `json:"id"`
-	Title string `json:"title"`
+	Id    int    `json:"id"`    // University ID
+	Title string `json:"title"` // University title
+}
+
+// DatabaseCity type represents `database_city` API object
+type DatabaseCity struct {
+	BaseObject BaseObject  `json:"BaseObject"`
+	Area       string      `json:"area"`      // Area title
+	Important  BaseBoolInt `json:"important"` // Information whether the city is included in important cities list
+	Region     string      `json:"region"`    // Region title
 }

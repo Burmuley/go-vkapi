@@ -1,30 +1,40 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package objects
 
-/////////////////////////////////////////////////////////////
-// Audio related API objects	                           //
-/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// `audio` group of objects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Audio represents `audio_audio` API object
+// AudioAudio type represents `audio_audio` API object
 type AudioAudio struct {
-	AccessKey  string `json:"access_key"`
-	Artist     string `json:"artist"`
-	ID         int    `json:"id"`
-	Explicit   bool   `json:"is_explicit"`
-	FocusTrack bool   `json:"is_focus_track"`
-	Licensed   bool   `json:"is_licensed"`
-	OwnerID    int    `json:"owner_id"`
-	Title      string `json:"title"`
-	Url        string `json:"url"`
-}
-
-// AudioFull represents `audio_audio_full` API object
-type AudioAudioFull struct {
-	*AudioAudio
-	Duration    int         `json:"duration"`
-	Date        int         `json:"date"`
-	AlbumID     int         `json:"album_id"`
-	LyricsID    int         `json:"lyrics_id"`
-	GenreID     int         `json:"genre_id"`
-	Searchable  BaseBoolInt `json:"no_search"`
-	HighQuality bool        `json:"is_hq"`
+	AlbumId   int    `json:"album_id"`  // Album ID
+	Artist    string `json:"artist"`    // Artist name
+	Date      int    `json:"date"`      // Date when uploaded
+	Duration  int    `json:"duration"`  // Duration in seconds
+	GenreId   int    `json:"genre_id"`  // Genre ID
+	Id        int    `json:"id"`        // Audio ID
+	Performer string `json:"performer"` // Performer name
+	Title     string `json:"title"`     // Title
+	Url       string `json:"url"`       // URL of mp3 file
 }

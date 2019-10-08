@@ -1,99 +1,109 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package objects
 
-// DomainResolvedType represents `utils_domain_resolved_type` API object
-type UtilsDomainResolvedType string
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// `utils` group of objects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-func (d *UtilsDomainResolvedType) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*d), "user", "group", "application", "page")
+// UtilsStatsCity type represents `utils_stats_city` API object
+type UtilsStatsCity struct {
+	CityId int `json:"city_id"` // City ID
+	Views  int `json:"views"`   // Views number
 }
 
-func (d *UtilsDomainResolvedType) String() string {
-	return string(*d)
+// UtilsDomainResolvedType type represents `utils_domain_resolved_type` API object
+type UtilsDomainResolvedType string // Object type
+
+// UtilsStats type represents `utils_stats` API object
+type UtilsStats struct {
+	Timestamp int `json:"timestamp"` // Start time
+	Views     int `json:"views"`     // Total views number
 }
 
-// DomainResolved represents `utils_domain_resolved` API object
-type UtilsDomainResolved struct {
-	ObjectID int                     `json:"object_id"`
-	Type     UtilsDomainResolvedType `json:"type"`
+// UtilsStatsCountry type represents `utils_stats_country` API object
+type UtilsStatsCountry struct {
+	CountryId int `json:"country_id"` // Country ID
+	Views     int `json:"views"`      // Views number
 }
 
-// LastShortenedLink represents `utils_last_shortened_link` API object
-type UtilsLastShortenedLink struct {
-	AccessKey string `json:"access_key"`
-	Key       string `json:"key"`
-	ShortURL  string `json:"short_url"`
-	Timestamp int    `json:"timestamp"`
-	URL       string `json:"url"`
-	Views     int    `json:"views"`
-}
-
-// LinkCheckedStatus represents `utils_link_checked_status` API object
-type UtilsLinkCheckedStatus string
-
-func (l *UtilsLinkCheckedStatus) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*l), "banned", "not_banned", "processing")
-}
-
-func (l *UtilsLinkCheckedStatus) String() string {
-	return string(*l)
-}
-
-// LinkChecked represents `utils_link_checked` API object
-type UtilsLinkChecked struct {
-	Link   string                 `json:"link"`
-	Status UtilsLinkCheckedStatus `json:"status"`
-}
-
-// LinkStats represents `utils_link_stats` API object
-type UtilsLinkStats struct {
-	Key   string       `json:"key"` //Link key (characters after vk.cc/)
-	Stats []UtilsStats `json:"stats"`
-}
-
-// LinkStatsExtended represents `utils_link_stats_extended` API object
+// UtilsLinkStatsExtended type represents `utils_link_stats_extended` API object
 type UtilsLinkStatsExtended struct {
-	Key   string               `json:"key"` //Link key (characters after vk.cc/)
+	Key   string               `json:"key"` // Link key (characters after vk.cc/)
 	Stats []UtilsStatsExtended `json:"stats"`
 }
 
-// ShortLink represents `utils_short_link` API object
-type UtilsShortLink struct {
-	AccessKey string `json:"access_key"`
-	Key       string `json:"key"`
-	ShortURL  string `json:"short_url"`
-	URL       string `json:"url"`
+// UtilsLinkChecked type represents `utils_link_checked` API object
+type UtilsLinkChecked struct {
+	Link   string                 `json:"link"` // Link URL
+	Status UtilsLinkCheckedStatus `json:"status"`
 }
 
-// Stats represents `utils_stats` API object
-type UtilsStats struct {
-	Timestamp int `json:"timestamp"`
-	Views     int `json:"views"`
-}
-
-// StatsExtended represents `utils_stats_extended` API object
+// UtilsStatsExtended type represents `utils_stats_extended` API object
 type UtilsStatsExtended struct {
-	Cities    []StatsCity    `json:"cities"`
-	Countries []StatsCountry `json:"countries"`
-	SexAge    []StatsSexAge  `json:"sex_age"`
-	Timestamp int            `json:"timestamp"`
-	Views     int            `json:"views"`
+	Cities    []UtilsStatsCity    `json:"cities"`
+	Countries []UtilsStatsCountry `json:"countries"`
+	SexAge    []UtilsStatsSexAge  `json:"sex_age"`
+	Timestamp int                 `json:"timestamp"` // Start time
+	Views     int                 `json:"views"`     // Total views number
 }
 
-// StatsSexAge represents `utils_stats_sex_age` API object
+// UtilsLastShortenedLink type represents `utils_last_shortened_link` API object
+type UtilsLastShortenedLink struct {
+	AccessKey string `json:"access_key"` // Access key for private stats
+	Key       string `json:"key"`        // Link key (characters after vk.cc/)
+	ShortUrl  string `json:"short_url"`  // Short link URL
+	Timestamp int    `json:"timestamp"`  // Creation time in Unixtime
+	Url       string `json:"url"`        // Full URL
+	Views     int    `json:"views"`      // Total views number
+}
+
+// UtilsDomainResolved type represents `utils_domain_resolved` API object
+type UtilsDomainResolved struct {
+	ObjectId int                     `json:"object_id"` // Object ID
+	Type     UtilsDomainResolvedType `json:"type"`
+}
+
+// UtilsStatsSexAge type represents `utils_stats_sex_age` API object
 type UtilsStatsSexAge struct {
-	AgeRange string `json:"age_range"`
-	Female   int    `json:"female"`
-	Male     int    `json:"males"`
+	AgeRange string `json:"age_range"` // Age denotation
+	Female   int    `json:"female"`    //  Views by female users
+	Male     int    `json:"male"`      //  Views by male users
 }
 
-//StatsCountry represents `utils_stats_country` API object
-type UtilsStatsCountry struct {
-	CountryID int `json:"country_id"`
-	Views     int `json:"views"`
+// UtilsLinkCheckedStatus type represents `utils_link_checked_status` API object
+type UtilsLinkCheckedStatus string // Link status
+
+// UtilsShortLink type represents `utils_short_link` API object
+type UtilsShortLink struct {
+	AccessKey string `json:"access_key"` // Access key for private stats
+	Key       string `json:"key"`        // Link key (characters after vk.cc/)
+	ShortUrl  string `json:"short_url"`  // Short link URL
+	Url       string `json:"url"`        // Full URL
 }
 
-//StatsCity represents `utils_stats_city` API object
-type UtilsStatsCity struct {
-	CountryID int `json:"city_id"`
-	Views     int `json:"views"`
+// UtilsLinkStats type represents `utils_link_stats` API object
+type UtilsLinkStats struct {
+	Key   string       `json:"key"` // Link key (characters after vk.cc/)
+	Stats []UtilsStats `json:"stats"`
 }

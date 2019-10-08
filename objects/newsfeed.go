@@ -1,17 +1,120 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package objects
 
-// CommentsFilters represents `newsfeed_comments_filters` API object
-type NewsfeedCommentsFilters string
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// `newsfeed` group of objects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-func (c *NewsfeedCommentsFilters) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*c), "post", "photo", "video", "topic", "note")
+// NewsfeedItemDigest type represents `newsfeed_item_digest` API object
+type NewsfeedItemDigest struct {
+	NewsfeedItemBase NewsfeedItemBase `json:"NewsfeedItemBase"`
+	ButtonText       string           `json:"button_text"`
+	FeedId           string           `json:"feed_id"` // id of feed in digest
+	Items            []WallWallpost   `json:"items"`
+	MainPostIds      []string         `json:"main_post_ids"`
+	Template         string           `json:"template"` // type of digest
+	Title            string           `json:"title"`
+	TrackCode        string           `json:"track_code"`
 }
 
-func (c *NewsfeedCommentsFilters) String() string {
-	return string(*c)
+// NewsfeedItemNoteNotes type represents `newsfeed_item_note_notes` API object
+type NewsfeedItemNoteNotes struct {
+	Count int                    `json:"count"` // Notes number
+	Items []NewsfeedNewsfeedNote `json:"items"`
 }
 
-// EventActivity represents `newsfeed_event_activity` API object
+// NewsfeedItemVideo type represents `newsfeed_item_video` API object
+type NewsfeedItemVideo struct {
+	NewsfeedItemBase NewsfeedItemBase       `json:"NewsfeedItemBase"`
+	Video            NewsfeedItemVideoVideo `json:"video"`
+}
+
+// NewsfeedIgnoreItemType type represents `newsfeed_ignore_item_type` API object
+type NewsfeedIgnoreItemType string
+
+// NewsfeedItemAudio type represents `newsfeed_item_audio` API object
+type NewsfeedItemAudio struct {
+	NewsfeedItemBase NewsfeedItemBase       `json:"NewsfeedItemBase"`
+	Audio            NewsfeedItemAudioAudio `json:"audio"`
+	PostId           int                    `json:"post_id"` // Post ID
+}
+
+// NewsfeedItemFriend type represents `newsfeed_item_friend` API object
+type NewsfeedItemFriend struct {
+	NewsfeedItemBase NewsfeedItemBase          `json:"NewsfeedItemBase"`
+	Friends          NewsfeedItemFriendFriends `json:"friends"`
+}
+
+// NewsfeedItemWallpost type represents `newsfeed_item_wallpost` API object
+type NewsfeedItemWallpost struct {
+	NewsfeedItemBase NewsfeedItemBase         `json:"NewsfeedItemBase"`
+	Activity         NewsfeedEventActivity    `json:"activity"`
+	Attachments      []WallWallpostAttachment `json:"attachments"`
+	Comments         BaseCommentsInfo         `json:"comments"`
+	CopyHistory      []WallWallpost           `json:"copy_history"`
+	Geo              BaseGeo                  `json:"geo"`
+	Likes            BaseLikesInfo            `json:"likes"`
+	PostId           int                      `json:"post_id"` // Post ID
+	PostSource       WallPostSource           `json:"post_source"`
+	PostType         NewsfeedItemWallpostType `json:"post_type"`
+	Reposts          BaseRepostsInfo          `json:"reposts"`
+	Text             string                   `json:"text"` // Post text
+}
+
+// NewsfeedNewsfeedItem type represents `newsfeed_newsfeed_item` API object
+type NewsfeedNewsfeedItem struct {
+	NewsfeedItemAudio        NewsfeedItemAudio        `json:"NewsfeedItemAudio"`
+	NewsfeedItemDigest       NewsfeedItemDigest       `json:"NewsfeedItemDigest"`
+	NewsfeedItemFriend       NewsfeedItemFriend       `json:"NewsfeedItemFriend"`
+	NewsfeedItemNote         NewsfeedItemNote         `json:"NewsfeedItemNote"`
+	NewsfeedItemPhoto        NewsfeedItemPhoto        `json:"NewsfeedItemPhoto"`
+	NewsfeedItemPhotoTag     NewsfeedItemPhotoTag     `json:"NewsfeedItemPhotoTag"`
+	NewsfeedItemStoriesBlock NewsfeedItemStoriesBlock `json:"NewsfeedItemStoriesBlock"`
+	NewsfeedItemTopic        NewsfeedItemTopic        `json:"NewsfeedItemTopic"`
+	NewsfeedItemVideo        NewsfeedItemVideo        `json:"NewsfeedItemVideo"`
+	NewsfeedItemWallpost     NewsfeedItemWallpost     `json:"NewsfeedItemWallpost"`
+}
+
+// NewsfeedFilters type represents `newsfeed_filters` API object
+type NewsfeedFilters string
+
+// NewsfeedItemPhotoTagPhotoTags type represents `newsfeed_item_photo_tag_photo_tags` API object
+type NewsfeedItemPhotoTagPhotoTags struct {
+	Count int                     `json:"count"` // Tags number
+	Items []NewsfeedNewsfeedPhoto `json:"items"`
+}
+
+// NewsfeedItemWallpostType type represents `newsfeed_item_wallpost_type` API object
+type NewsfeedItemWallpostType string // Post type
+
+// NewsfeedItemPhotoPhotos type represents `newsfeed_item_photo_photos` API object
+type NewsfeedItemPhotoPhotos struct {
+	Count int                     `json:"count"` // Photos number
+	Items []NewsfeedNewsfeedPhoto `json:"items"`
+}
+
+// NewsfeedEventActivity type represents `newsfeed_event_activity` API object
 type NewsfeedEventActivity struct {
 	Address      string                      `json:"address"`       // address of event
 	ButtonText   string                      `json:"button_text"`   // text of attach
@@ -21,216 +124,101 @@ type NewsfeedEventActivity struct {
 	Time         int                         `json:"time"`          // event start time
 }
 
-// Filters represents `newsfeed_filters` API object
-type NewsfeedFilters string
-
-func (f *NewsfeedFilters) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*f), "post", "photo", "photo_tag", "wall_photo", "friend",
-		"note", "audio", "video")
-}
-
-func (f *NewsfeedFilters) String() string {
-	return string(*f)
-}
-
-// IgnoreItemType represents `newsfeed_ignore_item_type` API object
-type NewsfeedIgnoreItemType string
-
-func (i *NewsfeedIgnoreItemType) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*i), "wall", "tag", "profilephoto", "video", "photo", "audio")
-}
-
-func (i *NewsfeedIgnoreItemType) String() string {
-	switch *i {
-	case "wall":
-		return "post on the wall"
-	case "tag":
-		return "tag on a photo"
-	case "profilephoto":
-		return "profile photo"
-	case "video":
-		return "video"
-	case "photo":
-		return "photo"
-	case "audio":
-		return "audio"
-	default:
-		return "unknown value"
-	}
-}
-
-// ItemAudio represents `newsfeed_item_audio` API object
-type NewsfeedItemAudio struct {
-	Audio  NewsfeedItemAudioAudio `json:"audio"`
-	PostID int                    `json:"post_id"`
-}
-
-// ItemAudioAudio represents `newsfeed_item_audio_audio` API object
-type NewsfeedItemAudioAudio struct {
-	Count int              `json:"count"` // Audios number
-	Items []AudioAudioFull `json:"items"`
-}
-
-// ItemDigest represents `newsfeed_item_digest` API object
-type NewsfeedItemDigest struct {
-	ButtonText  string         `json:"button_text"`
-	FeedID      int            `json:"feed_id"` // id of feed in digest
-	Items       []WallWallpost `json:"items"`
-	MainPostIDs []string       `json:"main_post_ids"`
-	Template    string         `json:"template"` // type Newsfeedof digest (can be 'list' or 'grid')
-	Title       string         `json:"title"`
-	TrackCode   int            `json:"track_code"`
-	Type        string         `json:"type"` // type Newsfeedof digest (can be 'digest`)
-}
-
-// ItemFriend represents `newsfeed_item_friend` API object
-type NewsfeedItemFriend struct {
-	Friends NewsfeedItemFriendFriends `json:"friends"`
-}
-
-// ItemFriendFriend `newsfeed_item_friend_friends` API object
+// NewsfeedItemFriendFriends type represents `newsfeed_item_friend_friends` API object
 type NewsfeedItemFriendFriends struct {
 	Count int          `json:"count"` // Number of friends has been added
-	Items []BaseUserID `json:"items"`
+	Items []BaseUserId `json:"items"`
 }
 
-// ItemNote represents `newsfeed_item_note` API object
-type NewsfeedItemNote struct {
-	Notes NewsfeedItemNoteNotes `json:"notes"`
-}
-
-// ItemNoteNotes represents `newsfeed_item_note_notes` API object
-type NewsfeedItemNoteNotes struct {
-	Count int          `json:"count"` // Notes number
-	Items NewsfeedNote `json:"items"`
-}
-
-// ItemPhoto represents `newsfeed_item_photo` API object
-type NewsfeedItemPhoto struct {
-	PostID int                     `json:"post_id"` // Post ID
-	Photos NewsfeedItemPhotoPhotos `json:"photos"`
-}
-
-// ItemPhotoPhotos represents `newsfeed_item_photo_photos` API object
-type NewsfeedItemPhotoPhotos struct {
-	Count int             `json:"count"` // Photos number
-	Items []NewsfeedPhoto `json:"items"`
-}
-
-// ItemPhotoTag represents `newsfeed_item_photo_tag` API object
+// NewsfeedItemPhotoTag type represents `newsfeed_item_photo_tag` API object
 type NewsfeedItemPhotoTag struct {
-	PostID    int                           `json:"post_id"` // Post ID
-	PhotoTags NewsfeedItemPhotoTagPhotoTags `json:"photo_tags"`
+	NewsfeedItemBase NewsfeedItemBase              `json:"NewsfeedItemBase"`
+	PhotoTags        NewsfeedItemPhotoTagPhotoTags `json:"photo_tags"`
+	PostId           int                           `json:"post_id"` // Post ID
 }
 
-// ItemPhotoTagPhotoTags represents `newsfeed_item_photo_tag_photo_tags` API object
-type NewsfeedItemPhotoTagPhotoTags struct {
-	Count int             `json:"count"` // Tags number
-	Items []NewsfeedPhoto `json:"items"`
-}
-
-// ItemTopic represents `newsfeed_item_topic` API object
-type NewsfeedItemTopic struct {
-	Comments BaseCommentsInfo `json:"comments"`
-	Likes    BaseLikesInfo    `json:"likes"`
-	PostID   int              `json:"post_id"` // Topic post ID
-	Text     string           `json:"text"`    // Post text
-}
-
-// ItemVideo represents `newsfeed_item_video` API object
-type NewsfeedItemVideo struct {
-	Video NewsfeedItemVideoVideo `json:"video"`
-}
-
-// ItemVideoVideo represents `newsfeed_item_video_video` API object
-type NewsfeedItemVideoVideo struct {
-	Count int         `json:"count"` // Tags number
-	Items VideosVideo `json:"items"`
-}
-
-// ItemWallpost represents `newsfeed_item_wallpost` API object
-type NewsfeedItemWallpost struct {
-	Activity    NewsfeedEventActivity    `json:"activity"`
-	Attachments WallWallpostAttachment   `json:"attachments"`
-	Comments    BaseCommentsInfo         `json:"comments"`
-	CopyHistory []WallWallpost           `json:"copy_history"`
-	Geo         BaseGeo                  `json:"geo"`
-	Likes       BaseLikesInfo            `json:"likes"`
-	PostID      int                      `json:"post_id"`
-	PostSource  WallPostSource           `json:"post_source"`
-	PostType    NewsfeedItemWallpostType `json:"post_type"`
-	Reposts     BaseRepostsInfo          `json:"reposts"`
-	Text        string                   `json:"text"` // Post text
-}
-
-// ItemWallpostType represents `newsfeed_item_wallpost_type` API object
-type NewsfeedItemWallpostType string
-
-func (i *NewsfeedItemWallpostType) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*i), "post", "copy", "reply")
-}
-
-func (i *NewsfeedItemWallpostType) String() string {
-	return string(*i)
-}
-
-// List represents `newsfeed_list` API object
+// NewsfeedList type represents `newsfeed_list` API object
 type NewsfeedList struct {
-	ID    int    `json:"id"`    // List ID
+	Id    int    `json:"id"`    // List ID
 	Title string `json:"title"` // List title
 }
 
-// ListFull represents `newsfeed_list_full` API object
+// NewsfeedItemBase type represents `newsfeed_item_base` API object
+type NewsfeedItemBase struct {
+	Date     int                      `json:"date"`      // Date when item has been added in Unixtime
+	SourceId int                      `json:"source_id"` // Item source ID
+	Type     NewsfeedNewsfeedItemType `json:"type"`
+}
+
+// NewsfeedListFull type represents `newsfeed_list_full` API object
 type NewsfeedListFull struct {
-	*NewsfeedList
-	NoReposts BaseBoolInt `json:"no_reposts"` // Information whether reposts hiding is enabled
-	SourceIDS []int       `json:"source_ids"` // Users and communities IDs
+	NewsfeedList NewsfeedList `json:"NewsfeedList"`
+	NoReposts    BaseBoolInt  `json:"no_reposts"` // Information whether reposts hiding is enabled
+	SourceIds    []int        `json:"source_ids"`
 }
 
-// Item represents `newsfeed_newsfeed_item` API object
-// TODO: Finish implementation!
-// WARNING: NOT IMPLEMENTED YET
-type NewsfeedItem struct {
-	NewsfeedItemWallpost `json:",omitempty"`
-	NewsfeedItemPhoto    `json:",omitempty"`
-	NewsfeedItemPhotoTag `json:",omitempty"`
-	NewsfeedItemFriend   `json:",omitempty"`
-	NewsfeedItemNote     `json:",omitempty"`
-	NewsfeedItemAudio    `json:",omitempty"`
-	NewsfeedItemVideo    `json:",omitempty"`
-	NewsfeedItemTopic    `json:",omitempty"`
-	NewsfeedItemDigest   `json:",omitempty"`
-	Type                 NewsfeedItemType `json:"type"`
-	SourceID             int              `json:"source_id"` // Item source ID
-	Date                 int              `json:"date"`      // Date when item has been added in Unixtime
+// NewsfeedItemTopic type represents `newsfeed_item_topic` API object
+type NewsfeedItemTopic struct {
+	NewsfeedItemBase NewsfeedItemBase `json:"NewsfeedItemBase"`
+	Comments         BaseCommentsInfo `json:"comments"`
+	Likes            BaseLikesInfo    `json:"likes"`
+	PostId           int              `json:"post_id"` // Topic post ID
+	Text             string           `json:"text"`    // Post text
 }
 
-// ItemType represents `newsfeed_newsfeed_item_type` API object
-type NewsfeedItemType string
-
-func (i *NewsfeedItemType) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*i), "post",
-		"photo", "photo_tag", "wall_photo", "friend", "note", "audio",
-		"video", "topic")
-}
-
-func (i *NewsfeedItemType) String() string {
-	return string(*i)
-}
-
-// Note represents `newsfeed_newsfeed_note` API object
-type NewsfeedNote struct {
+// NewsfeedNewsfeedNote type represents `newsfeed_newsfeed_note` API object
+type NewsfeedNewsfeedNote struct {
 	Comments int    `json:"comments"` // Comments Number
-	ID       int    `json:"id"`       // Note ID
-	OwnerID  int    `json:"owner_id"` // Owner ID
+	Id       int    `json:"id"`       // Note ID
+	OwnerId  int    `json:"owner_id"` // integer
 	Title    string `json:"title"`    // Note title
 }
 
-// Photo represents `newsfeed_newsfeed_photo` API object
-type NewsfeedPhoto struct {
-	*PhotosPhoto
-	Likes      BaseLikes       `json:"likes"`
-	Comments   BaseObjectCount `json:"comments"`
-	CanComment BaseBoolInt     `json:"can_comment"` // Information whether current user can comment the photo
-	CanRepost  BaseBoolInt     `json:"can_repost"`  // Information whether current user can repost the photo
+// NewsfeedItemVideoVideo type represents `newsfeed_item_video_video` API object
+type NewsfeedItemVideoVideo struct {
+	Count int          `json:"count"` // Tags number
+	Items []VideoVideo `json:"items"`
+}
+
+// NewsfeedCommentsFilters type represents `newsfeed_comments_filters` API object
+type NewsfeedCommentsFilters string
+
+// NewsfeedNewsfeedPhoto type represents `newsfeed_newsfeed_photo` API object
+type NewsfeedNewsfeedPhoto struct {
+	PhotosPhoto PhotosPhoto     `json:"PhotosPhoto"`
+	CanComment  BaseBoolInt     `json:"can_comment"` // Information whether current user can comment the photo
+	CanRepost   BaseBoolInt     `json:"can_repost"`  // Information whether current user can repost the photo
+	Comments    BaseObjectCount `json:"comments"`
+	Likes       BaseLikes       `json:"likes"`
+}
+
+// NewsfeedNewsfeedItemType type represents `newsfeed_newsfeed_item_type` API object
+type NewsfeedNewsfeedItemType string // Item type
+
+// NewsfeedItemStoriesBlock type represents `newsfeed_item_stories_block` API object
+type NewsfeedItemStoriesBlock struct {
+	NewsfeedItemBase NewsfeedItemBase `json:"NewsfeedItemBase"`
+	BlockType        string           `json:"block_type"`
+	Stories          []StoriesStory   `json:"stories"`
+	Title            string           `json:"title"`
+	TrackCode        string           `json:"track_code"`
+}
+
+// NewsfeedItemPhoto type represents `newsfeed_item_photo` API object
+type NewsfeedItemPhoto struct {
+	NewsfeedItemBase NewsfeedItemBase        `json:"NewsfeedItemBase"`
+	Photos           NewsfeedItemPhotoPhotos `json:"photos"`
+	PostId           int                     `json:"post_id"` // Post ID
+}
+
+// NewsfeedItemAudioAudio type represents `newsfeed_item_audio_audio` API object
+type NewsfeedItemAudioAudio struct {
+	Count int          `json:"count"` // Audios number
+	Items []AudioAudio `json:"items"`
+}
+
+// NewsfeedItemNote type represents `newsfeed_item_note` API object
+type NewsfeedItemNote struct {
+	NewsfeedItemBase NewsfeedItemBase      `json:"NewsfeedItemBase"`
+	Notes            NewsfeedItemNoteNotes `json:"notes"`
 }
