@@ -31,8 +31,8 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // StorageGetKeys type represents `storage_get_keys_response` API response object
 type StorageGetKeys objects.StorageValue
 
-// StorageGet type represents `storage_get_response` API response object
-type StorageGet string // Value of key
-
 // StorageGetKeys type represents `storage_getKeys_response` API response object
 type StorageGetKeys string
+
+// StorageGet type represents `storage_get_response` API response object
+type StorageGet string // Value of key

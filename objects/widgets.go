@@ -26,6 +26,21 @@ package objects
 // `widgets` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// WidgetsWidgetLikes type represents `widgets_widget_likes` API object
+type WidgetsWidgetLikes struct {
+	Count int `json:"count"` // Likes number
+}
+
+// WidgetsCommentRepliesItem type represents `widgets_comment_replies_item` API object
+type WidgetsCommentRepliesItem struct {
+	Cid   int                `json:"cid"`  // Comment ID
+	Date  int                `json:"date"` // Date when the comment has been added in Unixtime
+	Likes WidgetsWidgetLikes `json:"likes"`
+	Text  string             `json:"text"` // Comment text
+	Uid   int                `json:"uid"`  // User ID
+	User  UsersUserFull      `json:"user"`
+}
+
 // WidgetsCommentMediaType type represents `widgets_comment_media_type` API object
 type WidgetsCommentMediaType string // Media type
 
@@ -35,6 +50,13 @@ type WidgetsCommentMedia struct {
 	OwnerId  int                     `json:"owner_id"`  // Media owner's ID
 	ThumbSrc string                  `json:"thumb_src"` // URL of the preview image (type=photo only)
 	Type     WidgetsCommentMediaType `json:"type"`
+}
+
+// WidgetsCommentReplies type represents `widgets_comment_replies` API object
+type WidgetsCommentReplies struct {
+	CanPost BaseBoolInt                 `json:"can_post"` // Information whether current user can comment the post
+	Count   int                         `json:"count"`    // Comments number
+	Replies []WidgetsCommentRepliesItem `json:"replies"`
 }
 
 // WidgetsWidgetPage type represents `widgets_widget_page` API object
@@ -48,28 +70,6 @@ type WidgetsWidgetPage struct {
 	Photo       string          `json:"photo"`   // URL of the preview image
 	Title       string          `json:"title"`   // Page title
 	Url         string          `json:"url"`     // Page absolute URL
-}
-
-// WidgetsCommentRepliesItem type represents `widgets_comment_replies_item` API object
-type WidgetsCommentRepliesItem struct {
-	Cid   int                `json:"cid"`  // Comment ID
-	Date  int                `json:"date"` // Date when the comment has been added in Unixtime
-	Likes WidgetsWidgetLikes `json:"likes"`
-	Text  string             `json:"text"` // Comment text
-	Uid   int                `json:"uid"`  // User ID
-	User  UsersUserFull      `json:"user"`
-}
-
-// WidgetsCommentReplies type represents `widgets_comment_replies` API object
-type WidgetsCommentReplies struct {
-	CanPost BaseBoolInt                 `json:"can_post"` // Information whether current user can comment the post
-	Count   int                         `json:"count"`    // Comments number
-	Replies []WidgetsCommentRepliesItem `json:"replies"`
-}
-
-// WidgetsWidgetLikes type represents `widgets_widget_likes` API object
-type WidgetsWidgetLikes struct {
-	Count int `json:"count"` // Likes number
 }
 
 // WidgetsWidgetComment type represents `widgets_widget_comment` API object

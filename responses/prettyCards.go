@@ -28,6 +28,21 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `prettyCards` group of responses
 /////////////////////////////////////////////////////////////
 
+// PrettyCardsGet type represents `prettyCards_get_response` API response object
+type PrettyCardsGet struct {
+	Count int                             `json:"count"` // Total number
+	Items []objects.PrettyCardsPrettyCard `json:"items"`
+}
+
+// PrettyCardsGetUploadURL type represents `prettyCards_getUploadURL_response` API response object
+type PrettyCardsGetUploadURL string // Upload URL
+
+// PrettyCardsEdit type represents `prettyCards_edit_response` API response object
+type PrettyCardsEdit struct {
+	CardId  string `json:"card_id"`  // Card ID of edited pretty card
+	OwnerId int    `json:"owner_id"` // Owner ID of edited pretty card
+}
+
 // PrettyCardsDelete type represents `prettyCards_delete_response` API response object
 type PrettyCardsDelete struct {
 	CardId  string `json:"card_id"`  // Card ID of deleted pretty card
@@ -38,23 +53,8 @@ type PrettyCardsDelete struct {
 // PrettyCardsGetById type represents `prettyCards_getById_response` API response object
 type PrettyCardsGetById objects.PrettyCardsPrettyCard
 
-// PrettyCardsGet type represents `prettyCards_get_response` API response object
-type PrettyCardsGet struct {
-	Count int                             `json:"count"` // Total number
-	Items []objects.PrettyCardsPrettyCard `json:"items"`
-}
-
-// PrettyCardsGetUploadURL type represents `prettyCards_getUploadURL_response` API response object
-type PrettyCardsGetUploadURL string // Upload URL
-
 // PrettyCardsCreate type represents `prettyCards_create_response` API response object
 type PrettyCardsCreate struct {
 	CardId  string `json:"card_id"`  // Card ID of created pretty card
 	OwnerId int    `json:"owner_id"` // Owner ID of created pretty card
-}
-
-// PrettyCardsEdit type represents `prettyCards_edit_response` API response object
-type PrettyCardsEdit struct {
-	CardId  string `json:"card_id"`  // Card ID of edited pretty card
-	OwnerId int    `json:"owner_id"` // Owner ID of edited pretty card
 }

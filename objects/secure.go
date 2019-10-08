@@ -26,6 +26,15 @@ package objects
 // `secure` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// SecureSmsNotification type represents `secure_sms_notification` API object
+type SecureSmsNotification struct {
+	AppId   string `json:"app_id"`  // Application ID
+	Date    string `json:"date"`    // Date when message has been sent in Unixtime
+	Id      string `json:"id"`      // Notification ID
+	Message string `json:"message"` // Messsage text
+	UserId  string `json:"user_id"` // User ID
+}
+
 // SecureTransaction type represents `secure_transaction` API object
 type SecureTransaction struct {
 	Date    int `json:"date"`     // Transaction date in Unixtime
@@ -47,13 +56,4 @@ type SecureTokenChecked struct {
 	Expire  int    `json:"expire"`  // Date when access_token will expire in Unixtime
 	Success BaseOk `json:"success"` // Returns if successfully processed
 	UserId  int    `json:"user_id"` // User ID
-}
-
-// SecureSmsNotification type represents `secure_sms_notification` API object
-type SecureSmsNotification struct {
-	AppId   string `json:"app_id"`  // Application ID
-	Date    string `json:"date"`    // Date when message has been sent in Unixtime
-	Id      string `json:"id"`      // Notification ID
-	Message string `json:"message"` // Messsage text
-	UserId  string `json:"user_id"` // User ID
 }

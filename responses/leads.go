@@ -31,14 +31,14 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // LeadsStart type represents `leads_start_response` API response object
 type LeadsStart objects.LeadsStart
 
-// LeadsGetUsers type represents `leads_getUsers_response` API response object
-type LeadsGetUsers objects.LeadsEntry
+// LeadsGetStats type represents `leads_getStats_response` API response object
+type LeadsGetStats objects.LeadsLead
 
 // LeadsCheckUser type represents `leads_checkUser_response` API response object
 type LeadsCheckUser objects.LeadsChecked
 
-// LeadsGetStats type represents `leads_getStats_response` API response object
-type LeadsGetStats objects.LeadsLead
+// LeadsComplete type represents `leads_complete_response` API response object
+type LeadsComplete objects.LeadsComplete
 
 // LeadsMetricHit type represents `leads_metricHit_response` API response object
 type LeadsMetricHit struct {
@@ -46,5 +46,5 @@ type LeadsMetricHit struct {
 	Result       bool   `json:"result"`        // Information whether request has been processed successfully
 }
 
-// LeadsComplete type represents `leads_complete_response` API response object
-type LeadsComplete objects.LeadsComplete
+// LeadsGetUsers type represents `leads_getUsers_response` API response object
+type LeadsGetUsers objects.LeadsEntry

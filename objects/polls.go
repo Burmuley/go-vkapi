@@ -44,16 +44,16 @@ type PollsVotersUsers struct {
 	Items []int `json:"items"`
 }
 
+// PollsVoters type represents `polls_voters` API object
+type PollsVoters struct {
+	AnswerId int              `json:"answer_id"` // Answer ID
+	Users    PollsVotersUsers `json:"users"`
+}
+
 // PollsAnswer type represents `polls_answer` API object
 type PollsAnswer struct {
 	Id    int     `json:"id"`    // Answer ID
 	Rate  float64 `json:"rate"`  // Answer rate in percents
 	Text  string  `json:"text"`  // Answer text
 	Votes int     `json:"votes"` // Votes number
-}
-
-// PollsVoters type represents `polls_voters` API object
-type PollsVoters struct {
-	AnswerId int              `json:"answer_id"` // Answer ID
-	Users    PollsVotersUsers `json:"users"`
 }

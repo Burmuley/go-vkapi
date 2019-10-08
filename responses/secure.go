@@ -31,20 +31,20 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // SecureCheckToken type represents `secure_checkToken_response` API response object
 type SecureCheckToken objects.SecureTokenChecked
 
-// SecureGetSMSHistory type represents `secure_getSMSHistory_response` API response object
-type SecureGetSMSHistory objects.SecureSmsNotification
-
-// SecureGetTransactionsHistory type represents `secure_getTransactionsHistory_response` API response object
-type SecureGetTransactionsHistory objects.SecureTransaction
+// SecureGetAppBalance type represents `secure_getAppBalance_response` API response object
+type SecureGetAppBalance int // App balance
 
 // SecureGetUserLevel type represents `secure_getUserLevel_response` API response object
 type SecureGetUserLevel objects.SecureLevel
 
-// SecureGetAppBalance type represents `secure_getAppBalance_response` API response object
-type SecureGetAppBalance int // App balance
+// SecureGiveEventSticker type represents `secure_giveEventSticker_response` API response object
+type SecureGiveEventSticker object
+
+// SecureGetTransactionsHistory type represents `secure_getTransactionsHistory_response` API response object
+type SecureGetTransactionsHistory objects.SecureTransaction
 
 // SecureSendNotification type represents `secure_sendNotification_response` API response object
 type SecureSendNotification int
 
-// SecureGiveEventSticker type represents `secure_giveEventSticker_response` API response object
-type SecureGiveEventSticker object
+// SecureGetSMSHistory type represents `secure_getSMSHistory_response` API response object
+type SecureGetSMSHistory objects.SecureSmsNotification

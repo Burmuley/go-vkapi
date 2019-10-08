@@ -26,17 +26,6 @@ package objects
 // `notes` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// NotesNoteComment type represents `notes_note_comment` API object
-type NotesNoteComment struct {
-	Date    int    `json:"date"`     // Date when the comment has beed added in Unixtime
-	Id      int    `json:"id"`       // Comment ID
-	Message string `json:"message"`  // Comment text
-	Nid     int    `json:"nid"`      // Note ID
-	Oid     int    `json:"oid"`      // Note ID
-	ReplyTo int    `json:"reply_to"` // ID of replied comment
-	Uid     int    `json:"uid"`      // Comment author's ID
-}
-
 // NotesNote type represents `notes_note` API object
 type NotesNote struct {
 	CanComment   BaseBoolInt `json:"can_comment"` // Information whether current user can comment the note
@@ -49,4 +38,15 @@ type NotesNote struct {
 	TextWiki     string      `json:"text_wiki"` // Note text in wiki format
 	Title        string      `json:"title"`     // Note title
 	ViewUrl      string      `json:"view_url"`  // URL of the page with note preview
+}
+
+// NotesNoteComment type represents `notes_note_comment` API object
+type NotesNoteComment struct {
+	Date    int    `json:"date"`     // Date when the comment has beed added in Unixtime
+	Id      int    `json:"id"`       // Comment ID
+	Message string `json:"message"`  // Comment text
+	Nid     int    `json:"nid"`      // Note ID
+	Oid     int    `json:"oid"`      // Note ID
+	ReplyTo int    `json:"reply_to"` // ID of replied comment
+	Uid     int    `json:"uid"`      // Comment author's ID
 }

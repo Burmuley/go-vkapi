@@ -28,27 +28,16 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `market` group of responses
 /////////////////////////////////////////////////////////////
 
-// MarketDeleteComment type represents `market_deleteComment_response` API response object
-type MarketDeleteComment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
-
-// MarketAdd type represents `market_add_response` API response object
-type MarketAdd struct {
-	MarketItemId int `json:"market_item_id"` // Item ID
+// MarketGetComments type represents `market_getComments_response` API response object
+type MarketGetComments struct {
+	Count int                       `json:"count"` // Total number
+	Items []objects.WallWallComment `json:"items"`
 }
 
-// MarketCreateComment type represents `market_createComment_response` API response object
-type MarketCreateComment int // Comment ID
-
-// MarketSearchExtended type represents `market_search_extended_response` API response object
-type MarketSearchExtended struct {
+// MarketGetExtended type represents `market_get_extended_response` API response object
+type MarketGetExtended struct {
 	Count int                            `json:"count"` // Total number
 	Items []objects.MarketMarketItemFull `json:"items"`
-}
-
-// MarketGetById type represents `market_getById_response` API response object
-type MarketGetById struct {
-	Count int                        `json:"count"` // Total number
-	Items []objects.MarketMarketItem `json:"items"`
 }
 
 // MarketGet type represents `market_get_response` API response object
@@ -57,25 +46,15 @@ type MarketGet struct {
 	Items []objects.MarketMarketItem `json:"items"`
 }
 
-// MarketGetByIdExtended type represents `market_getById_extended_response` API response object
-type MarketGetByIdExtended struct {
-	Count int                            `json:"count"` // Total number
-	Items []objects.MarketMarketItemFull `json:"items"`
+// MarketAdd type represents `market_add_response` API response object
+type MarketAdd struct {
+	MarketItemId int `json:"market_item_id"` // Item ID
 }
 
-// MarketRestoreComment type represents `market_restoreComment_response` API response object
-type MarketRestoreComment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
-
-// MarketGetComments type represents `market_getComments_response` API response object
-type MarketGetComments struct {
-	Count int                       `json:"count"` // Total number
-	Items []objects.WallWallComment `json:"items"`
-}
-
-// MarketGetAlbums type represents `market_getAlbums_response` API response object
-type MarketGetAlbums struct {
-	Count int                         `json:"count"` // Total number
-	Items []objects.MarketMarketAlbum `json:"items"`
+// MarketGetById type represents `market_getById_response` API response object
+type MarketGetById struct {
+	Count int                        `json:"count"` // Total number
+	Items []objects.MarketMarketItem `json:"items"`
 }
 
 // MarketGetCategories type represents `market_getCategories_response` API response object
@@ -84,15 +63,24 @@ type MarketGetCategories struct {
 	Items []objects.MarketMarketCategory `json:"items"`
 }
 
-// MarketGetAlbumById type represents `market_getAlbumById_response` API response object
-type MarketGetAlbumById struct {
-	Count int                         `json:"count"` // Total number
-	Items []objects.MarketMarketAlbum `json:"items"`
+// MarketGetByIdExtended type represents `market_getById_extended_response` API response object
+type MarketGetByIdExtended struct {
+	Count int                            `json:"count"` // Total number
+	Items []objects.MarketMarketItemFull `json:"items"`
 }
+
+// MarketCreateComment type represents `market_createComment_response` API response object
+type MarketCreateComment int // Comment ID
 
 // MarketAddAlbum type represents `market_addAlbum_response` API response object
 type MarketAddAlbum struct {
 	MarketAlbumId int `json:"market_album_id"` // Album ID
+}
+
+// MarketGetAlbums type represents `market_getAlbums_response` API response object
+type MarketGetAlbums struct {
+	Count int                         `json:"count"` // Total number
+	Items []objects.MarketMarketAlbum `json:"items"`
 }
 
 // MarketSearch type represents `market_search_response` API response object
@@ -101,8 +89,20 @@ type MarketSearch struct {
 	Items []objects.MarketMarketItem `json:"items"`
 }
 
-// MarketGetExtended type represents `market_get_extended_response` API response object
-type MarketGetExtended struct {
+// MarketSearchExtended type represents `market_search_extended_response` API response object
+type MarketSearchExtended struct {
 	Count int                            `json:"count"` // Total number
 	Items []objects.MarketMarketItemFull `json:"items"`
+}
+
+// MarketDeleteComment type represents `market_deleteComment_response` API response object
+type MarketDeleteComment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
+
+// MarketRestoreComment type represents `market_restoreComment_response` API response object
+type MarketRestoreComment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
+
+// MarketGetAlbumById type represents `market_getAlbumById_response` API response object
+type MarketGetAlbumById struct {
+	Count int                         `json:"count"` // Total number
+	Items []objects.MarketMarketAlbum `json:"items"`
 }

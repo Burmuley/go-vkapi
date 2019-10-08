@@ -28,8 +28,8 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `notifications` group of responses
 /////////////////////////////////////////////////////////////
 
-// NotificationsMarkAsViewed type represents `notifications_markAsViewed_response` API response object
-type NotificationsMarkAsViewed objects.BaseBoolInt // Result
+// NotificationsSendMessage type represents `notifications_sendMessage_response` API response object
+type NotificationsSendMessage objects.NotificationsSendMessageItem
 
 // NotificationsGet type represents `notifications_get_response` API response object
 type NotificationsGet struct {
@@ -45,5 +45,5 @@ type NotificationsGet struct {
 	Videos     []objects.VideoVideo  `json:"videos"`
 }
 
-// NotificationsSendMessage type represents `notifications_sendMessage_response` API response object
-type NotificationsSendMessage objects.NotificationsSendMessageItem
+// NotificationsMarkAsViewed type represents `notifications_markAsViewed_response` API response object
+type NotificationsMarkAsViewed objects.BaseBoolInt // Result

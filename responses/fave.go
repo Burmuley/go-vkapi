@@ -28,25 +28,25 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `fave` group of responses
 /////////////////////////////////////////////////////////////
 
+// FaveAddTag type represents `fave_addTag_response` API response object
+type FaveAddTag objects.FaveTag
+
 // FaveGetPages type represents `fave_getPages_response` API response object
 type FaveGetPages struct {
 	Count int                `json:"count"`
 	Items []objects.FavePage `json:"items"`
 }
 
-// FaveAddTag type represents `fave_addTag_response` API response object
-type FaveAddTag objects.FaveTag
+// FaveGet type represents `fave_get_response` API response object
+type FaveGet struct {
+	Count int                    `json:"count"` // Total number
+	Items []objects.FaveBookmark `json:"items"`
+}
 
 // FaveGetTags type represents `fave_getTags_response` API response object
 type FaveGetTags struct {
 	Count int               `json:"count"`
 	Items []objects.FaveTag `json:"items"`
-}
-
-// FaveGet type represents `fave_get_response` API response object
-type FaveGet struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.FaveBookmark `json:"items"`
 }
 
 // FaveGetExtended type represents `fave_get_extended_response` API response object
