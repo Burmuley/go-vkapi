@@ -28,11 +28,29 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `apps` group of responses
 /////////////////////////////////////////////////////////////
 
+// AppsSendRequest type represents `apps_sendRequest_response` API response object
+type AppsSendRequest int // Request ID
+
+// AppsGetCatalog type represents `apps_getCatalog_response` API response object
+type AppsGetCatalog struct {
+	Count int               `json:"count"` // Total number
+	Items []objects.AppsApp `json:"items"`
+}
+
+// AppsGet type represents `apps_get_response` API response object
+type AppsGet struct {
+	Count int               `json:"count"` // Total number
+	Items []objects.AppsApp `json:"items"`
+}
+
 // AppsGetScore type represents `apps_getScore_response` API response object
 type AppsGetScore int // Score number
 
-// AppsSendRequest type represents `apps_sendRequest_response` API response object
-type AppsSendRequest int // Request ID
+// AppsGetScopes type represents `apps_getScopes_response` API response object
+type AppsGetScopes struct {
+	Count int                 `json:"count"` // Total number
+	Items []objects.AppsScope `json:"items"`
+}
 
 // AppsGetFriendsList type represents `apps_getFriendsList_response` API response object
 type AppsGetFriendsList struct {
@@ -51,22 +69,4 @@ type AppsGetLeaderboardExtended struct {
 	Count    int                       `json:"count"` // Total number
 	Items    []objects.AppsLeaderboard `json:"items"`
 	Profiles []objects.UsersUserMin    `json:"profiles"`
-}
-
-// AppsGet type represents `apps_get_response` API response object
-type AppsGet struct {
-	Count int               `json:"count"` // Total number
-	Items []objects.AppsApp `json:"items"`
-}
-
-// AppsGetScopes type represents `apps_getScopes_response` API response object
-type AppsGetScopes struct {
-	Count int                 `json:"count"` // Total number
-	Items []objects.AppsScope `json:"items"`
-}
-
-// AppsGetCatalog type represents `apps_getCatalog_response` API response object
-type AppsGetCatalog struct {
-	Count int               `json:"count"` // Total number
-	Items []objects.AppsApp `json:"items"`
 }

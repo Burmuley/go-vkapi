@@ -32,13 +32,23 @@ type AppsScope struct {
 	Title string `json:"title"` // Scope title
 }
 
-// AppsLeaderboard type represents `apps_leaderboard` API object
-type AppsLeaderboard struct {
-	Level  int `json:"level"`   // Level
-	Points int `json:"points"`  // Points number
-	Score  int `json:"score"`   // Score number
-	UserId int `json:"user_id"` // User ID
+// AppsAppMin type represents `apps_app_min` API object
+type AppsAppMin struct {
+	AuthorId int         `json:"author_id"` // Application author's ID
+	Icon139  string      `json:"icon_139"`  // URL of the app icon with 139 px in width
+	Icon150  string      `json:"icon_150"`  // URL of the app icon with 150 px in width
+	Icon278  string      `json:"icon_278"`  // URL of the app icon with 278 px in width
+	Icon75   string      `json:"icon_75"`   // URL of the app icon with 75 px in width
+	Id       int         `json:"id"`        // Application ID
+	Title    string      `json:"title"`     // Application title
+	Type     AppsAppType `json:"type"`
 }
+
+// AppsAppType type represents `apps_app_type` API object
+type AppsAppType string // Application type
+
+// AppsAppLeaderboardType type represents `apps_app_leaderboard_type` API object
+type AppsAppLeaderboardType int // Leaderboard type
 
 // AppsApp type represents `apps_app` API object
 type AppsApp struct {
@@ -63,20 +73,10 @@ type AppsApp struct {
 	Section         string                 `json:"section"` // Application section name
 }
 
-// AppsAppType type represents `apps_app_type` API object
-type AppsAppType string // Application type
-
-// AppsAppMin type represents `apps_app_min` API object
-type AppsAppMin struct {
-	AuthorId int         `json:"author_id"` // Application author's ID
-	Icon139  string      `json:"icon_139"`  // URL of the app icon with 139 px in width
-	Icon150  string      `json:"icon_150"`  // URL of the app icon with 150 px in width
-	Icon278  string      `json:"icon_278"`  // URL of the app icon with 278 px in width
-	Icon75   string      `json:"icon_75"`   // URL of the app icon with 75 px in width
-	Id       int         `json:"id"`        // Application ID
-	Title    string      `json:"title"`     // Application title
-	Type     AppsAppType `json:"type"`
+// AppsLeaderboard type represents `apps_leaderboard` API object
+type AppsLeaderboard struct {
+	Level  int `json:"level"`   // Level
+	Points int `json:"points"`  // Points number
+	Score  int `json:"score"`   // Score number
+	UserId int `json:"user_id"` // User ID
 }
-
-// AppsAppLeaderboardType type represents `apps_app_leaderboard_type` API object
-type AppsAppLeaderboardType int // Leaderboard type

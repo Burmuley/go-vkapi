@@ -26,6 +26,9 @@ package objects
 // `gifts` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// GiftsGiftPrivacy type represents `gifts_gift_privacy` API object
+type GiftsGiftPrivacy int // Gift privacy
+
 // GiftsGift type represents `gifts_gift` API object
 type GiftsGift struct {
 	Date     int              `json:"date"`    // Date when gist has been sent in Unixtime
@@ -44,6 +47,3 @@ type GiftsLayout struct {
 	Thumb48  string `json:"thumb_48"`  // URL of the preview image with 48 px in width
 	Thumb96  string `json:"thumb_96"`  // URL of the preview image with 96 px in width
 }
-
-// GiftsGiftPrivacy type represents `gifts_gift_privacy` API object
-type GiftsGiftPrivacy int // Gift privacy

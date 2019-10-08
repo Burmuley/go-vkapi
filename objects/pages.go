@@ -26,23 +26,6 @@ package objects
 // `pages` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// PagesWikipage type represents `pages_wikipage` API object
-type PagesWikipage struct {
-	CreatorId   int                  `json:"creator_id"`   // Page creator ID
-	CreatorName int                  `json:"creator_name"` // Page creator name
-	EditorId    int                  `json:"editor_id"`    // Last editor ID
-	EditorName  string               `json:"editor_name"`  // Last editor name
-	GroupId     int                  `json:"group_id"`     // Community ID
-	Id          int                  `json:"id"`           // Page ID
-	Title       string               `json:"title"`        // Page title
-	Views       int                  `json:"views"`        // Views number
-	WhoCanEdit  PagesPrivacySettings `json:"who_can_edit"` // Edit settings of the page
-	WhoCanView  PagesPrivacySettings `json:"who_can_view"` // View settings of the page
-}
-
-// PagesPrivacySettings type represents `pages_privacy_settings` API object
-type PagesPrivacySettings int
-
 // PagesWikipageFull type represents `pages_wikipage_full` API object
 type PagesWikipageFull struct {
 	Created                  int                  `json:"created"`                      // Date when the page has been created in Unixtime
@@ -61,6 +44,23 @@ type PagesWikipageFull struct {
 	WhoCanEdit               PagesPrivacySettings `json:"who_can_edit"`                 // Edit settings of the page
 	WhoCanView               PagesPrivacySettings `json:"who_can_view"`                 // View settings of the page
 }
+
+// PagesWikipage type represents `pages_wikipage` API object
+type PagesWikipage struct {
+	CreatorId   int                  `json:"creator_id"`   // Page creator ID
+	CreatorName int                  `json:"creator_name"` // Page creator name
+	EditorId    int                  `json:"editor_id"`    // Last editor ID
+	EditorName  string               `json:"editor_name"`  // Last editor name
+	GroupId     int                  `json:"group_id"`     // Community ID
+	Id          int                  `json:"id"`           // Page ID
+	Title       string               `json:"title"`        // Page title
+	Views       int                  `json:"views"`        // Views number
+	WhoCanEdit  PagesPrivacySettings `json:"who_can_edit"` // Edit settings of the page
+	WhoCanView  PagesPrivacySettings `json:"who_can_view"` // View settings of the page
+}
+
+// PagesPrivacySettings type represents `pages_privacy_settings` API object
+type PagesPrivacySettings int
 
 // PagesWikipageHistory type represents `pages_wikipage_history` API object
 type PagesWikipageHistory struct {

@@ -26,11 +26,17 @@ package objects
 // `fave` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// FaveBookmarkType type represents `fave_bookmark_type` API object
-type FaveBookmarkType string
+// FaveTag type represents `fave_tag` API object
+type FaveTag struct {
+	Id   int    `json:"id"`   // Tag id
+	Name string `json:"name"` // Tag name
+}
 
 // FavePageType type represents `fave_page_type` API object
 type FavePageType string
+
+// FaveBookmarkType type represents `fave_bookmark_type` API object
+type FaveBookmarkType string
 
 // FavePage type represents `fave_page` API object
 type FavePage struct {
@@ -40,12 +46,6 @@ type FavePage struct {
 	Type        FavePageType    `json:"type"`         // Item type
 	UpdatedDate int             `json:"updated_date"` // Timestamp, when this page was bookmarked
 	User        UsersUserFull   `json:"user"`
-}
-
-// FaveTag type represents `fave_tag` API object
-type FaveTag struct {
-	Id   int    `json:"id"`   // Tag id
-	Name string `json:"name"` // Tag name
 }
 
 // FaveBookmark type represents `fave_bookmark` API object
