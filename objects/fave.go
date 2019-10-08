@@ -1,16 +1,61 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package objects
 
-/////////////////////////////////////////////////////////////
-// Fave related API objects	                               //
-/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// `fave` group of objects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// FavesLink represents `fave_faves_link` API object
-type FaveFavesLink struct {
-	ID          int    `json:"id"`
-	Description string `json:"description"`
-	Photo100    string `json:"photo100"`
-	Photo200    string `json:"photo200"`
-	Photo50     string `json:"photo50"`
-	Title       string `json:"title"`
-	Url         string `json:"url"`
+// FaveBookmarkType type represents `fave_bookmark_type` API object
+type FaveBookmarkType string
+
+// FavePageType type represents `fave_page_type` API object
+type FavePageType string
+
+// FavePage type represents `fave_page` API object
+type FavePage struct {
+	Description string          `json:"description"` // Some info about user or group
+	Group       GroupsGroupFull `json:"group"`
+	Tags        []FaveTag       `json:"tags"`
+	Type        FavePageType    `json:"type"`         // Item type
+	UpdatedDate int             `json:"updated_date"` // Timestamp, when this page was bookmarked
+	User        UsersUserFull   `json:"user"`
+}
+
+// FaveTag type represents `fave_tag` API object
+type FaveTag struct {
+	Id   int    `json:"id"`   // Tag id
+	Name string `json:"name"` // Tag name
+}
+
+// FaveBookmark type represents `fave_bookmark` API object
+type FaveBookmark struct {
+	AddedDate int              `json:"added_date"` // Timestamp, when this item was bookmarked
+	Link      BaseLink         `json:"link"`
+	Post      WallWallpostFull `json:"post"`
+	Product   MarketMarketItem `json:"product"`
+	Seen      bool             `json:"seen"` // Has user seen this item
+	Tags      []FaveTag        `json:"tags"`
+	Type      FaveBookmarkType `json:"type"` // Item type
+	Video     VideoVideo       `json:"video"`
 }

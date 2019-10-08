@@ -1,53 +1,78 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/methods.json           //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package go_vkapi
 
 import (
-	"fmt"
 	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
-// Auth represents collection of methods related to VK Auth
 type Auth struct {
 	*VKApi
 }
 
-// CheckPhone Checks a user's phone number for correctness.
-//
+/////////////////////////////////////////////////////////////
+// `Auth` methods
+/////////////////////////////////////////////////////////////
+
+// CheckPhone - Checks a user's phone number for correctness.
 // Parameters:
-//  * phone - Phone number.
-//  * clientId - User ID.
-//  * clientSecret -
-//  * authByPhone -
+//   * phone - Phone number.
+//   * clientId - User ID.
+//   * clientSecret - NO DESCRIPTION IN JSON SCHEMA
+//   * authByPhone - NO DESCRIPTION IN JSON SCHEMA
+func (a *Auth) CheckPhone(phone string, clientId int, clientSecret string, authByPhone bool) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-func (a *Auth) CheckPhone(phone, clientSecret string, clientId int, authByPhone objects.BaseBoolInt) (responses.OkResponse, error) {
-	params := map[string]string{"phone": phone,
-		"client_secret": clientSecret,
-		"client_id":     string(clientId),
-		"auth_by_phone": fmt.Sprint(authByPhone),
+	params["phone"] = phone
+
+	if clientId > 0 {
+		params["client_id"] = clientId
 	}
 
-	var resp responses.OkResponse
-
-	if err := a.SendObjRequest("auth.checkPhone", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	if clientSecret != "" {
+		params["client_secret"] = clientSecret
 	}
 
-	return resp, nil
+	params["auth_by_phone"] = authByPhone
+
+	err = a.SendObjRequest("auth.checkPhone", params, &resp)
+
+	return
 }
 
-// Restore Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
-//
+// Restore - Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
 // Parameters:
-//  * phone - User phone number.
-//  * last_name - User last name.
-func (a *Auth) Restore(phone, lastName string) (responses.AuthRestore, error) {
-	params := map[string]string{"phone": phone, "last_name": lastName}
+//   * phone - User phone number.
+//   * lastName - User last name.
+func (a *Auth) Restore(phone string, lastName string) (resp responses.AuthRestore, err error) {
+	params := map[string]interface{}{}
 
-	var resp responses.AuthRestore
+	params["phone"] = phone
 
-	if err := a.SendObjRequest("auth.restore", params, &resp); err != nil {
-		return responses.AuthRestore{}, err
-	}
+	params["last_name"] = lastName
 
-	return resp, nil
+	err = a.SendObjRequest("auth.restore", params, &resp)
+
+	return
 }
