@@ -26,16 +26,6 @@ package objects
 // `market` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// MarketMarketItemAvailability type represents `market_market_item_availability` API object
-type MarketMarketItemAvailability int // Information whether the item is available
-
-// MarketMarketCategory type represents `market_market_category` API object
-type MarketMarketCategory struct {
-	Id      int           `json:"id"`   // Category ID
-	Name    string        `json:"name"` // Category name
-	Section MarketSection `json:"section"`
-}
-
 // MarketMarketAlbum type represents `market_market_album` API object
 type MarketMarketAlbum struct {
 	Count       int         `json:"count"`    // Items number
@@ -46,16 +36,10 @@ type MarketMarketAlbum struct {
 	UpdatedTime int         `json:"updated_time"` // Date when album has been updated last time in Unixtime
 }
 
-// MarketMarketItemFull type represents `market_market_item_full` API object
-type MarketMarketItemFull struct {
-	MarketMarketItem MarketMarketItem `json:"MarketMarketItem"`
-	AlbumsIds        []int            `json:"albums_ids"`
-	CanComment       BaseBoolInt      `json:"can_comment"` // Information whether current use can comment the item
-	CanRepost        BaseBoolInt      `json:"can_repost"`  // Information whether current use can repost the item
-	Likes            BaseLikes        `json:"likes"`
-	Photos           []PhotosPhoto    `json:"photos"`
-	Reposts          BaseRepostsInfo  `json:"reposts"`
-	ViewsCount       int              `json:"views_count"` // Views number
+// MarketCurrency type represents `market_currency` API object
+type MarketCurrency struct {
+	Id   int    `json:"id"`   // Currency ID
+	Name string `json:"name"` // Currency sign
 }
 
 // MarketMarketItem type represents `market_market_item` API object
@@ -76,17 +60,33 @@ type MarketMarketItem struct {
 	Url          string                       `json:"url"`         // URL to item
 }
 
-// MarketCurrency type represents `market_currency` API object
-type MarketCurrency struct {
-	Id   int    `json:"id"`   // Currency ID
-	Name string `json:"name"` // Currency sign
-}
-
 // MarketSection type represents `market_section` API object
 type MarketSection struct {
 	Id   int    `json:"id"`   // Section ID
 	Name string `json:"name"` // Section name
 }
+
+// MarketMarketCategory type represents `market_market_category` API object
+type MarketMarketCategory struct {
+	Id      int           `json:"id"`   // Category ID
+	Name    string        `json:"name"` // Category name
+	Section MarketSection `json:"section"`
+}
+
+// MarketMarketItemFull type represents `market_market_item_full` API object
+type MarketMarketItemFull struct {
+	MarketMarketItem MarketMarketItem `json:"MarketMarketItem"`
+	AlbumsIds        []int            `json:"albums_ids"`
+	CanComment       BaseBoolInt      `json:"can_comment"` // Information whether current use can comment the item
+	CanRepost        BaseBoolInt      `json:"can_repost"`  // Information whether current use can repost the item
+	Likes            BaseLikes        `json:"likes"`
+	Photos           []PhotosPhoto    `json:"photos"`
+	Reposts          BaseRepostsInfo  `json:"reposts"`
+	ViewsCount       int              `json:"views_count"` // Views number
+}
+
+// MarketMarketItemAvailability type represents `market_market_item_availability` API object
+type MarketMarketItemAvailability int // Information whether the item is available
 
 // MarketPrice type represents `market_price` API object
 type MarketPrice struct {

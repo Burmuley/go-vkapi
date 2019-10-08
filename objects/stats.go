@@ -26,16 +26,50 @@ package objects
 // `stats` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// StatsReach type represents `stats_reach` API object
-type StatsReach struct {
-	Age              []StatsSexAge  `json:"age"`
-	Cities           []StatsCity    `json:"cities"`
-	Countries        []StatsCountry `json:"countries"`
-	MobileReach      int            `json:"mobile_reach"`      // Reach count from mobile devices
-	Reach            int            `json:"reach"`             // Reach count
-	ReachSubscribers int            `json:"reach_subscribers"` // Subscribers reach count
-	Sex              []StatsSexAge  `json:"sex"`
-	SexAge           []StatsSexAge  `json:"sex_age"`
+// StatsActivity type represents `stats_activity` API object
+type StatsActivity struct {
+	Comments     int `json:"comments"`     // Comments number
+	Copies       int `json:"copies"`       // Reposts number
+	Hidden       int `json:"hidden"`       // Hidden from news count
+	Likes        int `json:"likes"`        // Likes number
+	Subscribed   int `json:"subscribed"`   // New subscribers count
+	Unsubscribed int `json:"unsubscribed"` // Unsubscribed count
+}
+
+// StatsWallpostStat type represents `stats_wallpost_stat` API object
+type StatsWallpostStat struct {
+	Hide             int `json:"hide"`              // Hidings number
+	JoinGroup        int `json:"join_group"`        // People have joined the group
+	Links            int `json:"links"`             // Link clickthrough
+	ReachSubscribers int `json:"reach_subscribers"` // Subscribers reach
+	ReachTotal       int `json:"reach_total"`       // Total reach
+	Report           int `json:"report"`            // Reports number
+	ToGroup          int `json:"to_group"`          // Clickthrough to community
+	Unsubscribe      int `json:"unsubscribe"`       // Unsubscribed members
+}
+
+// StatsCountry type represents `stats_country` API object
+type StatsCountry struct {
+	Code  string `json:"code"`  // Country code
+	Count int    `json:"count"` // Visitors number
+	Name  string `json:"name"`  // Country name
+	Value int    `json:"value"` // Country ID
+}
+
+// StatsPeriod type represents `stats_period` API object
+type StatsPeriod struct {
+	Activity   StatsActivity `json:"activity"`
+	PeriodFrom int           `json:"period_from"` // Unix timestamp
+	PeriodTo   int           `json:"period_to"`   // Unix timestamp
+	Reach      StatsReach    `json:"reach"`
+	Visitors   StatsViews    `json:"visitors"`
+}
+
+// StatsCity type represents `stats_city` API object
+type StatsCity struct {
+	Count int    `json:"count"` // Visitors number
+	Name  string `json:"name"`  // City name
+	Value int    `json:"value"` // City ID
 }
 
 // StatsSexAge type represents `stats_sex_age` API object
@@ -56,48 +90,14 @@ type StatsViews struct {
 	Visitors    int            `json:"visitors"` // Visitors number
 }
 
-// StatsCity type represents `stats_city` API object
-type StatsCity struct {
-	Count int    `json:"count"` // Visitors number
-	Name  string `json:"name"`  // City name
-	Value int    `json:"value"` // City ID
-}
-
-// StatsPeriod type represents `stats_period` API object
-type StatsPeriod struct {
-	Activity   StatsActivity `json:"activity"`
-	PeriodFrom int           `json:"period_from"` // Unix timestamp
-	PeriodTo   int           `json:"period_to"`   // Unix timestamp
-	Reach      StatsReach    `json:"reach"`
-	Visitors   StatsViews    `json:"visitors"`
-}
-
-// StatsCountry type represents `stats_country` API object
-type StatsCountry struct {
-	Code  string `json:"code"`  // Country code
-	Count int    `json:"count"` // Visitors number
-	Name  string `json:"name"`  // Country name
-	Value int    `json:"value"` // Country ID
-}
-
-// StatsWallpostStat type represents `stats_wallpost_stat` API object
-type StatsWallpostStat struct {
-	Hide             int `json:"hide"`              // Hidings number
-	JoinGroup        int `json:"join_group"`        // People have joined the group
-	Links            int `json:"links"`             // Link clickthrough
-	ReachSubscribers int `json:"reach_subscribers"` // Subscribers reach
-	ReachTotal       int `json:"reach_total"`       // Total reach
-	Report           int `json:"report"`            // Reports number
-	ToGroup          int `json:"to_group"`          // Clickthrough to community
-	Unsubscribe      int `json:"unsubscribe"`       // Unsubscribed members
-}
-
-// StatsActivity type represents `stats_activity` API object
-type StatsActivity struct {
-	Comments     int `json:"comments"`     // Comments number
-	Copies       int `json:"copies"`       // Reposts number
-	Hidden       int `json:"hidden"`       // Hidden from news count
-	Likes        int `json:"likes"`        // Likes number
-	Subscribed   int `json:"subscribed"`   // New subscribers count
-	Unsubscribed int `json:"unsubscribed"` // Unsubscribed count
+// StatsReach type represents `stats_reach` API object
+type StatsReach struct {
+	Age              []StatsSexAge  `json:"age"`
+	Cities           []StatsCity    `json:"cities"`
+	Countries        []StatsCountry `json:"countries"`
+	MobileReach      int            `json:"mobile_reach"`      // Reach count from mobile devices
+	Reach            int            `json:"reach"`             // Reach count
+	ReachSubscribers int            `json:"reach_subscribers"` // Subscribers reach count
+	Sex              []StatsSexAge  `json:"sex"`
+	SexAge           []StatsSexAge  `json:"sex_age"`
 }

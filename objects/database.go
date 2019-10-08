@@ -26,20 +26,6 @@ package objects
 // `database` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// DatabaseFaculty type represents `database_faculty` API object
-type DatabaseFaculty struct {
-	Id    int    `json:"id"`    // Faculty ID
-	Title string `json:"title"` // Faculty title
-}
-
-// DatabaseStation type represents `database_station` API object
-type DatabaseStation struct {
-	CityId int    `json:"city_id"` // City ID
-	Color  string `json:"color"`   // Hex color code without #
-	Id     int    `json:"id"`      // Station ID
-	Name   string `json:"name"`    // Station name
-}
-
 // DatabaseSchool type represents `database_school` API object
 type DatabaseSchool struct {
 	Id    int    `json:"id"`    // School ID
@@ -52,10 +38,10 @@ type DatabaseRegion struct {
 	Title string `json:"title"` // Region title
 }
 
-// DatabaseUniversity type represents `database_university` API object
-type DatabaseUniversity struct {
-	Id    int    `json:"id"`    // University ID
-	Title string `json:"title"` // University title
+// DatabaseFaculty type represents `database_faculty` API object
+type DatabaseFaculty struct {
+	Id    int    `json:"id"`    // Faculty ID
+	Title string `json:"title"` // Faculty title
 }
 
 // DatabaseCity type represents `database_city` API object
@@ -64,4 +50,18 @@ type DatabaseCity struct {
 	Area       string      `json:"area"`      // Area title
 	Important  BaseBoolInt `json:"important"` // Information whether the city is included in important cities list
 	Region     string      `json:"region"`    // Region title
+}
+
+// DatabaseStation type represents `database_station` API object
+type DatabaseStation struct {
+	CityId int    `json:"city_id"` // City ID
+	Color  string `json:"color"`   // Hex color code without #
+	Id     int    `json:"id"`      // Station ID
+	Name   string `json:"name"`    // Station name
+}
+
+// DatabaseUniversity type represents `database_university` API object
+type DatabaseUniversity struct {
+	Id    int    `json:"id"`    // University ID
+	Title string `json:"title"` // University title
 }

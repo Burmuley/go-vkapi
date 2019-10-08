@@ -28,23 +28,23 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `pages` group of responses
 /////////////////////////////////////////////////////////////
 
-// PagesGetHistory type represents `pages_getHistory_response` API response object
-type PagesGetHistory objects.PagesWikipageHistory
+// PagesSaveAccess type represents `pages_saveAccess_response` API response object
+type PagesSaveAccess int // Page ID
+
+// PagesGetTitles type represents `pages_getTitles_response` API response object
+type PagesGetTitles objects.PagesWikipage
 
 // PagesGetVersion type represents `pages_getVersion_response` API response object
 type PagesGetVersion objects.PagesWikipageFull
 
-// PagesSaveAccess type represents `pages_saveAccess_response` API response object
-type PagesSaveAccess int // Page ID
+// PagesSave type represents `pages_save_response` API response object
+type PagesSave int // Page ID
 
 // PagesParseWiki type represents `pages_parseWiki_response` API response object
 type PagesParseWiki string // HTML source
 
-// PagesSave type represents `pages_save_response` API response object
-type PagesSave int // Page ID
-
 // PagesGet type represents `pages_get_response` API response object
 type PagesGet objects.PagesWikipageFull
 
-// PagesGetTitles type represents `pages_getTitles_response` API response object
-type PagesGetTitles objects.PagesWikipage
+// PagesGetHistory type represents `pages_getHistory_response` API response object
+type PagesGetHistory objects.PagesWikipageHistory

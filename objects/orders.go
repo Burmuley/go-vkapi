@@ -26,6 +26,12 @@ package objects
 // `orders` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// OrdersAmount type represents `orders_amount` API object
+type OrdersAmount struct {
+	Amounts  []OrdersAmountItem `json:"amounts"`
+	Currency string             `json:"currency"` // Currency name
+}
+
 // OrdersAmountItem type represents `orders_amount_item` API object
 type OrdersAmountItem struct {
 	Amount      int    `json:"amount"`      // Votes amount in user's currency
@@ -45,12 +51,6 @@ type OrdersOrder struct {
 	Status              string `json:"status"`                // Order status
 	TransactionId       int    `json:"transaction_id"`        // Transaction ID
 	UserId              int    `json:"user_id"`               // User ID
-}
-
-// OrdersAmount type represents `orders_amount` API object
-type OrdersAmount struct {
-	Amounts  []OrdersAmountItem `json:"amounts"`
-	Currency string             `json:"currency"` // Currency name
 }
 
 // OrdersSubscription type represents `orders_subscription` API object

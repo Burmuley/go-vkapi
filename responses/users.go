@@ -28,10 +28,31 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `users` group of responses
 /////////////////////////////////////////////////////////////
 
+// UsersGet type represents `users_get_response` API response object
+type UsersGet objects.UsersUserXtrCounters
+
+// UsersGetFollowers type represents `users_getFollowers_response` API response object
+type UsersGetFollowers struct {
+	Count int   `json:"count"` // Total friends number
+	Items []int `json:"items"`
+}
+
+// UsersGetSubscriptions type represents `users_getSubscriptions_response` API response object
+type UsersGetSubscriptions struct {
+	Groups objects.GroupsGroupsArray `json:"groups"`
+	Users  objects.UsersUsersArray   `json:"users"`
+}
+
 // UsersSearch type represents `users_search_response` API response object
 type UsersSearch struct {
 	Count int                     `json:"count"` // Total number of available results
 	Items []objects.UsersUserFull `json:"items"`
+}
+
+// UsersGetSubscriptionsExtended type represents `users_getSubscriptions_extended_response` API response object
+type UsersGetSubscriptionsExtended struct {
+	Count int                              `json:"count"` // Total number of available results
+	Items []objects.UsersSubscriptionsItem `json:"items"`
 }
 
 // UsersIsAppUser type represents `users_isAppUser_response` API response object
@@ -41,25 +62,4 @@ type UsersIsAppUser objects.BaseBoolInt // Information whether the user have ins
 type UsersGetFollowersFields struct {
 	Count int                     `json:"count"` // Total number of available results
 	Items []objects.UsersUserFull `json:"items"`
-}
-
-// UsersGetFollowers type represents `users_getFollowers_response` API response object
-type UsersGetFollowers struct {
-	Count int   `json:"count"` // Total friends number
-	Items []int `json:"items"`
-}
-
-// UsersGet type represents `users_get_response` API response object
-type UsersGet objects.UsersUserXtrCounters
-
-// UsersGetSubscriptions type represents `users_getSubscriptions_response` API response object
-type UsersGetSubscriptions struct {
-	Groups objects.GroupsGroupsArray `json:"groups"`
-	Users  objects.UsersUsersArray   `json:"users"`
-}
-
-// UsersGetSubscriptionsExtended type represents `users_getSubscriptions_extended_response` API response object
-type UsersGetSubscriptionsExtended struct {
-	Count int                              `json:"count"` // Total number of available results
-	Items []objects.UsersSubscriptionsItem `json:"items"`
 }

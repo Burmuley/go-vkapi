@@ -26,6 +26,32 @@ package objects
 // `video` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// VideoSaveResult type represents `video_save_result` API object
+type VideoSaveResult struct {
+	AccessKey   string `json:"access_key"`  // Video access key
+	Description string `json:"description"` // Video description
+	OwnerId     int    `json:"owner_id"`    // Video owner ID
+	Title       string `json:"title"`       // Video title
+	UploadUrl   string `json:"upload_url"`  // URL for the video uploading
+	VideoId     int    `json:"video_id"`    // Video ID
+}
+
+// VideoVideoImage type represents `video_video_image` API object
+type VideoVideoImage struct {
+	BaseImage   BaseImage   `json:"BaseImage"`
+	WithPadding BaseBoolInt `json:"with_padding"`
+}
+
+// VideoVideoFiles type represents `video_video_files` API object
+type VideoVideoFiles struct {
+	External string `json:"external"` // URL of the external player
+	Mp41080  string `json:"mp4_1080"` // URL of the mpeg4 file with 1080p quality
+	Mp4240   string `json:"mp4_240"`  // URL of the mpeg4 file with 240p quality
+	Mp4360   string `json:"mp4_360"`  // URL of the mpeg4 file with 360p quality
+	Mp4480   string `json:"mp4_480"`  // URL of the mpeg4 file with 480p quality
+	Mp4720   string `json:"mp4_720"`  // URL of the mpeg4 file with 720p quality
+}
+
 // VideoVideo type represents `video_video` API object
 type VideoVideo struct {
 	AccessKey   string             `json:"access_key"`  // Video access key
@@ -64,32 +90,6 @@ type VideoVideoAlbumFull struct {
 	OwnerId     int               `json:"owner_id"`     // Album owner's ID
 	Title       string            `json:"title"`        // Album title
 	UpdatedTime int               `json:"updated_time"` // Date when the album has been updated last time in Unixtime
-}
-
-// VideoVideoImage type represents `video_video_image` API object
-type VideoVideoImage struct {
-	BaseImage   BaseImage   `json:"BaseImage"`
-	WithPadding BaseBoolInt `json:"with_padding"`
-}
-
-// VideoVideoFiles type represents `video_video_files` API object
-type VideoVideoFiles struct {
-	External string `json:"external"` // URL of the external player
-	Mp41080  string `json:"mp4_1080"` // URL of the mpeg4 file with 1080p quality
-	Mp4240   string `json:"mp4_240"`  // URL of the mpeg4 file with 240p quality
-	Mp4360   string `json:"mp4_360"`  // URL of the mpeg4 file with 360p quality
-	Mp4480   string `json:"mp4_480"`  // URL of the mpeg4 file with 480p quality
-	Mp4720   string `json:"mp4_720"`  // URL of the mpeg4 file with 720p quality
-}
-
-// VideoSaveResult type represents `video_save_result` API object
-type VideoSaveResult struct {
-	AccessKey   string `json:"access_key"`  // Video access key
-	Description string `json:"description"` // Video description
-	OwnerId     int    `json:"owner_id"`    // Video owner ID
-	Title       string `json:"title"`       // Video title
-	UploadUrl   string `json:"upload_url"`  // URL for the video uploading
-	VideoId     int    `json:"video_id"`    // Video ID
 }
 
 // VideoVideoFull type represents `video_video_full` API object

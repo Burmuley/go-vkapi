@@ -38,9 +38,6 @@ type BoardTopicPoll struct {
 	Votes    string        `json:"votes"`     // Votes number
 }
 
-// BoardDefaultOrder type represents `board_default_order` API object
-type BoardDefaultOrder int // Sort type
-
 // BoardTopicComment type represents `board_topic_comment` API object
 type BoardTopicComment struct {
 	Attachments []WallCommentAttachment `json:"attachments"`
@@ -50,6 +47,9 @@ type BoardTopicComment struct {
 	RealOffset  int                     `json:"real_offset"` // Real position of the comment
 	Text        string                  `json:"text"`        // Comment text
 }
+
+// BoardDefaultOrder type represents `board_default_order` API object
+type BoardDefaultOrder int // Sort type
 
 // BoardTopic type represents `board_topic` API object
 type BoardTopic struct {

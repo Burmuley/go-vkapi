@@ -26,6 +26,9 @@ package objects
 // `search` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// SearchHintSection type represents `search_hint_section` API object
+type SearchHintSection string // Section title
+
 // SearchHintType type represents `search_hint_type` API object
 type SearchHintType string // Object type
 
@@ -39,6 +42,3 @@ type SearchHint struct {
 	Section     SearchHintSection `json:"section"`
 	Type        SearchHintType    `json:"type"`
 }
-
-// SearchHintSection type represents `search_hint_section` API object
-type SearchHintSection string // Section title

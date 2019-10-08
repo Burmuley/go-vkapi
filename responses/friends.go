@@ -28,11 +28,52 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `friends` group of responses
 /////////////////////////////////////////////////////////////
 
-// FriendsGetRecent type represents `friends_getRecent_response` API response object
-type FriendsGetRecent int
+// FriendsGetFields type represents `friends_get_fields_response` API response object
+type FriendsGetFields struct {
+	Count int                           `json:"count"` // Total friends number
+	Items []objects.FriendsUserXtrLists `json:"items"`
+}
+
+// FriendsAreFriends type represents `friends_areFriends_response` API response object
+type FriendsAreFriends objects.FriendsFriendStatus
 
 // FriendsGetMutualTargetUids type represents `friends_getMutual_target_uids_response` API response object
 type FriendsGetMutualTargetUids objects.FriendsMutualFriend
+
+// FriendsGetSuggestions type represents `friends_getSuggestions_response` API response object
+type FriendsGetSuggestions struct {
+	Count int                     `json:"count"` // Total results number
+	Items []objects.UsersUserFull `json:"items"`
+}
+
+// FriendsAddList type represents `friends_addList_response` API response object
+type FriendsAddList struct {
+	ListId int `json:"list_id"` // List ID
+}
+
+// FriendsGetOnlineOnlineMobile type represents `friends_getOnline_online_mobile_response` API response object
+type FriendsGetOnlineOnlineMobile struct {
+	Online       []int `json:"online"`
+	OnlineMobile []int `json:"online_mobile"`
+}
+
+// FriendsAdd type represents `friends_add_response` API response object
+type FriendsAdd int // Friend request status
+
+// FriendsDelete type represents `friends_delete_response` API response object
+type FriendsDelete struct {
+	FriendDeleted     int            `json:"friend_deleted"`      // Returns 1 if friend has been deleted
+	InRequestDeleted  int            `json:"in_request_deleted"`  // Returns 1 if incoming request has been declined
+	OutRequestDeleted int            `json:"out_request_deleted"` // Returns 1 if out request has been canceled
+	Success           objects.BaseOk `json:"success"`
+	SuggestionDeleted int            `json:"suggestion_deleted"` // Returns 1 if suggestion has been declined
+}
+
+// FriendsGet type represents `friends_get_response` API response object
+type FriendsGet struct {
+	Count int   `json:"count"` // Total friends number
+	Items []int `json:"items"`
+}
 
 // FriendsGetByPhones type represents `friends_getByPhones_response` API response object
 type FriendsGetByPhones objects.FriendsUserXtrPhone
@@ -44,12 +85,19 @@ type FriendsGetRequests struct {
 	Items       []int `json:"items"`
 }
 
-// FriendsAdd type represents `friends_add_response` API response object
-type FriendsAdd int // Friend request status
+// FriendsSearch type represents `friends_search_response` API response object
+type FriendsSearch struct {
+	Count int                     `json:"count"` // Total number
+	Items []objects.UsersUserFull `json:"items"`
+}
 
-// FriendsAddList type represents `friends_addList_response` API response object
-type FriendsAddList struct {
-	ListId int `json:"list_id"` // List ID
+// FriendsGetAppUsers type represents `friends_getAppUsers_response` API response object
+type FriendsGetAppUsers int
+
+// FriendsGetLists type represents `friends_getLists_response` API response object
+type FriendsGetLists struct {
+	Count int                          `json:"count"` // Total communities number
+	Items []objects.FriendsFriendsList `json:"items"`
 }
 
 // FriendsGetRequestsNeedMutual type represents `friends_getRequests_need_mutual_response` API response object
@@ -58,65 +106,17 @@ type FriendsGetRequestsNeedMutual struct {
 	Items []objects.FriendsRequests `json:"items"`
 }
 
-// FriendsGetLists type represents `friends_getLists_response` API response object
-type FriendsGetLists struct {
-	Count int                          `json:"count"` // Total communities number
-	Items []objects.FriendsFriendsList `json:"items"`
-}
-
-// FriendsGetOnlineOnlineMobile type represents `friends_getOnline_online_mobile_response` API response object
-type FriendsGetOnlineOnlineMobile struct {
-	Online       []int `json:"online"`
-	OnlineMobile []int `json:"online_mobile"`
-}
-
 // FriendsGetMutual type represents `friends_getMutual_response` API response object
 type FriendsGetMutual int
 
-// FriendsSearch type represents `friends_search_response` API response object
-type FriendsSearch struct {
-	Count int                     `json:"count"` // Total number
-	Items []objects.UsersUserFull `json:"items"`
-}
-
-// FriendsGetFields type represents `friends_get_fields_response` API response object
-type FriendsGetFields struct {
-	Count int                           `json:"count"` // Total friends number
-	Items []objects.FriendsUserXtrLists `json:"items"`
-}
-
-// FriendsGetAppUsers type represents `friends_getAppUsers_response` API response object
-type FriendsGetAppUsers int
+// FriendsGetRecent type represents `friends_getRecent_response` API response object
+type FriendsGetRecent int
 
 // FriendsGetOnline type represents `friends_getOnline_response` API response object
 type FriendsGetOnline int
-
-// FriendsAreFriends type represents `friends_areFriends_response` API response object
-type FriendsAreFriends objects.FriendsFriendStatus
-
-// FriendsDelete type represents `friends_delete_response` API response object
-type FriendsDelete struct {
-	FriendDeleted     int            `json:"friend_deleted"`      // Returns 1 if friend has been deleted
-	InRequestDeleted  int            `json:"in_request_deleted"`  // Returns 1 if incoming request has been declined
-	OutRequestDeleted int            `json:"out_request_deleted"` // Returns 1 if out request has been canceled
-	Success           objects.BaseOk `json:"success"`
-	SuggestionDeleted int            `json:"suggestion_deleted"` // Returns 1 if suggestion has been declined
-}
-
-// FriendsGetSuggestions type represents `friends_getSuggestions_response` API response object
-type FriendsGetSuggestions struct {
-	Count int                     `json:"count"` // Total results number
-	Items []objects.UsersUserFull `json:"items"`
-}
 
 // FriendsGetRequestsExtended type represents `friends_getRequests_extended_response` API response object
 type FriendsGetRequestsExtended struct {
 	Count int                                 `json:"count"` // Total requests number
 	Items []objects.FriendsRequestsXtrMessage `json:"items"`
-}
-
-// FriendsGet type represents `friends_get_response` API response object
-type FriendsGet struct {
-	Count int   `json:"count"` // Total friends number
-	Items []int `json:"items"`
 }
