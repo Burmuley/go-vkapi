@@ -1,70 +1,65 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package objects
 
-import (
-	"fmt"
-)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// `board` group of objects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////
-// Board related API objects	                           //
-/////////////////////////////////////////////////////////////
-
-// DefaultOrder represents `board_default_order` API object
-type BoardDefaultOrder int
-
-func (b *BoardDefaultOrder) String() string {
-	switch *b {
-	case 1:
-		return "desc_updated"
-	case 2:
-		return "desc_created"
-	case -1:
-		return "asc_updated"
-	case -2:
-		return "asc_created"
-	default:
-		return "unknown"
-	}
+// BoardTopicPoll type represents `board_topic_poll` API object
+type BoardTopicPoll struct {
+	AnswerId int           `json:"answer_id"` // Current user's answer ID
+	Answers  []PollsAnswer `json:"answers"`
+	Created  int           `json:"created"`   // Date when poll has been created in Unixtime
+	IsClosed BaseBoolInt   `json:"is_closed"` // Information whether the poll is closed
+	OwnerId  int           `json:"owner_id"`  // Poll owner's ID
+	PollId   int           `json:"poll_id"`   // Poll ID
+	Question string        `json:"question"`  // Poll question
+	Votes    string        `json:"votes"`     // Votes number
 }
 
-func (b *BoardDefaultOrder) MarshalJSON() ([]byte, error) {
-	if *b < -2 || *b > 2 || *b == 0 {
-		return []byte{}, fmt.Errorf("value is not in range [-2, -1, 1, 2]")
-	}
+// BoardDefaultOrder type represents `board_default_order` API object
+type BoardDefaultOrder int // Sort type
 
-	return []byte{byte(*b)}, nil
-}
-
-// Topic represents `board_topic` API object
-type BoardTopic struct {
-	Comments  int         `json:"comments"`
-	Created   int         `json:"created"`
-	Creator   int         `json:"created_by"`
-	ID        int         `json:"id"`
-	Closed    BaseBoolInt `json:"is_closed"`
-	Fixed     BaseBoolInt `json:"is_fixed"`
-	Title     string      `json:"title"`
-	Updated   int         `json:"updated"`
-	UpdaterID int         `json:"updated_by"`
-}
-
-// TopicComment represents `board_topic_comment` API object
+// BoardTopicComment type represents `board_topic_comment` API object
 type BoardTopicComment struct {
 	Attachments []WallCommentAttachment `json:"attachments"`
-	Date        int                     `json:"date"`
-	AuthorID    int                     `json:"from_id"`
-	ID          int                     `json:"id"`
-	RealOffset  int                     `json:"real_offset"`
-	Text        string                  `json:"text"`
+	Date        int                     `json:"date"`        // Date when the comment has been added in Unixtime
+	FromId      int                     `json:"from_id"`     // Author ID
+	Id          int                     `json:"id"`          // Comment ID
+	RealOffset  int                     `json:"real_offset"` // Real position of the comment
+	Text        string                  `json:"text"`        // Comment text
 }
 
-// TopicPoll represents `board_topic_poll` API object
-type BoardTopicPoll struct {
-	AnswerID int           `json:"answer_id"`
-	Answers  []PollsAnswer `json:"answers"`
-	Created  int           `json:"created"`
-	Closed   BaseBoolInt   `json:"is_closed"`
-	OwnerID  int           `json:"owner_id"`
-	PollID   int           `json:"poll_id"`
-	Question string        `json:"question"`
-	Votes    string        `json:"votes"`
+// BoardTopic type represents `board_topic` API object
+type BoardTopic struct {
+	Comments  int         `json:"comments"`   // Comments number
+	Created   int         `json:"created"`    // Date when the topic has been created in Unixtime
+	CreatedBy int         `json:"created_by"` // Creator ID
+	Id        int         `json:"id"`         // Topic ID
+	IsClosed  BaseBoolInt `json:"is_closed"`  // Information whether the topic is closed
+	IsFixed   BaseBoolInt `json:"is_fixed"`   // Information whether the topic is fixed
+	Title     string      `json:"title"`      // Topic title
+	Updated   int         `json:"updated"`    // Date when the topic has been updated in Unixtime
+	UpdatedBy int         `json:"updated_by"` // ID of user who updated the topic
 }

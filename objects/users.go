@@ -1,278 +1,318 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package objects
 
-/////////////////////////////////////////////////////////////
-// Users related API objects	                           //
-/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// `users` group of objects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Career represents `users_career` API object
-type UsersCareer struct {
-	CityID    int    `json:"city_id"`
-	Company   string `json:"company"`
-	CountryID int    `json:"country_id"`
-	FromYear  int    `json:"from"`
-	GroupID   int    `json:"group_id"`
-	ID        int    `json:"id"`
-	Position  string `json:"position"`
-	UntilYear int    `json:"until"`
+// UsersOccupation type represents `users_occupation` API object
+type UsersOccupation struct {
+	Id   int    `json:"id"`   // ID of school, university, company group
+	Name string `json:"name"` // Name of occupation
+	Type string `json:"type"` // Type of occupation
 }
 
-// CropPhoto represents `users_crop_photo` APi object
+// UsersExports type represents `users_exports` API object
+type UsersExports struct {
+	Facebook    int `json:"facebook"`
+	Livejournal int `json:"livejournal"`
+	Twitter     int `json:"twitter"`
+}
+
+// UsersUserRelation type represents `users_user_relation` API object
+type UsersUserRelation int
+
+// UsersUserXtrType type represents `users_user_xtr_type` API object
+type UsersUserXtrType struct {
+	UsersUser UsersUser     `json:"UsersUser"`
+	Type      UsersUserType `json:"type"`
+}
+
+// UsersSchool type represents `users_school` API object
+type UsersSchool struct {
+	City          int    `json:"city"`           // City ID
+	Class         string `json:"class"`          // School class letter
+	Country       int    `json:"country"`        // Country ID
+	Id            string `json:"id"`             // School ID
+	Name          string `json:"name"`           // School name
+	Type          int    `json:"type"`           // School type ID
+	TypeStr       string `json:"type_str"`       // School type name
+	YearFrom      int    `json:"year_from"`      // Year the user started to study
+	YearGraduated int    `json:"year_graduated"` // Graduation year
+	YearTo        int    `json:"year_to"`        // Year the user finished to study
+}
+
+// UsersUser type represents `users_user` API object
+type UsersUser struct {
+	UsersUserMin UsersUserMin              `json:"UsersUserMin"`
+	FriendStatus FriendsFriendStatusStatus `json:"friend_status"`
+	Mutual       FriendsRequestsMutual     `json:"mutual"`
+	Online       BaseBoolInt               `json:"online"`        // Information whether the user is online
+	OnlineApp    int                       `json:"online_app"`    // Application ID
+	OnlineMobile BaseBoolInt               `json:"online_mobile"` // Information whether the user is online in mobile site or application
+	Photo100     string                    `json:"photo_100"`     // URL of square photo of the user with 100 pixels in width
+	Photo50      string                    `json:"photo_50"`      // URL of square photo of the user with 50 pixels in width
+	ScreenName   string                    `json:"screen_name"`   // Domain name of the user's page
+	Sex          BaseSex                   `json:"sex"`           // User sex
+	Trending     BaseBoolInt               `json:"trending"`      // Information whether the user has a "fire" pictogram.
+	Verified     BaseBoolInt               `json:"verified"`      // Information whether the user is verified
+}
+
+// UsersPersonal type represents `users_personal` API object
+type UsersPersonal struct {
+	Alcohol    int      `json:"alcohol"`     // User's views on alcohol
+	InspiredBy string   `json:"inspired_by"` // User's inspired by
+	Langs      []string `json:"langs"`
+	LifeMain   int      `json:"life_main"`   // User's personal priority in life
+	PeopleMain int      `json:"people_main"` // User's personal priority in people
+	Political  int      `json:"political"`   // User's political views
+	Religion   string   `json:"religion"`    // User's religion
+	ReligionId int      `json:"religion_id"` // User's religion id
+	Smoking    int      `json:"smoking"`     // User's views on smoking
+}
+
+// UsersFields type represents `users_fields` API object
+type UsersFields string
+
+// UsersSubscriptionsItem type represents `users_subscriptions_item` API object
+type UsersSubscriptionsItem struct {
+	GroupsGroupFull  GroupsGroupFull  `json:"GroupsGroupFull"`
+	UsersUserXtrType UsersUserXtrType `json:"UsersUserXtrType"`
+}
+
+// UsersLastSeen type represents `users_last_seen` API object
+type UsersLastSeen struct {
+	Platform int `json:"platform"` // Type of the platform that used for the last authorization
+	Time     int `json:"time"`     // Last visit date (in Unix time)
+}
+
+// UsersUserMin type represents `users_user_min` API object
+type UsersUserMin struct {
+	CanAccessClosed bool   `json:"can_access_closed"`
+	Deactivated     string `json:"deactivated"` // Returns if a profile is deleted or blocked
+	FirstName       string `json:"first_name"`  // User first name
+	Hidden          int    `json:"hidden"`      // Returns if a profile is hidden.
+	Id              int    `json:"id"`          // User ID
+	IsClosed        bool   `json:"is_closed"`
+	LastName        string `json:"last_name"` // User last name
+}
+
+// UsersCropPhotoCrop type represents `users_crop_photo_crop` API object
+type UsersCropPhotoCrop struct {
+	X  float64 `json:"x"`  // Coordinate X of the left upper corner
+	X2 float64 `json:"x2"` // Coordinate X of the right lower corner
+	Y  float64 `json:"y"`  // Coordinate Y of the left upper corner
+	Y2 float64 `json:"y2"` // Coordinate Y of the right lower corner
+}
+
+// UsersUserCounters type represents `users_user_counters` API object
+type UsersUserCounters struct {
+	Albums        int `json:"albums"`         // Albums number
+	Audios        int `json:"audios"`         // Audios number
+	Followers     int `json:"followers"`      // Followers number
+	Friends       int `json:"friends"`        // Friends number
+	Gifts         int `json:"gifts"`          // Gifts number
+	Groups        int `json:"groups"`         // Communities number
+	Notes         int `json:"notes"`          // Notes number
+	OnlineFriends int `json:"online_friends"` // Online friends number
+	Pages         int `json:"pages"`          // Public pages number
+	Photos        int `json:"photos"`         // Photos number
+	Subscriptions int `json:"subscriptions"`  // Subscriptions number
+	UserPhotos    int `json:"user_photos"`    // Number of photos with user
+	UserVideos    int `json:"user_videos"`    // Number of videos with user
+	Videos        int `json:"videos"`         // Videos number
+}
+
+// UsersUniversity type represents `users_university` API object
+type UsersUniversity struct {
+	Chair           int    `json:"chair"`            // Chair ID
+	ChairName       string `json:"chair_name"`       // Chair name
+	City            int    `json:"city"`             // City ID
+	Country         int    `json:"country"`          // Country ID
+	EducationForm   string `json:"education_form"`   // Education form
+	EducationStatus string `json:"education_status"` // Education status
+	Faculty         int    `json:"faculty"`          // Faculty ID
+	FacultyName     string `json:"faculty_name"`     // Faculty name
+	Graduation      int    `json:"graduation"`       // Graduation year
+	Id              int    `json:"id"`               // University ID
+	Name            string `json:"name"`             // University name
+}
+
+// UsersUserSettingsXtr type represents `users_user_settings_xtr` API object
+type UsersUserSettingsXtr struct {
+	Bdate            string                       `json:"bdate"`            // User's date of birth
+	BdateVisibility  int                          `json:"bdate_visibility"` // Information whether user's birthdate are hidden
+	City             BaseCity                     `json:"city"`
+	Connections      UsersUserConnections         `json:"connections"`
+	Country          BaseCountry                  `json:"country"`
+	FirstName        string                       `json:"first_name"` // User first name
+	HomeTown         string                       `json:"home_town"`  // User's hometown
+	Interests        AccountUserSettingsInterests `json:"interests"`
+	Languages        []string                     `json:"languages"`
+	LastName         string                       `json:"last_name"`   // User last name
+	MaidenName       string                       `json:"maiden_name"` // User maiden name
+	NameRequest      AccountNameRequest           `json:"name_request"`
+	Personal         UsersPersonal                `json:"personal"`
+	Phone            string                       `json:"phone"`    // User phone number with some hidden digits
+	Relation         UsersUserRelation            `json:"relation"` // User relationship status
+	RelationPartner  UsersUserMin                 `json:"relation_partner"`
+	RelationPending  BaseBoolInt                  `json:"relation_pending"` // Information whether relation status is pending
+	RelationRequests []UsersUserMin               `json:"relation_requests"`
+	ScreenName       string                       `json:"screen_name"` // Domain name of the user's page
+	Sex              BaseSex                      `json:"sex"`         // User sex
+	Status           string                       `json:"status"`      // User status
+	StatusAudio      AudioAudio                   `json:"status_audio"`
+}
+
+// UsersRelative type represents `users_relative` API object
+type UsersRelative struct {
+	BirthDate string `json:"birth_date"` // Date of child birthday (format dd.mm.yyyy)
+	Id        int    `json:"id"`         // Relative ID
+	Name      string `json:"name"`       // Name of relative
+	Type      string `json:"type"`       // Relative type
+}
+
+// UsersUserConnections type represents `users_user_connections` API object
+type UsersUserConnections struct {
+	Facebook     string `json:"facebook"`      // User's Facebook account
+	FacebookName string `json:"facebook_name"` // User's Facebook name
+	Instagram    string `json:"instagram"`     // User's Instagram account
+	Livejournal  string `json:"livejournal"`   // User's Livejournal account
+	Skype        string `json:"skype"`         // User's Skype nickname
+	Twitter      string `json:"twitter"`       // User's Twitter account
+}
+
+// UsersCropPhoto type represents `users_crop_photo` API object
 type UsersCropPhoto struct {
 	Crop  UsersCropPhotoCrop `json:"crop"`
 	Photo PhotosPhoto        `json:"photo"`
 	Rect  UsersCropPhotoRect `json:"rect"`
 }
 
-// CropPhotoCrop represents `users_crop_photo_crop` API object
-type UsersCropPhotoCrop struct {
-	X  int `json:"x"`
-	X2 int `json:"x2"`
-	Y  int `json:"y"`
-	Y2 int `json:"y2"`
-}
-
-// RectPhotoRect represents `users_rect_photo_rect` API object
+// UsersCropPhotoRect type represents `users_crop_photo_rect` API object
 type UsersCropPhotoRect struct {
-	X  int `json:"x"`
-	X2 int `json:"x2"`
-	Y  int `json:"y"`
-	Y2 int `json:"y2"`
+	X  float64 `json:"x"`  // Coordinate X of the left upper corner
+	X2 float64 `json:"x2"` // Coordinate X of the right lower corner
+	Y  float64 `json:"y"`  // Coordinate Y of the left upper corner
+	Y2 float64 `json:"y2"` // Coordinate Y of the right lower corner
 }
 
-// Exports represents `users_exports` API object
-type UsersExports struct {
-	Facebook    int `json:"facebook"`
-	LiveJournal int `json:"livejournal"`
-	Twitter     int `json:"twitter"`
-}
+// UsersUserType type represents `users_user_type` API object
+type UsersUserType string // Object type
 
-// Don't think we need this
-type UsersFields string
-
-func (u *UsersFields) MarshalJSON() ([]byte, error) {
-	return GetStringFromRange(string(*u), "photo_id", "verified", "sex", "bdate", "city", "country", "home_town",
-		"has_photo", "photo_50", "photo_100", "photo_200_orig", "photo_200", "photo_400_orig", "photo_max", "photo_max_orig",
-		"online", "lists", "domain", "has_mobile", "contacts", "site", "education", "universities", "schools", "status",
-		"last_seen", "followers_count", "counters", "common_count", "occupation", "nickname", "relatives", "relation",
-		"personal", "connections", "exports", "wall_comments", "activities", "interests", "music", "movies", "tv", "books",
-		"games", "about", "quotes", "can_post", "can_see_all_posts", "can_see_audio", "can_write_private_message",
-		"can_send_friend_request", "is_favorite", "is_hidden_from_feed", "timezone", "screen_name", "maiden_name",
-		"crop_photo", "is_friend", "friend_status", "career", "military", "blacklisted", "blacklisted_by_me",
-		"can_subscribe_posts")
-}
-
-// LastSeen represents `users_last_seen` API object
-type UsersLastSeen struct {
-	Platform int `json:"platform"`
-	Time     int `json:"platform"`
-}
-
-// Military represents `users_military` API object
-type UsersMilitary struct {
-	CountryID int    `json:"country_id"`
-	From      int    `json:"from"`
-	ID        int    `json:"id"`
-	Unit      string `json:"unit"`
-	UnitID    int    `json:"unit_id"`
-	Until     int    `json:"until"`
-}
-
-// Occupation represents `users_occupation` API object
-type UsersOccupation struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-}
-
-// Personal represents `users_personal` API object
-type UsersPersonal struct {
-	Alcohol    int      `json:"alcohol"`
-	InspiredBy string   `json:"inspired_by"`
-	Langs      []string `json:"langs"`
-	LifeMain   int      `json:"life_main"`
-	PeopleMain int      `json:"people_main"`
-	Political  int      `json:"political"`
-	Religion   string   `json:"religion"`
-	Smoking    int      `json:"smoking"`
-}
-
-// Relative represents `users_relative` API object
-type UsersRelative struct {
-	BirthDate string `json:"birth_date"`
-	ID        int    `json:"id"`
-	Name      string `json:"name"`
-	Type      string `json:"type"`
-}
-
-// School represents `users_school` API object
-type UsersSchool struct {
-	City          int    `json:"city"`
-	Class         string `json:"class"`
-	Country       int    `json:"country"`
-	ID            string `json:"id"`
-	Name          string `json:"name"`
-	Type          int    `json:"type"`
-	TypeStr       string `json:"type_str"`
-	YearFrom      int    `json:"year_from"`
-	YearTo        int    `json:"year_to"`
-	YearGraduated int    `json:"year_graduated"`
-}
-
-// University represents `users_university` API object
-type UsersUniversity struct {
-	Chair           int    `json:"chair"`
-	ChairName       string `json:"chair_name"`
-	City            int    `json:"city"`
-	Country         int    `json:"country"`
-	EducationFrom   string `json:"education_from"`
-	EducationStatus string `json:"education_status"`
-	Faculty         int    `json:"faculty"`
-	FacultyName     string `json:"faculty_name"`
-	Graduation      int    `json:"graduation"`
-	ID              int    `json:"id"`
-	Name            string `json:"name"`
-}
-
-// User represents `users_user` API object
-type UsersUser struct {
-	*UsersUserMin
-	Sex          BaseSex     `json:"sex"`
-	ScreenName   string      `json:"screen_name"`
-	Photo50      string      `json:"photo_50"`
-	Photo100     string      `json:"photo_100"`
-	Online       BaseBoolInt `json:"online"`
-	OnlineMobile BaseBoolInt `json:"online_mobile"`
-	OnlineApp    BaseBoolInt `json:"online_app"`
-}
-
-// UserCounters represents `users_user_counters` API object
-type UsersUserCounters struct {
-	Albums        int `json:"albums"`
-	Audios        int `json:"audios"`
-	Followers     int `json:"followers"`
-	Friends       int `json:"friends"`
-	Gifts         int `json:"gifts"`
-	Groups        int `json:"groups"`
-	Notes         int `json:"notes"`
-	OnlineFriends int `json:"online_friends"`
-	Pages         int `json:"pages"`
-	Photos        int `json:"photos"`
-	Subscriptions int `json:"subscriptions"`
-	UserPhotos    int `json:"user_photos"`
-	UserVideos    int `json:"user_videos"`
-	Videos        int `json:"videos"`
-}
-
-// UserFull represents `users_user_full` API object
+// UsersUserFull type represents `users_user_full` API object
 type UsersUserFull struct {
-	*UsersUser
-	Nickname                string            `json:"nickname"`
-	MaidenName              string            `json:"maiden_name"`
-	Domain                  string            `json:"domain"`
-	Birthday                string            `json:"bdate"`
-	City                    BaseObject        `json:"city"`
-	Country                 BaseCountry       `json:"country"`
-	Timezone                int               `json:"timezone"`
-	Photo200                string            `json:"photo_200"`
-	PhotoMax                string            `json:"photo_max"`
-	Photo200Orig            string            `json:"photo_200_orig"`
-	Photo400Orig            string            `json:"photo_400_orig"`
-	PhotoMaxOrig            string            `json:"photo_max_orig"`
-	PhotoID                 string            `json:"photo_id"`
-	HasPhoto                BaseBoolInt       `json:"has_photo"`
-	Trending                BaseBoolInt       `json:"trending"`
-	HasMobile               BaseBoolInt       `json:"has_mobile"`
-	IsFriend                BaseBoolInt       `json:"is_friend"`
-	FriendStatus            int               `json:"friend_status"`
-	WallComments            BaseBoolInt       `json:"wall_comments"`
-	CanPost                 BaseBoolInt       `json:"can_post"`
-	CanSeeAllPosts          BaseBoolInt       `json:"can_see_all_posts"`
-	CanSeeAudio             BaseBoolInt       `json:"can_see_audio"`
-	CanWritePrivateMessages BaseBoolInt       `json:"can_write_private_messages"`
-	CanSendFriendRequest    BaseBoolInt       `json:"can_send_friend_request"`
-	MobilePhone             string            `json:"mobile_phone"`
-	HomePhone               string            `json:"home_phone"`
-	Skype                   string            `json:"skype"`
-	Facebook                string            `json:"facebook"`
-	FacebookName            string            `json:"facebook_name"`
-	Twitter                 string            `json:"twitter"`
-	Livejournal             string            `json:"livejournal"`
-	Instagram               string            `json:"instagram"`
-	Site                    string            `json:"site"`
-	StatusAudio             AudioAudioFull    `json:"status_audio"`
-	Status                  string            `json:"status"`
-	Activity                string            `json:"activity"`
-	LastSeen                UsersLastSeen     `json:"last_seen"`
-	Exports                 UsersExports      `json:"exports"`
-	CropPhoto               UsersCropPhoto    `json:"crop_photo"`
-	Verified                BaseBoolInt       `json:"verified"`
-	FollowersCount          int               `json:"followers_count"`
-	Blacklisted             BaseBoolInt       `json:"blacklisted"`
-	BlacklistedByMe         BaseBoolInt       `json:"blacklisted_by_me"`
-	IsFavorite              BaseBoolInt       `json:"is_favorite"`
-	IsHiddenFromFeed        BaseBoolInt       `json:"is_hidden_from_feed"`
-	CommonCount             int               `json:"common_count"`
-	Occupation              UsersOccupation   `json:"occupation"`
-	Career                  []UsersCareer     `json:"career"`
-	Military                []UsersMilitary   `json:"military"`
-	University              int               `json:"university"`
-	UniversityName          string            `json:"university_name"`
-	Faculty                 int               `json:"faculty"`
-	FacultyName             string            `json:"faculty_name"`
-	Graduation              int               `json:"graduation"`
-	EducationForm           string            `json:"education_form"`
-	EducationStatus         string            `json:"education_status"`
-	HomeTown                string            `json:"home_town"`
-	Relation                int               `json:"relation"`
-	RelationPartner         UsersUserMin      `json:"relation_partner"`
-	Personal                UsersPersonal     `json:"personal"`
-	Interests               string            `json:"interests"`
-	Music                   string            `json:"music"`
-	Activities              string            `json:"activities"`
-	Movies                  string            `json:"movies"`
-	Tv                      string            `json:"tv"`
-	Books                   string            `json:"books"`
-	Games                   string            `json:"games"`
-	Universities            []UsersUniversity `json:"universities"`
-	Schools                 []UsersSchool     `json:"schools"`
-	About                   string            `json:"about"`
-	Relatives               []UsersRelative   `json:"relatives"`
-	Quotes                  string            `json:"quotes"`
-	IsSubscribedPodcasts    bool              `json:"is_subscribed_podcasts"`
-	CanSubscribePodcasts    bool              `json:"can_subscribe_podcasts"`
-	CanSubscribePosts       bool              `json:"can_subscribe_posts"`
+	UsersUser              UsersUser         `json:"UsersUser"`
+	Activity               string            `json:"activity"`                  // User's status
+	Bdate                  string            `json:"bdate"`                     // User's date of birth
+	Blacklisted            BaseBoolInt       `json:"blacklisted"`               // Information whether current user is in the requested user's blacklist.
+	BlacklistedByMe        BaseBoolInt       `json:"blacklisted_by_me"`         // Information whether the requested user is in current user's blacklist
+	CanPost                BaseBoolInt       `json:"can_post"`                  // Information whether current user can post on the user's wall
+	CanSeeAllPosts         BaseBoolInt       `json:"can_see_all_posts"`         // Information whether current user can see other users' audio on the wall
+	CanSeeAudio            BaseBoolInt       `json:"can_see_audio"`             // Information whether current user can see the user's audio
+	CanSendFriendRequest   BaseBoolInt       `json:"can_send_friend_request"`   // Information whether current user can send a friend request
+	CanSubscribePodcasts   bool              `json:"can_subscribe_podcasts"`    // Owner in whitelist or not
+	CanSubscribePosts      bool              `json:"can_subscribe_posts"`       // Can subscribe to wall
+	CanWritePrivateMessage BaseBoolInt       `json:"can_write_private_message"` // Information whether current user can write private message
+	Career                 []UsersCareer     `json:"career"`
+	City                   BaseObject        `json:"city"`
+	CommonCount            int               `json:"common_count"` // Number of common friends with current user
+	Country                BaseCountry       `json:"country"`
+	CropPhoto              UsersCropPhoto    `json:"crop_photo"`
+	Domain                 string            `json:"domain"`           // Domain name of the user's page
+	EducationForm          string            `json:"education_form"`   // Education form
+	EducationStatus        string            `json:"education_status"` // User's education status
+	Exports                UsersExports      `json:"exports"`
+	Faculty                int               `json:"faculty"`                // Faculty ID
+	FacultyName            string            `json:"faculty_name"`           // Faculty name
+	FollowersCount         int               `json:"followers_count"`        // Number of user's followers
+	Graduation             int               `json:"graduation"`             // Graduation year
+	HasMobile              BaseBoolInt       `json:"has_mobile"`             // Information whether the user specified his phone number
+	HasPhoto               BaseBoolInt       `json:"has_photo"`              // Information whether the user has main photo
+	HomePhone              string            `json:"home_phone"`             // User's mobile phone number
+	HomeTown               string            `json:"home_town"`              // User hometown
+	IsFavorite             BaseBoolInt       `json:"is_favorite"`            // Information whether the requested user is in faves of current user
+	IsFriend               BaseBoolInt       `json:"is_friend"`              // Information whether the user is a friend of current user
+	IsHiddenFromFeed       BaseBoolInt       `json:"is_hidden_from_feed"`    // Information whether the requested user is hidden from current user's newsfeed
+	IsSubscribedPodcasts   bool              `json:"is_subscribed_podcasts"` // Information whether current user is subscribed to podcasts
+	LastSeen               UsersLastSeen     `json:"last_seen"`
+	MaidenName             string            `json:"maiden_name"` // User maiden name
+	Military               []UsersMilitary   `json:"military"`
+	MobilePhone            string            `json:"mobile_phone"` // Information whether current user can see
+	Nickname               string            `json:"nickname"`     // User nickname
+	Occupation             UsersOccupation   `json:"occupation"`
+	Personal               UsersPersonal     `json:"personal"`
+	Photo200               string            `json:"photo_200"`      // URL of square photo of the user with 200 pixels in width
+	Photo200Orig           string            `json:"photo_200_orig"` // URL of user's photo with 200 pixels in width
+	Photo400Orig           string            `json:"photo_400_orig"` // URL of user's photo with 400 pixels in width
+	PhotoId                string            `json:"photo_id"`       // ID of the user's main photo
+	PhotoMax               string            `json:"photo_max"`      // URL of square photo of the user with maximum width
+	PhotoMaxOrig           string            `json:"photo_max_orig"` // URL of user's photo of maximum size
+	Relation               UsersUserRelation `json:"relation"`       // User relationship status
+	RelationPartner        UsersUserMin      `json:"relation_partner"`
+	Relatives              []UsersRelative   `json:"relatives"`
+	Schools                []UsersSchool     `json:"schools"`
+	Site                   string            `json:"site"`   // User's website
+	Status                 string            `json:"status"` // User's status
+	StatusAudio            AudioAudio        `json:"status_audio"`
+	Timezone               int               `json:"timezone"` // User's timezone
+	Universities           []UsersUniversity `json:"universities"`
+	University             int               `json:"university"`      // University ID
+	UniversityName         string            `json:"university_name"` // University name
+	WallComments           BaseBoolInt       `json:"wall_comments"`   // Information whether current user can comment wall posts
 }
 
-// UserMin represents `users_user_min` API object
-type UsersUserMin struct {
-	Deactivated string `json:"deactivated"`
-	FirstName   string `json:"first_name"`
-	LastName    string `json:"last_name"`
-	Hidden      int    `json:"hidden"`
-	ID          int    `json:"id"`
-}
-
-// UserType represents `users_user_type` API object
-type UsersUserType string
-
-func (u *UsersUserType) String() string {
-	return string(*u)
-}
-
-// UserXtrCounters represents `users_user_xtr_counters` API object
+// UsersUserXtrCounters type represents `users_user_xtr_counters` API object
 type UsersUserXtrCounters struct {
-	*UsersUserFull
-	Counters UsersUserCounters `json:"counters"`
+	UsersUserFull UsersUserFull     `json:"UsersUserFull"`
+	Counters      UsersUserCounters `json:"counters"`
 }
 
-// UserXtrType represents `users_user_xtr_type` API object
-type UsersUserXtrType struct {
-	*UsersUser
-	Type UsersUserType `json:"type"`
+// UsersCareer type represents `users_career` API object
+type UsersCareer struct {
+	CityId    int    `json:"city_id"`    // City ID
+	Company   string `json:"company"`    // Company name
+	CountryId int    `json:"country_id"` // Country ID
+	From      int    `json:"from"`       // From year
+	GroupId   int    `json:"group_id"`   // Community ID
+	Id        int    `json:"id"`         // Career ID
+	Position  string `json:"position"`   // Position
+	Until     int    `json:"until"`      // Till year
 }
 
-// UsersArray represents `users_users_array` API object
+// UsersUsersArray type represents `users_users_array` API object
 type UsersUsersArray struct {
-	Count int   `json:"count"`
+	Count int   `json:"count"` // Users number
 	Items []int `json:"items"`
+}
+
+// UsersMilitary type represents `users_military` API object
+type UsersMilitary struct {
+	CountryId int    `json:"country_id"` // Country ID
+	From      int    `json:"from"`       // From year
+	Id        int    `json:"id"`         // Military ID
+	Unit      string `json:"unit"`       // Unit name
+	UnitId    int    `json:"unit_id"`    // Unit ID
+	Until     int    `json:"until"`      // Till year
 }

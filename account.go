@@ -1,486 +1,456 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/methods.json           //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package go_vkapi
 
 import (
-	"encoding/json"
-	"fmt"
 	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
-	"strings"
 )
 
-// Account represents collection of methods related to VK Accounts
 type Account struct {
 	*VKApi
 }
 
-// Ban performs blocking operation for user
-//
+/////////////////////////////////////////////////////////////
+// `Account` methods
+/////////////////////////////////////////////////////////////
+
+// Ban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//  * ownerId - ID of the user to ban
-func (a *Account) Ban(ownerId int) (responses.OkResponse, error) {
-	params := map[string]string{"owner_id": string(ownerId)}
+//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
+func (a *Account) Ban(ownerId int) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-	var resp responses.OkResponse
-
-	if err := a.SendObjRequest("account.ban", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	if ownerId > 0 {
+		params["owner_id"] = ownerId
 	}
 
-	return resp, nil
+	err = a.SendObjRequest("account.ban", params, &resp)
+
+	return
 }
 
-// ChangePassword changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore] method.
-//
+// ChangePassword - Changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore] method.
 // Parameters:
-// 	* restoreSid - session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
-// 	* changePwdhash - hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
-// 	* oldPwd - Current user password
-// 	* newPwd - New password that will be set as a current
-func (a *Account) ChangePassword(restoreSid, changePwdHash, oldPwd, newPwd string) (responses.AccountChangePassword, error) {
-	params := map[string]string{
-		"restore_sid":          restoreSid,
-		"change_password_hash": changePwdHash,
-		"old_password":         oldPwd,
-		"new_password":         newPwd,
-	}
-	resp := responses.AccountChangePassword{}
+//   * restoreSid - Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
+//   * changePasswordHash - Hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
+//   * oldPassword - Current user password.
+//   * newPassword - New password that will be set as a current
+func (a *Account) ChangePassword(restoreSid string, changePasswordHash string, oldPassword string, newPassword string) (resp responses.AccountChangePassword, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.changePassword", params, &resp); err != nil {
-		return responses.AccountChangePassword{}, err
+	if restoreSid != "" {
+		params["restore_sid"] = restoreSid
 	}
 
-	return resp, nil
+	if changePasswordHash != "" {
+		params["change_password_hash"] = changePasswordHash
+	}
+
+	if oldPassword != "" {
+		params["old_password"] = oldPassword
+	}
+
+	params["new_password"] = newPassword
+
+	err = a.SendObjRequest("account.changePassword", params, &resp)
+
+	return
 }
 
-// GetActiveOffers returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes to his balance in the application.
-//
+// GetActiveOffers - Returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes to his balance in the application.
 // Parameters:
-//  * offset - NO DESCRIPTION
-//  * count - Number of results to return
-func (a *Account) GetActiveOffers(offset, count int) (responses.AccountGetActiveOffers, error) {
-	params := map[string]string{
-		"offset": string(offset),
-		"count":  string(count),
-	}
-	resp := responses.AccountGetActiveOffers{}
+//   * offset - NO DESCRIPTION IN JSON SCHEMA
+//   * count - Number of results to return.
+func (a *Account) GetActiveOffers(offset int, count int) (resp responses.AccountGetActiveOffers, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.getActiveOffers", params, &resp); err != nil {
-		return responses.AccountGetActiveOffers{}, err
+	if offset > 0 {
+		params["offset"] = offset
 	}
 
-	return resp, nil
+	if count > 0 {
+		params["count"] = count
+	}
+
+	err = a.SendObjRequest("account.getActiveOffers", params, &resp)
+
+	return
 }
 
-// GetAppPermissions gets settings of the user in this application.
-//
+// GetAppPermissions - Gets settings of the user in this application.
 // Parameters:
-//  * userId - User ID whose settings information shall be got. By default: current user (0).
-func (a *Account) GetAppPermissions(userId int) (responses.AccountGetAppPermissions, error) {
-	params := map[string]string{"user_id": string(userId)}
-	resp := responses.AccountGetAppPermissions(0)
+//   * userId - User ID whose settings information shall be got. By default: current user.
+func (a *Account) GetAppPermissions(userId int) (resp responses.AccountGetAppPermissions, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.getAppPermissions", params, &resp); err != nil {
-		return responses.AccountGetAppPermissions(0), err
-	}
+	params["user_id"] = userId
 
-	return resp, nil
+	err = a.SendObjRequest("account.getAppPermissions", params, &resp)
+
+	return
 }
 
-// GetBanned Returns a user's blacklist
-//
+// GetBanned - Returns a user's blacklist.
 // Parameters:
-//  * offset - Offset needed to return a specific subset of results
-//  * count - Number of results to return
-func (a *Account) GetBanned(offset, count int) (responses.AccountGetBanned, error) {
-	params := map[string]string{
-		"offset": string(offset),
-		"count":  string(count),
-	}
-	resp := responses.AccountGetBanned{}
+//   * offset - Offset needed to return a specific subset of results.
+//   * count - Number of results to return.
+func (a *Account) GetBanned(offset int, count int) (resp responses.AccountGetBanned, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.getBanned", params, &resp); err != nil {
-		return responses.AccountGetBanned{}, err
+	if offset > 0 {
+		params["offset"] = offset
 	}
 
-	return resp, nil
+	if count > 0 {
+		params["count"] = count
+	}
+
+	err = a.SendObjRequest("account.getBanned", params, &resp)
+
+	return
 }
 
-// GetCounters returns non-null values of user counters
-//
+// GetCounters - Returns non-null values of user counters.
 // Parameters:
-//  * filter - Counters to be returned. Possible values:
-//              "friends",
-//              "messages",
-//              "photos",
-//              "videos",
-//              "notes",
-//              "gifts",
-//              "events",
-//              "groups",
-//              "sdk",
-//              "friends_suggestions"
-func (a *Account) GetCounters(filters ...string) (responses.AccountGetCounters, error) {
-	params := map[string]string{"filter": strings.Join(filters, ",")}
-	resp := responses.AccountGetCounters{}
+//   * filter - Counters to be returned.
+func (a *Account) GetCounters(filter []string) (resp responses.AccountGetCounters, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.getCounters", params, &resp); err != nil {
-		return responses.AccountGetCounters{}, err
+	if len(filter) > 0 {
+		params["filter"] = SliceToString(filter)
 	}
 
-	return resp, nil
+	err = a.SendObjRequest("account.getCounters", params, &resp)
+
+	return
 }
 
-// GetInfo returns current account info
-//
+// GetInfo - Returns current account info.
 // Parameters:
-//  * fields - Fields to return. Possible values:
-//     'country' — user country,
-//     'https_required' — is "HTTPS only" option enabled,
-//     'own_posts_default' — is "Show my posts only" option is enabled,
-//     'no_wall_replies' — are wall replies disabled or not,
-//     'intro' — is intro passed by user or not,
-//     'lang' — user language.
-//     By default: all.
-func (a *Account) GetInfo(fields ...string) (responses.AccountGetInfo, error) {
-	params := map[string]string{"fields": strings.Join(fields, ",")}
-	resp := responses.AccountGetInfo{}
+//   * fields - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
+func (a *Account) GetInfo(fields []string) (resp responses.AccountGetInfo, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.getInfo", params, &resp); err != nil {
-		return responses.AccountGetInfo{}, err
+	if len(fields) > 0 {
+		params["fields"] = SliceToString(fields)
 	}
 
-	return resp, nil
+	err = a.SendObjRequest("account.getInfo", params, &resp)
+
+	return
 }
 
-// GetProfileInfo returns the current account info
-//
-// Parameters: no
-func (a *Account) GetProfileInfo() (responses.AccountGetProfileInfo, error) {
-	resp := responses.AccountGetProfileInfo{}
+// GetProfileInfo - Returns the current account info.
+func (a *Account) GetProfileInfo() (resp responses.AccountGetProfileInfo, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.getProfileInfo", map[string]string{}, &resp); err != nil {
-		return responses.AccountGetProfileInfo{}, err
-	}
+	err = a.SendObjRequest("account.getProfileInfo", params, &resp)
 
-	return resp, nil
+	return
 }
 
-// GetPushSettings return push notifications settings
-//
+// GetPushSettings - Gets settings of push notifications.
 // Parameters:
-//  * deviceId - Unique device ID
-func (a *Account) GetPushSettings(deviceId string) (responses.AccountGetPushSettings, error) {
-	params := map[string]string{"device_id": deviceId}
-	resp := responses.AccountGetPushSettings{}
+//   * deviceId - Unique device ID.
+func (a *Account) GetPushSettings(deviceId string) (resp responses.AccountGetPushSettings, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.getPushSettings", params, &resp); err != nil {
-		return responses.AccountGetPushSettings{}, err
+	if deviceId != "" {
+		params["device_id"] = deviceId
 	}
 
-	return resp, nil
+	err = a.SendObjRequest("account.getPushSettings", params, &resp)
+
+	return
 }
 
-// RegisterDevice subscribes an iOS/Android/Windows Phone-based device to receive push notifications
-//
+// RegisterDevice - Subscribes an iOS/Android/Windows Phone-based device to receive push notifications
 // Parameters:
-//  * token - device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
-//  * deviceModel - string name of device model
-//  * deviceYear - device year
-//  * deviceId - unique device ID
-//  * systemVer - string version of device operating system
-//  * settings - Push settings in a special format (see https://vk.com/dev/push_settings)
-//  * sandbox - test run or not
-func (a *Account) RegisterDevice(token, deviceModel, deviceId, systemVer string,
-	settings objects.AccountPushSettings,
-	deviceYear int, sandbox objects.BaseBoolInt) (responses.OkResponse, error) {
+//   * token - Device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
+//   * deviceModel - String name of device model.
+//   * deviceYear - Device year.
+//   * deviceId - Unique device ID.
+//   * systemVersion - String version of device operating system.
+//   * settings - Push settings in a [vk.com/dev/push_settings|special format].
+//   * sandbox - NO DESCRIPTION IN JSON SCHEMA
+func (a *Account) RegisterDevice(token string, deviceModel string, deviceYear int, deviceId string, systemVersion string, settings string, sandbox bool) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-	// Fill required parameters
-	params := map[string]string{"token": token, "device_id": deviceId, "sandbox": fmt.Sprint(sandbox)}
+	params["token"] = token
 
-	settingsByte, err := json.Marshal(settings)
-	if err != nil {
-		params["settings"] = string(settingsByte)
-	}
-
-	// Fill optional parameters
-	if len(deviceModel) > 0 {
+	if deviceModel != "" {
 		params["device_model"] = deviceModel
 	}
 
-	if len(systemVer) > 0 {
-		params["system_version"] = systemVer
-	}
-
 	if deviceYear > 0 {
-		params["device_year"] = string(deviceYear)
+		params["device_year"] = deviceYear
 	}
 
-	var resp responses.OkResponse
+	params["device_id"] = deviceId
 
-	if err := a.SendObjRequest("account.registerDevice", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	if systemVersion != "" {
+		params["system_version"] = systemVersion
 	}
 
-	return resp, nil
+	if settings != "" {
+		params["settings"] = settings
+	}
 
+	params["sandbox"] = sandbox
+
+	err = a.SendObjRequest("account.registerDevice", params, &resp)
+
+	return
 }
 
-// SaveProfileInfo edits current profile info
-//
+// SaveProfileInfo - Edits current profile info.
 // Parameters:
-//  * firstName, lastName, maidenName, screenName - corresponding user's first name, last name,  maiden name (for females only) and screen name (nickname)
-//  * sex - user's sex. Possible values:
-//    1 – 'female'
-//    2 – 'male'
-//  * relation - user relationship status. Possible values:
-//    1 – single
-//    2 – in a relationship
-//    3 – engaged
-//    4 – married
-//    5 – it's complicated
-//    6 – actively searching
-//    7 – in love
-//    0 – not specified
-//  * relationPartner - ID of the relationship partner
-//  * bdate - user's birth date, format: DD.MM.YYYY
-//  * bdateVisible - Birth date visibility. Possible values:
-//    1 – show birth date
-//    2 – show only month and day
-//    0 – hide birth date.
-//  * homeTown - user's home town
-//  * countryId - user's country ID
-//  * cityId - user's city ID
-//  * status - status text
-func (a *Account) SaveProfileInfo(firstName, lastName, maidenName, screenName string,
-	sex, relation, relationPartner int, bdate string, bdateVisible int, homeTown string,
-	countryId, cityId int, status string) (responses.AccountSaveProfileInfo, error) {
+//   * firstName - User first name.
+//   * lastName - User last name.
+//   * maidenName - User maiden name (female only)
+//   * screenName - User screen name.
+//   * cancelRequestId - ID of the name change request to be canceled. If this parameter is sent, all the others are ignored.
+//   * sex - User sex. Possible values: , * '1' – female,, * '2' – male.
+//   * relation - User relationship status. Possible values: , * '1' – single,, * '2' – in a relationship,, * '3' – engaged,, * '4' – married,, * '5' – it's complicated,, * '6' – actively searching,, * '7' – in love,, * '0' – not specified.
+//   * relationPartnerId - ID of the relationship partner.
+//   * bdate - User birth date, format: DD.MM.YYYY.
+//   * bdateVisibility - Birth date visibility. Returned values: , * '1' – show birth date,, * '2' – show only month and day,, * '0' – hide birth date.
+//   * homeTown - User home town.
+//   * countryId - User country.
+//   * cityId - User city.
+//   * status - Status text.
+func (a *Account) SaveProfileInfo(firstName string, lastName string, maidenName string, screenName string, cancelRequestId int, sex int, relation int, relationPartnerId int, bdate string, bdateVisibility int, homeTown string, countryId int, cityId int, status string) (resp responses.AccountSaveProfileInfo, err error) {
+	params := map[string]interface{}{}
 
-	params := map[string]string{}
-
-	if len(firstName) > 0 {
+	if firstName != "" {
 		params["first_name"] = firstName
 	}
 
-	if len(lastName) > 0 {
+	if lastName != "" {
 		params["last_name"] = lastName
 	}
 
-	if len(maidenName) > 0 {
+	if maidenName != "" {
 		params["maiden_name"] = maidenName
 	}
 
-	if len(screenName) > 0 {
+	if screenName != "" {
 		params["screen_name"] = screenName
 	}
 
+	if cancelRequestId > 0 {
+		params["cancel_request_id"] = cancelRequestId
+	}
+
 	if sex > 0 {
-		params["sex"] = string(sex)
+		params["sex"] = sex
 	}
 
-	if relation >= 0 || relation <= 8 {
-		params["relation"] = string(relation)
+	if relation > 0 {
+		params["relation"] = relation
 	}
 
-	if relationPartner > 0 {
-		params["relation_partner_id"] = string(relationPartner)
+	if relationPartnerId > 0 {
+		params["relation_partner_id"] = relationPartnerId
 	}
 
-	if len(bdate) > 0 {
+	if bdate != "" {
 		params["bdate"] = bdate
 	}
 
-	if bdateVisible >= 0 || bdateVisible <= 2 {
-		params["bdate_visibility"] = string(bdateVisible)
+	if bdateVisibility > 0 {
+		params["bdate_visibility"] = bdateVisibility
 	}
 
-	if len(homeTown) > 0 {
+	if homeTown != "" {
 		params["home_town"] = homeTown
 	}
 
 	if countryId > 0 {
-		params["country_id"] = string(countryId)
+		params["country_id"] = countryId
 	}
 
 	if cityId > 0 {
-		params["city_id"] = string(cityId)
+		params["city_id"] = cityId
 	}
 
-	if len(status) > 0 {
+	if status != "" {
 		params["status"] = status
 	}
 
-	resp := responses.AccountSaveProfileInfo{}
+	err = a.SendObjRequest("account.saveProfileInfo", params, &resp)
 
-	if err := a.SendObjRequest("account.saveProfileInfo", params, &resp); err != nil {
-		return responses.AccountSaveProfileInfo{}, err
-	}
-
-	return resp, nil
+	return
 }
 
-// SaveProfileInfoCancelRequest cancels exiting profile edit request
-//
+// SetInfo - Allows to edit the current account info.
 // Parameters:
-//  * cancelReqId - ID of the name change request to be canceled. If this parameter is sent, all the others are ignored
-func (a *Account) SaveProfileInfoCancelRequest(cancelReqId int) (responses.AccountSaveProfileInfo, error) {
-	params := map[string]string{"cancel_request_id": string(cancelReqId)}
-	resp := responses.AccountSaveProfileInfo{}
+//   * name - Setting name.
+//   * value - Setting value.
+func (a *Account) SetInfo(name string, value string) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.saveProfileInfo", params, &resp); err != nil {
-		return responses.AccountSaveProfileInfo{}, err
+	if name != "" {
+		params["name"] = name
 	}
 
-	return resp, nil
+	if value != "" {
+		params["value"] = value
+	}
+
+	err = a.SendObjRequest("account.setInfo", params, &resp)
+
+	return
 }
 
-// SetInfo allows to edit the current account info
-//
+// SetNameInMenu - Sets an application screen name (up to 17 characters), that is shown to the user in the left menu.
 // Parameters:
-//  * settings - slice of settings in format {name: "name", value: "value"}
-func (a *Account) SetInfo(settings ...struct{ name, value string }) (responses.OkResponse, error) {
-	params := make(map[string]string, 0)
-	for _, v := range settings {
-		params[v.name] = v.value
+//   * userId - User ID.
+//   * name - Application screen name.
+func (a *Account) SetNameInMenu(userId int, name string) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
+
+	params["user_id"] = userId
+
+	if name != "" {
+		params["name"] = name
 	}
 
-	var resp responses.OkResponse
+	err = a.SendObjRequest("account.setNameInMenu", params, &resp)
 
-	if err := a.SendObjRequest("account.setInfo", params, &resp); err != nil {
-		return responses.OkResponse(0), err
-	}
-
-	return resp, nil
+	return
 }
 
-// SetNameInMenu sets an application screen name (up to 17 characters), that is shown to the user in the left menu
-//
+// SetOffline - Marks a current user as offline.
+func (a *Account) SetOffline() (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
+
+	err = a.SendObjRequest("account.setOffline", params, &resp)
+
+	return
+}
+
+// SetOnline - Marks the current user as online for 15 minutes.
 // Parameters:
-//  * userId - user's ID
-//  * name - application screen name
-func (a *Account) SetNameInMenu(userId int, name string) (responses.OkResponse, error) {
-	params := map[string]string{"user_id": string(userId), "name": name}
-	var resp responses.OkResponse
+//   * voip - '1' if videocalls are available for current device.
+func (a *Account) SetOnline(voip bool) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.setNameInMenu", params, &resp); err != nil {
-		return responses.OkResponse(0), err
-	}
+	params["voip"] = voip
 
-	return resp, nil
+	err = a.SendObjRequest("account.setOnline", params, &resp)
+
+	return
 }
 
-// SetOffline marks a current user as offline
-//
-// Parameters: none
-func (a *Account) SetOffline() (responses.OkResponse, error) {
-	var resp responses.OkResponse
-
-	if err := a.SendObjRequest("account.setNameInMenu", map[string]string{}, resp); err != nil {
-		return responses.OkResponse(0), err
-	}
-
-	return resp, nil
-}
-
-// SetOnline marks a current user as online
-//
+// SetPushSettings - Change push settings.
 // Parameters:
-//  * voip - '1' if video calls are available for current device
-func (a *Account) SetOnline(voip bool) (responses.OkResponse, error) {
-	params := map[string]string{"voip": fmt.Sprint(voip)}
-	var resp responses.OkResponse
+//   * deviceId - Unique device ID.
+//   * settings - Push settings in a [vk.com/dev/push_settings|special format].
+//   * key - Notification key.
+//   * value - New value for the key in a [vk.com/dev/push_settings|special format].
+func (a *Account) SetPushSettings(deviceId string, settings string, key string, value []string) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-	if err := a.SendObjRequest("account.setNameInMenu", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	params["device_id"] = deviceId
+
+	if settings != "" {
+		params["settings"] = settings
 	}
 
-	return resp, nil
-}
-
-// SetPushSettings changes push settings
-//
-// Parameters:
-//  * deviceId - Unique device ID
-//  * settings - Push settings in a special format (see https://vk.com/dev/push_settings)
-//  * key - notification key
-//  * value - new value for the key in a special format (see https://vk.com/dev/push_settings)
-func (a *Account) SetPushSettings(deviceId, key string, value []string, settings objects.AccountPushSettings) (responses.OkResponse, error) {
-	params := map[string]string{"device_id": deviceId}
-	settingsByte, err := json.Marshal(settings)
-
-	if err != nil {
-		params["settings"] = string(settingsByte)
-	}
-
-	if len(key) > 0 && len(value) > 0 {
+	if key != "" {
 		params["key"] = key
-		params["value"] = strings.Join(value, ",")
 	}
 
-	var resp responses.OkResponse
-
-	if err := a.SendObjRequest("account.setPushSettings", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	if len(value) > 0 {
+		params["value"] = SliceToString(value)
 	}
 
-	return resp, nil
+	err = a.SendObjRequest("account.setPushSettings", params, &resp)
+
+	return
 }
 
-// SetSilenceMode mutes push notifications for the set period of time
-//
+// SetSilenceMode - Mutes push notifications for the set period of time.
 // Parameters:
-//  * deviceId - unique device ID
-//  * time - time in seconds for what notifications should be disabled. '-1' to disable forever.
-//  * peerId - destination ID. For user: 'User ID', e.g. '12345'.
-//                             For chat: '2000000000' + 'Chat ID', e.g. '2000000001'
-//                             For community: '- Community ID', e.g. '-12345'
-//  * sound - '1' — to enable sound in this dialog, '0' — to disable sound.
-//    Only if 'peer_id' contains user or community ID
-func (a *Account) SetSilenceMode(deviceId string, time, peerId, sound int) (responses.OkResponse, error) {
-	params := map[string]string{
-		"device_id": deviceId,
-		"time":      string(time),
-		"peer_id":   string(peerId),
-		"sound":     string(sound),
+//   * deviceId - Unique device ID.
+//   * time - Time in seconds for what notifications should be disabled. '-1' to disable forever.
+//   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
+//   * sound - '1' — to enable sound in this dialog, '0' — to disable sound. Only if 'peer_id' contains user or community ID.
+func (a *Account) SetSilenceMode(deviceId string, time int, peerId int, sound int) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
+
+	if deviceId != "" {
+		params["device_id"] = deviceId
 	}
 
-	var resp responses.OkResponse
-
-	if err := a.SendObjRequest("account.setSilenceMode", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	if time > 0 {
+		params["time"] = time
 	}
 
-	return resp, nil
+	if peerId > 0 {
+		params["peer_id"] = peerId
+	}
+
+	if sound > 0 {
+		params["sound"] = sound
+	}
+
+	err = a.SendObjRequest("account.setSilenceMode", params, &resp)
+
+	return
 }
 
-// Unban unblocks user
-//
+// Unban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//  * ownerId - ID of the user to ban
-func (a *Account) Unban(ownerId int) (responses.OkResponse, error) {
-	params := map[string]string{"owner_id": string(ownerId)}
+//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
+func (a *Account) Unban(ownerId int) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-	var resp responses.OkResponse
-
-	if err := a.SendObjRequest("account.unban", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	if ownerId > 0 {
+		params["owner_id"] = ownerId
 	}
 
-	return resp, nil
+	err = a.SendObjRequest("account.unban", params, &resp)
+
+	return
 }
 
-// UnregisterDevice unsubscribes a device from push notifications
-//
+// UnregisterDevice - Unsubscribes a device from push notifications.
 // Parameters:
-//  * deviceId - unique device ID
-//  * sandbox - test request or not
-func (a *Account) UnregisterDevice(deviceId int, sandbox bool) (responses.OkResponse, error) {
-	params := map[string]string{"device_id": string(deviceId), "sandbox": fmt.Sprint(sandbox)}
+//   * deviceId - Unique device ID.
+//   * sandbox - NO DESCRIPTION IN JSON SCHEMA
+func (a *Account) UnregisterDevice(deviceId string, sandbox bool) (resp responses.Ok, err error) {
+	params := map[string]interface{}{}
 
-	var resp responses.OkResponse
-
-	if err := a.SendObjRequest("account.unregisterDevice", params, &resp); err != nil {
-		return responses.OkResponse(0), err
+	if deviceId != "" {
+		params["device_id"] = deviceId
 	}
 
-	return resp, nil
+	params["sandbox"] = sandbox
+
+	err = a.SendObjRequest("account.unregisterDevice", params, &resp)
+
+	return
 }

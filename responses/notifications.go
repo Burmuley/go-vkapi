@@ -1,1 +1,49 @@
+/*
+Copyright 2019 Konstantin Vasilev (burmuley@gmail.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// WARNING! AUTOMATICALLY GENERATED CONTENT! DON'T CHANGE IT MANUALLY!                                     //
+// Source schema can be found at https://github.com/VKCOM/vk-api-schema/blob/master/responses.json         //
+// Code generator location: https://gitlab.com/Burmuley/go-vkapi-gen                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 package responses
+
+import "gitlab.com/Burmuley/go-vkapi/objects"
+
+/////////////////////////////////////////////////////////////
+// `notifications` group of responses
+/////////////////////////////////////////////////////////////
+
+// NotificationsMarkAsViewed type represents `notifications_markAsViewed_response` API response object
+type NotificationsMarkAsViewed objects.BaseBoolInt // Result
+
+// NotificationsGet type represents `notifications_get_response` API response object
+type NotificationsGet struct {
+	Apps       []objects.AppsApp     `json:"apps"`
+	Count      int                   `json:"count"` // Total number
+	Groups     []objects.GroupsGroup `json:"groups"`
+	Items      []interface{}         `json:"items"`
+	LastViewed int                   `json:"last_viewed"` // Time when user has been checked notifications last time
+	NextFrom   string                `json:"next_from"`
+	Photos     []objects.PhotosPhoto `json:"photos"`
+	Profiles   []objects.UsersUser   `json:"profiles"`
+	Ttl        int                   `json:"ttl"`
+	Videos     []objects.VideoVideo  `json:"videos"`
+}
+
+// NotificationsSendMessage type represents `notifications_sendMessage_response` API response object
+type NotificationsSendMessage objects.NotificationsSendMessageItem
