@@ -50,7 +50,7 @@ type Groups struct {
 //   * workInfoStatus - NO DESCRIPTION IN JSON SCHEMA
 //   * timetable - NO DESCRIPTION IN JSON SCHEMA
 //   * isMainAddress - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) AddAddress(groupId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsAddAddress, err error) {
+func (g Groups) AddAddress(groupId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsAddAddress, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -100,7 +100,7 @@ func (g *Groups) AddAddress(groupId int, title string, address string, additiona
 //   * url - NO DESCRIPTION IN JSON SCHEMA
 //   * title - NO DESCRIPTION IN JSON SCHEMA
 //   * secretKey - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) AddCallbackServer(groupId int, url string, title string, secretKey string) (resp responses.GroupsAddCallbackServer, err error) {
+func (g Groups) AddCallbackServer(groupId int, url string, title string, secretKey string) (resp responses.GroupsAddCallbackServer, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -123,7 +123,7 @@ func (g *Groups) AddCallbackServer(groupId int, url string, title string, secret
 //   * groupId - Community ID.
 //   * link - Link URL.
 //   * text - Description text for the link.
-func (g *Groups) AddLink(groupId int, link string, text string) (resp responses.GroupsAddLink, err error) {
+func (g Groups) AddLink(groupId int, link string, text string) (resp responses.GroupsAddLink, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -143,7 +143,7 @@ func (g *Groups) AddLink(groupId int, link string, text string) (resp responses.
 // Parameters:
 //   * groupId - Community ID.
 //   * userId - User ID.
-func (g *Groups) ApproveRequest(groupId int, userId int) (resp responses.Ok, err error) {
+func (g Groups) ApproveRequest(groupId int, userId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -163,7 +163,7 @@ func (g *Groups) ApproveRequest(groupId int, userId int) (resp responses.Ok, err
 //   * reason - NO DESCRIPTION IN JSON SCHEMA
 //   * comment - NO DESCRIPTION IN JSON SCHEMA
 //   * commentVisible - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) Ban(groupId int, ownerId int, endDate int, reason int, comment string, commentVisible bool) (resp responses.Ok, err error) {
+func (g Groups) Ban(groupId int, ownerId int, endDate int, reason int, comment string, commentVisible bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -198,7 +198,7 @@ func (g *Groups) Ban(groupId int, ownerId int, endDate int, reason int, comment 
 //   * pType - Community type. Possible values: *'group' – group,, *'event' – event,, *'public' – public page
 //   * publicCategory - Category ID (for 'type' = 'public' only).
 //   * subtype - Public page subtype. Possible values: *'1' – place or small business,, *'2' – company, organization or website,, *'3' – famous person or group of people,, *'4' – product or work of art.
-func (g *Groups) Create(title string, description string, pType string, publicCategory int, subtype int) (resp responses.GroupsCreate, err error) {
+func (g Groups) Create(title string, description string, pType string, publicCategory int, subtype int) (resp responses.GroupsCreate, err error) {
 	params := map[string]interface{}{}
 
 	params["title"] = title
@@ -228,7 +228,7 @@ func (g *Groups) Create(title string, description string, pType string, publicCa
 // Parameters:
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
 //   * serverId - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) DeleteCallbackServer(groupId int, serverId int) (resp responses.Ok, err error) {
+func (g Groups) DeleteCallbackServer(groupId int, serverId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -244,7 +244,7 @@ func (g *Groups) DeleteCallbackServer(groupId int, serverId int) (resp responses
 // Parameters:
 //   * groupId - Community ID.
 //   * linkId - Link ID.
-func (g *Groups) DeleteLink(groupId int, linkId int) (resp responses.Ok, err error) {
+func (g Groups) DeleteLink(groupId int, linkId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -259,7 +259,7 @@ func (g *Groups) DeleteLink(groupId int, linkId int) (resp responses.Ok, err err
 // DisableOnline - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) DisableOnline(groupId int) (resp responses.Ok, err error) {
+func (g Groups) DisableOnline(groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -316,7 +316,7 @@ func (g *Groups) DisableOnline(groupId int) (resp responses.Ok, err error) {
 //   * secondarySection - NO DESCRIPTION IN JSON SCHEMA
 //   * country - Country of the community.
 //   * city - City of the community.
-func (g *Groups) Edit(groupId int, title string, description string, screenName string, access objects.GroupsGroupAccess, website string, subject objects.GroupsGroupSubject, email string, phone string, rss string, eventStartDate int, eventFinishDate int, eventGroupId int, publicCategory int, publicSubcategory int, publicDate string, wall objects.GroupsGroupWall, topics objects.GroupsGroupTopics, photos objects.GroupsGroupPhotos, video objects.GroupsGroupVideo, audio objects.GroupsGroupAudio, links bool, events bool, places bool, contacts bool, docs objects.GroupsGroupDocs, wiki objects.GroupsGroupWiki, messages bool, articles bool, addresses bool, ageLimits objects.GroupsGroupAgeLimits, market bool, marketComments bool, marketCountry []int, marketCity []int, marketCurrency objects.GroupsGroupMarketCurrency, marketContact int, marketWiki int, obsceneFilter bool, obsceneStopwords bool, obsceneWords []string, mainSection int, secondarySection int, country int, city int) (resp responses.Ok, err error) {
+func (g Groups) Edit(groupId int, title string, description string, screenName string, access objects.GroupsGroupAccess, website string, subject objects.GroupsGroupSubject, email string, phone string, rss string, eventStartDate int, eventFinishDate int, eventGroupId int, publicCategory int, publicSubcategory int, publicDate string, wall objects.GroupsGroupWall, topics objects.GroupsGroupTopics, photos objects.GroupsGroupPhotos, video objects.GroupsGroupVideo, audio objects.GroupsGroupAudio, links bool, events bool, places bool, contacts bool, docs objects.GroupsGroupDocs, wiki objects.GroupsGroupWiki, messages bool, articles bool, addresses bool, ageLimits objects.GroupsGroupAgeLimits, market bool, marketComments bool, marketCountry []int, marketCity []int, marketCurrency objects.GroupsGroupMarketCurrency, marketContact int, marketWiki int, obsceneFilter bool, obsceneStopwords bool, obsceneWords []string, mainSection int, secondarySection int, country int, city int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -496,7 +496,7 @@ func (g *Groups) Edit(groupId int, title string, description string, screenName 
 //   * workInfoStatus - NO DESCRIPTION IN JSON SCHEMA
 //   * timetable - NO DESCRIPTION IN JSON SCHEMA
 //   * isMainAddress - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) EditAddress(groupId int, addressId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsEditAddress, err error) {
+func (g Groups) EditAddress(groupId int, addressId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsEditAddress, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -561,7 +561,7 @@ func (g *Groups) EditAddress(groupId int, addressId int, title string, address s
 //   * url - NO DESCRIPTION IN JSON SCHEMA
 //   * title - NO DESCRIPTION IN JSON SCHEMA
 //   * secretKey - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) EditCallbackServer(groupId int, serverId int, url string, title string, secretKey string) (resp responses.Ok, err error) {
+func (g Groups) EditCallbackServer(groupId int, serverId int, url string, title string, secretKey string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -586,7 +586,7 @@ func (g *Groups) EditCallbackServer(groupId int, serverId int, url string, title
 //   * groupId - Community ID.
 //   * linkId - Link ID.
 //   * text - New description text for the link.
-func (g *Groups) EditLink(groupId int, linkId int, text string) (resp responses.Ok, err error) {
+func (g Groups) EditLink(groupId int, linkId int, text string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -611,7 +611,7 @@ func (g *Groups) EditLink(groupId int, linkId int, text string) (resp responses.
 //   * contactPosition - Position to show in Contacts block.
 //   * contactPhone - Contact phone.
 //   * contactEmail - Contact e-mail.
-func (g *Groups) EditManager(groupId int, userId int, role objects.GroupsGroupRole, isContact bool, contactPosition string, contactPhone string, contactEmail string) (resp responses.Ok, err error) {
+func (g Groups) EditManager(groupId int, userId int, role objects.GroupsGroupRole, isContact bool, contactPosition string, contactPhone string, contactEmail string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -644,7 +644,7 @@ func (g *Groups) EditManager(groupId int, userId int, role objects.GroupsGroupRo
 // EnableOnline - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) EnableOnline(groupId int) (resp responses.Ok, err error) {
+func (g Groups) EnableOnline(groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -662,7 +662,7 @@ func (g *Groups) EnableOnline(groupId int) (resp responses.Ok, err error) {
 //   * fields - Profile fields to return.
 //   * offset - Offset needed to return a specific subset of communities.
 //   * count - Number of communities to return.
-func (g *Groups) Get(userId int, filter []objects.GroupsFilter, fields []objects.GroupsFields, offset int, count int) (resp responses.GroupsGet, err error) {
+func (g Groups) Get(userId int, filter []objects.GroupsFilter, fields []objects.GroupsFields, offset int, count int) (resp responses.GroupsGet, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -699,7 +699,7 @@ func (g *Groups) Get(userId int, filter []objects.GroupsFilter, fields []objects
 //   * fields - Profile fields to return.
 //   * offset - Offset needed to return a specific subset of communities.
 //   * count - Number of communities to return.
-func (g *Groups) GetExtended(userId int, filter []objects.GroupsFilter, fields []objects.GroupsFields, offset int, count int) (resp responses.GroupsGetExtended, err error) {
+func (g Groups) GetExtended(userId int, filter []objects.GroupsFilter, fields []objects.GroupsFields, offset int, count int) (resp responses.GroupsGetExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -737,7 +737,7 @@ func (g *Groups) GetExtended(userId int, filter []objects.GroupsFilter, fields [
 //   * offset - Offset needed to return a specific subset of community addresses.
 //   * count - Number of community addresses to return.
 //   * fields - Address fields
-func (g *Groups) GetAddresses(groupId int, addressIds []int, latitude float64, longitude float64, offset int, count int, fields []objects.AddressesFields) (resp responses.GroupsGetAddresses, err error) {
+func (g Groups) GetAddresses(groupId int, addressIds []int, latitude float64, longitude float64, offset int, count int, fields []objects.AddressesFields) (resp responses.GroupsGetAddresses, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -778,7 +778,7 @@ func (g *Groups) GetAddresses(groupId int, addressIds []int, latitude float64, l
 //   * count - Number of users to return.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) GetBanned(groupId int, offset int, count int, fields []objects.BaseUserGroupFields, ownerId int) (resp responses.GroupsGetBanned, err error) {
+func (g Groups) GetBanned(groupId int, offset int, count int, fields []objects.BaseUserGroupFields, ownerId int) (resp responses.GroupsGetBanned, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -809,7 +809,7 @@ func (g *Groups) GetBanned(groupId int, offset int, count int, fields []objects.
 //   * groupIds - IDs or screen names of communities.
 //   * groupId - ID or screen name of the community.
 //   * fields - Group fields to return.
-func (g *Groups) GetById(groupIds []string, groupId string, fields []objects.GroupsFields) (resp responses.GroupsGetById, err error) {
+func (g Groups) GetById(groupIds []string, groupId string, fields []objects.GroupsFields) (resp responses.GroupsGetById, err error) {
 	params := map[string]interface{}{}
 
 	if len(groupIds) > 0 {
@@ -832,7 +832,7 @@ func (g *Groups) GetById(groupIds []string, groupId string, fields []objects.Gro
 // GetCallbackConfirmationCode - Returns Callback API confirmation code for the community.
 // Parameters:
 //   * groupId - Community ID.
-func (g *Groups) GetCallbackConfirmationCode(groupId int) (resp responses.GroupsGetCallbackConfirmationCode, err error) {
+func (g Groups) GetCallbackConfirmationCode(groupId int) (resp responses.GroupsGetCallbackConfirmationCode, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -846,7 +846,7 @@ func (g *Groups) GetCallbackConfirmationCode(groupId int) (resp responses.Groups
 // Parameters:
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
 //   * serverIds - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) GetCallbackServers(groupId int, serverIds []int) (resp responses.GroupsGetCallbackServers, err error) {
+func (g Groups) GetCallbackServers(groupId int, serverIds []int) (resp responses.GroupsGetCallbackServers, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -864,7 +864,7 @@ func (g *Groups) GetCallbackServers(groupId int, serverIds []int) (resp response
 // Parameters:
 //   * groupId - Community ID.
 //   * serverId - Server ID.
-func (g *Groups) GetCallbackSettings(groupId int, serverId int) (resp responses.GroupsGetCallbackSettings, err error) {
+func (g Groups) GetCallbackSettings(groupId int, serverId int) (resp responses.GroupsGetCallbackSettings, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -882,7 +882,7 @@ func (g *Groups) GetCallbackSettings(groupId int, serverId int) (resp responses.
 // Parameters:
 //   * categoryId - Category id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
 //   * subcategoryId - Subcategory id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
-func (g *Groups) GetCatalog(categoryId int, subcategoryId int) (resp responses.GroupsGetCatalog, err error) {
+func (g Groups) GetCatalog(categoryId int, subcategoryId int) (resp responses.GroupsGetCatalog, err error) {
 	params := map[string]interface{}{}
 
 	if categoryId > 0 {
@@ -902,7 +902,7 @@ func (g *Groups) GetCatalog(categoryId int, subcategoryId int) (resp responses.G
 // Parameters:
 //   * extended - 1 – to return communities count and three communities for preview. By default: 0.
 //   * subcategories - 1 – to return subcategories info. By default: 0.
-func (g *Groups) GetCatalogInfo(subcategories bool) (resp responses.GroupsGetCatalogInfo, err error) {
+func (g Groups) GetCatalogInfo(subcategories bool) (resp responses.GroupsGetCatalogInfo, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -917,7 +917,7 @@ func (g *Groups) GetCatalogInfo(subcategories bool) (resp responses.GroupsGetCat
 // Parameters:
 //   * extended - 1 – to return communities count and three communities for preview. By default: 0.
 //   * subcategories - 1 – to return subcategories info. By default: 0.
-func (g *Groups) GetCatalogInfoExtended(subcategories bool) (resp responses.GroupsGetCatalogInfoExtended, err error) {
+func (g Groups) GetCatalogInfoExtended(subcategories bool) (resp responses.GroupsGetCatalogInfoExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -935,7 +935,7 @@ func (g *Groups) GetCatalogInfoExtended(subcategories bool) (resp responses.Grou
 //   * count - Number of results to return.
 //   * fields - List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
 //   * nameCase - Case for declension of user name and surname. Possible values: *'nom' — nominative (default),, *'gen' — genitive,, *'dat' — dative,, *'acc' — accusative, , *'ins' — instrumental,, *'abl' — prepositional.
-func (g *Groups) GetInvitedUsers(groupId int, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.GroupsGetInvitedUsers, err error) {
+func (g Groups) GetInvitedUsers(groupId int, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.GroupsGetInvitedUsers, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -966,7 +966,7 @@ func (g *Groups) GetInvitedUsers(groupId int, offset int, count int, fields []ob
 //   * offset - Offset needed to return a specific subset of invitations.
 //   * count - Number of invitations to return.
 //   * extended - '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
-func (g *Groups) GetInvites(offset int, count int) (resp responses.GroupsGetInvites, err error) {
+func (g Groups) GetInvites(offset int, count int) (resp responses.GroupsGetInvites, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -988,7 +988,7 @@ func (g *Groups) GetInvites(offset int, count int) (resp responses.GroupsGetInvi
 //   * offset - Offset needed to return a specific subset of invitations.
 //   * count - Number of invitations to return.
 //   * extended - '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
-func (g *Groups) GetInvitesExtended(offset int, count int) (resp responses.GroupsGetInvitesExtended, err error) {
+func (g Groups) GetInvitesExtended(offset int, count int) (resp responses.GroupsGetInvitesExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -1008,7 +1008,7 @@ func (g *Groups) GetInvitesExtended(offset int, count int) (resp responses.Group
 // GetLongPollServer - Returns the data needed to query a Long Poll server for events
 // Parameters:
 //   * groupId - Community ID
-func (g *Groups) GetLongPollServer(groupId int) (resp responses.GroupsGetLongPollServer, err error) {
+func (g Groups) GetLongPollServer(groupId int) (resp responses.GroupsGetLongPollServer, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1021,7 +1021,7 @@ func (g *Groups) GetLongPollServer(groupId int) (resp responses.GroupsGetLongPol
 // GetLongPollSettings - Returns Long Poll notification settings
 // Parameters:
 //   * groupId - Community ID.
-func (g *Groups) GetLongPollSettings(groupId int) (resp responses.GroupsGetLongPollSettings, err error) {
+func (g Groups) GetLongPollSettings(groupId int) (resp responses.GroupsGetLongPollSettings, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1039,7 +1039,7 @@ func (g *Groups) GetLongPollSettings(groupId int) (resp responses.GroupsGetLongP
 //   * count - Number of community members to return.
 //   * fields - List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
 //   * filter - *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
-func (g *Groups) GetMembers(groupId string, sort string, offset int, count int, fields []objects.UsersFields, filter string) (resp responses.GroupsGetMembers, err error) {
+func (g Groups) GetMembers(groupId string, sort string, offset int, count int, fields []objects.UsersFields, filter string) (resp responses.GroupsGetMembers, err error) {
 	params := map[string]interface{}{}
 
 	if groupId != "" {
@@ -1077,7 +1077,7 @@ func (g *Groups) GetMembers(groupId string, sort string, offset int, count int, 
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of results to return.
 //   * fields - Profile fields to return.
-func (g *Groups) GetRequests(groupId int, offset int, count int, fields []objects.UsersFields) (resp responses.GroupsGetRequests, err error) {
+func (g Groups) GetRequests(groupId int, offset int, count int, fields []objects.UsersFields) (resp responses.GroupsGetRequests, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1102,7 +1102,7 @@ func (g *Groups) GetRequests(groupId int, offset int, count int, fields []object
 // GetSettings - Returns community settings.
 // Parameters:
 //   * groupId - Community ID.
-func (g *Groups) GetSettings(groupId int) (resp responses.GroupsGetSettings, err error) {
+func (g Groups) GetSettings(groupId int) (resp responses.GroupsGetSettings, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1113,7 +1113,7 @@ func (g *Groups) GetSettings(groupId int) (resp responses.GroupsGetSettings, err
 }
 
 // GetTokenPermissions - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) GetTokenPermissions() (resp responses.GroupsGetTokenPermissions, err error) {
+func (g Groups) GetTokenPermissions() (resp responses.GroupsGetTokenPermissions, err error) {
 	params := map[string]interface{}{}
 
 	err = g.SendObjRequest("groups.getTokenPermissions", params, &resp)
@@ -1125,7 +1125,7 @@ func (g *Groups) GetTokenPermissions() (resp responses.GroupsGetTokenPermissions
 // Parameters:
 //   * groupId - Community ID.
 //   * userId - User ID.
-func (g *Groups) Invite(groupId int, userId int) (resp responses.Ok, err error) {
+func (g Groups) Invite(groupId int, userId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1143,7 +1143,7 @@ func (g *Groups) Invite(groupId int, userId int) (resp responses.Ok, err error) 
 //   * userId - User ID.
 //   * userIds - User IDs.
 //   * extended - '1' — to return an extended response with additional fields. By default: '0'.
-func (g *Groups) IsMember(groupId string, userId int, userIds []int) (resp responses.GroupsIsMember, err error) {
+func (g Groups) IsMember(groupId string, userId int, userIds []int) (resp responses.GroupsIsMember, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -1168,7 +1168,7 @@ func (g *Groups) IsMember(groupId string, userId int, userIds []int) (resp respo
 //   * userId - User ID.
 //   * userIds - User IDs.
 //   * extended - '1' — to return an extended response with additional fields. By default: '0'.
-func (g *Groups) IsMemberExtended(groupId string, userId int, userIds []int) (resp responses.GroupsIsMemberExtended, err error) {
+func (g Groups) IsMemberExtended(groupId string, userId int, userIds []int) (resp responses.GroupsIsMemberExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -1191,7 +1191,7 @@ func (g *Groups) IsMemberExtended(groupId string, userId int, userIds []int) (re
 // Parameters:
 //   * groupId - ID or screen name of the community.
 //   * notSure - Optional parameter which is taken into account when 'gid' belongs to the event: '1' — Perhaps I will attend, '0' — I will be there for sure (default), ,
-func (g *Groups) Join(groupId int, notSure string) (resp responses.Ok, err error) {
+func (g Groups) Join(groupId int, notSure string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -1210,7 +1210,7 @@ func (g *Groups) Join(groupId int, notSure string) (resp responses.Ok, err error
 // Leave - With this method you can leave a group, public page, or event.
 // Parameters:
 //   * groupId - ID or screen name of the community.
-func (g *Groups) Leave(groupId int) (resp responses.Ok, err error) {
+func (g Groups) Leave(groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1224,7 +1224,7 @@ func (g *Groups) Leave(groupId int) (resp responses.Ok, err error) {
 // Parameters:
 //   * groupId - Community ID.
 //   * userId - User ID.
-func (g *Groups) RemoveUser(groupId int, userId int) (resp responses.Ok, err error) {
+func (g Groups) RemoveUser(groupId int, userId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1241,7 +1241,7 @@ func (g *Groups) RemoveUser(groupId int, userId int) (resp responses.Ok, err err
 //   * groupId - Community ID.
 //   * linkId - Link ID.
 //   * after - ID of the link after which to place the link with 'link_id'.
-func (g *Groups) ReorderLink(groupId int, linkId int, after int) (resp responses.Ok, err error) {
+func (g Groups) ReorderLink(groupId int, linkId int, after int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1268,7 +1268,7 @@ func (g *Groups) ReorderLink(groupId int, linkId int, after int) (resp responses
 //   * sort - Sort order. Possible values: *'0' — default sorting (similar the full version of the site),, *'1' — by growth speed,, *'2'— by the "day attendance/members number" ratio,, *'3' — by the "Likes number/members number" ratio,, *'4' — by the "comments number/members number" ratio,, *'5' — by the "boards entries number/members number" ratio.
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of communities to return. "Note that you can not receive more than first thousand of results, regardless of 'count' and 'offset' values."
-func (g *Groups) Search(q string, pType string, countryId int, cityId int, future bool, market bool, sort int, offset int, count int) (resp responses.GroupsSearch, err error) {
+func (g Groups) Search(q string, pType string, countryId int, cityId int, future bool, market bool, sort int, offset int, count int) (resp responses.GroupsSearch, err error) {
 	params := map[string]interface{}{}
 
 	params["q"] = q
@@ -1351,7 +1351,7 @@ func (g *Groups) Search(q string, pType string, countryId int, cityId int, futur
 //   * userBlock - User added to community blacklist
 //   * userUnblock - User removed from community blacklist
 //   * leadFormsNew - New form in lead forms
-func (g *Groups) SetCallbackSettings(groupId int, serverId int, apiVersion string, messageNew bool, messageReply bool, messageAllow bool, messageEdit bool, messageDeny bool, messageTypingState bool, photoNew bool, audioNew bool, videoNew bool, wallReplyNew bool, wallReplyEdit bool, wallReplyDelete bool, wallReplyRestore bool, wallPostNew bool, wallRepost bool, boardPostNew bool, boardPostEdit bool, boardPostRestore bool, boardPostDelete bool, photoCommentNew bool, photoCommentEdit bool, photoCommentDelete bool, photoCommentRestore bool, videoCommentNew bool, videoCommentEdit bool, videoCommentDelete bool, videoCommentRestore bool, marketCommentNew bool, marketCommentEdit bool, marketCommentDelete bool, marketCommentRestore bool, pollVoteNew bool, groupJoin bool, groupLeave bool, groupChangeSettings bool, groupChangePhoto bool, groupOfficersEdit bool, userBlock bool, userUnblock bool, leadFormsNew bool) (resp responses.Ok, err error) {
+func (g Groups) SetCallbackSettings(groupId int, serverId int, apiVersion string, messageNew bool, messageReply bool, messageAllow bool, messageEdit bool, messageDeny bool, messageTypingState bool, photoNew bool, audioNew bool, videoNew bool, wallReplyNew bool, wallReplyEdit bool, wallReplyDelete bool, wallReplyRestore bool, wallPostNew bool, wallRepost bool, boardPostNew bool, boardPostEdit bool, boardPostRestore bool, boardPostDelete bool, photoCommentNew bool, photoCommentEdit bool, photoCommentDelete bool, photoCommentRestore bool, videoCommentNew bool, videoCommentEdit bool, videoCommentDelete bool, videoCommentRestore bool, marketCommentNew bool, marketCommentEdit bool, marketCommentDelete bool, marketCommentRestore bool, pollVoteNew bool, groupJoin bool, groupLeave bool, groupChangeSettings bool, groupChangePhoto bool, groupOfficersEdit bool, userBlock bool, userUnblock bool, leadFormsNew bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1493,7 +1493,7 @@ func (g *Groups) SetCallbackSettings(groupId int, serverId int, apiVersion strin
 //   * groupOfficersEdit - NO DESCRIPTION IN JSON SCHEMA
 //   * userBlock - User added to community blacklist
 //   * userUnblock - User removed from community blacklist
-func (g *Groups) SetLongPollSettings(groupId int, enabled bool, apiVersion string, messageNew bool, messageReply bool, messageAllow bool, messageDeny bool, messageEdit bool, messageTypingState bool, photoNew bool, audioNew bool, videoNew bool, wallReplyNew bool, wallReplyEdit bool, wallReplyDelete bool, wallReplyRestore bool, wallPostNew bool, wallRepost bool, boardPostNew bool, boardPostEdit bool, boardPostRestore bool, boardPostDelete bool, photoCommentNew bool, photoCommentEdit bool, photoCommentDelete bool, photoCommentRestore bool, videoCommentNew bool, videoCommentEdit bool, videoCommentDelete bool, videoCommentRestore bool, marketCommentNew bool, marketCommentEdit bool, marketCommentDelete bool, marketCommentRestore bool, pollVoteNew bool, groupJoin bool, groupLeave bool, groupChangeSettings bool, groupChangePhoto bool, groupOfficersEdit bool, userBlock bool, userUnblock bool) (resp responses.Ok, err error) {
+func (g Groups) SetLongPollSettings(groupId int, enabled bool, apiVersion string, messageNew bool, messageReply bool, messageAllow bool, messageDeny bool, messageEdit bool, messageTypingState bool, photoNew bool, audioNew bool, videoNew bool, wallReplyNew bool, wallReplyEdit bool, wallReplyDelete bool, wallReplyRestore bool, wallPostNew bool, wallRepost bool, boardPostNew bool, boardPostEdit bool, boardPostRestore bool, boardPostDelete bool, photoCommentNew bool, photoCommentEdit bool, photoCommentDelete bool, photoCommentRestore bool, videoCommentNew bool, videoCommentEdit bool, videoCommentDelete bool, videoCommentRestore bool, marketCommentNew bool, marketCommentEdit bool, marketCommentDelete bool, marketCommentRestore bool, pollVoteNew bool, groupJoin bool, groupLeave bool, groupChangeSettings bool, groupChangePhoto bool, groupOfficersEdit bool, userBlock bool, userUnblock bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1591,7 +1591,7 @@ func (g *Groups) SetLongPollSettings(groupId int, enabled bool, apiVersion strin
 // Parameters:
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-func (g *Groups) Unban(groupId int, ownerId int) (resp responses.Ok, err error) {
+func (g Groups) Unban(groupId int, ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId

@@ -39,7 +39,7 @@ type Wall struct {
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * postId - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) CloseComments(ownerId int, postId int) (resp responses.BaseBool, err error) {
+func (w Wall) CloseComments(ownerId int, postId int) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -61,7 +61,7 @@ func (w *Wall) CloseComments(ownerId int, postId int) (resp responses.BaseBool, 
 //   * attachments - (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
 //   * stickerId - Sticker ID.
 //   * guid - Unique identifier to avoid repeated comments.
-func (w *Wall) CreateComment(ownerId int, postId int, fromGroup int, message string, replyToComment int, attachments []string, stickerId int, guid string) (resp responses.WallCreateComment, err error) {
+func (w Wall) CreateComment(ownerId int, postId int, fromGroup int, message string, replyToComment int, attachments []string, stickerId int, guid string) (resp responses.WallCreateComment, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -103,7 +103,7 @@ func (w *Wall) CreateComment(ownerId int, postId int, fromGroup int, message str
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * postId - ID of the post to be deleted.
-func (w *Wall) Delete(ownerId int, postId int) (resp responses.Ok, err error) {
+func (w Wall) Delete(ownerId int, postId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -123,7 +123,7 @@ func (w *Wall) Delete(ownerId int, postId int) (resp responses.Ok, err error) {
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * commentId - Comment ID.
-func (w *Wall) DeleteComment(ownerId int, commentId int) (resp responses.Ok, err error) {
+func (w Wall) DeleteComment(ownerId int, commentId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -155,7 +155,7 @@ func (w *Wall) DeleteComment(ownerId int, commentId int) (resp responses.Ok, err
 //   * posterBkgId - NO DESCRIPTION IN JSON SCHEMA
 //   * posterBkgOwnerId - NO DESCRIPTION IN JSON SCHEMA
 //   * posterBkgAccessHash - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) Edit(ownerId int, postId int, friendsOnly bool, message string, attachments []string, services string, signed bool, publishDate int, lat float64, long float64, placeId int, markAsAds bool, closeComments bool, posterBkgId int, posterBkgOwnerId int, posterBkgAccessHash string) (resp responses.WallEdit, err error) {
+func (w Wall) Edit(ownerId int, postId int, friendsOnly bool, message string, attachments []string, services string, signed bool, publishDate int, lat float64, long float64, placeId int, markAsAds bool, closeComments bool, posterBkgId int, posterBkgOwnerId int, posterBkgAccessHash string) (resp responses.WallEdit, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -231,7 +231,7 @@ func (w *Wall) Edit(ownerId int, postId int, friendsOnly bool, message string, a
 //   * linkTitle - Link title
 //   * linkImage - Link image url
 //   * linkVideo - Link video ID in format "<owner_id>_<media_id>"
-func (w *Wall) EditAdsStealth(ownerId int, postId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.Ok, err error) {
+func (w Wall) EditAdsStealth(ownerId int, postId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -289,7 +289,7 @@ func (w *Wall) EditAdsStealth(ownerId int, postId int, message string, attachmen
 //   * commentId - Comment ID.
 //   * message - New comment text.
 //   * attachments - List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
-func (w *Wall) EditComment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
+func (w Wall) EditComment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -320,7 +320,7 @@ func (w *Wall) EditComment(ownerId int, commentId int, message string, attachmen
 //   * filter - Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
 //   * extended - '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) Get(ownerId int, domain string, offset int, count int, filter string, fields []objects.BaseUserGroupFields) (resp responses.WallGet, err error) {
+func (w Wall) Get(ownerId int, domain string, offset int, count int, filter string, fields []objects.BaseUserGroupFields) (resp responses.WallGet, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -362,7 +362,7 @@ func (w *Wall) Get(ownerId int, domain string, offset int, count int, filter str
 //   * filter - Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
 //   * extended - '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) GetExtended(ownerId int, domain string, offset int, count int, filter string, fields []objects.BaseUserGroupFields) (resp responses.WallGetExtended, err error) {
+func (w Wall) GetExtended(ownerId int, domain string, offset int, count int, filter string, fields []objects.BaseUserGroupFields) (resp responses.WallGetExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -401,7 +401,7 @@ func (w *Wall) GetExtended(ownerId int, domain string, offset int, count int, fi
 //   * extended - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
 //   * copyHistoryDepth - Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) GetById(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetById, err error) {
+func (w Wall) GetById(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetById, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -426,7 +426,7 @@ func (w *Wall) GetById(posts []string, copyHistoryDepth int, fields []objects.Ba
 //   * extended - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
 //   * copyHistoryDepth - Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) GetByIdExtended(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetByIdExtended, err error) {
+func (w Wall) GetByIdExtended(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetByIdExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -459,7 +459,7 @@ func (w *Wall) GetByIdExtended(posts []string, copyHistoryDepth int, fields []ob
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * commentId - Comment ID.
 //   * threadItemsCount - Count items in threads.
-func (w *Wall) GetComments(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetComments, err error) {
+func (w Wall) GetComments(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetComments, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -524,7 +524,7 @@ func (w *Wall) GetComments(ownerId int, postId int, needLikes bool, startComment
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * commentId - Comment ID.
 //   * threadItemsCount - Count items in threads.
-func (w *Wall) GetCommentsExtended(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetCommentsExtended, err error) {
+func (w Wall) GetCommentsExtended(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetCommentsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -581,7 +581,7 @@ func (w *Wall) GetCommentsExtended(ownerId int, postId int, needLikes bool, star
 //   * postId - Post ID.
 //   * offset - Offset needed to return a specific subset of reposts.
 //   * count - Number of reposts to return.
-func (w *Wall) GetReposts(ownerId int, postId int, offset int, count int) (resp responses.WallGetReposts, err error) {
+func (w Wall) GetReposts(ownerId int, postId int, offset int, count int) (resp responses.WallGetReposts, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -609,7 +609,7 @@ func (w *Wall) GetReposts(ownerId int, postId int, offset int, count int) (resp 
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * postId - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) OpenComments(ownerId int, postId int) (resp responses.BaseBool, err error) {
+func (w Wall) OpenComments(ownerId int, postId int) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -625,7 +625,7 @@ func (w *Wall) OpenComments(ownerId int, postId int) (resp responses.BaseBool, e
 // Parameters:
 //   * ownerId - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
-func (w *Wall) Pin(ownerId int, postId int) (resp responses.Ok, err error) {
+func (w Wall) Pin(ownerId int, postId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -657,7 +657,7 @@ func (w *Wall) Pin(ownerId int, postId int) (resp responses.Ok, err error) {
 //   * markAsAds - NO DESCRIPTION IN JSON SCHEMA
 //   * closeComments - NO DESCRIPTION IN JSON SCHEMA
 //   * muteNotifications - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) Post(ownerId int, friendsOnly bool, fromGroup bool, message string, attachments []string, services string, signed bool, publishDate int, lat float64, long float64, placeId int, postId int, guid string, markAsAds bool, closeComments bool, muteNotifications bool) (resp responses.WallPost, err error) {
+func (w Wall) Post(ownerId int, friendsOnly bool, fromGroup bool, message string, attachments []string, services string, signed bool, publishDate int, lat float64, long float64, placeId int, postId int, guid string, markAsAds bool, closeComments bool, muteNotifications bool) (resp responses.WallPost, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -731,7 +731,7 @@ func (w *Wall) Post(ownerId int, friendsOnly bool, fromGroup bool, message strin
 //   * linkTitle - Link title
 //   * linkImage - Link image url
 //   * linkVideo - Link video ID in format "<owner_id>_<media_id>"
-func (w *Wall) PostAdsStealth(ownerId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, guid string, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.WallPostAdsStealth, err error) {
+func (w Wall) PostAdsStealth(ownerId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, guid string, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.WallPostAdsStealth, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -788,7 +788,7 @@ func (w *Wall) PostAdsStealth(ownerId int, message string, attachments []string,
 //   * ownerId - ID of the user or community that owns the wall.
 //   * commentId - Comment ID.
 //   * reason - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-func (w *Wall) ReportComment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
+func (w Wall) ReportComment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -809,7 +809,7 @@ func (w *Wall) ReportComment(ownerId int, commentId int, reason int) (resp respo
 //   * ownerId - ID of the user or community that owns the wall.
 //   * postId - Post ID.
 //   * reason - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-func (w *Wall) ReportPost(ownerId int, postId int, reason int) (resp responses.Ok, err error) {
+func (w Wall) ReportPost(ownerId int, postId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -832,7 +832,7 @@ func (w *Wall) ReportPost(ownerId int, postId int, reason int) (resp responses.O
 //   * groupId - Target community ID when reposting to a community.
 //   * markAsAds - NO DESCRIPTION IN JSON SCHEMA
 //   * muteNotifications - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) Repost(object string, message string, groupId int, markAsAds bool, muteNotifications bool) (resp responses.WallRepost, err error) {
+func (w Wall) Repost(object string, message string, groupId int, markAsAds bool, muteNotifications bool) (resp responses.WallRepost, err error) {
 	params := map[string]interface{}{}
 
 	params["object"] = object
@@ -858,7 +858,7 @@ func (w *Wall) Repost(object string, message string, groupId int, markAsAds bool
 // Parameters:
 //   * ownerId - User ID or community ID from whose wall the post was deleted. Use a negative value to designate a community ID.
 //   * postId - ID of the post to be restored.
-func (w *Wall) Restore(ownerId int, postId int) (resp responses.Ok, err error) {
+func (w Wall) Restore(ownerId int, postId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -878,7 +878,7 @@ func (w *Wall) Restore(ownerId int, postId int) (resp responses.Ok, err error) {
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * commentId - Comment ID.
-func (w *Wall) RestoreComment(ownerId int, commentId int) (resp responses.Ok, err error) {
+func (w Wall) RestoreComment(ownerId int, commentId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -902,7 +902,7 @@ func (w *Wall) RestoreComment(ownerId int, commentId int) (resp responses.Ok, er
 //   * offset - Offset needed to return a specific subset of posts.
 //   * extended - show extended post info.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) Search(ownerId int, domain string, query string, ownersOnly bool, count int, offset int, fields []objects.BaseUserGroupFields) (resp responses.WallSearch, err error) {
+func (w Wall) Search(ownerId int, domain string, query string, ownersOnly bool, count int, offset int, fields []objects.BaseUserGroupFields) (resp responses.WallSearch, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -947,7 +947,7 @@ func (w *Wall) Search(ownerId int, domain string, query string, ownersOnly bool,
 //   * offset - Offset needed to return a specific subset of posts.
 //   * extended - show extended post info.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w *Wall) SearchExtended(ownerId int, domain string, query string, ownersOnly bool, count int, offset int, fields []objects.BaseUserGroupFields) (resp responses.WallSearchExtended, err error) {
+func (w Wall) SearchExtended(ownerId int, domain string, query string, ownersOnly bool, count int, offset int, fields []objects.BaseUserGroupFields) (resp responses.WallSearchExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -986,7 +986,7 @@ func (w *Wall) SearchExtended(ownerId int, domain string, query string, ownersOn
 // Parameters:
 //   * ownerId - ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
-func (w *Wall) Unpin(ownerId int, postId int) (resp responses.Ok, err error) {
+func (w Wall) Unpin(ownerId int, postId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {

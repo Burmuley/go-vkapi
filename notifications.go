@@ -42,7 +42,7 @@ type Notifications struct {
 //   * filters - Type of notifications to return: 'wall' — wall posts, 'mentions' — mentions in wall posts, comments, or topics, 'comments' — comments to wall posts, photos, and videos, 'likes' — likes, 'reposted' — wall posts that are copied from the current user's wall, 'followers' — new followers, 'friends' — accepted friend requests
 //   * startTime - Earliest timestamp (in Unix time) of a notification to return. By default, 24 hours ago.
 //   * endTime - Latest timestamp (in Unix time) of a notification to return. By default, the current time.
-func (n *Notifications) Get(count int, startFrom string, filters []string, startTime int, endTime int) (resp responses.NotificationsGet, err error) {
+func (n Notifications) Get(count int, startFrom string, filters []string, startTime int, endTime int) (resp responses.NotificationsGet, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -71,7 +71,7 @@ func (n *Notifications) Get(count int, startFrom string, filters []string, start
 }
 
 // MarkAsViewed - Resets the counter of new notifications about other users' feedback to the current user's wall posts.
-func (n *Notifications) MarkAsViewed() (resp responses.NotificationsMarkAsViewed, err error) {
+func (n Notifications) MarkAsViewed() (resp responses.NotificationsMarkAsViewed, err error) {
 	params := map[string]interface{}{}
 
 	err = n.SendObjRequest("notifications.markAsViewed", params, &resp)
@@ -85,7 +85,7 @@ func (n *Notifications) MarkAsViewed() (resp responses.NotificationsMarkAsViewed
 //   * message - NO DESCRIPTION IN JSON SCHEMA
 //   * fragment - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (n *Notifications) SendMessage(userIds []int, message string, fragment string, groupId int) (resp responses.NotificationsSendMessage, err error) {
+func (n Notifications) SendMessage(userIds []int, message string, fragment string, groupId int) (resp responses.NotificationsSendMessage, err error) {
 	params := map[string]interface{}{}
 
 	params["user_ids"] = SliceToString(userIds)

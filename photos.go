@@ -40,7 +40,7 @@ type Photos struct {
 //   * ownerId - ID of the user or community that owns the photo.
 //   * photoId - Photo ID.
 //   * tagId - Tag ID.
-func (p *Photos) ConfirmTag(ownerId int, photoId string, tagId int) (resp responses.Ok, err error) {
+func (p Photos) ConfirmTag(ownerId int, photoId string, tagId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -61,7 +61,7 @@ func (p *Photos) ConfirmTag(ownerId int, photoId string, tagId int) (resp respon
 //   * ownerId - photo's owner ID
 //   * photoId - photo ID
 //   * accessKey - for private photos
-func (p *Photos) Copy(ownerId int, photoId int, accessKey string) (resp responses.PhotosCopy, err error) {
+func (p Photos) Copy(ownerId int, photoId int, accessKey string) (resp responses.PhotosCopy, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -86,7 +86,7 @@ func (p *Photos) Copy(ownerId int, photoId int, accessKey string) (resp response
 //   * privacyComment - NO DESCRIPTION IN JSON SCHEMA
 //   * uploadByAdminsOnly - NO DESCRIPTION IN JSON SCHEMA
 //   * commentsDisabled - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) CreateAlbum(title string, groupId int, description string, privacyView []string, privacyComment []string, uploadByAdminsOnly bool, commentsDisabled bool) (resp responses.PhotosCreateAlbum, err error) {
+func (p Photos) CreateAlbum(title string, groupId int, description string, privacyView []string, privacyComment []string, uploadByAdminsOnly bool, commentsDisabled bool) (resp responses.PhotosCreateAlbum, err error) {
 	params := map[string]interface{}{}
 
 	params["title"] = title
@@ -127,7 +127,7 @@ func (p *Photos) CreateAlbum(title string, groupId int, description string, priv
 //   * stickerId - NO DESCRIPTION IN JSON SCHEMA
 //   * accessKey - NO DESCRIPTION IN JSON SCHEMA
 //   * guid - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) CreateComment(ownerId int, photoId int, message string, attachments []string, fromGroup bool, replyToComment int, stickerId int, accessKey string, guid string) (resp responses.PhotosCreateComment, err error) {
+func (p Photos) CreateComment(ownerId int, photoId int, message string, attachments []string, fromGroup bool, replyToComment int, stickerId int, accessKey string, guid string) (resp responses.PhotosCreateComment, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -171,7 +171,7 @@ func (p *Photos) CreateComment(ownerId int, photoId int, message string, attachm
 // Parameters:
 //   * ownerId - ID of the user or community that owns the photo.
 //   * photoId - Photo ID.
-func (p *Photos) Delete(ownerId int, photoId int) (resp responses.Ok, err error) {
+func (p Photos) Delete(ownerId int, photoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -189,7 +189,7 @@ func (p *Photos) Delete(ownerId int, photoId int) (resp responses.Ok, err error)
 // Parameters:
 //   * albumId - Album ID.
 //   * groupId - ID of the community that owns the album.
-func (p *Photos) DeleteAlbum(albumId int, groupId int) (resp responses.Ok, err error) {
+func (p Photos) DeleteAlbum(albumId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["album_id"] = albumId
@@ -207,7 +207,7 @@ func (p *Photos) DeleteAlbum(albumId int, groupId int) (resp responses.Ok, err e
 // Parameters:
 //   * ownerId - ID of the user or community that owns the photo.
 //   * commentId - Comment ID.
-func (p *Photos) DeleteComment(ownerId int, commentId int) (resp responses.PhotosDeleteComment, err error) {
+func (p Photos) DeleteComment(ownerId int, commentId int) (resp responses.PhotosDeleteComment, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -231,7 +231,7 @@ func (p *Photos) DeleteComment(ownerId int, commentId int) (resp responses.Photo
 //   * placeStr - NO DESCRIPTION IN JSON SCHEMA
 //   * foursquareId - NO DESCRIPTION IN JSON SCHEMA
 //   * deletePlace - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) Edit(ownerId int, photoId int, caption string, latitude float64, longitude float64, placeStr string, foursquareId string, deletePlace bool) (resp responses.Ok, err error) {
+func (p Photos) Edit(ownerId int, photoId int, caption string, latitude float64, longitude float64, placeStr string, foursquareId string, deletePlace bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -277,7 +277,7 @@ func (p *Photos) Edit(ownerId int, photoId int, caption string, latitude float64
 //   * privacyComment - NO DESCRIPTION IN JSON SCHEMA
 //   * uploadByAdminsOnly - NO DESCRIPTION IN JSON SCHEMA
 //   * commentsDisabled - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) EditAlbum(albumId int, title string, description string, ownerId int, privacyView []string, privacyComment []string, uploadByAdminsOnly bool, commentsDisabled bool) (resp responses.Ok, err error) {
+func (p Photos) EditAlbum(albumId int, title string, description string, ownerId int, privacyView []string, privacyComment []string, uploadByAdminsOnly bool, commentsDisabled bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["album_id"] = albumId
@@ -317,7 +317,7 @@ func (p *Photos) EditAlbum(albumId int, title string, description string, ownerI
 //   * commentId - Comment ID.
 //   * message - New text of the comment.
 //   * attachments - (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
-func (p *Photos) EditComment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
+func (p Photos) EditComment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -351,7 +351,7 @@ func (p *Photos) EditComment(ownerId int, commentId int, message string, attachm
 //   * photoSizes - '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format]
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) Get(ownerId int, albumId string, photoIds []string, rev bool, feedType string, feed int, photoSizes bool, offset int, count int) (resp responses.PhotosGet, err error) {
+func (p Photos) Get(ownerId int, albumId string, photoIds []string, rev bool, feedType string, feed int, photoSizes bool, offset int, count int) (resp responses.PhotosGet, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -404,7 +404,7 @@ func (p *Photos) Get(ownerId int, albumId string, photoIds []string, rev bool, f
 //   * photoSizes - '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format]
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) GetExtended(ownerId int, albumId string, photoIds []string, rev bool, feedType string, feed int, photoSizes bool, offset int, count int) (resp responses.PhotosGetExtended, err error) {
+func (p Photos) GetExtended(ownerId int, albumId string, photoIds []string, rev bool, feedType string, feed int, photoSizes bool, offset int, count int) (resp responses.PhotosGetExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -454,7 +454,7 @@ func (p *Photos) GetExtended(ownerId int, albumId string, photoIds []string, rev
 //   * needSystem - '1' — to return system albums with negative IDs
 //   * needCovers - '1' — to return an additional 'thumb_src' field, '0' — (default)
 //   * photoSizes - '1' — to return photo sizes in a
-func (p *Photos) GetAlbums(ownerId int, albumIds []int, offset int, count int, needSystem bool, needCovers bool, photoSizes bool) (resp responses.PhotosGetAlbums, err error) {
+func (p Photos) GetAlbums(ownerId int, albumIds []int, offset int, count int, needSystem bool, needCovers bool, photoSizes bool) (resp responses.PhotosGetAlbums, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -488,7 +488,7 @@ func (p *Photos) GetAlbums(ownerId int, albumIds []int, offset int, count int, n
 // Parameters:
 //   * userId - User ID.
 //   * groupId - Community ID.
-func (p *Photos) GetAlbumsCount(userId int, groupId int) (resp responses.PhotosGetAlbumsCount, err error) {
+func (p Photos) GetAlbumsCount(userId int, groupId int) (resp responses.PhotosGetAlbumsCount, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -514,7 +514,7 @@ func (p *Photos) GetAlbumsCount(userId int, groupId int) (resp responses.PhotosG
 //   * noServiceAlbums - '1' – to return photos only from standard albums, '0' – to return all photos including those in service albums, e.g., 'My wall photos' (default)
 //   * needHidden - '1' – to show information about photos being hidden from the block above the wall.
 //   * skipHidden - '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
-func (p *Photos) GetAll(ownerId int, offset int, count int, photoSizes bool, noServiceAlbums bool, needHidden bool, skipHidden bool) (resp responses.PhotosGetAll, err error) {
+func (p Photos) GetAll(ownerId int, offset int, count int, photoSizes bool, noServiceAlbums bool, needHidden bool, skipHidden bool) (resp responses.PhotosGetAll, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -553,7 +553,7 @@ func (p *Photos) GetAll(ownerId int, offset int, count int, photoSizes bool, noS
 //   * noServiceAlbums - '1' – to return photos only from standard albums, '0' – to return all photos including those in service albums, e.g., 'My wall photos' (default)
 //   * needHidden - '1' – to show information about photos being hidden from the block above the wall.
 //   * skipHidden - '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
-func (p *Photos) GetAllExtended(ownerId int, offset int, count int, photoSizes bool, noServiceAlbums bool, needHidden bool, skipHidden bool) (resp responses.PhotosGetAllExtended, err error) {
+func (p Photos) GetAllExtended(ownerId int, offset int, count int, photoSizes bool, noServiceAlbums bool, needHidden bool, skipHidden bool) (resp responses.PhotosGetAllExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -589,7 +589,7 @@ func (p *Photos) GetAllExtended(ownerId int, offset int, count int, photoSizes b
 //   * needLikes - '1' — to return an additional 'likes' field, '0' — (default)
 //   * offset - Offset needed to return a specific subset of comments. By default, '0'.
 //   * count - Number of comments to return. By default, '20'. Maximum value, '100'.
-func (p *Photos) GetAllComments(ownerId int, albumId int, needLikes bool, offset int, count int) (resp responses.PhotosGetAllComments, err error) {
+func (p Photos) GetAllComments(ownerId int, albumId int, needLikes bool, offset int, count int) (resp responses.PhotosGetAllComments, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -620,7 +620,7 @@ func (p *Photos) GetAllComments(ownerId int, albumId int, needLikes bool, offset
 //   * photos - IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
 //   * extended - '1' — to return additional fields, '0' — (default)
 //   * photoSizes - '1' — to return photo sizes in a
-func (p *Photos) GetById(photos []string, photoSizes bool) (resp responses.PhotosGetById, err error) {
+func (p Photos) GetById(photos []string, photoSizes bool) (resp responses.PhotosGetById, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -638,7 +638,7 @@ func (p *Photos) GetById(photos []string, photoSizes bool) (resp responses.Photo
 //   * photos - IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
 //   * extended - '1' — to return additional fields, '0' — (default)
 //   * photoSizes - '1' — to return photo sizes in a
-func (p *Photos) GetByIdExtended(photos []string, photoSizes bool) (resp responses.PhotosGetByIdExtended, err error) {
+func (p Photos) GetByIdExtended(photos []string, photoSizes bool) (resp responses.PhotosGetByIdExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -657,7 +657,7 @@ func (p *Photos) GetByIdExtended(photos []string, photoSizes bool) (resp respons
 //   * cropX - NO DESCRIPTION IN JSON SCHEMA
 //   * cropY - NO DESCRIPTION IN JSON SCHEMA
 //   * cropWidth - Width (in pixels) of the photo after cropping.
-func (p *Photos) GetChatUploadServer(chatId int, cropX int, cropY int, cropWidth int) (resp responses.BaseGetUploadServer, err error) {
+func (p Photos) GetChatUploadServer(chatId int, cropX int, cropY int, cropWidth int) (resp responses.BaseGetUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	params["chat_id"] = chatId
@@ -691,7 +691,7 @@ func (p *Photos) GetChatUploadServer(chatId int, cropX int, cropY int, cropWidth
 //   * accessKey - NO DESCRIPTION IN JSON SCHEMA
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) GetComments(ownerId int, photoId int, needLikes bool, startCommentId int, offset int, count int, sort string, accessKey string, fields []objects.UsersFields) (resp responses.PhotosGetComments, err error) {
+func (p Photos) GetComments(ownerId int, photoId int, needLikes bool, startCommentId int, offset int, count int, sort string, accessKey string, fields []objects.UsersFields) (resp responses.PhotosGetComments, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -744,7 +744,7 @@ func (p *Photos) GetComments(ownerId int, photoId int, needLikes bool, startComm
 //   * accessKey - NO DESCRIPTION IN JSON SCHEMA
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) GetCommentsExtended(ownerId int, photoId int, needLikes bool, startCommentId int, offset int, count int, sort string, accessKey string, fields []objects.UsersFields) (resp responses.PhotosGetCommentsExtended, err error) {
+func (p Photos) GetCommentsExtended(ownerId int, photoId int, needLikes bool, startCommentId int, offset int, count int, sort string, accessKey string, fields []objects.UsersFields) (resp responses.PhotosGetCommentsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -788,7 +788,7 @@ func (p *Photos) GetCommentsExtended(ownerId int, photoId int, needLikes bool, s
 // GetMarketAlbumUploadServer - Returns the server address for market album photo upload.
 // Parameters:
 //   * groupId - Community ID.
-func (p *Photos) GetMarketAlbumUploadServer(groupId int) (resp responses.BaseGetUploadServer, err error) {
+func (p Photos) GetMarketAlbumUploadServer(groupId int) (resp responses.BaseGetUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -805,7 +805,7 @@ func (p *Photos) GetMarketAlbumUploadServer(groupId int) (resp responses.BaseGet
 //   * cropX - X coordinate of the crop left upper corner.
 //   * cropY - Y coordinate of the crop left upper corner.
 //   * cropWidth - Width of the cropped photo in px.
-func (p *Photos) GetMarketUploadServer(groupId int, mainPhoto bool, cropX int, cropY int, cropWidth int) (resp responses.PhotosGetMarketUploadServer, err error) {
+func (p Photos) GetMarketUploadServer(groupId int, mainPhoto bool, cropX int, cropY int, cropWidth int) (resp responses.PhotosGetMarketUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -832,7 +832,7 @@ func (p *Photos) GetMarketUploadServer(groupId int, mainPhoto bool, cropX int, c
 // GetMessagesUploadServer - Returns the server address for photo upload in a private message for a user.
 // Parameters:
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
-func (p *Photos) GetMessagesUploadServer(peerId int) (resp responses.PhotosGetMessagesUploadServer, err error) {
+func (p Photos) GetMessagesUploadServer(peerId int) (resp responses.PhotosGetMessagesUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	if peerId > 0 {
@@ -848,7 +848,7 @@ func (p *Photos) GetMessagesUploadServer(peerId int) (resp responses.PhotosGetMe
 // Parameters:
 //   * offset - Offset needed to return a specific subset of photos.
 //   * count - Number of photos to return.
-func (p *Photos) GetNewTags(offset int, count int) (resp responses.PhotosGetNewTags, err error) {
+func (p Photos) GetNewTags(offset int, count int) (resp responses.PhotosGetNewTags, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -871,7 +871,7 @@ func (p *Photos) GetNewTags(offset int, count int) (resp responses.PhotosGetNewT
 //   * cropY - Y coordinate of the left-upper corner
 //   * cropX2 - X coordinate of the right-bottom corner
 //   * cropY2 - Y coordinate of the right-bottom corner
-func (p *Photos) GetOwnerCoverPhotoUploadServer(groupId int, cropX int, cropY int, cropX2 int, cropY2 int) (resp responses.BaseGetUploadServer, err error) {
+func (p Photos) GetOwnerCoverPhotoUploadServer(groupId int, cropX int, cropY int, cropX2 int, cropY2 int) (resp responses.BaseGetUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -900,7 +900,7 @@ func (p *Photos) GetOwnerCoverPhotoUploadServer(groupId int, cropX int, cropY in
 // GetOwnerPhotoUploadServer - Returns an upload server address for a profile or community photo.
 // Parameters:
 //   * ownerId - identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
-func (p *Photos) GetOwnerPhotoUploadServer(ownerId int) (resp responses.BaseGetUploadServer, err error) {
+func (p Photos) GetOwnerPhotoUploadServer(ownerId int) (resp responses.BaseGetUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -917,7 +917,7 @@ func (p *Photos) GetOwnerPhotoUploadServer(ownerId int) (resp responses.BaseGetU
 //   * ownerId - ID of the user or community that owns the photo.
 //   * photoId - Photo ID.
 //   * accessKey - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) GetTags(ownerId int, photoId int, accessKey string) (resp responses.PhotosGetTags, err error) {
+func (p Photos) GetTags(ownerId int, photoId int, accessKey string) (resp responses.PhotosGetTags, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -939,7 +939,7 @@ func (p *Photos) GetTags(ownerId int, photoId int, accessKey string) (resp respo
 // Parameters:
 //   * groupId - ID of community that owns the album (if the photo will be uploaded to a community album).
 //   * albumId - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) GetUploadServer(groupId int, albumId int) (resp responses.PhotosGetUploadServer, err error) {
+func (p Photos) GetUploadServer(groupId int, albumId int) (resp responses.PhotosGetUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -962,7 +962,7 @@ func (p *Photos) GetUploadServer(groupId int, albumId int) (resp responses.Photo
 //   * count - Number of photos to return. Maximum value is 1000.
 //   * extended - '1' — to return an additional 'likes' field, '0' — (default)
 //   * sort - Sort order: '1' — by date the tag was added in ascending order, '0' — by date the tag was added in descending order
-func (p *Photos) GetUserPhotos(userId int, offset int, count int, sort string) (resp responses.PhotosGetUserPhotos, err error) {
+func (p Photos) GetUserPhotos(userId int, offset int, count int, sort string) (resp responses.PhotosGetUserPhotos, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -994,7 +994,7 @@ func (p *Photos) GetUserPhotos(userId int, offset int, count int, sort string) (
 //   * count - Number of photos to return. Maximum value is 1000.
 //   * extended - '1' — to return an additional 'likes' field, '0' — (default)
 //   * sort - Sort order: '1' — by date the tag was added in ascending order, '0' — by date the tag was added in descending order
-func (p *Photos) GetUserPhotosExtended(userId int, offset int, count int, sort string) (resp responses.PhotosGetUserPhotosExtended, err error) {
+func (p Photos) GetUserPhotosExtended(userId int, offset int, count int, sort string) (resp responses.PhotosGetUserPhotosExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -1022,7 +1022,7 @@ func (p *Photos) GetUserPhotosExtended(userId int, offset int, count int, sort s
 // GetWallUploadServer - Returns the server address for photo upload onto a user's wall.
 // Parameters:
 //   * groupId - ID of community to whose wall the photo will be uploaded.
-func (p *Photos) GetWallUploadServer(groupId int) (resp responses.PhotosGetWallUploadServer, err error) {
+func (p Photos) GetWallUploadServer(groupId int) (resp responses.PhotosGetWallUploadServer, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -1039,7 +1039,7 @@ func (p *Photos) GetWallUploadServer(groupId int) (resp responses.PhotosGetWallU
 //   * ownerId - ID of the user or community that owns the photo.
 //   * photoId - Photo ID.
 //   * albumId - Album ID.
-func (p *Photos) MakeCover(ownerId int, photoId int, albumId int) (resp responses.Ok, err error) {
+func (p Photos) MakeCover(ownerId int, photoId int, albumId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1062,7 +1062,7 @@ func (p *Photos) MakeCover(ownerId int, photoId int, albumId int) (resp response
 //   * ownerId - ID of the user or community that owns the photo.
 //   * targetAlbumId - ID of the album to which the photo will be moved.
 //   * photoId - Photo ID.
-func (p *Photos) Move(ownerId int, targetAlbumId int, photoId int) (resp responses.Ok, err error) {
+func (p Photos) Move(ownerId int, targetAlbumId int, photoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1087,7 +1087,7 @@ func (p *Photos) Move(ownerId int, targetAlbumId int, photoId int) (resp respons
 //   * y - Upper left-corner coordinate of the tagged area (as a percentage of the photo's height).
 //   * x2 - Lower right-corner coordinate of the tagged area (as a percentage of the photo's width).
 //   * y2 - Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
-func (p *Photos) PutTag(ownerId int, photoId int, userId int, x float64, y float64, x2 float64, y2 float64) (resp responses.PhotosPutTag, err error) {
+func (p Photos) PutTag(ownerId int, photoId int, userId int, x float64, y float64, x2 float64, y2 float64) (resp responses.PhotosPutTag, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1124,7 +1124,7 @@ func (p *Photos) PutTag(ownerId int, photoId int, userId int, x float64, y float
 //   * ownerId - ID of the user or community that owns the photo.
 //   * photoId - Photo ID.
 //   * tagId - Tag ID.
-func (p *Photos) RemoveTag(ownerId int, photoId int, tagId int) (resp responses.Ok, err error) {
+func (p Photos) RemoveTag(ownerId int, photoId int, tagId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1146,7 +1146,7 @@ func (p *Photos) RemoveTag(ownerId int, photoId int, tagId int) (resp responses.
 //   * albumId - Album ID.
 //   * before - ID of the album before which the album in question shall be placed.
 //   * after - ID of the album after which the album in question shall be placed.
-func (p *Photos) ReorderAlbums(ownerId int, albumId int, before int, after int) (resp responses.Ok, err error) {
+func (p Photos) ReorderAlbums(ownerId int, albumId int, before int, after int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1174,7 +1174,7 @@ func (p *Photos) ReorderAlbums(ownerId int, albumId int, before int, after int) 
 //   * photoId - Photo ID.
 //   * before - ID of the photo before which the photo in question shall be placed.
 //   * after - ID of the photo after which the photo in question shall be placed.
-func (p *Photos) ReorderPhotos(ownerId int, photoId int, before int, after int) (resp responses.Ok, err error) {
+func (p Photos) ReorderPhotos(ownerId int, photoId int, before int, after int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1201,7 +1201,7 @@ func (p *Photos) ReorderPhotos(ownerId int, photoId int, before int, after int) 
 //   * ownerId - ID of the user or community that owns the photo.
 //   * photoId - Photo ID.
 //   * reason - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-func (p *Photos) Report(ownerId int, photoId int, reason int) (resp responses.Ok, err error) {
+func (p Photos) Report(ownerId int, photoId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -1222,7 +1222,7 @@ func (p *Photos) Report(ownerId int, photoId int, reason int) (resp responses.Ok
 //   * ownerId - ID of the user or community that owns the photo.
 //   * commentId - ID of the comment being reported.
 //   * reason - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-func (p *Photos) ReportComment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
+func (p Photos) ReportComment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -1242,7 +1242,7 @@ func (p *Photos) ReportComment(ownerId int, commentId int, reason int) (resp res
 // Parameters:
 //   * ownerId - ID of the user or community that owns the photo.
 //   * photoId - Photo ID.
-func (p *Photos) Restore(ownerId int, photoId int) (resp responses.Ok, err error) {
+func (p Photos) Restore(ownerId int, photoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1260,7 +1260,7 @@ func (p *Photos) Restore(ownerId int, photoId int) (resp responses.Ok, err error
 // Parameters:
 //   * ownerId - ID of the user or community that owns the photo.
 //   * commentId - ID of the deleted comment.
-func (p *Photos) RestoreComment(ownerId int, commentId int) (resp responses.PhotosRestoreComment, err error) {
+func (p Photos) RestoreComment(ownerId int, commentId int) (resp responses.PhotosRestoreComment, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -1284,7 +1284,7 @@ func (p *Photos) RestoreComment(ownerId int, commentId int) (resp responses.Phot
 //   * latitude - Geographical latitude, in degrees (from '-90' to '90').
 //   * longitude - Geographical longitude, in degrees (from '-180' to '180').
 //   * caption - Text describing the photo. 2048 digits max.
-func (p *Photos) Save(albumId int, groupId int, server int, photosList string, hash string, latitude float64, longitude float64, caption string) (resp responses.PhotosSave, err error) {
+func (p Photos) Save(albumId int, groupId int, server int, photosList string, hash string, latitude float64, longitude float64, caption string) (resp responses.PhotosSave, err error) {
 	params := map[string]interface{}{}
 
 	if albumId > 0 {
@@ -1330,7 +1330,7 @@ func (p *Photos) Save(albumId int, groupId int, server int, photosList string, h
 //   * photo - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
 //   * server - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
 //   * hash - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-func (p *Photos) SaveMarketAlbumPhoto(groupId int, photo string, server int, hash string) (resp responses.PhotosSaveMarketAlbumPhoto, err error) {
+func (p Photos) SaveMarketAlbumPhoto(groupId int, photo string, server int, hash string) (resp responses.PhotosSaveMarketAlbumPhoto, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1354,7 +1354,7 @@ func (p *Photos) SaveMarketAlbumPhoto(groupId int, photo string, server int, has
 //   * hash - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
 //   * cropData - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
 //   * cropHash - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-func (p *Photos) SaveMarketPhoto(groupId int, photo string, server int, hash string, cropData string, cropHash string) (resp responses.PhotosSaveMarketPhoto, err error) {
+func (p Photos) SaveMarketPhoto(groupId int, photo string, server int, hash string, cropData string, cropHash string) (resp responses.PhotosSaveMarketPhoto, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -1385,7 +1385,7 @@ func (p *Photos) SaveMarketPhoto(groupId int, photo string, server int, hash str
 //   * photo - Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
 //   * server - NO DESCRIPTION IN JSON SCHEMA
 //   * hash - NO DESCRIPTION IN JSON SCHEMA
-func (p *Photos) SaveMessagesPhoto(photo string, server int, hash string) (resp responses.PhotosSaveMessagesPhoto, err error) {
+func (p Photos) SaveMessagesPhoto(photo string, server int, hash string) (resp responses.PhotosSaveMessagesPhoto, err error) {
 	params := map[string]interface{}{}
 
 	params["photo"] = photo
@@ -1407,7 +1407,7 @@ func (p *Photos) SaveMessagesPhoto(photo string, server int, hash string) (resp 
 // Parameters:
 //   * hash - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
 //   * photo - Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-func (p *Photos) SaveOwnerCoverPhoto(hash string, photo string) (resp responses.PhotosSaveOwnerCoverPhoto, err error) {
+func (p Photos) SaveOwnerCoverPhoto(hash string, photo string) (resp responses.PhotosSaveOwnerCoverPhoto, err error) {
 	params := map[string]interface{}{}
 
 	params["hash"] = hash
@@ -1424,7 +1424,7 @@ func (p *Photos) SaveOwnerCoverPhoto(hash string, photo string) (resp responses.
 //   * server - parameter returned after [vk.com/dev/upload_files|photo upload].
 //   * hash - parameter returned after [vk.com/dev/upload_files|photo upload].
 //   * photo - parameter returned after [vk.com/dev/upload_files|photo upload].
-func (p *Photos) SaveOwnerPhoto(server string, hash string, photo string) (resp responses.PhotosSaveOwnerPhoto, err error) {
+func (p Photos) SaveOwnerPhoto(server string, hash string, photo string) (resp responses.PhotosSaveOwnerPhoto, err error) {
 	params := map[string]interface{}{}
 
 	if server != "" {
@@ -1454,7 +1454,7 @@ func (p *Photos) SaveOwnerPhoto(server string, hash string, photo string) (resp 
 //   * latitude - Geographical latitude, in degrees (from '-90' to '90').
 //   * longitude - Geographical longitude, in degrees (from '-180' to '180').
 //   * caption - Text describing the photo. 2048 digits max.
-func (p *Photos) SaveWallPhoto(userId int, groupId int, photo string, server int, hash string, latitude float64, longitude float64, caption string) (resp responses.PhotosSaveWallPhoto, err error) {
+func (p Photos) SaveWallPhoto(userId int, groupId int, photo string, server int, hash string, latitude float64, longitude float64, caption string) (resp responses.PhotosSaveWallPhoto, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -1503,7 +1503,7 @@ func (p *Photos) SaveWallPhoto(userId int, groupId int, photo string, server int
 //   * offset - Offset needed to return a specific subset of photos.
 //   * count - Number of photos to return.
 //   * radius - Radius of search in meters (works very approximately). Available values: '10', '100', '800', '6000', '50000'.
-func (p *Photos) Search(q string, lat float64, long float64, startTime int, endTime int, sort int, offset int, count int, radius int) (resp responses.PhotosSearch, err error) {
+func (p Photos) Search(q string, lat float64, long float64, startTime int, endTime int, sort int, offset int, count int, radius int) (resp responses.PhotosSearch, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {

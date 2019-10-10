@@ -41,7 +41,7 @@ type Storage struct {
 //   * global - NO DESCRIPTION IN JSON SCHEMA
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - amount of variable names the info needs to be collected from.
-func (s *Storage) GetKeys(userId int, global bool, offset int, count int) (resp responses.StorageGetKeys, err error) {
+func (s Storage) GetKeys(userId int, global bool, offset int, count int) (resp responses.StorageGetKeys, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -69,7 +69,7 @@ func (s *Storage) GetKeys(userId int, global bool, offset int, count int) (resp 
 //   * value - NO DESCRIPTION IN JSON SCHEMA
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * global - NO DESCRIPTION IN JSON SCHEMA
-func (s *Storage) Set(key string, value string, userId int, global bool) (resp responses.Ok, err error) {
+func (s Storage) Set(key string, value string, userId int, global bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["key"] = key

@@ -43,7 +43,7 @@ type Search struct {
 //   * filters - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * searchGlobal - NO DESCRIPTION IN JSON SCHEMA
-func (s *Search) GetHints(q string, offset int, limit int, filters []string, fields []string, searchGlobal bool) (resp responses.SearchGetHints, err error) {
+func (s Search) GetHints(q string, offset int, limit int, filters []string, fields []string, searchGlobal bool) (resp responses.SearchGetHints, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {
