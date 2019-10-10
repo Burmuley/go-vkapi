@@ -26,16 +26,12 @@ package objects
 // `database` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// DatabaseSchool type represents `database_school` API object
-type DatabaseSchool struct {
-	Id    int    `json:"id"`    // School ID
-	Title string `json:"title"` // School title
-}
-
-// DatabaseRegion type represents `database_region` API object
-type DatabaseRegion struct {
-	Id    int    `json:"id"`    // Region ID
-	Title string `json:"title"` // Region title
+// DatabaseCity type represents `database_city` API object
+type DatabaseCity struct {
+	BaseObject BaseObject  `json:"BaseObject"`
+	Area       string      `json:"area"`      // Area title
+	Important  BaseBoolInt `json:"important"` // Information whether the city is included in important cities list
+	Region     string      `json:"region"`    // Region title
 }
 
 // DatabaseFaculty type represents `database_faculty` API object
@@ -44,12 +40,16 @@ type DatabaseFaculty struct {
 	Title string `json:"title"` // Faculty title
 }
 
-// DatabaseCity type represents `database_city` API object
-type DatabaseCity struct {
-	BaseObject BaseObject  `json:"BaseObject"`
-	Area       string      `json:"area"`      // Area title
-	Important  BaseBoolInt `json:"important"` // Information whether the city is included in important cities list
-	Region     string      `json:"region"`    // Region title
+// DatabaseRegion type represents `database_region` API object
+type DatabaseRegion struct {
+	Id    int    `json:"id"`    // Region ID
+	Title string `json:"title"` // Region title
+}
+
+// DatabaseSchool type represents `database_school` API object
+type DatabaseSchool struct {
+	Id    int    `json:"id"`    // School ID
+	Title string `json:"title"` // School title
 }
 
 // DatabaseStation type represents `database_station` API object

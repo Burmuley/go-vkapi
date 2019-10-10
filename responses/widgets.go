@@ -28,14 +28,14 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `widgets` group of responses
 /////////////////////////////////////////////////////////////
 
-// WidgetsGetPages type represents `widgets_getPages_response` API response object
-type WidgetsGetPages struct {
-	Count int                         `json:"count"` // Total number
-	Pages []objects.WidgetsWidgetPage `json:"pages"`
-}
-
 // WidgetsGetComments type represents `widgets_getComments_response` API response object
 type WidgetsGetComments struct {
 	Count int                            `json:"count"` // Total number
 	Posts []objects.WidgetsWidgetComment `json:"posts"`
+}
+
+// WidgetsGetPages type represents `widgets_getPages_response` API response object
+type WidgetsGetPages struct {
+	Count int                         `json:"count"` // Total number
+	Pages []objects.WidgetsWidgetPage `json:"pages"`
 }

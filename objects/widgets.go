@@ -26,9 +26,22 @@ package objects
 // `widgets` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// WidgetsWidgetLikes type represents `widgets_widget_likes` API object
-type WidgetsWidgetLikes struct {
-	Count int `json:"count"` // Likes number
+// WidgetsCommentMedia type represents `widgets_comment_media` API object
+type WidgetsCommentMedia struct {
+	ItemId   int                     `json:"item_id"`   // Media item ID
+	OwnerId  int                     `json:"owner_id"`  // Media owner's ID
+	ThumbSrc string                  `json:"thumb_src"` // URL of the preview image (type=photo only)
+	Type     WidgetsCommentMediaType `json:"type"`
+}
+
+// WidgetsCommentMediaType type represents `widgets_comment_media_type` API object
+type WidgetsCommentMediaType string // Media type
+
+// WidgetsCommentReplies type represents `widgets_comment_replies` API object
+type WidgetsCommentReplies struct {
+	CanPost BaseBoolInt                 `json:"can_post"` // Information whether current user can comment the post
+	Count   int                         `json:"count"`    // Comments number
+	Replies []WidgetsCommentRepliesItem `json:"replies"`
 }
 
 // WidgetsCommentRepliesItem type represents `widgets_comment_replies_item` API object
@@ -39,37 +52,6 @@ type WidgetsCommentRepliesItem struct {
 	Text  string             `json:"text"` // Comment text
 	Uid   int                `json:"uid"`  // User ID
 	User  UsersUserFull      `json:"user"`
-}
-
-// WidgetsCommentMediaType type represents `widgets_comment_media_type` API object
-type WidgetsCommentMediaType string // Media type
-
-// WidgetsCommentMedia type represents `widgets_comment_media` API object
-type WidgetsCommentMedia struct {
-	ItemId   int                     `json:"item_id"`   // Media item ID
-	OwnerId  int                     `json:"owner_id"`  // Media owner's ID
-	ThumbSrc string                  `json:"thumb_src"` // URL of the preview image (type=photo only)
-	Type     WidgetsCommentMediaType `json:"type"`
-}
-
-// WidgetsCommentReplies type represents `widgets_comment_replies` API object
-type WidgetsCommentReplies struct {
-	CanPost BaseBoolInt                 `json:"can_post"` // Information whether current user can comment the post
-	Count   int                         `json:"count"`    // Comments number
-	Replies []WidgetsCommentRepliesItem `json:"replies"`
-}
-
-// WidgetsWidgetPage type represents `widgets_widget_page` API object
-type WidgetsWidgetPage struct {
-	Comments    BaseObjectCount `json:"comments"`
-	Date        int             `json:"date"`        // Date when widgets on the page has been initialized firstly in Unixtime
-	Description string          `json:"description"` // Page description
-	Id          int             `json:"id"`          // Page ID
-	Likes       BaseObjectCount `json:"likes"`
-	PageId      string          `json:"page_id"` // page_id parameter value
-	Photo       string          `json:"photo"`   // URL of the preview image
-	Title       string          `json:"title"`   // Page title
-	Url         string          `json:"url"`     // Page absolute URL
 }
 
 // WidgetsWidgetComment type represents `widgets_widget_comment` API object
@@ -88,4 +70,22 @@ type WidgetsWidgetComment struct {
 	Text        string                  `json:"text"`  // Comment text
 	ToId        int                     `json:"to_id"` // Wall owner
 	User        UsersUserFull           `json:"user"`
+}
+
+// WidgetsWidgetLikes type represents `widgets_widget_likes` API object
+type WidgetsWidgetLikes struct {
+	Count int `json:"count"` // Likes number
+}
+
+// WidgetsWidgetPage type represents `widgets_widget_page` API object
+type WidgetsWidgetPage struct {
+	Comments    BaseObjectCount `json:"comments"`
+	Date        int             `json:"date"`        // Date when widgets on the page has been initialized firstly in Unixtime
+	Description string          `json:"description"` // Page description
+	Id          int             `json:"id"`          // Page ID
+	Likes       BaseObjectCount `json:"likes"`
+	PageId      string          `json:"page_id"` // page_id parameter value
+	Photo       string          `json:"photo"`   // URL of the preview image
+	Title       string          `json:"title"`   // Page title
+	Url         string          `json:"url"`     // Page absolute URL
 }

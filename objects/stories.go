@@ -26,30 +26,18 @@ package objects
 // `stories` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// StoriesReplies type represents `stories_replies` API object
-type StoriesReplies struct {
-	Count int `json:"count"` // Replies number.
-	New   int `json:"new"`   // New replies number.
-}
-
-// StoriesUploadLinkText type represents `stories_upload_link_text` API object
-type StoriesUploadLinkText string
-
-// StoriesStoryLink type represents `stories_story_link` API object
-type StoriesStoryLink struct {
-	Text string `json:"text"` // Link text
-	Url  string `json:"url"`  // Link URL
-}
-
-// StoriesStoryType type represents `stories_story_type` API object
-type StoriesStoryType string // Story type.
-
 // StoriesPromoBlock type represents `stories_promo_block` API object
 type StoriesPromoBlock struct {
 	Name        string `json:"name"`         // Promo story title
 	NotAnimated bool   `json:"not_animated"` // Hide animation for promo story
 	Photo100    string `json:"photo_100"`    // RL of square photo of the story with 100 pixels in width
 	Photo50     string `json:"photo_50"`     // RL of square photo of the story with 50 pixels in width
+}
+
+// StoriesReplies type represents `stories_replies` API object
+type StoriesReplies struct {
+	Count int `json:"count"` // Replies number.
+	New   int `json:"new"`   // New replies number.
 }
 
 // StoriesStory type represents `stories_story` API object
@@ -83,19 +71,10 @@ type StoriesStory struct {
 	Views                int               `json:"views"` // Views number.
 }
 
-// StoriesStoryStatsState type represents `stories_story_stats_state` API object
-type StoriesStoryStatsState string // Statistic state
-
-// StoriesStoryVideo type represents `stories_story_video` API object
-type StoriesStoryVideo struct {
-	VideoVideo VideoVideo  `json:"VideoVideo"`
-	IsPrivate  BaseBoolInt `json:"is_private"` // Information whether story is private (0 - no, 1 - yes).
-}
-
-// StoriesStoryStatsStat type represents `stories_story_stats_stat` API object
-type StoriesStoryStatsStat struct {
-	Count int                    `json:"count"` // Stat value
-	State StoriesStoryStatsState `json:"state"`
+// StoriesStoryLink type represents `stories_story_link` API object
+type StoriesStoryLink struct {
+	Text string `json:"text"` // Link text
+	Url  string `json:"url"`  // Link URL
 }
 
 // StoriesStoryStats type represents `stories_story_stats` API object
@@ -108,3 +87,24 @@ type StoriesStoryStats struct {
 	Subscribers StoriesStoryStatsStat `json:"subscribers"`
 	Views       StoriesStoryStatsStat `json:"views"`
 }
+
+// StoriesStoryStatsStat type represents `stories_story_stats_stat` API object
+type StoriesStoryStatsStat struct {
+	Count int                    `json:"count"` // Stat value
+	State StoriesStoryStatsState `json:"state"`
+}
+
+// StoriesStoryStatsState type represents `stories_story_stats_state` API object
+type StoriesStoryStatsState string // Statistic state
+
+// StoriesStoryType type represents `stories_story_type` API object
+type StoriesStoryType string // Story type.
+
+// StoriesStoryVideo type represents `stories_story_video` API object
+type StoriesStoryVideo struct {
+	VideoVideo VideoVideo  `json:"VideoVideo"`
+	IsPrivate  BaseBoolInt `json:"is_private"` // Information whether story is private (0 - no, 1 - yes).
+}
+
+// StoriesUploadLinkText type represents `stories_upload_link_text` API object
+type StoriesUploadLinkText string

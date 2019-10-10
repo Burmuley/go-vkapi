@@ -28,9 +28,6 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `notifications` group of responses
 /////////////////////////////////////////////////////////////
 
-// NotificationsSendMessage type represents `notifications_sendMessage_response` API response object
-type NotificationsSendMessage objects.NotificationsSendMessageItem
-
 // NotificationsGet type represents `notifications_get_response` API response object
 type NotificationsGet struct {
 	Apps       []objects.AppsApp     `json:"apps"`
@@ -47,3 +44,6 @@ type NotificationsGet struct {
 
 // NotificationsMarkAsViewed type represents `notifications_markAsViewed_response` API response object
 type NotificationsMarkAsViewed objects.BaseBoolInt // Result
+
+// NotificationsSendMessage type represents `notifications_sendMessage_response` API response object
+type NotificationsSendMessage objects.NotificationsSendMessageItem

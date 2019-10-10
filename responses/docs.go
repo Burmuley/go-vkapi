@@ -28,6 +28,20 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `docs` group of responses
 /////////////////////////////////////////////////////////////
 
+// DocsAdd type represents `docs_add_response` API response object
+type DocsAdd struct {
+	Id int `json:"id"` // Doc ID
+}
+
+// DocsGetById type represents `docs_getById_response` API response object
+type DocsGetById objects.DocsDoc
+
+// DocsGetTypes type represents `docs_getTypes_response` API response object
+type DocsGetTypes struct {
+	Count int                    `json:"count"` // Total number
+	Items []objects.DocsDocTypes `json:"items"`
+}
+
 // DocsGetUploadServer type represents `docs_getUploadServer` API response object
 type DocsGetUploadServer objects.BaseUploadServer
 
@@ -37,11 +51,6 @@ type DocsGet struct {
 	Items []objects.DocsDoc `json:"items"`
 }
 
-// DocsAdd type represents `docs_add_response` API response object
-type DocsAdd struct {
-	Id int `json:"id"` // Doc ID
-}
-
 // DocsSave type represents `docs_save_response` API response object
 type DocsSave struct {
 	AudioMessage objects.MessagesAudioMessage  `json:"audio_message"`
@@ -49,15 +58,6 @@ type DocsSave struct {
 	Graffiti     objects.MessagesGraffiti      `json:"graffiti"`
 	Type         objects.DocsDocAttachmentType `json:"type"`
 }
-
-// DocsGetTypes type represents `docs_getTypes_response` API response object
-type DocsGetTypes struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.DocsDocTypes `json:"items"`
-}
-
-// DocsGetById type represents `docs_getById_response` API response object
-type DocsGetById objects.DocsDoc
 
 // DocsSearch type represents `docs_search_response` API response object
 type DocsSearch struct {

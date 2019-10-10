@@ -26,27 +26,6 @@ package objects
 // `docs` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// DocsDocUpload type represents `docs_doc_upload_response` API object
-type DocsDocUpload struct {
-	File string `json:"file"` // Uploaded file data
-}
-
-// DocsDocAttachmentType type represents `docs_doc_attachment_type` API object
-type DocsDocAttachmentType string // Doc attachment type
-
-// DocsDocPreviewPhoto type represents `docs_doc_preview_photo` API object
-type DocsDocPreviewPhoto struct {
-	Sizes []PhotosPhotoSizes `json:"sizes"`
-}
-
-// DocsDocPreviewVideo type represents `docs_doc_preview_video` API object
-type DocsDocPreviewVideo struct {
-	Filesize int    `json:"filesize"` // Video file size in bites
-	Height   int    `json:"height"`   // Video's height in pixels
-	Src      string `json:"src"`      // Video URL
-	Width    int    `json:"width"`    // Video's width in pixels
-}
-
 // DocsDoc type represents `docs_doc` API object
 type DocsDoc struct {
 	AccessKey  string         `json:"access_key"` // Access key for the document
@@ -62,6 +41,28 @@ type DocsDoc struct {
 	Url        string         `json:"url"`   // File URL
 }
 
+// DocsDocAttachmentType type represents `docs_doc_attachment_type` API object
+type DocsDocAttachmentType string // Doc attachment type
+
+// DocsDocPreview type represents `docs_doc_preview` API object
+type DocsDocPreview struct {
+	Photo DocsDocPreviewPhoto `json:"photo"`
+	Video DocsDocPreviewVideo `json:"video"`
+}
+
+// DocsDocPreviewPhoto type represents `docs_doc_preview_photo` API object
+type DocsDocPreviewPhoto struct {
+	Sizes []PhotosPhotoSizes `json:"sizes"`
+}
+
+// DocsDocPreviewVideo type represents `docs_doc_preview_video` API object
+type DocsDocPreviewVideo struct {
+	Filesize int    `json:"filesize"` // Video file size in bites
+	Height   int    `json:"height"`   // Video's height in pixels
+	Src      string `json:"src"`      // Video URL
+	Width    int    `json:"width"`    // Video's width in pixels
+}
+
 // DocsDocTypes type represents `docs_doc_types` API object
 type DocsDocTypes struct {
 	Count int    `json:"count"` // Number of docs
@@ -69,8 +70,7 @@ type DocsDocTypes struct {
 	Title string `json:"title"` // Doc type title
 }
 
-// DocsDocPreview type represents `docs_doc_preview` API object
-type DocsDocPreview struct {
-	Photo DocsDocPreviewPhoto `json:"photo"`
-	Video DocsDocPreviewVideo `json:"video"`
+// DocsDocUpload type represents `docs_doc_upload_response` API object
+type DocsDocUpload struct {
+	File string `json:"file"` // Uploaded file data
 }

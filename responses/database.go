@@ -28,31 +28,43 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `database` group of responses
 /////////////////////////////////////////////////////////////
 
+// DatabaseGetChairs type represents `database_getChairs_response` API response object
+type DatabaseGetChairs struct {
+	Count int                  `json:"count"` // Total number
+	Items []objects.BaseObject `json:"items"`
+}
+
+// DatabaseGetCitiesById type represents `database_getCitiesById_response` API response object
+type DatabaseGetCitiesById objects.BaseObject
+
+// DatabaseGetCities type represents `database_getCities_response` API response object
+type DatabaseGetCities struct {
+	Count int                    `json:"count"` // Total number
+	Items []objects.DatabaseCity `json:"items"`
+}
+
+// DatabaseGetCountriesById type represents `database_getCountriesById_response` API response object
+type DatabaseGetCountriesById objects.BaseCountry
+
+// DatabaseGetCountries type represents `database_getCountries_response` API response object
+type DatabaseGetCountries struct {
+	Count int                   `json:"count"` // Total number
+	Items []objects.BaseCountry `json:"items"`
+}
+
 // DatabaseGetFaculties type represents `database_getFaculties_response` API response object
 type DatabaseGetFaculties struct {
 	Count int                       `json:"count"` // Total number
 	Items []objects.DatabaseFaculty `json:"items"`
 }
 
+// DatabaseGetMetroStationsById type represents `database_getMetroStationsById_response` API response object
+type DatabaseGetMetroStationsById objects.DatabaseStation
+
 // DatabaseGetMetroStations type represents `database_getMetroStations_response` API response object
 type DatabaseGetMetroStations struct {
 	Count int                       `json:"count"` // Total number
 	Items []objects.DatabaseStation `json:"items"`
-}
-
-// DatabaseGetCountriesById type represents `database_getCountriesById_response` API response object
-type DatabaseGetCountriesById objects.BaseCountry
-
-// DatabaseGetSchools type represents `database_getSchools_response` API response object
-type DatabaseGetSchools struct {
-	Count int                      `json:"count"` // Total number
-	Items []objects.DatabaseSchool `json:"items"`
-}
-
-// DatabaseGetChairs type represents `database_getChairs_response` API response object
-type DatabaseGetChairs struct {
-	Count int                  `json:"count"` // Total number
-	Items []objects.BaseObject `json:"items"`
 }
 
 // DatabaseGetRegions type represents `database_getRegions_response` API response object
@@ -61,10 +73,13 @@ type DatabaseGetRegions struct {
 	Items []objects.DatabaseRegion `json:"items"`
 }
 
-// DatabaseGetCities type represents `database_getCities_response` API response object
-type DatabaseGetCities struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.DatabaseCity `json:"items"`
+// DatabaseGetSchoolClasses type represents `database_getSchoolClasses_response` API response object
+type DatabaseGetSchoolClasses multiple
+
+// DatabaseGetSchools type represents `database_getSchools_response` API response object
+type DatabaseGetSchools struct {
+	Count int                      `json:"count"` // Total number
+	Items []objects.DatabaseSchool `json:"items"`
 }
 
 // DatabaseGetUniversities type represents `database_getUniversities_response` API response object
@@ -72,18 +87,3 @@ type DatabaseGetUniversities struct {
 	Count int                          `json:"count"` // Total number
 	Items []objects.DatabaseUniversity `json:"items"`
 }
-
-// DatabaseGetCitiesById type represents `database_getCitiesById_response` API response object
-type DatabaseGetCitiesById objects.BaseObject
-
-// DatabaseGetMetroStationsById type represents `database_getMetroStationsById_response` API response object
-type DatabaseGetMetroStationsById objects.DatabaseStation
-
-// DatabaseGetCountries type represents `database_getCountries_response` API response object
-type DatabaseGetCountries struct {
-	Count int                   `json:"count"` // Total number
-	Items []objects.BaseCountry `json:"items"`
-}
-
-// DatabaseGetSchoolClasses type represents `database_getSchoolClasses_response` API response object
-type DatabaseGetSchoolClasses multiple

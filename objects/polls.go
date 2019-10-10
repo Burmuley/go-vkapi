@@ -26,6 +26,14 @@ package objects
 // `polls` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// PollsAnswer type represents `polls_answer` API object
+type PollsAnswer struct {
+	Id    int     `json:"id"`    // Answer ID
+	Rate  float64 `json:"rate"`  // Answer rate in percents
+	Text  string  `json:"text"`  // Answer text
+	Votes int     `json:"votes"` // Votes number
+}
+
 // PollsPoll type represents `polls_poll` API object
 type PollsPoll struct {
 	Anonymous bool          `json:"anonymous"` // Information whether the field is anonymous
@@ -38,22 +46,14 @@ type PollsPoll struct {
 	Votes     string        `json:"votes"`    // Votes number
 }
 
-// PollsVotersUsers type represents `polls_voters_users` API object
-type PollsVotersUsers struct {
-	Count int   `json:"count"` // Votes number
-	Items []int `json:"items"`
-}
-
 // PollsVoters type represents `polls_voters` API object
 type PollsVoters struct {
 	AnswerId int              `json:"answer_id"` // Answer ID
 	Users    PollsVotersUsers `json:"users"`
 }
 
-// PollsAnswer type represents `polls_answer` API object
-type PollsAnswer struct {
-	Id    int     `json:"id"`    // Answer ID
-	Rate  float64 `json:"rate"`  // Answer rate in percents
-	Text  string  `json:"text"`  // Answer text
-	Votes int     `json:"votes"` // Votes number
+// PollsVotersUsers type represents `polls_voters_users` API object
+type PollsVotersUsers struct {
+	Count int   `json:"count"` // Votes number
+	Items []int `json:"items"`
 }

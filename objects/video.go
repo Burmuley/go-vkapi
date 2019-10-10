@@ -36,22 +36,6 @@ type VideoSaveResult struct {
 	VideoId     int    `json:"video_id"`    // Video ID
 }
 
-// VideoVideoImage type represents `video_video_image` API object
-type VideoVideoImage struct {
-	BaseImage   BaseImage   `json:"BaseImage"`
-	WithPadding BaseBoolInt `json:"with_padding"`
-}
-
-// VideoVideoFiles type represents `video_video_files` API object
-type VideoVideoFiles struct {
-	External string `json:"external"` // URL of the external player
-	Mp41080  string `json:"mp4_1080"` // URL of the mpeg4 file with 1080p quality
-	Mp4240   string `json:"mp4_240"`  // URL of the mpeg4 file with 240p quality
-	Mp4360   string `json:"mp4_360"`  // URL of the mpeg4 file with 360p quality
-	Mp4480   string `json:"mp4_480"`  // URL of the mpeg4 file with 480p quality
-	Mp4720   string `json:"mp4_720"`  // URL of the mpeg4 file with 720p quality
-}
-
 // VideoVideo type represents `video_video` API object
 type VideoVideo struct {
 	AccessKey   string             `json:"access_key"`  // Video access key
@@ -92,6 +76,16 @@ type VideoVideoAlbumFull struct {
 	UpdatedTime int               `json:"updated_time"` // Date when the album has been updated last time in Unixtime
 }
 
+// VideoVideoFiles type represents `video_video_files` API object
+type VideoVideoFiles struct {
+	External string `json:"external"` // URL of the external player
+	Mp41080  string `json:"mp4_1080"` // URL of the mpeg4 file with 1080p quality
+	Mp4240   string `json:"mp4_240"`  // URL of the mpeg4 file with 240p quality
+	Mp4360   string `json:"mp4_360"`  // URL of the mpeg4 file with 360p quality
+	Mp4480   string `json:"mp4_480"`  // URL of the mpeg4 file with 480p quality
+	Mp4720   string `json:"mp4_720"`  // URL of the mpeg4 file with 720p quality
+}
+
 // VideoVideoFull type represents `video_video_full` API object
 type VideoVideoFull struct {
 	AccessKey      string             `json:"access_key"`       // Video access key
@@ -119,4 +113,10 @@ type VideoVideoFull struct {
 	Repeat         BaseBoolInt        `json:"repeat"`     // Information whether the video is repeated
 	Title          string             `json:"title"`      // Video title
 	Views          int                `json:"views"`      // Number of views
+}
+
+// VideoVideoImage type represents `video_video_image` API object
+type VideoVideoImage struct {
+	BaseImage   BaseImage   `json:"BaseImage"`
+	WithPadding BaseBoolInt `json:"with_padding"`
 }

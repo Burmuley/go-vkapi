@@ -26,51 +26,14 @@ package objects
 // `base` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// BaseUploadServer type represents `base_upload_server` API object
-type BaseUploadServer struct {
-	UploadUrl string `json:"upload_url"` // Upload URL
+// BaseBoolInt type represents `base_bool_int` API object
+type BaseBoolInt int
+
+// BaseCity type represents `base_city` API object
+type BaseCity struct {
+	Id    int    `json:"id"`    // City ID
+	Title string `json:"title"` // City title
 }
-
-// BaseOk type represents `base_ok_response` API object
-type BaseOk int // Returns 1 if request has been processed successfully
-
-// BaseLikesInfo type represents `base_likes_info` API object
-type BaseLikesInfo struct {
-	CanLike    BaseBoolInt `json:"can_like"`    // Information whether current user can like the post
-	CanPublish BaseBoolInt `json:"can_publish"` // Information whether current user can repost
-	Count      int         `json:"count"`       // Likes number
-	UserLikes  int         `json:"user_likes"`  // Information whether current uer has liked the post
-}
-
-// BaseLikes type represents `base_likes` API object
-type BaseLikes struct {
-	Count     int         `json:"count"`      // Likes number
-	UserLikes BaseBoolInt `json:"user_likes"` // Information whether current user likes the photo
-}
-
-// BaseLinkButton type represents `base_link_button` API object
-type BaseLinkButton struct {
-	Action BaseLinkButtonAction `json:"action"` // Button action
-	Title  string               `json:"title"`  // Button title
-}
-
-// BaseRepostsInfo type represents `base_reposts_info` API object
-type BaseRepostsInfo struct {
-	Count        int `json:"count"`         // Reposts number
-	UserReposted int `json:"user_reposted"` // Information whether current user has reposted the post
-}
-
-// BaseSex type represents `base_sex` API object
-type BaseSex int
-
-// BaseLinkRating type represents `base_link_rating` API object
-type BaseLinkRating struct {
-	ReviewsCount int     `json:"reviews_count"` // Count of reviews
-	Stars        float64 `json:"stars"`         // Count of stars
-}
-
-// BaseUserGroupFields type represents `base_user_group_fields` API object
-type BaseUserGroupFields string
 
 // BaseCommentsInfo type represents `base_comments_info` API object
 type BaseCommentsInfo struct {
@@ -79,47 +42,10 @@ type BaseCommentsInfo struct {
 	GroupsCanPost bool        `json:"groups_can_post"` // Information whether groups can comment the post
 }
 
-// BasePropertyExists type represents `base_property_exists` API object
-type BasePropertyExists int
-
-// BaseObject type represents `base_object` API object
-type BaseObject struct {
-	Id    int    `json:"id"`    // Object ID
-	Title string `json:"title"` // Object title
-}
-
-// BasePlace type represents `base_place` API object
-type BasePlace struct {
-	Address   string  `json:"address"`   // Place address
-	Checkins  int     `json:"checkins"`  // Checkins number
-	City      string  `json:"city"`      // City name
-	Country   string  `json:"country"`   // Country name
-	Created   int     `json:"created"`   // Date of the place creation in Unixtime
-	Icon      string  `json:"icon"`      // URL of the place's icon
-	Id        int     `json:"id"`        // Place ID
-	Latitude  float64 `json:"latitude"`  // Place latitude
-	Longitude float64 `json:"longitude"` // Place longitude
-	Title     string  `json:"title"`     // Place title
-	Type      string  `json:"type"`      // Place type
-}
-
 // BaseCountry type represents `base_country` API object
 type BaseCountry struct {
 	Id    int    `json:"id"`    // Country ID
 	Title string `json:"title"` // Country title
-}
-
-// BaseObjectCount type represents `base_object_count` API object
-type BaseObjectCount struct {
-	Count int `json:"count"` // Items count
-}
-
-// BaseSticker type represents `base_sticker` API object
-type BaseSticker struct {
-	Images               []BaseImage `json:"images"`
-	ImagesWithBackground []BaseImage `json:"images_with_background"`
-	ProductId            int         `json:"product_id"` // Collection ID
-	StickerId            int         `json:"sticker_id"` // Sticker ID
 }
 
 // BaseError type represents `base_error` API object
@@ -129,14 +55,6 @@ type BaseError struct {
 	RequestParams []BaseRequestParam `json:"request_params"`
 }
 
-// BaseUserId type represents `base_user_id` API object
-type BaseUserId struct {
-	UserId int `json:"user_id"` // User ID
-}
-
-// BaseLinkButtonActionType type represents `base_link_button_action_type` API object
-type BaseLinkButtonActionType string // Action type
-
 // BaseGeo type represents `base_geo` API object
 type BaseGeo struct {
 	Coordinates BaseGeoCoordinates `json:"coordinates"`
@@ -145,57 +63,32 @@ type BaseGeo struct {
 	Type        string             `json:"type"`    // Place type
 }
 
-// BaseObjectWithName type represents `base_object_with_name` API object
-type BaseObjectWithName struct {
-	Id   int    `json:"id"`   // Object ID
-	Name string `json:"name"` // Object name
-}
-
-// BaseMessageError type represents `base_message_error` API object
-type BaseMessageError struct {
-	Code        int    `json:"code"`        // Error code
-	Description string `json:"description"` // Error message
-}
-
-// BaseCity type represents `base_city` API object
-type BaseCity struct {
-	Id    int    `json:"id"`    // City ID
-	Title string `json:"title"` // City title
-}
-
-// BaseLinkProduct type represents `base_link_product` API object
-type BaseLinkProduct struct {
-	Merchant    string      `json:"merchant"`
-	OrdersCount int         `json:"orders_count"`
-	Price       MarketPrice `json:"price"`
-}
-
-// BaseLinkButtonAction type represents `base_link_button_action` API object
-type BaseLinkButtonAction struct {
-	Type BaseLinkButtonActionType `json:"type"`
-	Url  string                   `json:"url"` // Action URL
-}
-
 // BaseGeoCoordinates type represents `base_geo_coordinates` API object
 type BaseGeoCoordinates struct {
 	Latitude  float64 `json:"latitude"`
 	Longitude float64 `json:"longitude"`
 }
 
-// BaseLinkApplicationStore type represents `base_link_application_store` API object
-type BaseLinkApplicationStore struct {
-	Id   float64 `json:"id"`   // Store Id
-	Name string  `json:"name"` // Store name
+// BaseImage type represents `base_image` API object
+type BaseImage struct {
+	Height int    `json:"height"` // Image height
+	Url    string `json:"url"`    // Image url
+	Width  int    `json:"width"`  // Image width
 }
 
-// BaseRequestParam type represents `base_request_param` API object
-type BaseRequestParam struct {
-	Key   string `json:"key"`   // Parameter name
-	Value string `json:"value"` // Parameter value
+// BaseLikes type represents `base_likes` API object
+type BaseLikes struct {
+	Count     int         `json:"count"`      // Likes number
+	UserLikes BaseBoolInt `json:"user_likes"` // Information whether current user likes the photo
 }
 
-// BaseBoolInt type represents `base_bool_int` API object
-type BaseBoolInt int
+// BaseLikesInfo type represents `base_likes_info` API object
+type BaseLikesInfo struct {
+	CanLike    BaseBoolInt `json:"can_like"`    // Information whether current user can like the post
+	CanPublish BaseBoolInt `json:"can_publish"` // Information whether current user can repost
+	Count      int         `json:"count"`       // Likes number
+	UserLikes  int         `json:"user_likes"`  // Information whether current uer has liked the post
+}
 
 // BaseLink type represents `base_link` API object
 type BaseLink struct {
@@ -220,9 +113,116 @@ type BaseLinkApplication struct {
 	Store BaseLinkApplicationStore `json:"store"`
 }
 
-// BaseImage type represents `base_image` API object
-type BaseImage struct {
-	Height int    `json:"height"` // Image height
-	Url    string `json:"url"`    // Image url
-	Width  int    `json:"width"`  // Image width
+// BaseLinkApplicationStore type represents `base_link_application_store` API object
+type BaseLinkApplicationStore struct {
+	Id   float64 `json:"id"`   // Store Id
+	Name string  `json:"name"` // Store name
+}
+
+// BaseLinkButton type represents `base_link_button` API object
+type BaseLinkButton struct {
+	Action BaseLinkButtonAction `json:"action"` // Button action
+	Title  string               `json:"title"`  // Button title
+}
+
+// BaseLinkButtonAction type represents `base_link_button_action` API object
+type BaseLinkButtonAction struct {
+	Type BaseLinkButtonActionType `json:"type"`
+	Url  string                   `json:"url"` // Action URL
+}
+
+// BaseLinkButtonActionType type represents `base_link_button_action_type` API object
+type BaseLinkButtonActionType string // Action type
+
+// BaseLinkProduct type represents `base_link_product` API object
+type BaseLinkProduct struct {
+	Merchant    string      `json:"merchant"`
+	OrdersCount int         `json:"orders_count"`
+	Price       MarketPrice `json:"price"`
+}
+
+// BaseLinkRating type represents `base_link_rating` API object
+type BaseLinkRating struct {
+	ReviewsCount int     `json:"reviews_count"` // Count of reviews
+	Stars        float64 `json:"stars"`         // Count of stars
+}
+
+// BaseMessageError type represents `base_message_error` API object
+type BaseMessageError struct {
+	Code        int    `json:"code"`        // Error code
+	Description string `json:"description"` // Error message
+}
+
+// BaseObject type represents `base_object` API object
+type BaseObject struct {
+	Id    int    `json:"id"`    // Object ID
+	Title string `json:"title"` // Object title
+}
+
+// BaseObjectCount type represents `base_object_count` API object
+type BaseObjectCount struct {
+	Count int `json:"count"` // Items count
+}
+
+// BaseObjectWithName type represents `base_object_with_name` API object
+type BaseObjectWithName struct {
+	Id   int    `json:"id"`   // Object ID
+	Name string `json:"name"` // Object name
+}
+
+// BaseOk type represents `base_ok_response` API object
+type BaseOk int // Returns 1 if request has been processed successfully
+
+// BasePlace type represents `base_place` API object
+type BasePlace struct {
+	Address   string  `json:"address"`   // Place address
+	Checkins  int     `json:"checkins"`  // Checkins number
+	City      string  `json:"city"`      // City name
+	Country   string  `json:"country"`   // Country name
+	Created   int     `json:"created"`   // Date of the place creation in Unixtime
+	Icon      string  `json:"icon"`      // URL of the place's icon
+	Id        int     `json:"id"`        // Place ID
+	Latitude  float64 `json:"latitude"`  // Place latitude
+	Longitude float64 `json:"longitude"` // Place longitude
+	Title     string  `json:"title"`     // Place title
+	Type      string  `json:"type"`      // Place type
+}
+
+// BasePropertyExists type represents `base_property_exists` API object
+type BasePropertyExists int
+
+// BaseRepostsInfo type represents `base_reposts_info` API object
+type BaseRepostsInfo struct {
+	Count        int `json:"count"`         // Reposts number
+	UserReposted int `json:"user_reposted"` // Information whether current user has reposted the post
+}
+
+// BaseRequestParam type represents `base_request_param` API object
+type BaseRequestParam struct {
+	Key   string `json:"key"`   // Parameter name
+	Value string `json:"value"` // Parameter value
+}
+
+// BaseSex type represents `base_sex` API object
+type BaseSex int
+
+// BaseSticker type represents `base_sticker` API object
+type BaseSticker struct {
+	Images               []BaseImage `json:"images"`
+	ImagesWithBackground []BaseImage `json:"images_with_background"`
+	ProductId            int         `json:"product_id"` // Collection ID
+	StickerId            int         `json:"sticker_id"` // Sticker ID
+}
+
+// BaseUploadServer type represents `base_upload_server` API object
+type BaseUploadServer struct {
+	UploadUrl string `json:"upload_url"` // Upload URL
+}
+
+// BaseUserGroupFields type represents `base_user_group_fields` API object
+type BaseUserGroupFields string
+
+// BaseUserId type represents `base_user_id` API object
+type BaseUserId struct {
+	UserId int `json:"user_id"` // User ID
 }

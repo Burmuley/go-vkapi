@@ -37,12 +37,6 @@ type FaveGetPages struct {
 	Items []objects.FavePage `json:"items"`
 }
 
-// FaveGet type represents `fave_get_response` API response object
-type FaveGet struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.FaveBookmark `json:"items"`
-}
-
 // FaveGetTags type represents `fave_getTags_response` API response object
 type FaveGetTags struct {
 	Count int               `json:"count"`
@@ -55,4 +49,10 @@ type FaveGetExtended struct {
 	Groups   []objects.GroupsGroup   `json:"groups"`
 	Items    []objects.FaveBookmark  `json:"items"`
 	Profiles []objects.UsersUserFull `json:"profiles"`
+}
+
+// FaveGet type represents `fave_get_response` API response object
+type FaveGet struct {
+	Count int                    `json:"count"` // Total number
+	Items []objects.FaveBookmark `json:"items"`
 }

@@ -26,6 +26,24 @@ package objects
 // `friends` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// FriendsFriendStatus type represents `friends_friend_status` API object
+type FriendsFriendStatus struct {
+	FriendStatus   FriendsFriendStatusStatus `json:"friend_status"`
+	ReadState      BaseBoolInt               `json:"read_state"`      // Information whether request is unviewed
+	RequestMessage string                    `json:"request_message"` // Message sent with request
+	Sign           string                    `json:"sign"`            // MD5 hash for the result validation
+	UserId         int                       `json:"user_id"`         // User ID
+}
+
+// FriendsFriendStatusStatus type represents `friends_friend_status_status` API object
+type FriendsFriendStatusStatus int // Friend status with the user
+
+// FriendsFriendsList type represents `friends_friends_list` API object
+type FriendsFriendsList struct {
+	Id   int    `json:"id"`   // List ID
+	Name string `json:"name"` // List title
+}
+
 // FriendsMutualFriend type represents `friends_mutual_friend` API object
 type FriendsMutualFriend struct {
 	CommonCount   int   `json:"common_count"` // Total mutual friends number
@@ -40,10 +58,10 @@ type FriendsRequests struct {
 	UserId int                   `json:"user_id"` // User ID
 }
 
-// FriendsFriendsList type represents `friends_friends_list` API object
-type FriendsFriendsList struct {
-	Id   int    `json:"id"`   // List ID
-	Name string `json:"name"` // List title
+// FriendsRequestsMutual type represents `friends_requests_mutual` API object
+type FriendsRequestsMutual struct {
+	Count int   `json:"count"` // Total mutual friends number
+	Users []int `json:"users"`
 }
 
 // FriendsRequestsXtrMessage type represents `friends_requests_xtr_message` API object
@@ -54,32 +72,14 @@ type FriendsRequestsXtrMessage struct {
 	UserId  int                   `json:"user_id"` // User ID
 }
 
-// FriendsUserXtrPhone type represents `friends_user_xtr_phone` API object
-type FriendsUserXtrPhone struct {
-	UsersUserFull UsersUserFull `json:"UsersUserFull"`
-	Phone         string        `json:"phone"` // User phone
-}
-
-// FriendsRequestsMutual type represents `friends_requests_mutual` API object
-type FriendsRequestsMutual struct {
-	Count int   `json:"count"` // Total mutual friends number
-	Users []int `json:"users"`
-}
-
-// FriendsFriendStatusStatus type represents `friends_friend_status_status` API object
-type FriendsFriendStatusStatus int // Friend status with the user
-
 // FriendsUserXtrLists type represents `friends_user_xtr_lists` API object
 type FriendsUserXtrLists struct {
 	UsersUserFull UsersUserFull `json:"UsersUserFull"`
 	Lists         []int         `json:"lists"`
 }
 
-// FriendsFriendStatus type represents `friends_friend_status` API object
-type FriendsFriendStatus struct {
-	FriendStatus   FriendsFriendStatusStatus `json:"friend_status"`
-	ReadState      BaseBoolInt               `json:"read_state"`      // Information whether request is unviewed
-	RequestMessage string                    `json:"request_message"` // Message sent with request
-	Sign           string                    `json:"sign"`            // MD5 hash for the result validation
-	UserId         int                       `json:"user_id"`         // User ID
+// FriendsUserXtrPhone type represents `friends_user_xtr_phone` API object
+type FriendsUserXtrPhone struct {
+	UsersUserFull UsersUserFull `json:"UsersUserFull"`
+	Phone         string        `json:"phone"` // User phone
 }
