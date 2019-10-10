@@ -34,17 +34,17 @@ type SecureCheckToken objects.SecureTokenChecked
 // SecureGetAppBalance type represents `secure_getAppBalance_response` API response object
 type SecureGetAppBalance int // App balance
 
+// SecureGetSMSHistory type represents `secure_getSMSHistory_response` API response object
+type SecureGetSMSHistory objects.SecureSmsNotification
+
+// SecureGetTransactionsHistory type represents `secure_getTransactionsHistory_response` API response object
+type SecureGetTransactionsHistory objects.SecureTransaction
+
 // SecureGetUserLevel type represents `secure_getUserLevel_response` API response object
 type SecureGetUserLevel objects.SecureLevel
 
 // SecureGiveEventSticker type represents `secure_giveEventSticker_response` API response object
 type SecureGiveEventSticker object
 
-// SecureGetTransactionsHistory type represents `secure_getTransactionsHistory_response` API response object
-type SecureGetTransactionsHistory objects.SecureTransaction
-
 // SecureSendNotification type represents `secure_sendNotification_response` API response object
 type SecureSendNotification int
-
-// SecureGetSMSHistory type represents `secure_getSMSHistory_response` API response object
-type SecureGetSMSHistory objects.SecureSmsNotification

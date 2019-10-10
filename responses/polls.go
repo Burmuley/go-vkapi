@@ -31,6 +31,9 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // PollsAddVote type represents `polls_addVote_response` API response object
 type PollsAddVote objects.BaseBoolInt // Result
 
+// PollsCreate type represents `polls_create_response` API response object
+type PollsCreate objects.PollsPoll
+
 // PollsDeleteVote type represents `polls_deleteVote_response` API response object
 type PollsDeleteVote objects.BaseBoolInt // Result
 
@@ -39,6 +42,3 @@ type PollsGetById objects.PollsPoll
 
 // PollsGetVoters type represents `polls_getVoters_response` API response object
 type PollsGetVoters objects.PollsVoters
-
-// PollsCreate type represents `polls_create_response` API response object
-type PollsCreate objects.PollsPoll

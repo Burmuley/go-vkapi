@@ -26,10 +26,22 @@ package objects
 // `groups` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// GroupsOnlineStatus type represents `groups_online_status` API object
-type GroupsOnlineStatus struct {
-	Minutes int                    `json:"minutes"` // Estimated time of answer (for status = answer_mark)
-	Status  GroupsOnlineStatusType `json:"status"`
+// GroupsAddress type represents `groups_address` API object
+type GroupsAddress struct {
+	AdditionalAddress string                      `json:"additional_address"` // Additional address to the place (6 floor, left door)
+	Address           string                      `json:"address"`            // String address to the place (Nevsky, 28)
+	CityId            int                         `json:"city_id"`            // City id of address
+	CountryId         int                         `json:"country_id"`         // Country id of address
+	Distance          int                         `json:"distance"`           // Distance from the point
+	Id                int                         `json:"id"`                 // Address id
+	Latitude          float64                     `json:"latitude"`           // Address latitude
+	Longitude         float64                     `json:"longitude"`          // Address longitude
+	MetroStationId    int                         `json:"metro_station_id"`   // Metro id of address
+	Phone             string                      `json:"phone"`              // Address phone
+	TimeOffset        int                         `json:"time_offset"`        // Time offset int minutes from utc time
+	Timetable         GroupsAddressTimetable      `json:"timetable"`          // Week timetable for the address
+	Title             string                      `json:"title"`              // Title of the place (Zinger, etc)
+	WorkInfoStatus    GroupsAddressWorkInfoStatus `json:"work_info_status"`   // Status of information about timetable
 }
 
 // GroupsAddressTimetable type represents `groups_address_timetable` API object
@@ -43,33 +55,22 @@ type GroupsAddressTimetable struct {
 	Wed GroupsAddressTimetableDay `json:"wed"` // Timetable for wednesday
 }
 
-// GroupsGroupCategoryType type represents `groups_group_category_type` API object
-type GroupsGroupCategoryType struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
+// GroupsAddressTimetableDay type represents `groups_address_timetable_day` API object
+type GroupsAddressTimetableDay struct {
+	BreakCloseTime int `json:"break_close_time"` // Close time of the break in minutes
+	BreakOpenTime  int `json:"break_open_time"`  // Start time of the break in minutes
+	CloseTime      int `json:"close_time"`       // Close time in minutes
+	OpenTime       int `json:"open_time"`        // Open time in minutes
 }
 
-// GroupsGroupTopics type represents `groups_group_topics` API object
-type GroupsGroupTopics int
-
-// GroupsGroupPublicCategoryList type represents `groups_group_public_category_list` API object
-type GroupsGroupPublicCategoryList struct {
-	Id           int                       `json:"id"`
-	Name         string                    `json:"name"`
-	SubtypesList []GroupsGroupCategoryType `json:"subtypes_list"`
-}
+// GroupsAddressWorkInfoStatus type represents `groups_address_work_info_status` API object
+type GroupsAddressWorkInfoStatus string // Status of information about timetable
 
 // GroupsAddressesInfo type represents `groups_addresses_info` API object
 type GroupsAddressesInfo struct {
 	IsEnabled     bool `json:"is_enabled"`      // Information whether addresses is enabled
 	MainAddressId int  `json:"main_address_id"` // Main address id for group
 }
-
-// GroupsRoleOptions type represents `groups_role_options` API object
-type GroupsRoleOptions string // User's credentials as community admin
-
-// GroupsAddressWorkInfoStatus type represents `groups_address_work_info_status` API object
-type GroupsAddressWorkInfoStatus string // Status of information about timetable
 
 // GroupsBanInfo type represents `groups_ban_info` API object
 type GroupsBanInfo struct {
@@ -82,48 +83,36 @@ type GroupsBanInfo struct {
 	Reason         GroupsBanInfoReason `json:"reason"`
 }
 
-// GroupsGroupFullMainSection type represents `groups_group_full_main_section` API object
-type GroupsGroupFullMainSection int // Main section of community
+// GroupsBanInfoReason type represents `groups_ban_info_reason` API object
+type GroupsBanInfoReason int // Ban reason
 
-// GroupsOwnerXtrBanInfo type represents `groups_owner_xtr_ban_info` API object
-type GroupsOwnerXtrBanInfo struct {
-	BanInfo GroupsBanInfo             `json:"ban_info"`
-	Group   GroupsGroup               `json:"group"`   // Information about group if type = group
-	Profile UsersUser                 `json:"profile"` // Information about group if type = profile
-	Type    GroupsOwnerXtrBanInfoType `json:"type"`
+// GroupsBannedItem type represents `groups_banned_item` API object
+type GroupsBannedItem struct {
+	GroupsOwnerXtrBanInfo GroupsOwnerXtrBanInfo `json:"GroupsOwnerXtrBanInfo"`
 }
 
-// GroupsOnlineStatusType type represents `groups_online_status_type` API object
-type GroupsOnlineStatusType string // Type of online status of group
-
-// GroupsMemberRole type represents `groups_member_role` API object
-type GroupsMemberRole struct {
-	Id          int                          `json:"id"` // User ID
-	Permissions []GroupsMemberRolePermission `json:"permissions"`
-	Role        GroupsMemberRoleStatus       `json:"role"`
+// GroupsCallbackServer type represents `groups_callback_server` API object
+type GroupsCallbackServer struct {
+	CreatorId int    `json:"creator_id"`
+	Id        int    `json:"id"`
+	SecretKey string `json:"secret_key"`
+	Status    string `json:"status"`
+	Title     string `json:"title"`
+	Url       string `json:"url"`
 }
 
-// GroupsGroupFullAgeLimits type represents `groups_group_full_age_limits` API object
-type GroupsGroupFullAgeLimits int
-
-// GroupsGroupAgeLimits type represents `groups_group_age_limits` API object
-type GroupsGroupAgeLimits int
-
-// GroupsAddressTimetableDay type represents `groups_address_timetable_day` API object
-type GroupsAddressTimetableDay struct {
-	BreakCloseTime int `json:"break_close_time"` // Close time of the break in minutes
-	BreakOpenTime  int `json:"break_open_time"`  // Start time of the break in minutes
-	CloseTime      int `json:"close_time"`       // Close time in minutes
-	OpenTime       int `json:"open_time"`        // Open time in minutes
+// GroupsCallbackSettings type represents `groups_callback_settings` API object
+type GroupsCallbackSettings struct {
+	ApiVersion string               `json:"api_version"` // API version used for the events
+	Events     GroupsLongPollEvents `json:"events"`
 }
 
-// GroupsGroupRole type represents `groups_group_role` API object
-type GroupsGroupRole string
-
-// GroupsMemberStatus type represents `groups_member_status` API object
-type GroupsMemberStatus struct {
-	Member BaseBoolInt `json:"member"`  // Information whether user is a member of the group
-	UserId int         `json:"user_id"` // User ID
+// GroupsContactsItem type represents `groups_contacts_item` API object
+type GroupsContactsItem struct {
+	Desc   string `json:"desc"`    // Contact description
+	Email  string `json:"email"`   // Contact email
+	Phone  string `json:"phone"`   // Contact phone
+	UserId int    `json:"user_id"` // User ID
 }
 
 // GroupsCountersGroup type represents `groups_counters_group` API object
@@ -138,63 +127,17 @@ type GroupsCountersGroup struct {
 	Videos    int `json:"videos"`    // Videos number
 }
 
-// GroupsGroupAccess type represents `groups_group_access` API object
-type GroupsGroupAccess int
-
-// GroupsGroupMarketCurrency type represents `groups_group_market_currency` API object
-type GroupsGroupMarketCurrency int
-
-// GroupsMemberStatusFull type represents `groups_member_status_full` API object
-type GroupsMemberStatusFull struct {
-	CanInvite  BaseBoolInt `json:"can_invite"` // Information whether user can be invited
-	CanRecall  BaseBoolInt `json:"can_recall"` // Information whether user's invite to the group can be recalled
-	Invitation BaseBoolInt `json:"invitation"` // Information whether user has been invited to the group
-	Member     BaseBoolInt `json:"member"`     // Information whether user is a member of the group
-	Request    BaseBoolInt `json:"request"`    // Information whether user has send request to the group
-	UserId     int         `json:"user_id"`    // User ID
+// GroupsCover type represents `groups_cover` API object
+type GroupsCover struct {
+	Enabled BaseBoolInt `json:"enabled"` // Information whether cover is enabled
+	Images  []BaseImage `json:"images"`
 }
 
-// GroupsTokenPermissionSetting type represents `groups_token_permission_setting` API object
-type GroupsTokenPermissionSetting struct {
-	Name    string `json:"name"`
-	Setting int    `json:"setting"`
-}
+// GroupsFields type represents `groups_fields` API object
+type GroupsFields string
 
-// GroupsGroupBanInfo type represents `groups_group_ban_info` API object
-type GroupsGroupBanInfo struct {
-	Comment string `json:"comment"`  // Ban comment
-	EndDate int    `json:"end_date"` // End date of ban in Unixtime
-}
-
-// GroupsSubjectItem type represents `groups_subject_item` API object
-type GroupsSubjectItem struct {
-	Id   int    `json:"id"`   // Subject ID
-	Name string `json:"name"` // Subject title
-}
-
-// GroupsGroupAudio type represents `groups_group_audio` API object
-type GroupsGroupAudio int
-
-// GroupsGroupCategoryFull type represents `groups_group_category_full` API object
-type GroupsGroupCategoryFull struct {
-	Id            int                   `json:"id"`         // Category ID
-	Name          string                `json:"name"`       // Category name
-	PageCount     int                   `json:"page_count"` // Pages number
-	PagePreviews  []GroupsGroup         `json:"page_previews"`
-	Subcategories []GroupsGroupCategory `json:"subcategories"`
-}
-
-// GroupsGroupFullMemberStatus type represents `groups_group_full_member_status` API object
-type GroupsGroupFullMemberStatus int
-
-// GroupsGroupWiki type represents `groups_group_wiki` API object
-type GroupsGroupWiki int
-
-// GroupsCallbackSettings type represents `groups_callback_settings` API object
-type GroupsCallbackSettings struct {
-	ApiVersion string               `json:"api_version"` // API version used for the events
-	Events     GroupsLongPollEvents `json:"events"`
-}
+// GroupsFilter type represents `groups_filter` API object
+type GroupsFilter string
 
 // GroupsGroup type represents `groups_group` API object
 type GroupsGroup struct {
@@ -215,60 +158,48 @@ type GroupsGroup struct {
 	Type         GroupsGroupType       `json:"type"`
 }
 
-// GroupsGroupType type represents `groups_group_type` API object
-type GroupsGroupType string // Community type
+// GroupsGroupAccess type represents `groups_group_access` API object
+type GroupsGroupAccess int
 
-// GroupsGroupXtrInvitedByType type represents `groups_group_xtr_invited_by_type` API object
-type GroupsGroupXtrInvitedByType string // Community type
+// GroupsGroupAdminLevel type represents `groups_group_admin_level` API object
+type GroupsGroupAdminLevel int // Level of current user's credentials as manager
 
-// GroupsAddress type represents `groups_address` API object
-type GroupsAddress struct {
-	AdditionalAddress string                      `json:"additional_address"` // Additional address to the place (6 floor, left door)
-	Address           string                      `json:"address"`            // String address to the place (Nevsky, 28)
-	CityId            int                         `json:"city_id"`            // City id of address
-	CountryId         int                         `json:"country_id"`         // Country id of address
-	Distance          int                         `json:"distance"`           // Distance from the point
-	Id                int                         `json:"id"`                 // Address id
-	Latitude          float64                     `json:"latitude"`           // Address latitude
-	Longitude         float64                     `json:"longitude"`          // Address longitude
-	MetroStationId    int                         `json:"metro_station_id"`   // Metro id of address
-	Phone             string                      `json:"phone"`              // Address phone
-	TimeOffset        int                         `json:"time_offset"`        // Time offset int minutes from utc time
-	Timetable         GroupsAddressTimetable      `json:"timetable"`          // Week timetable for the address
-	Title             string                      `json:"title"`              // Title of the place (Zinger, etc)
-	WorkInfoStatus    GroupsAddressWorkInfoStatus `json:"work_info_status"`   // Status of information about timetable
+// GroupsGroupAgeLimits type represents `groups_group_age_limits` API object
+type GroupsGroupAgeLimits int
+
+// GroupsGroupAudio type represents `groups_group_audio` API object
+type GroupsGroupAudio int
+
+// GroupsGroupBanInfo type represents `groups_group_ban_info` API object
+type GroupsGroupBanInfo struct {
+	Comment string `json:"comment"`  // Ban comment
+	EndDate int    `json:"end_date"` // End date of ban in Unixtime
 }
 
-// GroupsContactsItem type represents `groups_contacts_item` API object
-type GroupsContactsItem struct {
-	Desc   string `json:"desc"`    // Contact description
-	Email  string `json:"email"`   // Contact email
-	Phone  string `json:"phone"`   // Contact phone
-	UserId int    `json:"user_id"` // User ID
+// GroupsGroupCategory type represents `groups_group_category` API object
+type GroupsGroupCategory struct {
+	Id            int                  `json:"id"`   // Category ID
+	Name          string               `json:"name"` // Category name
+	Subcategories []BaseObjectWithName `json:"subcategories"`
 }
 
-// GroupsOwnerXtrBanInfoType type represents `groups_owner_xtr_ban_info_type` API object
-type GroupsOwnerXtrBanInfoType string // Owner type
-
-// GroupsGroupWall type represents `groups_group_wall` API object
-type GroupsGroupWall int
-
-// GroupsGroupXtrInvitedBy type represents `groups_group_xtr_invited_by` API object
-type GroupsGroupXtrInvitedBy struct {
-	AdminLevel   GroupsGroupXtrInvitedByAdminLevel `json:"admin_level"`
-	Id           string                            `json:"id"`            // Community ID
-	InvitedBy    int                               `json:"invited_by"`    // Inviter ID
-	IsAdmin      BaseBoolInt                       `json:"is_admin"`      // Information whether current user is manager
-	IsAdvertiser BaseBoolInt                       `json:"is_advertiser"` // Information whether current user is advertiser
-	IsClosed     BaseBoolInt                       `json:"is_closed"`     // Information whether community is closed
-	IsMember     BaseBoolInt                       `json:"is_member"`     // Information whether current user is member
-	Name         string                            `json:"name"`          // Community name
-	Photo100     string                            `json:"photo_100"`     // URL of square photo of the community with 100 pixels in width
-	Photo200     string                            `json:"photo_200"`     // URL of square photo of the community with 200 pixels in width
-	Photo50      string                            `json:"photo_50"`      // URL of square photo of the community with 50 pixels in width
-	ScreenName   string                            `json:"screen_name"`   // Domain of the community page
-	Type         GroupsGroupXtrInvitedByType       `json:"type"`
+// GroupsGroupCategoryFull type represents `groups_group_category_full` API object
+type GroupsGroupCategoryFull struct {
+	Id            int                   `json:"id"`         // Category ID
+	Name          string                `json:"name"`       // Category name
+	PageCount     int                   `json:"page_count"` // Pages number
+	PagePreviews  []GroupsGroup         `json:"page_previews"`
+	Subcategories []GroupsGroupCategory `json:"subcategories"`
 }
+
+// GroupsGroupCategoryType type represents `groups_group_category_type` API object
+type GroupsGroupCategoryType struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+// GroupsGroupDocs type represents `groups_group_docs` API object
+type GroupsGroupDocs int
 
 // GroupsGroupFull type represents `groups_group_full` API object
 type GroupsGroupFull struct {
@@ -311,8 +242,17 @@ type GroupsGroupFull struct {
 	WikiPage             string                      `json:"wiki_page"`     // Community's main wiki page title
 }
 
-// GroupsFilter type represents `groups_filter` API object
-type GroupsFilter string
+// GroupsGroupFullAgeLimits type represents `groups_group_full_age_limits` API object
+type GroupsGroupFullAgeLimits int
+
+// GroupsGroupFullMainSection type represents `groups_group_full_main_section` API object
+type GroupsGroupFullMainSection int // Main section of community
+
+// GroupsGroupFullMemberStatus type represents `groups_group_full_member_status` API object
+type GroupsGroupFullMemberStatus int
+
+// GroupsGroupIsClosed type represents `groups_group_is_closed` API object
+type GroupsGroupIsClosed int // Information whether community is closed
 
 // GroupsGroupLink type represents `groups_group_link` API object
 type GroupsGroupLink struct {
@@ -324,44 +264,21 @@ type GroupsGroupLink struct {
 	Url             string      `json:"url"`              // Link URL
 }
 
-// GroupsLongPollSettings type represents `groups_long_poll_settings` API object
-type GroupsLongPollSettings struct {
-	ApiVersion string               `json:"api_version"` // API version used for the events
-	Events     GroupsLongPollEvents `json:"events"`
-	IsEnabled  bool                 `json:"is_enabled"` // Shows whether Long Poll is enabled
-}
+// GroupsGroupMarketCurrency type represents `groups_group_market_currency` API object
+type GroupsGroupMarketCurrency int
 
 // GroupsGroupPhotos type represents `groups_group_photos` API object
 type GroupsGroupPhotos int
 
-// GroupsGroupCategory type represents `groups_group_category` API object
-type GroupsGroupCategory struct {
-	Id            int                  `json:"id"`   // Category ID
-	Name          string               `json:"name"` // Category name
-	Subcategories []BaseObjectWithName `json:"subcategories"`
+// GroupsGroupPublicCategoryList type represents `groups_group_public_category_list` API object
+type GroupsGroupPublicCategoryList struct {
+	Id           int                       `json:"id"`
+	Name         string                    `json:"name"`
+	SubtypesList []GroupsGroupCategoryType `json:"subtypes_list"`
 }
 
-// GroupsGroupIsClosed type represents `groups_group_is_closed` API object
-type GroupsGroupIsClosed int // Information whether community is closed
-
-// GroupsGroupSubject type represents `groups_group_subject` API object
-type GroupsGroupSubject string
-
-// GroupsLongPollServer type represents `groups_long_poll_server` API object
-type GroupsLongPollServer struct {
-	Key    string `json:"key"`    // Long Poll key
-	Server string `json:"server"` // Long Poll server address
-	Ts     string `json:"ts"`     // Number of the last event
-}
-
-// GroupsMemberRolePermission type represents `groups_member_role_permission` API object
-type GroupsMemberRolePermission string
-
-// GroupsBanInfoReason type represents `groups_ban_info_reason` API object
-type GroupsBanInfoReason int // Ban reason
-
-// GroupsMemberRoleStatus type represents `groups_member_role_status` API object
-type GroupsMemberRoleStatus string // User's credentials as community admin
+// GroupsGroupRole type represents `groups_group_role` API object
+type GroupsGroupRole string
 
 // GroupsGroupSettings type represents `groups_group_settings` API object
 type GroupsGroupSettings struct {
@@ -388,25 +305,63 @@ type GroupsGroupSettings struct {
 	Wiki               int                             `json:"wiki"`    // Wiki settings
 }
 
-// GroupsFields type represents `groups_fields` API object
-type GroupsFields string
+// GroupsGroupSubject type represents `groups_group_subject` API object
+type GroupsGroupSubject string
 
-// GroupsGroupAdminLevel type represents `groups_group_admin_level` API object
-type GroupsGroupAdminLevel int // Level of current user's credentials as manager
+// GroupsGroupTopics type represents `groups_group_topics` API object
+type GroupsGroupTopics int
 
-// GroupsMarketInfo type represents `groups_market_info` API object
-type GroupsMarketInfo struct {
-	ContactId    int            `json:"contact_id"` // Contact person ID
-	Currency     MarketCurrency `json:"currency"`
-	CurrencyText string         `json:"currency_text"` // Currency name
-	Enabled      BaseBoolInt    `json:"enabled"`       // Information whether the market is enabled
-	MainAlbumId  int            `json:"main_album_id"` // Main market album ID
-	PriceMax     int            `json:"price_max"`     // Maximum price
-	PriceMin     int            `json:"price_min"`     // Minimum price
+// GroupsGroupType type represents `groups_group_type` API object
+type GroupsGroupType string // Community type
+
+// GroupsGroupVideo type represents `groups_group_video` API object
+type GroupsGroupVideo int
+
+// GroupsGroupWall type represents `groups_group_wall` API object
+type GroupsGroupWall int
+
+// GroupsGroupWiki type represents `groups_group_wiki` API object
+type GroupsGroupWiki int
+
+// GroupsGroupXtrInvitedBy type represents `groups_group_xtr_invited_by` API object
+type GroupsGroupXtrInvitedBy struct {
+	AdminLevel   GroupsGroupXtrInvitedByAdminLevel `json:"admin_level"`
+	Id           string                            `json:"id"`            // Community ID
+	InvitedBy    int                               `json:"invited_by"`    // Inviter ID
+	IsAdmin      BaseBoolInt                       `json:"is_admin"`      // Information whether current user is manager
+	IsAdvertiser BaseBoolInt                       `json:"is_advertiser"` // Information whether current user is advertiser
+	IsClosed     BaseBoolInt                       `json:"is_closed"`     // Information whether community is closed
+	IsMember     BaseBoolInt                       `json:"is_member"`     // Information whether current user is member
+	Name         string                            `json:"name"`          // Community name
+	Photo100     string                            `json:"photo_100"`     // URL of square photo of the community with 100 pixels in width
+	Photo200     string                            `json:"photo_200"`     // URL of square photo of the community with 200 pixels in width
+	Photo50      string                            `json:"photo_50"`      // URL of square photo of the community with 50 pixels in width
+	ScreenName   string                            `json:"screen_name"`   // Domain of the community page
+	Type         GroupsGroupXtrInvitedByType       `json:"type"`
 }
 
 // GroupsGroupXtrInvitedByAdminLevel type represents `groups_group_xtr_invited_by_admin_level` API object
 type GroupsGroupXtrInvitedByAdminLevel int // Level of current user's credentials as manager
+
+// GroupsGroupXtrInvitedByType type represents `groups_group_xtr_invited_by_type` API object
+type GroupsGroupXtrInvitedByType string // Community type
+
+// GroupsGroupsArray type represents `groups_groups_array` API object
+type GroupsGroupsArray struct {
+	Count int   `json:"count"` // Communities number
+	Items []int `json:"items"`
+}
+
+// GroupsLinksItem type represents `groups_links_item` API object
+type GroupsLinksItem struct {
+	Desc      string      `json:"desc"`       // Link description
+	EditTitle BaseBoolInt `json:"edit_title"` // Information whether the link title can be edited
+	Id        int         `json:"id"`         // Link ID
+	Name      string      `json:"name"`       // Link title
+	Photo100  string      `json:"photo_100"`  // URL of square image of the link with 100 pixels in width
+	Photo50   string      `json:"photo_50"`   // URL of square image of the link with 50 pixels in width
+	Url       string      `json:"url"`        // Link URL
+}
 
 // GroupsLongPollEvents type represents `groups_long_poll_events` API object
 type GroupsLongPollEvents struct {
@@ -453,52 +408,97 @@ type GroupsLongPollEvents struct {
 	WallRepost           BaseBoolInt `json:"wall_repost"`
 }
 
-// GroupsCover type represents `groups_cover` API object
-type GroupsCover struct {
-	Enabled BaseBoolInt `json:"enabled"` // Information whether cover is enabled
-	Images  []BaseImage `json:"images"`
+// GroupsLongPollServer type represents `groups_long_poll_server` API object
+type GroupsLongPollServer struct {
+	Key    string `json:"key"`    // Long Poll key
+	Server string `json:"server"` // Long Poll server address
+	Ts     string `json:"ts"`     // Number of the last event
 }
 
-// GroupsBannedItem type represents `groups_banned_item` API object
-type GroupsBannedItem struct {
-	GroupsOwnerXtrBanInfo GroupsOwnerXtrBanInfo `json:"GroupsOwnerXtrBanInfo"`
+// GroupsLongPollSettings type represents `groups_long_poll_settings` API object
+type GroupsLongPollSettings struct {
+	ApiVersion string               `json:"api_version"` // API version used for the events
+	Events     GroupsLongPollEvents `json:"events"`
+	IsEnabled  bool                 `json:"is_enabled"` // Shows whether Long Poll is enabled
 }
 
-// GroupsGroupDocs type represents `groups_group_docs` API object
-type GroupsGroupDocs int
+// GroupsMarketInfo type represents `groups_market_info` API object
+type GroupsMarketInfo struct {
+	ContactId    int            `json:"contact_id"` // Contact person ID
+	Currency     MarketCurrency `json:"currency"`
+	CurrencyText string         `json:"currency_text"` // Currency name
+	Enabled      BaseBoolInt    `json:"enabled"`       // Information whether the market is enabled
+	MainAlbumId  int            `json:"main_album_id"` // Main market album ID
+	PriceMax     int            `json:"price_max"`     // Maximum price
+	PriceMin     int            `json:"price_min"`     // Minimum price
+}
+
+// GroupsMemberRole type represents `groups_member_role` API object
+type GroupsMemberRole struct {
+	Id          int                          `json:"id"` // User ID
+	Permissions []GroupsMemberRolePermission `json:"permissions"`
+	Role        GroupsMemberRoleStatus       `json:"role"`
+}
+
+// GroupsMemberRolePermission type represents `groups_member_role_permission` API object
+type GroupsMemberRolePermission string
+
+// GroupsMemberRoleStatus type represents `groups_member_role_status` API object
+type GroupsMemberRoleStatus string // User's credentials as community admin
+
+// GroupsMemberStatus type represents `groups_member_status` API object
+type GroupsMemberStatus struct {
+	Member BaseBoolInt `json:"member"`  // Information whether user is a member of the group
+	UserId int         `json:"user_id"` // User ID
+}
+
+// GroupsMemberStatusFull type represents `groups_member_status_full` API object
+type GroupsMemberStatusFull struct {
+	CanInvite  BaseBoolInt `json:"can_invite"` // Information whether user can be invited
+	CanRecall  BaseBoolInt `json:"can_recall"` // Information whether user's invite to the group can be recalled
+	Invitation BaseBoolInt `json:"invitation"` // Information whether user has been invited to the group
+	Member     BaseBoolInt `json:"member"`     // Information whether user is a member of the group
+	Request    BaseBoolInt `json:"request"`    // Information whether user has send request to the group
+	UserId     int         `json:"user_id"`    // User ID
+}
+
+// GroupsOnlineStatus type represents `groups_online_status` API object
+type GroupsOnlineStatus struct {
+	Minutes int                    `json:"minutes"` // Estimated time of answer (for status = answer_mark)
+	Status  GroupsOnlineStatusType `json:"status"`
+}
+
+// GroupsOnlineStatusType type represents `groups_online_status_type` API object
+type GroupsOnlineStatusType string // Type of online status of group
+
+// GroupsOwnerXtrBanInfo type represents `groups_owner_xtr_ban_info` API object
+type GroupsOwnerXtrBanInfo struct {
+	BanInfo GroupsBanInfo             `json:"ban_info"`
+	Group   GroupsGroup               `json:"group"`   // Information about group if type = group
+	Profile UsersUser                 `json:"profile"` // Information about group if type = profile
+	Type    GroupsOwnerXtrBanInfoType `json:"type"`
+}
+
+// GroupsOwnerXtrBanInfoType type represents `groups_owner_xtr_ban_info_type` API object
+type GroupsOwnerXtrBanInfoType string // Owner type
+
+// GroupsRoleOptions type represents `groups_role_options` API object
+type GroupsRoleOptions string // User's credentials as community admin
+
+// GroupsSubjectItem type represents `groups_subject_item` API object
+type GroupsSubjectItem struct {
+	Id   int    `json:"id"`   // Subject ID
+	Name string `json:"name"` // Subject title
+}
+
+// GroupsTokenPermissionSetting type represents `groups_token_permission_setting` API object
+type GroupsTokenPermissionSetting struct {
+	Name    string `json:"name"`
+	Setting int    `json:"setting"`
+}
 
 // GroupsUserXtrRole type represents `groups_user_xtr_role` API object
 type GroupsUserXtrRole struct {
 	UsersUserFull UsersUserFull     `json:"UsersUserFull"`
 	Role          GroupsRoleOptions `json:"role"`
 }
-
-// GroupsCallbackServer type represents `groups_callback_server` API object
-type GroupsCallbackServer struct {
-	CreatorId int    `json:"creator_id"`
-	Id        int    `json:"id"`
-	SecretKey string `json:"secret_key"`
-	Status    string `json:"status"`
-	Title     string `json:"title"`
-	Url       string `json:"url"`
-}
-
-// GroupsGroupsArray type represents `groups_groups_array` API object
-type GroupsGroupsArray struct {
-	Count int   `json:"count"` // Communities number
-	Items []int `json:"items"`
-}
-
-// GroupsLinksItem type represents `groups_links_item` API object
-type GroupsLinksItem struct {
-	Desc      string      `json:"desc"`       // Link description
-	EditTitle BaseBoolInt `json:"edit_title"` // Information whether the link title can be edited
-	Id        int         `json:"id"`         // Link ID
-	Name      string      `json:"name"`       // Link title
-	Photo100  string      `json:"photo_100"`  // URL of square image of the link with 100 pixels in width
-	Photo50   string      `json:"photo_50"`   // URL of square image of the link with 50 pixels in width
-	Url       string      `json:"url"`        // Link URL
-}
-
-// GroupsGroupVideo type represents `groups_group_video` API object
-type GroupsGroupVideo int

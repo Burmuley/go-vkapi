@@ -28,23 +28,23 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `notes` group of responses
 /////////////////////////////////////////////////////////////
 
+// NotesAdd type represents `notes_add_response` API response object
+type NotesAdd int // Note ID
+
+// NotesCreateComment type represents `notes_createComment_response` API response object
+type NotesCreateComment int // Comment ID
+
+// NotesGetById type represents `notes_getById_response` API response object
+type NotesGetById objects.NotesNote
+
 // NotesGetComments type represents `notes_getComments_response` API response object
 type NotesGetComments struct {
 	Count int                        `json:"count"` // Total number
 	Items []objects.NotesNoteComment `json:"items"`
 }
 
-// NotesCreateComment type represents `notes_createComment_response` API response object
-type NotesCreateComment int // Comment ID
-
 // NotesGet type represents `notes_get_response` API response object
 type NotesGet struct {
 	Count int                 `json:"count"` // Total number
 	Items []objects.NotesNote `json:"items"`
 }
-
-// NotesGetById type represents `notes_getById_response` API response object
-type NotesGetById objects.NotesNote
-
-// NotesAdd type represents `notes_add_response` API response object
-type NotesAdd int // Note ID

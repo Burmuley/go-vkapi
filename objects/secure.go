@@ -26,6 +26,12 @@ package objects
 // `secure` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// SecureLevel type represents `secure_level` API object
+type SecureLevel struct {
+	Level int `json:"level"` // Level
+	Uid   int `json:"uid"`   // User ID
+}
+
 // SecureSmsNotification type represents `secure_sms_notification` API object
 type SecureSmsNotification struct {
 	AppId   string `json:"app_id"`  // Application ID
@@ -35,6 +41,14 @@ type SecureSmsNotification struct {
 	UserId  string `json:"user_id"` // User ID
 }
 
+// SecureTokenChecked type represents `secure_token_checked` API object
+type SecureTokenChecked struct {
+	Date    int    `json:"date"`    // Date when access_token has been generated in Unixtime
+	Expire  int    `json:"expire"`  // Date when access_token will expire in Unixtime
+	Success BaseOk `json:"success"` // Returns if successfully processed
+	UserId  int    `json:"user_id"` // User ID
+}
+
 // SecureTransaction type represents `secure_transaction` API object
 type SecureTransaction struct {
 	Date    int `json:"date"`     // Transaction date in Unixtime
@@ -42,18 +56,4 @@ type SecureTransaction struct {
 	UidFrom int `json:"uid_from"` // From ID
 	UidTo   int `json:"uid_to"`   // To ID
 	Votes   int `json:"votes"`    // Votes number
-}
-
-// SecureLevel type represents `secure_level` API object
-type SecureLevel struct {
-	Level int `json:"level"` // Level
-	Uid   int `json:"uid"`   // User ID
-}
-
-// SecureTokenChecked type represents `secure_token_checked` API object
-type SecureTokenChecked struct {
-	Date    int    `json:"date"`    // Date when access_token has been generated in Unixtime
-	Expire  int    `json:"expire"`  // Date when access_token will expire in Unixtime
-	Success BaseOk `json:"success"` // Returns if successfully processed
-	UserId  int    `json:"user_id"` // User ID
 }

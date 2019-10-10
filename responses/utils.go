@@ -28,20 +28,8 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `utils` group of responses
 /////////////////////////////////////////////////////////////
 
-// UtilsGetServerTime type represents `utils_getServerTime_response` API response object
-type UtilsGetServerTime int // Time as Unixtime
-
-// UtilsGetShortLink type represents `utils_getShortLink_response` API response object
-type UtilsGetShortLink objects.UtilsShortLink
-
 // UtilsCheckLink type represents `utils_checkLink_response` API response object
 type UtilsCheckLink objects.UtilsLinkChecked
-
-// UtilsResolveScreenName type represents `utils_resolveScreenName_response` API response object
-type UtilsResolveScreenName objects.UtilsDomainResolved
-
-// UtilsGetLinkStats type represents `utils_getLinkStats_response` API response object
-type UtilsGetLinkStats objects.UtilsLinkStats
 
 // UtilsGetLastShortenedLinks type represents `utils_getLastShortenedLinks_response` API response object
 type UtilsGetLastShortenedLinks struct {
@@ -51,3 +39,15 @@ type UtilsGetLastShortenedLinks struct {
 
 // UtilsGetLinkStatsExtended type represents `utils_getLinkStats_extended_response` API response object
 type UtilsGetLinkStatsExtended objects.UtilsLinkStatsExtended
+
+// UtilsGetLinkStats type represents `utils_getLinkStats_response` API response object
+type UtilsGetLinkStats objects.UtilsLinkStats
+
+// UtilsGetServerTime type represents `utils_getServerTime_response` API response object
+type UtilsGetServerTime int // Time as Unixtime
+
+// UtilsGetShortLink type represents `utils_getShortLink_response` API response object
+type UtilsGetShortLink objects.UtilsShortLink
+
+// UtilsResolveScreenName type represents `utils_resolveScreenName_response` API response object
+type UtilsResolveScreenName objects.UtilsDomainResolved

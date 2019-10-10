@@ -26,9 +26,6 @@ package objects
 // `gifts` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// GiftsGiftPrivacy type represents `gifts_gift_privacy` API object
-type GiftsGiftPrivacy int // Gift privacy
-
 // GiftsGift type represents `gifts_gift` API object
 type GiftsGift struct {
 	Date     int              `json:"date"`    // Date when gist has been sent in Unixtime
@@ -39,6 +36,9 @@ type GiftsGift struct {
 	Message  string           `json:"message"`   // Comment text
 	Privacy  GiftsGiftPrivacy `json:"privacy"`
 }
+
+// GiftsGiftPrivacy type represents `gifts_gift_privacy` API object
+type GiftsGiftPrivacy int // Gift privacy
 
 // GiftsLayout type represents `gifts_layout` API object
 type GiftsLayout struct {

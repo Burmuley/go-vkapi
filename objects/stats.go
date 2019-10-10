@@ -36,16 +36,11 @@ type StatsActivity struct {
 	Unsubscribed int `json:"unsubscribed"` // Unsubscribed count
 }
 
-// StatsWallpostStat type represents `stats_wallpost_stat` API object
-type StatsWallpostStat struct {
-	Hide             int `json:"hide"`              // Hidings number
-	JoinGroup        int `json:"join_group"`        // People have joined the group
-	Links            int `json:"links"`             // Link clickthrough
-	ReachSubscribers int `json:"reach_subscribers"` // Subscribers reach
-	ReachTotal       int `json:"reach_total"`       // Total reach
-	Report           int `json:"report"`            // Reports number
-	ToGroup          int `json:"to_group"`          // Clickthrough to community
-	Unsubscribe      int `json:"unsubscribe"`       // Unsubscribed members
+// StatsCity type represents `stats_city` API object
+type StatsCity struct {
+	Count int    `json:"count"` // Visitors number
+	Name  string `json:"name"`  // City name
+	Value int    `json:"value"` // City ID
 }
 
 // StatsCountry type represents `stats_country` API object
@@ -65,11 +60,16 @@ type StatsPeriod struct {
 	Visitors   StatsViews    `json:"visitors"`
 }
 
-// StatsCity type represents `stats_city` API object
-type StatsCity struct {
-	Count int    `json:"count"` // Visitors number
-	Name  string `json:"name"`  // City name
-	Value int    `json:"value"` // City ID
+// StatsReach type represents `stats_reach` API object
+type StatsReach struct {
+	Age              []StatsSexAge  `json:"age"`
+	Cities           []StatsCity    `json:"cities"`
+	Countries        []StatsCountry `json:"countries"`
+	MobileReach      int            `json:"mobile_reach"`      // Reach count from mobile devices
+	Reach            int            `json:"reach"`             // Reach count
+	ReachSubscribers int            `json:"reach_subscribers"` // Subscribers reach count
+	Sex              []StatsSexAge  `json:"sex"`
+	SexAge           []StatsSexAge  `json:"sex_age"`
 }
 
 // StatsSexAge type represents `stats_sex_age` API object
@@ -90,14 +90,14 @@ type StatsViews struct {
 	Visitors    int            `json:"visitors"` // Visitors number
 }
 
-// StatsReach type represents `stats_reach` API object
-type StatsReach struct {
-	Age              []StatsSexAge  `json:"age"`
-	Cities           []StatsCity    `json:"cities"`
-	Countries        []StatsCountry `json:"countries"`
-	MobileReach      int            `json:"mobile_reach"`      // Reach count from mobile devices
-	Reach            int            `json:"reach"`             // Reach count
-	ReachSubscribers int            `json:"reach_subscribers"` // Subscribers reach count
-	Sex              []StatsSexAge  `json:"sex"`
-	SexAge           []StatsSexAge  `json:"sex_age"`
+// StatsWallpostStat type represents `stats_wallpost_stat` API object
+type StatsWallpostStat struct {
+	Hide             int `json:"hide"`              // Hidings number
+	JoinGroup        int `json:"join_group"`        // People have joined the group
+	Links            int `json:"links"`             // Link clickthrough
+	ReachSubscribers int `json:"reach_subscribers"` // Subscribers reach
+	ReachTotal       int `json:"reach_total"`       // Total reach
+	Report           int `json:"report"`            // Reports number
+	ToGroup          int `json:"to_group"`          // Clickthrough to community
+	Unsubscribe      int `json:"unsubscribe"`       // Unsubscribed members
 }
