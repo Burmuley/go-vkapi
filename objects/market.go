@@ -26,6 +26,12 @@ package objects
 // `market` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// MarketCurrency type represents `market_currency` API object
+type MarketCurrency struct {
+	Id   int    `json:"id"`   // Currency ID
+	Name string `json:"name"` // Currency sign
+}
+
 // MarketMarketAlbum type represents `market_market_album` API object
 type MarketMarketAlbum struct {
 	Count       int         `json:"count"`    // Items number
@@ -36,10 +42,11 @@ type MarketMarketAlbum struct {
 	UpdatedTime int         `json:"updated_time"` // Date when album has been updated last time in Unixtime
 }
 
-// MarketCurrency type represents `market_currency` API object
-type MarketCurrency struct {
-	Id   int    `json:"id"`   // Currency ID
-	Name string `json:"name"` // Currency sign
+// MarketMarketCategory type represents `market_market_category` API object
+type MarketMarketCategory struct {
+	Id      int           `json:"id"`   // Category ID
+	Name    string        `json:"name"` // Category name
+	Section MarketSection `json:"section"`
 }
 
 // MarketMarketItem type represents `market_market_item` API object
@@ -60,18 +67,8 @@ type MarketMarketItem struct {
 	Url          string                       `json:"url"`         // URL to item
 }
 
-// MarketSection type represents `market_section` API object
-type MarketSection struct {
-	Id   int    `json:"id"`   // Section ID
-	Name string `json:"name"` // Section name
-}
-
-// MarketMarketCategory type represents `market_market_category` API object
-type MarketMarketCategory struct {
-	Id      int           `json:"id"`   // Category ID
-	Name    string        `json:"name"` // Category name
-	Section MarketSection `json:"section"`
-}
+// MarketMarketItemAvailability type represents `market_market_item_availability` API object
+type MarketMarketItemAvailability int // Information whether the item is available
 
 // MarketMarketItemFull type represents `market_market_item_full` API object
 type MarketMarketItemFull struct {
@@ -85,9 +82,6 @@ type MarketMarketItemFull struct {
 	ViewsCount       int              `json:"views_count"` // Views number
 }
 
-// MarketMarketItemAvailability type represents `market_market_item_availability` API object
-type MarketMarketItemAvailability int // Information whether the item is available
-
 // MarketPrice type represents `market_price` API object
 type MarketPrice struct {
 	Amount       string         `json:"amount"` // Amount
@@ -95,4 +89,10 @@ type MarketPrice struct {
 	DiscountRate int            `json:"discount_rate"`
 	OldAmount    string         `json:"old_amount"`
 	Text         string         `json:"text"` // Text
+}
+
+// MarketSection type represents `market_section` API object
+type MarketSection struct {
+	Id   int    `json:"id"`   // Section ID
+	Name string `json:"name"` // Section name
 }

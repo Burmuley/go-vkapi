@@ -28,8 +28,8 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `base` group of responses
 /////////////////////////////////////////////////////////////
 
-// BaseGetUploadServer type represents `base_getUploadServer_response` API response object
-type BaseGetUploadServer objects.BaseUploadServer
-
 // BaseBool type represents `base_bool_response` API response object
 type BaseBool objects.BaseBoolInt
+
+// BaseGetUploadServer type represents `base_getUploadServer_response` API response object
+type BaseGetUploadServer objects.BaseUploadServer

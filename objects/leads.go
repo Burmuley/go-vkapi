@@ -26,12 +26,6 @@ package objects
 // `leads` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// LeadsStart type represents `leads_start` API object
-type LeadsStart struct {
-	TestMode BaseBoolInt `json:"test_mode"` // Information whether test mode is enabled
-	VkSid    string      `json:"vk_sid"`    // Session data
-}
-
 // LeadsChecked type represents `leads_checked` API object
 type LeadsChecked struct {
 	Reason    string             `json:"reason"` // Reason why user can't start the lead
@@ -50,14 +44,6 @@ type LeadsComplete struct {
 	Spent    int         `json:"spent"` // Amount of spent votes
 	Success  BaseOk      `json:"success"`
 	TestMode BaseBoolInt `json:"test_mode"` // Information whether test mode is enabled
-}
-
-// LeadsLeadDays type represents `leads_lead_days` API object
-type LeadsLeadDays struct {
-	Completed   int `json:"completed"`   // Completed offers number
-	Impressions int `json:"impressions"` // Impressions number
-	Spent       int `json:"spent"`       // Amount of spent votes
-	Started     int `json:"started"`     // Started offers number
 }
 
 // LeadsEntry type represents `leads_entry` API object
@@ -81,4 +67,18 @@ type LeadsLead struct {
 	Limit       int           `json:"limit"`       // Lead limit
 	Spent       int           `json:"spent"`       // Amount of spent votes
 	Started     int           `json:"started"`     // Started offers number
+}
+
+// LeadsLeadDays type represents `leads_lead_days` API object
+type LeadsLeadDays struct {
+	Completed   int `json:"completed"`   // Completed offers number
+	Impressions int `json:"impressions"` // Impressions number
+	Spent       int `json:"spent"`       // Amount of spent votes
+	Started     int `json:"started"`     // Started offers number
+}
+
+// LeadsStart type represents `leads_start` API object
+type LeadsStart struct {
+	TestMode BaseBoolInt `json:"test_mode"` // Information whether test mode is enabled
+	VkSid    string      `json:"vk_sid"`    // Session data
 }

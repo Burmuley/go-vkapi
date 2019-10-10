@@ -28,8 +28,20 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `orders` group of responses
 /////////////////////////////////////////////////////////////
 
+// OrdersCancelSubscription type represents `orders_cancelSubscription_response` API response object
+type OrdersCancelSubscription objects.BaseBoolInt // Result
+
+// OrdersChangeState type represents `orders_changeState_response` API response object
+type OrdersChangeState string // New state
+
 // OrdersGetAmount type represents `orders_getAmount_response` API response object
 type OrdersGetAmount objects.OrdersAmount
+
+// OrdersGetById type represents `orders_getById_response` API response object
+type OrdersGetById objects.OrdersOrder
+
+// OrdersGetUserSubscriptionById type represents `orders_getUserSubscriptionById_response` API response object
+type OrdersGetUserSubscriptionById objects.OrdersSubscription
 
 // OrdersGetUserSubscriptions type represents `orders_getUserSubscriptions_response` API response object
 type OrdersGetUserSubscriptions struct {
@@ -37,20 +49,8 @@ type OrdersGetUserSubscriptions struct {
 	Items []objects.OrdersSubscription `json:"items"`
 }
 
-// OrdersGetUserSubscriptionById type represents `orders_getUserSubscriptionById_response` API response object
-type OrdersGetUserSubscriptionById objects.OrdersSubscription
-
-// OrdersGetById type represents `orders_getById_response` API response object
-type OrdersGetById objects.OrdersOrder
+// OrdersGet type represents `orders_get_response` API response object
+type OrdersGet objects.OrdersOrder
 
 // OrdersUpdateSubscription type represents `orders_updateSubscription_response` API response object
 type OrdersUpdateSubscription objects.BaseBoolInt // Result
-
-// OrdersCancelSubscription type represents `orders_cancelSubscription_response` API response object
-type OrdersCancelSubscription objects.BaseBoolInt // Result
-
-// OrdersChangeState type represents `orders_changeState_response` API response object
-type OrdersChangeState string // New state
-
-// OrdersGet type represents `orders_get_response` API response object
-type OrdersGet objects.OrdersOrder

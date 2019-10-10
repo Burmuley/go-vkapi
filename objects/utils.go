@@ -26,36 +26,14 @@ package objects
 // `utils` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// UtilsDomainResolved type represents `utils_domain_resolved` API object
+type UtilsDomainResolved struct {
+	ObjectId int                     `json:"object_id"` // Object ID
+	Type     UtilsDomainResolvedType `json:"type"`
+}
+
 // UtilsDomainResolvedType type represents `utils_domain_resolved_type` API object
 type UtilsDomainResolvedType string // Object type
-
-// UtilsLinkStats type represents `utils_link_stats` API object
-type UtilsLinkStats struct {
-	Key   string       `json:"key"` // Link key (characters after vk.cc/)
-	Stats []UtilsStats `json:"stats"`
-}
-
-// UtilsLinkCheckedStatus type represents `utils_link_checked_status` API object
-type UtilsLinkCheckedStatus string // Link status
-
-// UtilsStatsCity type represents `utils_stats_city` API object
-type UtilsStatsCity struct {
-	CityId int `json:"city_id"` // City ID
-	Views  int `json:"views"`   // Views number
-}
-
-// UtilsStatsCountry type represents `utils_stats_country` API object
-type UtilsStatsCountry struct {
-	CountryId int `json:"country_id"` // Country ID
-	Views     int `json:"views"`      // Views number
-}
-
-// UtilsStatsSexAge type represents `utils_stats_sex_age` API object
-type UtilsStatsSexAge struct {
-	AgeRange string `json:"age_range"` // Age denotation
-	Female   int    `json:"female"`    //  Views by female users
-	Male     int    `json:"male"`      //  Views by male users
-}
 
 // UtilsLastShortenedLink type represents `utils_last_shortened_link` API object
 type UtilsLastShortenedLink struct {
@@ -73,6 +51,21 @@ type UtilsLinkChecked struct {
 	Status UtilsLinkCheckedStatus `json:"status"`
 }
 
+// UtilsLinkCheckedStatus type represents `utils_link_checked_status` API object
+type UtilsLinkCheckedStatus string // Link status
+
+// UtilsLinkStats type represents `utils_link_stats` API object
+type UtilsLinkStats struct {
+	Key   string       `json:"key"` // Link key (characters after vk.cc/)
+	Stats []UtilsStats `json:"stats"`
+}
+
+// UtilsLinkStatsExtended type represents `utils_link_stats_extended` API object
+type UtilsLinkStatsExtended struct {
+	Key   string               `json:"key"` // Link key (characters after vk.cc/)
+	Stats []UtilsStatsExtended `json:"stats"`
+}
+
 // UtilsShortLink type represents `utils_short_link` API object
 type UtilsShortLink struct {
 	AccessKey string `json:"access_key"` // Access key for private stats
@@ -81,22 +74,22 @@ type UtilsShortLink struct {
 	Url       string `json:"url"`        // Full URL
 }
 
-// UtilsDomainResolved type represents `utils_domain_resolved` API object
-type UtilsDomainResolved struct {
-	ObjectId int                     `json:"object_id"` // Object ID
-	Type     UtilsDomainResolvedType `json:"type"`
-}
-
 // UtilsStats type represents `utils_stats` API object
 type UtilsStats struct {
 	Timestamp int `json:"timestamp"` // Start time
 	Views     int `json:"views"`     // Total views number
 }
 
-// UtilsLinkStatsExtended type represents `utils_link_stats_extended` API object
-type UtilsLinkStatsExtended struct {
-	Key   string               `json:"key"` // Link key (characters after vk.cc/)
-	Stats []UtilsStatsExtended `json:"stats"`
+// UtilsStatsCity type represents `utils_stats_city` API object
+type UtilsStatsCity struct {
+	CityId int `json:"city_id"` // City ID
+	Views  int `json:"views"`   // Views number
+}
+
+// UtilsStatsCountry type represents `utils_stats_country` API object
+type UtilsStatsCountry struct {
+	CountryId int `json:"country_id"` // Country ID
+	Views     int `json:"views"`      // Views number
 }
 
 // UtilsStatsExtended type represents `utils_stats_extended` API object
@@ -106,4 +99,11 @@ type UtilsStatsExtended struct {
 	SexAge    []UtilsStatsSexAge  `json:"sex_age"`
 	Timestamp int                 `json:"timestamp"` // Start time
 	Views     int                 `json:"views"`     // Total views number
+}
+
+// UtilsStatsSexAge type represents `utils_stats_sex_age` API object
+type UtilsStatsSexAge struct {
+	AgeRange string `json:"age_range"` // Age denotation
+	Female   int    `json:"female"`    //  Views by female users
+	Male     int    `json:"male"`      //  Views by male users
 }

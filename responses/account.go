@@ -28,12 +28,10 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // `account` group of responses
 /////////////////////////////////////////////////////////////
 
-// AccountGetBanned type represents `account_getBanned_response` API response object
-type AccountGetBanned struct {
-	Count    int                    `json:"count"` // Total number
-	Groups   []objects.GroupsGroup  `json:"groups"`
-	Items    []int                  `json:"items"`
-	Profiles []objects.UsersUserMin `json:"profiles"`
+// AccountChangePassword type represents `account_changePassword_response` API response object
+type AccountChangePassword struct {
+	Secret string `json:"secret"` // New secret
+	Token  string `json:"token"`  // New token
 }
 
 // AccountGetActiveOffers type represents `account_getActiveOffers_response` API response object
@@ -42,29 +40,31 @@ type AccountGetActiveOffers struct {
 	Items []objects.AccountOffer `json:"items"`
 }
 
+// AccountGetAppPermissions type represents `account_getAppPermissions_response` API response object
+type AccountGetAppPermissions int // Permissions mask
+
+// AccountGetBanned type represents `account_getBanned_response` API response object
+type AccountGetBanned struct {
+	Count    int                    `json:"count"` // Total number
+	Groups   []objects.GroupsGroup  `json:"groups"`
+	Items    []int                  `json:"items"`
+	Profiles []objects.UsersUserMin `json:"profiles"`
+}
+
+// AccountGetCounters type represents `account_getCounters_response` API response object
+type AccountGetCounters objects.AccountAccountCounters
+
 // AccountGetInfo type represents `account_getInfo_response` API response object
 type AccountGetInfo objects.AccountInfo
 
 // AccountGetProfileInfo type represents `account_getProfileInfo_response` API response object
 type AccountGetProfileInfo objects.AccountUserSettings
 
-// AccountChangePassword type represents `account_changePassword_response` API response object
-type AccountChangePassword struct {
-	Secret string `json:"secret"` // New secret
-	Token  string `json:"token"`  // New token
-}
+// AccountGetPushSettings type represents `account_getPushSettings_response` API response object
+type AccountGetPushSettings objects.AccountPushSettings
 
 // AccountSaveProfileInfo type represents `account_saveProfileInfo_response` API response object
 type AccountSaveProfileInfo struct {
 	Changed     objects.BaseBoolInt        `json:"changed"` // 1 if changes has been processed
 	NameRequest objects.AccountNameRequest `json:"name_request"`
 }
-
-// AccountGetPushSettings type represents `account_getPushSettings_response` API response object
-type AccountGetPushSettings objects.AccountPushSettings
-
-// AccountGetCounters type represents `account_getCounters_response` API response object
-type AccountGetCounters objects.AccountAccountCounters
-
-// AccountGetAppPermissions type represents `account_getAppPermissions_response` API response object
-type AccountGetAppPermissions int // Permissions mask
