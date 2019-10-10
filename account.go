@@ -38,7 +38,7 @@ type Account struct {
 // Ban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-func (a *Account) Ban(ownerId int) (resp responses.Ok, err error) {
+func (a Account) Ban(ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -56,7 +56,7 @@ func (a *Account) Ban(ownerId int) (resp responses.Ok, err error) {
 //   * changePasswordHash - Hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
 //   * oldPassword - Current user password.
 //   * newPassword - New password that will be set as a current
-func (a *Account) ChangePassword(restoreSid string, changePasswordHash string, oldPassword string, newPassword string) (resp responses.AccountChangePassword, err error) {
+func (a Account) ChangePassword(restoreSid string, changePasswordHash string, oldPassword string, newPassword string) (resp responses.AccountChangePassword, err error) {
 	params := map[string]interface{}{}
 
 	if restoreSid != "" {
@@ -82,7 +82,7 @@ func (a *Account) ChangePassword(restoreSid string, changePasswordHash string, o
 // Parameters:
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - Number of results to return.
-func (a *Account) GetActiveOffers(offset int, count int) (resp responses.AccountGetActiveOffers, err error) {
+func (a Account) GetActiveOffers(offset int, count int) (resp responses.AccountGetActiveOffers, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -101,7 +101,7 @@ func (a *Account) GetActiveOffers(offset int, count int) (resp responses.Account
 // GetAppPermissions - Gets settings of the user in this application.
 // Parameters:
 //   * userId - User ID whose settings information shall be got. By default: current user.
-func (a *Account) GetAppPermissions(userId int) (resp responses.AccountGetAppPermissions, err error) {
+func (a Account) GetAppPermissions(userId int) (resp responses.AccountGetAppPermissions, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -115,7 +115,7 @@ func (a *Account) GetAppPermissions(userId int) (resp responses.AccountGetAppPer
 // Parameters:
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of results to return.
-func (a *Account) GetBanned(offset int, count int) (resp responses.AccountGetBanned, err error) {
+func (a Account) GetBanned(offset int, count int) (resp responses.AccountGetBanned, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -134,7 +134,7 @@ func (a *Account) GetBanned(offset int, count int) (resp responses.AccountGetBan
 // GetCounters - Returns non-null values of user counters.
 // Parameters:
 //   * filter - Counters to be returned.
-func (a *Account) GetCounters(filter []string) (resp responses.AccountGetCounters, err error) {
+func (a Account) GetCounters(filter []string) (resp responses.AccountGetCounters, err error) {
 	params := map[string]interface{}{}
 
 	if len(filter) > 0 {
@@ -149,7 +149,7 @@ func (a *Account) GetCounters(filter []string) (resp responses.AccountGetCounter
 // GetInfo - Returns current account info.
 // Parameters:
 //   * fields - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
-func (a *Account) GetInfo(fields []string) (resp responses.AccountGetInfo, err error) {
+func (a Account) GetInfo(fields []string) (resp responses.AccountGetInfo, err error) {
 	params := map[string]interface{}{}
 
 	if len(fields) > 0 {
@@ -162,7 +162,7 @@ func (a *Account) GetInfo(fields []string) (resp responses.AccountGetInfo, err e
 }
 
 // GetProfileInfo - Returns the current account info.
-func (a *Account) GetProfileInfo() (resp responses.AccountGetProfileInfo, err error) {
+func (a Account) GetProfileInfo() (resp responses.AccountGetProfileInfo, err error) {
 	params := map[string]interface{}{}
 
 	err = a.SendObjRequest("account.getProfileInfo", params, &resp)
@@ -173,7 +173,7 @@ func (a *Account) GetProfileInfo() (resp responses.AccountGetProfileInfo, err er
 // GetPushSettings - Gets settings of push notifications.
 // Parameters:
 //   * deviceId - Unique device ID.
-func (a *Account) GetPushSettings(deviceId string) (resp responses.AccountGetPushSettings, err error) {
+func (a Account) GetPushSettings(deviceId string) (resp responses.AccountGetPushSettings, err error) {
 	params := map[string]interface{}{}
 
 	if deviceId != "" {
@@ -194,7 +194,7 @@ func (a *Account) GetPushSettings(deviceId string) (resp responses.AccountGetPus
 //   * systemVersion - String version of device operating system.
 //   * settings - Push settings in a [vk.com/dev/push_settings|special format].
 //   * sandbox - NO DESCRIPTION IN JSON SCHEMA
-func (a *Account) RegisterDevice(token string, deviceModel string, deviceYear int, deviceId string, systemVersion string, settings string, sandbox bool) (resp responses.Ok, err error) {
+func (a Account) RegisterDevice(token string, deviceModel string, deviceYear int, deviceId string, systemVersion string, settings string, sandbox bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["token"] = token
@@ -240,7 +240,7 @@ func (a *Account) RegisterDevice(token string, deviceModel string, deviceYear in
 //   * countryId - User country.
 //   * cityId - User city.
 //   * status - Status text.
-func (a *Account) SaveProfileInfo(firstName string, lastName string, maidenName string, screenName string, cancelRequestId int, sex int, relation int, relationPartnerId int, bdate string, bdateVisibility int, homeTown string, countryId int, cityId int, status string) (resp responses.AccountSaveProfileInfo, err error) {
+func (a Account) SaveProfileInfo(firstName string, lastName string, maidenName string, screenName string, cancelRequestId int, sex int, relation int, relationPartnerId int, bdate string, bdateVisibility int, homeTown string, countryId int, cityId int, status string) (resp responses.AccountSaveProfileInfo, err error) {
 	params := map[string]interface{}{}
 
 	if firstName != "" {
@@ -308,7 +308,7 @@ func (a *Account) SaveProfileInfo(firstName string, lastName string, maidenName 
 // Parameters:
 //   * name - Setting name.
 //   * value - Setting value.
-func (a *Account) SetInfo(name string, value string) (resp responses.Ok, err error) {
+func (a Account) SetInfo(name string, value string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if name != "" {
@@ -328,7 +328,7 @@ func (a *Account) SetInfo(name string, value string) (resp responses.Ok, err err
 // Parameters:
 //   * userId - User ID.
 //   * name - Application screen name.
-func (a *Account) SetNameInMenu(userId int, name string) (resp responses.Ok, err error) {
+func (a Account) SetNameInMenu(userId int, name string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -343,7 +343,7 @@ func (a *Account) SetNameInMenu(userId int, name string) (resp responses.Ok, err
 }
 
 // SetOffline - Marks a current user as offline.
-func (a *Account) SetOffline() (resp responses.Ok, err error) {
+func (a Account) SetOffline() (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	err = a.SendObjRequest("account.setOffline", params, &resp)
@@ -354,7 +354,7 @@ func (a *Account) SetOffline() (resp responses.Ok, err error) {
 // SetOnline - Marks the current user as online for 15 minutes.
 // Parameters:
 //   * voip - '1' if videocalls are available for current device.
-func (a *Account) SetOnline(voip bool) (resp responses.Ok, err error) {
+func (a Account) SetOnline(voip bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["voip"] = voip
@@ -370,7 +370,7 @@ func (a *Account) SetOnline(voip bool) (resp responses.Ok, err error) {
 //   * settings - Push settings in a [vk.com/dev/push_settings|special format].
 //   * key - Notification key.
 //   * value - New value for the key in a [vk.com/dev/push_settings|special format].
-func (a *Account) SetPushSettings(deviceId string, settings string, key string, value []string) (resp responses.Ok, err error) {
+func (a Account) SetPushSettings(deviceId string, settings string, key string, value []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["device_id"] = deviceId
@@ -398,7 +398,7 @@ func (a *Account) SetPushSettings(deviceId string, settings string, key string, 
 //   * time - Time in seconds for what notifications should be disabled. '-1' to disable forever.
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
 //   * sound - '1' — to enable sound in this dialog, '0' — to disable sound. Only if 'peer_id' contains user or community ID.
-func (a *Account) SetSilenceMode(deviceId string, time int, peerId int, sound int) (resp responses.Ok, err error) {
+func (a Account) SetSilenceMode(deviceId string, time int, peerId int, sound int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if deviceId != "" {
@@ -425,7 +425,7 @@ func (a *Account) SetSilenceMode(deviceId string, time int, peerId int, sound in
 // Unban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-func (a *Account) Unban(ownerId int) (resp responses.Ok, err error) {
+func (a Account) Unban(ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -441,7 +441,7 @@ func (a *Account) Unban(ownerId int) (resp responses.Ok, err error) {
 // Parameters:
 //   * deviceId - Unique device ID.
 //   * sandbox - NO DESCRIPTION IN JSON SCHEMA
-func (a *Account) UnregisterDevice(deviceId string, sandbox bool) (resp responses.Ok, err error) {
+func (a Account) UnregisterDevice(deviceId string, sandbox bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if deviceId != "" {

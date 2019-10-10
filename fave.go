@@ -38,7 +38,7 @@ type Fave struct {
 // AddArticle - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * url - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) AddArticle(url string) (resp responses.BaseBool, err error) {
+func (f Fave) AddArticle(url string) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
 	params["url"] = url
@@ -51,7 +51,7 @@ func (f *Fave) AddArticle(url string) (resp responses.BaseBool, err error) {
 // AddLink - Adds a link to user faves.
 // Parameters:
 //   * link - Link URL.
-func (f *Fave) AddLink(link string) (resp responses.Ok, err error) {
+func (f Fave) AddLink(link string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["link"] = link
@@ -65,7 +65,7 @@ func (f *Fave) AddLink(link string) (resp responses.Ok, err error) {
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) AddPage(userId int, groupId int) (resp responses.Ok, err error) {
+func (f Fave) AddPage(userId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -86,7 +86,7 @@ func (f *Fave) AddPage(userId int, groupId int) (resp responses.Ok, err error) {
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * id - NO DESCRIPTION IN JSON SCHEMA
 //   * accessKey - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) AddPost(ownerId int, id int, accessKey string) (resp responses.Ok, err error) {
+func (f Fave) AddPost(ownerId int, id int, accessKey string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -107,7 +107,7 @@ func (f *Fave) AddPost(ownerId int, id int, accessKey string) (resp responses.Ok
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * id - NO DESCRIPTION IN JSON SCHEMA
 //   * accessKey - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) AddProduct(ownerId int, id int, accessKey string) (resp responses.Ok, err error) {
+func (f Fave) AddProduct(ownerId int, id int, accessKey string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -126,7 +126,7 @@ func (f *Fave) AddProduct(ownerId int, id int, accessKey string) (resp responses
 // AddTag - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * name - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) AddTag(name string) (resp responses.FaveAddTag, err error) {
+func (f Fave) AddTag(name string) (resp responses.FaveAddTag, err error) {
 	params := map[string]interface{}{}
 
 	if name != "" {
@@ -143,7 +143,7 @@ func (f *Fave) AddTag(name string) (resp responses.FaveAddTag, err error) {
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * id - NO DESCRIPTION IN JSON SCHEMA
 //   * accessKey - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) AddVideo(ownerId int, id int, accessKey string) (resp responses.Ok, err error) {
+func (f Fave) AddVideo(ownerId int, id int, accessKey string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -163,7 +163,7 @@ func (f *Fave) AddVideo(ownerId int, id int, accessKey string) (resp responses.O
 // Parameters:
 //   * id - NO DESCRIPTION IN JSON SCHEMA
 //   * name - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) EditTag(id int, name string) (resp responses.Ok, err error) {
+func (f Fave) EditTag(id int, name string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["id"] = id
@@ -184,7 +184,7 @@ func (f *Fave) EditTag(id int, name string) (resp responses.Ok, err error) {
 //   * count - Number of users to return.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * isFromSnackbar - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) Get(itemType string, tagId int, offset int, count int, fields string, isFromSnackbar bool) (resp responses.FaveGet, err error) {
+func (f Fave) Get(itemType string, tagId int, offset int, count int, fields string, isFromSnackbar bool) (resp responses.FaveGet, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -224,7 +224,7 @@ func (f *Fave) Get(itemType string, tagId int, offset int, count int, fields str
 //   * count - Number of users to return.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * isFromSnackbar - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) GetExtended(itemType string, tagId int, offset int, count int, fields string, isFromSnackbar bool) (resp responses.FaveGetExtended, err error) {
+func (f Fave) GetExtended(itemType string, tagId int, offset int, count int, fields string, isFromSnackbar bool) (resp responses.FaveGetExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -262,7 +262,7 @@ func (f *Fave) GetExtended(itemType string, tagId int, offset int, count int, fi
 //   * pType - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * tagId - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) GetPages(offset int, count int, pType string, fields []objects.BaseUserGroupFields, tagId int) (resp responses.FaveGetPages, err error) {
+func (f Fave) GetPages(offset int, count int, pType string, fields []objects.BaseUserGroupFields, tagId int) (resp responses.FaveGetPages, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -291,7 +291,7 @@ func (f *Fave) GetPages(offset int, count int, pType string, fields []objects.Ba
 }
 
 // GetTags - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) GetTags() (resp responses.FaveGetTags, err error) {
+func (f Fave) GetTags() (resp responses.FaveGetTags, err error) {
 	params := map[string]interface{}{}
 
 	err = f.SendObjRequest("fave.getTags", params, &resp)
@@ -300,7 +300,7 @@ func (f *Fave) GetTags() (resp responses.FaveGetTags, err error) {
 }
 
 // MarkSeen - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) MarkSeen() (resp responses.BaseBool, err error) {
+func (f Fave) MarkSeen() (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
 	err = f.SendObjRequest("fave.markSeen", params, &resp)
@@ -312,7 +312,7 @@ func (f *Fave) MarkSeen() (resp responses.BaseBool, err error) {
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * articleId - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) RemoveArticle(ownerId int, articleId int) (resp responses.BaseBool, err error) {
+func (f Fave) RemoveArticle(ownerId int, articleId int) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -328,7 +328,7 @@ func (f *Fave) RemoveArticle(ownerId int, articleId int) (resp responses.BaseBoo
 // Parameters:
 //   * linkId - Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
 //   * link - Link URL
-func (f *Fave) RemoveLink(linkId string, link string) (resp responses.Ok, err error) {
+func (f Fave) RemoveLink(linkId string, link string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if linkId != "" {
@@ -348,7 +348,7 @@ func (f *Fave) RemoveLink(linkId string, link string) (resp responses.Ok, err er
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) RemovePage(userId int, groupId int) (resp responses.Ok, err error) {
+func (f Fave) RemovePage(userId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -368,7 +368,7 @@ func (f *Fave) RemovePage(userId int, groupId int) (resp responses.Ok, err error
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * id - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) RemovePost(ownerId int, id int) (resp responses.Ok, err error) {
+func (f Fave) RemovePost(ownerId int, id int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -384,7 +384,7 @@ func (f *Fave) RemovePost(ownerId int, id int) (resp responses.Ok, err error) {
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * id - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) RemoveProduct(ownerId int, id int) (resp responses.Ok, err error) {
+func (f Fave) RemoveProduct(ownerId int, id int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -399,7 +399,7 @@ func (f *Fave) RemoveProduct(ownerId int, id int) (resp responses.Ok, err error)
 // RemoveTag - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * id - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) RemoveTag(id int) (resp responses.Ok, err error) {
+func (f Fave) RemoveTag(id int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["id"] = id
@@ -412,7 +412,7 @@ func (f *Fave) RemoveTag(id int) (resp responses.Ok, err error) {
 // ReorderTags - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * ids - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) ReorderTags(ids []int) (resp responses.Ok, err error) {
+func (f Fave) ReorderTags(ids []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["ids"] = SliceToString(ids)
@@ -427,7 +427,7 @@ func (f *Fave) ReorderTags(ids []int) (resp responses.Ok, err error) {
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
 //   * tagIds - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) SetPageTags(userId int, groupId int, tagIds []int) (resp responses.Ok, err error) {
+func (f Fave) SetPageTags(userId int, groupId int, tagIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -455,7 +455,7 @@ func (f *Fave) SetPageTags(userId int, groupId int, tagIds []int) (resp response
 //   * tagIds - NO DESCRIPTION IN JSON SCHEMA
 //   * linkId - NO DESCRIPTION IN JSON SCHEMA
 //   * linkUrl - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) SetTags(itemType string, itemOwnerId int, itemId int, tagIds []int, linkId string, linkUrl string) (resp responses.Ok, err error) {
+func (f Fave) SetTags(itemType string, itemOwnerId int, itemId int, tagIds []int, linkId string, linkUrl string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if itemType != "" {
@@ -491,7 +491,7 @@ func (f *Fave) SetTags(itemType string, itemOwnerId int, itemId int, tagIds []in
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (f *Fave) TrackPageInteraction(userId int, groupId int) (resp responses.Ok, err error) {
+func (f Fave) TrackPageInteraction(userId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {

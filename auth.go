@@ -41,7 +41,7 @@ type Auth struct {
 //   * clientId - User ID.
 //   * clientSecret - NO DESCRIPTION IN JSON SCHEMA
 //   * authByPhone - NO DESCRIPTION IN JSON SCHEMA
-func (a *Auth) CheckPhone(phone string, clientId int, clientSecret string, authByPhone bool) (resp responses.Ok, err error) {
+func (a Auth) CheckPhone(phone string, clientId int, clientSecret string, authByPhone bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["phone"] = phone
@@ -65,7 +65,7 @@ func (a *Auth) CheckPhone(phone string, clientId int, clientSecret string, authB
 // Parameters:
 //   * phone - User phone number.
 //   * lastName - User last name.
-func (a *Auth) Restore(phone string, lastName string) (resp responses.AuthRestore, err error) {
+func (a Auth) Restore(phone string, lastName string) (resp responses.AuthRestore, err error) {
 	params := map[string]interface{}{}
 
 	params["phone"] = phone
