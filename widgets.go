@@ -44,7 +44,7 @@ type Widgets struct {
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - NO DESCRIPTION IN JSON SCHEMA
-func (w *Widgets) GetComments(widgetApiId int, url string, pageId string, order string, fields []objects.UsersFields, offset int, count int) (resp responses.WidgetsGetComments, err error) {
+func (w Widgets) GetComments(widgetApiId int, url string, pageId string, order string, fields []objects.UsersFields, offset int, count int) (resp responses.WidgetsGetComments, err error) {
 	params := map[string]interface{}{}
 
 	if widgetApiId > 0 {
@@ -87,7 +87,7 @@ func (w *Widgets) GetComments(widgetApiId int, url string, pageId string, order 
 //   * period - NO DESCRIPTION IN JSON SCHEMA
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - NO DESCRIPTION IN JSON SCHEMA
-func (w *Widgets) GetPages(widgetApiId int, order string, period string, offset int, count int) (resp responses.WidgetsGetPages, err error) {
+func (w Widgets) GetPages(widgetApiId int, order string, period string, offset int, count int) (resp responses.WidgetsGetPages, err error) {
 	params := map[string]interface{}{}
 
 	if widgetApiId > 0 {

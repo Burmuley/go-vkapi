@@ -40,7 +40,7 @@ type Database struct {
 //   * facultyId - id of the faculty to get chairs from
 //   * offset - offset required to get a certain subset of chairs
 //   * count - amount of chairs to get
-func (d *Database) GetChairs(facultyId int, offset int, count int) (resp responses.DatabaseGetChairs, err error) {
+func (d Database) GetChairs(facultyId int, offset int, count int) (resp responses.DatabaseGetChairs, err error) {
 	params := map[string]interface{}{}
 
 	params["faculty_id"] = facultyId
@@ -66,7 +66,7 @@ func (d *Database) GetChairs(facultyId int, offset int, count int) (resp respons
 //   * needAll - '1' — to return all cities in the country, '0' — to return major cities in the country (default),
 //   * offset - Offset needed to return a specific subset of cities.
 //   * count - Number of cities to return.
-func (d *Database) GetCities(countryId int, regionId int, q string, needAll bool, offset int, count int) (resp responses.DatabaseGetCities, err error) {
+func (d Database) GetCities(countryId int, regionId int, q string, needAll bool, offset int, count int) (resp responses.DatabaseGetCities, err error) {
 	params := map[string]interface{}{}
 
 	params["country_id"] = countryId
@@ -97,7 +97,7 @@ func (d *Database) GetCities(countryId int, regionId int, q string, needAll bool
 // GetCitiesById - Returns information about cities by their IDs.
 // Parameters:
 //   * cityIds - City IDs.
-func (d *Database) GetCitiesById(cityIds []int) (resp responses.DatabaseGetCitiesById, err error) {
+func (d Database) GetCitiesById(cityIds []int) (resp responses.DatabaseGetCitiesById, err error) {
 	params := map[string]interface{}{}
 
 	if len(cityIds) > 0 {
@@ -115,7 +115,7 @@ func (d *Database) GetCitiesById(cityIds []int) (resp responses.DatabaseGetCitie
 //   * code - Country codes in [vk.com/dev/country_codes|ISO 3166-1 alpha-2] standard.
 //   * offset - Offset needed to return a specific subset of countries.
 //   * count - Number of countries to return.
-func (d *Database) GetCountries(needAll bool, code string, offset int, count int) (resp responses.DatabaseGetCountries, err error) {
+func (d Database) GetCountries(needAll bool, code string, offset int, count int) (resp responses.DatabaseGetCountries, err error) {
 	params := map[string]interface{}{}
 
 	params["need_all"] = needAll
@@ -140,7 +140,7 @@ func (d *Database) GetCountries(needAll bool, code string, offset int, count int
 // GetCountriesById - Returns information about countries by their IDs.
 // Parameters:
 //   * countryIds - Country IDs.
-func (d *Database) GetCountriesById(countryIds []int) (resp responses.DatabaseGetCountriesById, err error) {
+func (d Database) GetCountriesById(countryIds []int) (resp responses.DatabaseGetCountriesById, err error) {
 	params := map[string]interface{}{}
 
 	if len(countryIds) > 0 {
@@ -157,7 +157,7 @@ func (d *Database) GetCountriesById(countryIds []int) (resp responses.DatabaseGe
 //   * universityId - University ID.
 //   * offset - Offset needed to return a specific subset of faculties.
 //   * count - Number of faculties to return.
-func (d *Database) GetFaculties(universityId int, offset int, count int) (resp responses.DatabaseGetFaculties, err error) {
+func (d Database) GetFaculties(universityId int, offset int, count int) (resp responses.DatabaseGetFaculties, err error) {
 	params := map[string]interface{}{}
 
 	params["university_id"] = universityId
@@ -181,7 +181,7 @@ func (d *Database) GetFaculties(universityId int, offset int, count int) (resp r
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - NO DESCRIPTION IN JSON SCHEMA
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
-func (d *Database) GetMetroStations(cityId int, offset int, count int) (resp responses.DatabaseGetMetroStations, err error) {
+func (d Database) GetMetroStations(cityId int, offset int, count int) (resp responses.DatabaseGetMetroStations, err error) {
 	params := map[string]interface{}{}
 
 	params["city_id"] = cityId
@@ -202,7 +202,7 @@ func (d *Database) GetMetroStations(cityId int, offset int, count int) (resp res
 // GetMetroStationsById - Get metro station by his id
 // Parameters:
 //   * stationIds - NO DESCRIPTION IN JSON SCHEMA
-func (d *Database) GetMetroStationsById(stationIds []int) (resp responses.DatabaseGetMetroStationsById, err error) {
+func (d Database) GetMetroStationsById(stationIds []int) (resp responses.DatabaseGetMetroStationsById, err error) {
 	params := map[string]interface{}{}
 
 	if len(stationIds) > 0 {
@@ -220,7 +220,7 @@ func (d *Database) GetMetroStationsById(stationIds []int) (resp responses.Databa
 //   * q - Search query.
 //   * offset - Offset needed to return specific subset of regions.
 //   * count - Number of regions to return.
-func (d *Database) GetRegions(countryId int, q string, offset int, count int) (resp responses.DatabaseGetRegions, err error) {
+func (d Database) GetRegions(countryId int, q string, offset int, count int) (resp responses.DatabaseGetRegions, err error) {
 	params := map[string]interface{}{}
 
 	params["country_id"] = countryId
@@ -245,7 +245,7 @@ func (d *Database) GetRegions(countryId int, q string, offset int, count int) (r
 // GetSchoolClasses - Returns a list of school classes specified for the country.
 // Parameters:
 //   * countryId - Country ID.
-func (d *Database) GetSchoolClasses(countryId int) (resp responses.DatabaseGetSchoolClasses, err error) {
+func (d Database) GetSchoolClasses(countryId int) (resp responses.DatabaseGetSchoolClasses, err error) {
 	params := map[string]interface{}{}
 
 	if countryId > 0 {
@@ -263,7 +263,7 @@ func (d *Database) GetSchoolClasses(countryId int) (resp responses.DatabaseGetSc
 //   * cityId - City ID.
 //   * offset - Offset needed to return a specific subset of schools.
 //   * count - Number of schools to return.
-func (d *Database) GetSchools(q string, cityId int, offset int, count int) (resp responses.DatabaseGetSchools, err error) {
+func (d Database) GetSchools(q string, cityId int, offset int, count int) (resp responses.DatabaseGetSchools, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {
@@ -292,7 +292,7 @@ func (d *Database) GetSchools(q string, cityId int, offset int, count int) (resp
 //   * cityId - City ID.
 //   * offset - Offset needed to return a specific subset of universities.
 //   * count - Number of universities to return.
-func (d *Database) GetUniversities(q string, countryId int, cityId int, offset int, count int) (resp responses.DatabaseGetUniversities, err error) {
+func (d Database) GetUniversities(q string, countryId int, cityId int, offset int, count int) (resp responses.DatabaseGetUniversities, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {

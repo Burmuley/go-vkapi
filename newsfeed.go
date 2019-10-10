@@ -39,7 +39,7 @@ type Newsfeed struct {
 // Parameters:
 //   * userIds - NO DESCRIPTION IN JSON SCHEMA
 //   * groupIds - NO DESCRIPTION IN JSON SCHEMA
-func (n *Newsfeed) AddBan(userIds []int, groupIds []int) (resp responses.Ok, err error) {
+func (n Newsfeed) AddBan(userIds []int, groupIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if len(userIds) > 0 {
@@ -59,7 +59,7 @@ func (n *Newsfeed) AddBan(userIds []int, groupIds []int) (resp responses.Ok, err
 // Parameters:
 //   * userIds - NO DESCRIPTION IN JSON SCHEMA
 //   * groupIds - NO DESCRIPTION IN JSON SCHEMA
-func (n *Newsfeed) DeleteBan(userIds []int, groupIds []int) (resp responses.Ok, err error) {
+func (n Newsfeed) DeleteBan(userIds []int, groupIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if len(userIds) > 0 {
@@ -78,7 +78,7 @@ func (n *Newsfeed) DeleteBan(userIds []int, groupIds []int) (resp responses.Ok, 
 // DeleteList - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * listId - NO DESCRIPTION IN JSON SCHEMA
-func (n *Newsfeed) DeleteList(listId int) (resp responses.Ok, err error) {
+func (n Newsfeed) DeleteList(listId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["list_id"] = listId
@@ -100,7 +100,7 @@ func (n *Newsfeed) DeleteList(listId int) (resp responses.Ok, err error) {
 //   * count - Number of news items to return (default 50, maximum 100). For auto feed, you can use the 'new_offset' parameter returned by this method.
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
 //   * section - NO DESCRIPTION IN JSON SCHEMA
-func (n *Newsfeed) Get(filters []objects.NewsfeedFilters, returnBanned bool, startTime int, endTime int, maxPhotos int, sourceIds string, startFrom string, count int, fields []objects.BaseUserGroupFields, section string) (resp responses.NewsfeedGet, err error) {
+func (n Newsfeed) Get(filters []objects.NewsfeedFilters, returnBanned bool, startTime int, endTime int, maxPhotos int, sourceIds string, startFrom string, count int, fields []objects.BaseUserGroupFields, section string) (resp responses.NewsfeedGet, err error) {
 	params := map[string]interface{}{}
 
 	if len(filters) > 0 {
@@ -151,7 +151,7 @@ func (n *Newsfeed) Get(filters []objects.NewsfeedFilters, returnBanned bool, sta
 //   * extended - '1' — return extra information about users and communities
 //   * fields - Profile fields to return.
 //   * nameCase - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-func (n *Newsfeed) GetBanned(fields []objects.UsersFields, nameCase string) (resp responses.NewsfeedGetBanned, err error) {
+func (n Newsfeed) GetBanned(fields []objects.UsersFields, nameCase string) (resp responses.NewsfeedGetBanned, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -173,7 +173,7 @@ func (n *Newsfeed) GetBanned(fields []objects.UsersFields, nameCase string) (res
 //   * extended - '1' — return extra information about users and communities
 //   * fields - Profile fields to return.
 //   * nameCase - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-func (n *Newsfeed) GetBannedExtended(fields []objects.UsersFields, nameCase string) (resp responses.NewsfeedGetBannedExtended, err error) {
+func (n Newsfeed) GetBannedExtended(fields []objects.UsersFields, nameCase string) (resp responses.NewsfeedGetBannedExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -200,7 +200,7 @@ func (n *Newsfeed) GetBannedExtended(fields []objects.UsersFields, nameCase stri
 //   * lastCommentsCount - NO DESCRIPTION IN JSON SCHEMA
 //   * startFrom - Identificator needed to return the next page with results. Value for this parameter returns in 'next_from' field.
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-func (n *Newsfeed) GetComments(count int, filters []objects.NewsfeedCommentsFilters, reposts string, startTime int, endTime int, lastCommentsCount int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetComments, err error) {
+func (n Newsfeed) GetComments(count int, filters []objects.NewsfeedCommentsFilters, reposts string, startTime int, endTime int, lastCommentsCount int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetComments, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -244,7 +244,7 @@ func (n *Newsfeed) GetComments(count int, filters []objects.NewsfeedCommentsFilt
 // Parameters:
 //   * listIds - numeric list identifiers.
 //   * extended - Return additional list info
-func (n *Newsfeed) GetLists(listIds []int) (resp responses.NewsfeedGetLists, err error) {
+func (n Newsfeed) GetLists(listIds []int) (resp responses.NewsfeedGetLists, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -261,7 +261,7 @@ func (n *Newsfeed) GetLists(listIds []int) (resp responses.NewsfeedGetLists, err
 // Parameters:
 //   * listIds - numeric list identifiers.
 //   * extended - Return additional list info
-func (n *Newsfeed) GetListsExtended(listIds []int) (resp responses.NewsfeedGetListsExtended, err error) {
+func (n Newsfeed) GetListsExtended(listIds []int) (resp responses.NewsfeedGetListsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -281,7 +281,7 @@ func (n *Newsfeed) GetListsExtended(listIds []int) (resp responses.NewsfeedGetLi
 //   * endTime - Latest timestamp (in Unix time) of a post to return. By default, the current time.
 //   * offset - Offset needed to return a specific subset of posts.
 //   * count - Number of posts to return.
-func (n *Newsfeed) GetMentions(ownerId int, startTime int, endTime int, offset int, count int) (resp responses.NewsfeedGetMentions, err error) {
+func (n Newsfeed) GetMentions(ownerId int, startTime int, endTime int, offset int, count int) (resp responses.NewsfeedGetMentions, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -317,7 +317,7 @@ func (n *Newsfeed) GetMentions(ownerId int, startTime int, endTime int, offset i
 //   * startFrom - 'new_from' value obtained in previous call.
 //   * count - Number of news items to return.
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-func (n *Newsfeed) GetRecommended(startTime int, endTime int, maxPhotos int, startFrom string, count int, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetRecommended, err error) {
+func (n Newsfeed) GetRecommended(startTime int, endTime int, maxPhotos int, startFrom string, count int, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetRecommended, err error) {
 	params := map[string]interface{}{}
 
 	if startTime > 0 {
@@ -355,7 +355,7 @@ func (n *Newsfeed) GetRecommended(startTime int, endTime int, maxPhotos int, sta
 //   * count - amount of communities or users to return.
 //   * shuffle - shuffle the returned list or not.
 //   * fields - list of extra fields to be returned. See available fields for [vk.com/dev/fields|users] and [vk.com/dev/fields_groups|communities].
-func (n *Newsfeed) GetSuggestedSources(offset int, count int, shuffle bool, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetSuggestedSources, err error) {
+func (n Newsfeed) GetSuggestedSources(offset int, count int, shuffle bool, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetSuggestedSources, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -382,7 +382,7 @@ func (n *Newsfeed) GetSuggestedSources(offset int, count int, shuffle bool, fiel
 //   * pType - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
 //   * ownerId - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
 //   * itemId - Item identifier
-func (n *Newsfeed) IgnoreItem(pType objects.NewsfeedIgnoreItemType, ownerId int, itemId int) (resp responses.Ok, err error) {
+func (n Newsfeed) IgnoreItem(pType objects.NewsfeedIgnoreItemType, ownerId int, itemId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["type"] = pType
@@ -402,7 +402,7 @@ func (n *Newsfeed) IgnoreItem(pType objects.NewsfeedIgnoreItemType, ownerId int,
 //   * title - list name.
 //   * sourceIds - users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
 //   * noReposts - reposts display on and off ('1' is for off).
-func (n *Newsfeed) SaveList(listId int, title string, sourceIds []int, noReposts bool) (resp responses.NewsfeedSaveList, err error) {
+func (n Newsfeed) SaveList(listId int, title string, sourceIds []int, noReposts bool) (resp responses.NewsfeedSaveList, err error) {
 	params := map[string]interface{}{}
 
 	if listId > 0 {
@@ -433,7 +433,7 @@ func (n *Newsfeed) SaveList(listId int, title string, sourceIds []int, noReposts
 //   * endTime - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
 //   * startFrom - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-func (n *Newsfeed) Search(q string, count int, latitude float64, longitude float64, startTime int, endTime int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedSearch, err error) {
+func (n Newsfeed) Search(q string, count int, latitude float64, longitude float64, startTime int, endTime int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedSearch, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -485,7 +485,7 @@ func (n *Newsfeed) Search(q string, count int, latitude float64, longitude float
 //   * endTime - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
 //   * startFrom - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-func (n *Newsfeed) SearchExtended(q string, count int, latitude float64, longitude float64, startTime int, endTime int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedSearchExtended, err error) {
+func (n Newsfeed) SearchExtended(q string, count int, latitude float64, longitude float64, startTime int, endTime int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedSearchExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -531,7 +531,7 @@ func (n *Newsfeed) SearchExtended(q string, count int, latitude float64, longitu
 //   * pType - Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
 //   * ownerId - Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
 //   * itemId - Item identifier
-func (n *Newsfeed) UnignoreItem(pType objects.NewsfeedIgnoreItemType, ownerId int, itemId int) (resp responses.Ok, err error) {
+func (n Newsfeed) UnignoreItem(pType objects.NewsfeedIgnoreItemType, ownerId int, itemId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["type"] = pType
@@ -550,7 +550,7 @@ func (n *Newsfeed) UnignoreItem(pType objects.NewsfeedIgnoreItemType, ownerId in
 //   * pType - Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video
 //   * ownerId - Object owner ID.
 //   * itemId - Object ID.
-func (n *Newsfeed) Unsubscribe(pType string, ownerId int, itemId int) (resp responses.Ok, err error) {
+func (n Newsfeed) Unsubscribe(pType string, ownerId int, itemId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["type"] = pType

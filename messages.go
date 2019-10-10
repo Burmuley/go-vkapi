@@ -39,7 +39,7 @@ type Messages struct {
 // Parameters:
 //   * chatId - Chat ID.
 //   * userId - ID of the user to be added to the chat.
-func (m *Messages) AddChatUser(chatId int, userId int) (resp responses.Ok, err error) {
+func (m Messages) AddChatUser(chatId int, userId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["chat_id"] = chatId
@@ -57,7 +57,7 @@ func (m *Messages) AddChatUser(chatId int, userId int) (resp responses.Ok, err e
 // Parameters:
 //   * groupId - Group ID.
 //   * key - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) AllowMessagesFromGroup(groupId int, key string) (resp responses.Ok, err error) {
+func (m Messages) AllowMessagesFromGroup(groupId int, key string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -75,7 +75,7 @@ func (m *Messages) AllowMessagesFromGroup(groupId int, key string) (resp respons
 // Parameters:
 //   * userIds - IDs of the users to be added to the chat.
 //   * title - Chat title.
-func (m *Messages) CreateChat(userIds []int, title string) (resp responses.MessagesCreateChat, err error) {
+func (m Messages) CreateChat(userIds []int, title string) (resp responses.MessagesCreateChat, err error) {
 	params := map[string]interface{}{}
 
 	if len(userIds) > 0 {
@@ -97,7 +97,7 @@ func (m *Messages) CreateChat(userIds []int, title string) (resp responses.Messa
 //   * spam - '1' — to mark message as spam.
 //   * groupId - Group ID (for group messages with user access token)
 //   * deleteForAll - '1' — delete message for for all.
-func (m *Messages) Delete(messageIds []int, spam bool, groupId int, deleteForAll bool) (resp responses.MessagesDelete, err error) {
+func (m Messages) Delete(messageIds []int, spam bool, groupId int, deleteForAll bool) (resp responses.MessagesDelete, err error) {
 	params := map[string]interface{}{}
 
 	if len(messageIds) > 0 {
@@ -121,7 +121,7 @@ func (m *Messages) Delete(messageIds []int, spam bool, groupId int, deleteForAll
 // Parameters:
 //   * chatId - Chat ID.
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) DeleteChatPhoto(chatId int, groupId int) (resp responses.MessagesDeleteChatPhoto, err error) {
+func (m Messages) DeleteChatPhoto(chatId int, groupId int) (resp responses.MessagesDeleteChatPhoto, err error) {
 	params := map[string]interface{}{}
 
 	params["chat_id"] = chatId
@@ -140,7 +140,7 @@ func (m *Messages) DeleteChatPhoto(chatId int, groupId int) (resp responses.Mess
 //   * userId - User ID. To clear a chat history use 'chat_id'
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
 //   * groupId - Group ID (for group messages with user access token)
-func (m *Messages) DeleteConversation(userId int, peerId int, groupId int) (resp responses.MessagesDeleteConversation, err error) {
+func (m Messages) DeleteConversation(userId int, peerId int, groupId int) (resp responses.MessagesDeleteConversation, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -163,7 +163,7 @@ func (m *Messages) DeleteConversation(userId int, peerId int, groupId int) (resp
 // DenyMessagesFromGroup - Denies sending message from community to the current user.
 // Parameters:
 //   * groupId - Group ID.
-func (m *Messages) DenyMessagesFromGroup(groupId int) (resp responses.Ok, err error) {
+func (m Messages) DenyMessagesFromGroup(groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -185,7 +185,7 @@ func (m *Messages) DenyMessagesFromGroup(groupId int) (resp responses.Ok, err er
 //   * keepSnippets - '1' — to keep attached snippets.
 //   * groupId - Group ID (for group messages with user access token)
 //   * dontParseLinks - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) Edit(peerId int, message string, messageId int, lat float64, long float64, attachment string, keepForwardMessages bool, keepSnippets bool, groupId int, dontParseLinks bool) (resp responses.MessagesEdit, err error) {
+func (m Messages) Edit(peerId int, message string, messageId int, lat float64, long float64, attachment string, keepForwardMessages bool, keepSnippets bool, groupId int, dontParseLinks bool) (resp responses.MessagesEdit, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -227,7 +227,7 @@ func (m *Messages) Edit(peerId int, message string, messageId int, lat float64, 
 // Parameters:
 //   * chatId - Chat ID.
 //   * title - New title of the chat.
-func (m *Messages) EditChat(chatId int, title string) (resp responses.Ok, err error) {
+func (m Messages) EditChat(chatId int, title string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["chat_id"] = chatId
@@ -246,7 +246,7 @@ func (m *Messages) EditChat(chatId int, title string) (resp responses.Ok, err er
 //   * extended - Information whether the response should be extended
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetByConversationMessageId(peerId int, conversationMessageIds []int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetByConversationMessageId, err error) {
+func (m Messages) GetByConversationMessageId(peerId int, conversationMessageIds []int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetByConversationMessageId, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -273,7 +273,7 @@ func (m *Messages) GetByConversationMessageId(peerId int, conversationMessageIds
 //   * extended - Information whether the response should be extended
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetById(messageIds []int, previewLength int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetById, err error) {
+func (m Messages) GetById(messageIds []int, previewLength int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetById, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -303,7 +303,7 @@ func (m *Messages) GetById(messageIds []int, previewLength int, fields []objects
 //   * extended - Information whether the response should be extended
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetByIdExtended(messageIds []int, previewLength int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetByIdExtended, err error) {
+func (m Messages) GetByIdExtended(messageIds []int, previewLength int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetByIdExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -331,7 +331,7 @@ func (m *Messages) GetByIdExtended(messageIds []int, previewLength int, fields [
 //   * peerId - NO DESCRIPTION IN JSON SCHEMA
 //   * link - Invitation link.
 //   * fields - Profile fields to return.
-func (m *Messages) GetChatPreview(peerId int, link string, fields []objects.UsersFields) (resp responses.MessagesGetChatPreview, err error) {
+func (m Messages) GetChatPreview(peerId int, link string, fields []objects.UsersFields) (resp responses.MessagesGetChatPreview, err error) {
 	params := map[string]interface{}{}
 
 	if peerId > 0 {
@@ -356,7 +356,7 @@ func (m *Messages) GetChatPreview(peerId int, link string, fields []objects.User
 //   * peerId - Peer ID.
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetConversationMembers(peerId int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetConversationMembers, err error) {
+func (m Messages) GetConversationMembers(peerId int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetConversationMembers, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -383,7 +383,7 @@ func (m *Messages) GetConversationMembers(peerId int, fields []objects.UsersFiel
 //   * startMessageId - ID of the message from what to return dialogs.
 //   * fields - Profile and communities fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetConversations(offset int, count int, filter string, startMessageId int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetConversations, err error) {
+func (m Messages) GetConversations(offset int, count int, filter string, startMessageId int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetConversations, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -421,7 +421,7 @@ func (m *Messages) GetConversations(offset int, count int, filter string, startM
 //   * extended - Return extended properties
 //   * fields - Profile and communities fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetConversationsById(peerIds []int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetConversationsById, err error) {
+func (m Messages) GetConversationsById(peerIds []int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetConversationsById, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -446,7 +446,7 @@ func (m *Messages) GetConversationsById(peerIds []int, fields []objects.BaseUser
 //   * extended - Return extended properties
 //   * fields - Profile and communities fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetConversationsByIdExtended(peerIds []int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetConversationsByIdExtended, err error) {
+func (m Messages) GetConversationsByIdExtended(peerIds []int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetConversationsByIdExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -476,7 +476,7 @@ func (m *Messages) GetConversationsByIdExtended(peerIds []int, fields []objects.
 //   * extended - Information whether the response should be extended
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) GetHistory(offset int, count int, userId int, peerId int, startMessageId int, rev int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetHistory, err error) {
+func (m Messages) GetHistory(offset int, count int, userId int, peerId int, startMessageId int, rev int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetHistory, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -527,7 +527,7 @@ func (m *Messages) GetHistory(offset int, count int, userId int, peerId int, sta
 //   * groupId - Group ID (for group messages with group access token)
 //   * preserveOrder - NO DESCRIPTION IN JSON SCHEMA
 //   * maxForwardsLevel - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) GetHistoryAttachments(peerId int, mediaType string, startFrom string, count int, photoSizes bool, fields []objects.UsersFields, groupId int, preserveOrder bool, maxForwardsLevel int) (resp responses.MessagesGetHistoryAttachments, err error) {
+func (m Messages) GetHistoryAttachments(peerId int, mediaType string, startFrom string, count int, photoSizes bool, fields []objects.UsersFields, groupId int, preserveOrder bool, maxForwardsLevel int) (resp responses.MessagesGetHistoryAttachments, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -570,7 +570,7 @@ func (m *Messages) GetHistoryAttachments(peerId int, mediaType string, startFrom
 //   * peerId - Destination ID.
 //   * reset - 1 — to generate new link (revoke previous), 0 — to return previous link.
 //   * groupId - Group ID
-func (m *Messages) GetInviteLink(peerId int, reset bool, groupId int) (resp responses.MessagesGetInviteLink, err error) {
+func (m Messages) GetInviteLink(peerId int, reset bool, groupId int) (resp responses.MessagesGetInviteLink, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -589,7 +589,7 @@ func (m *Messages) GetInviteLink(peerId int, reset bool, groupId int) (resp resp
 // GetLastActivity - Returns a user's current status and date of last activity.
 // Parameters:
 //   * userId - User ID.
-func (m *Messages) GetLastActivity(userId int) (resp responses.MessagesGetLastActivity, err error) {
+func (m Messages) GetLastActivity(userId int) (resp responses.MessagesGetLastActivity, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -613,7 +613,7 @@ func (m *Messages) GetLastActivity(userId int) (resp responses.MessagesGetLastAc
 //   * lpVersion - NO DESCRIPTION IN JSON SCHEMA
 //   * lastN - NO DESCRIPTION IN JSON SCHEMA
 //   * credentials - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) GetLongPollHistory(ts int, pts int, previewLength int, onlines bool, fields []objects.UsersFields, eventsLimit int, msgsLimit int, maxMsgId int, groupId int, lpVersion int, lastN int, credentials bool) (resp responses.MessagesGetLongPollHistory, err error) {
+func (m Messages) GetLongPollHistory(ts int, pts int, previewLength int, onlines bool, fields []objects.UsersFields, eventsLimit int, msgsLimit int, maxMsgId int, groupId int, lpVersion int, lastN int, credentials bool) (resp responses.MessagesGetLongPollHistory, err error) {
 	params := map[string]interface{}{}
 
 	if ts > 0 {
@@ -670,7 +670,7 @@ func (m *Messages) GetLongPollHistory(ts int, pts int, previewLength int, online
 //   * needPts - '1' — to return the 'pts' field, needed for the [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
 //   * groupId - Group ID (for group messages with user access token)
 //   * lpVersion - Long poll version
-func (m *Messages) GetLongPollServer(needPts bool, groupId int, lpVersion int) (resp responses.MessagesGetLongPollServer, err error) {
+func (m Messages) GetLongPollServer(needPts bool, groupId int, lpVersion int) (resp responses.MessagesGetLongPollServer, err error) {
 	params := map[string]interface{}{}
 
 	params["need_pts"] = needPts
@@ -692,7 +692,7 @@ func (m *Messages) GetLongPollServer(needPts bool, groupId int, lpVersion int) (
 // Parameters:
 //   * groupId - Group ID.
 //   * userId - User ID.
-func (m *Messages) IsMessagesFromGroupAllowed(groupId int, userId int) (resp responses.MessagesIsMessagesFromGroupAllowed, err error) {
+func (m Messages) IsMessagesFromGroupAllowed(groupId int, userId int) (resp responses.MessagesIsMessagesFromGroupAllowed, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -707,7 +707,7 @@ func (m *Messages) IsMessagesFromGroupAllowed(groupId int, userId int) (resp res
 // JoinChatByInviteLink - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * link - Invitation link.
-func (m *Messages) JoinChatByInviteLink(link string) (resp responses.MessagesJoinChatByInviteLink, err error) {
+func (m Messages) JoinChatByInviteLink(link string) (resp responses.MessagesJoinChatByInviteLink, err error) {
 	params := map[string]interface{}{}
 
 	params["link"] = link
@@ -722,7 +722,7 @@ func (m *Messages) JoinChatByInviteLink(link string) (resp responses.MessagesJoi
 //   * peerId - ID of conversation to mark as important.
 //   * answered - '1' — to mark as answered, '0' — to remove the mark
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) MarkAsAnsweredConversation(peerId int, answered bool, groupId int) (resp responses.Ok, err error) {
+func (m Messages) MarkAsAnsweredConversation(peerId int, answered bool, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -742,7 +742,7 @@ func (m *Messages) MarkAsAnsweredConversation(peerId int, answered bool, groupId
 // Parameters:
 //   * messageIds - IDs of messages to mark as important.
 //   * important - '1' — to add a star (mark as important), '0' — to remove the star
-func (m *Messages) MarkAsImportant(messageIds []int, important int) (resp responses.MessagesMarkAsImportant, err error) {
+func (m Messages) MarkAsImportant(messageIds []int, important int) (resp responses.MessagesMarkAsImportant, err error) {
 	params := map[string]interface{}{}
 
 	if len(messageIds) > 0 {
@@ -763,7 +763,7 @@ func (m *Messages) MarkAsImportant(messageIds []int, important int) (resp respon
 //   * peerId - ID of conversation to mark as important.
 //   * important - '1' — to add a star (mark as important), '0' — to remove the star
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) MarkAsImportantConversation(peerId int, important bool, groupId int) (resp responses.Ok, err error) {
+func (m Messages) MarkAsImportantConversation(peerId int, important bool, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -785,7 +785,7 @@ func (m *Messages) MarkAsImportantConversation(peerId int, important bool, group
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
 //   * startMessageId - Message ID to start from.
 //   * groupId - Group ID (for group messages with user access token)
-func (m *Messages) MarkAsRead(messageIds []int, peerId int, startMessageId int, groupId int) (resp responses.Ok, err error) {
+func (m Messages) MarkAsRead(messageIds []int, peerId int, startMessageId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if len(messageIds) > 0 {
@@ -813,7 +813,7 @@ func (m *Messages) MarkAsRead(messageIds []int, peerId int, startMessageId int, 
 // Parameters:
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
 //   * messageId - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) Pin(peerId int, messageId int) (resp responses.MessagesPin, err error) {
+func (m Messages) Pin(peerId int, messageId int) (resp responses.MessagesPin, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -832,7 +832,7 @@ func (m *Messages) Pin(peerId int, messageId int) (resp responses.MessagesPin, e
 //   * chatId - Chat ID.
 //   * userId - ID of the user to be removed from the chat.
 //   * memberId - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) RemoveChatUser(chatId int, userId int, memberId int) (resp responses.Ok, err error) {
+func (m Messages) RemoveChatUser(chatId int, userId int, memberId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["chat_id"] = chatId
@@ -854,7 +854,7 @@ func (m *Messages) RemoveChatUser(chatId int, userId int, memberId int) (resp re
 // Parameters:
 //   * messageId - ID of a previously-deleted message to restore.
 //   * groupId - Group ID (for group messages with user access token)
-func (m *Messages) Restore(messageId int, groupId int) (resp responses.Ok, err error) {
+func (m Messages) Restore(messageId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["message_id"] = messageId
@@ -879,7 +879,7 @@ func (m *Messages) Restore(messageId int, groupId int) (resp responses.Ok, err e
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) Search(q string, peerId int, date int, previewLength int, offset int, count int, fields []string, groupId int) (resp responses.MessagesSearch, err error) {
+func (m Messages) Search(q string, peerId int, date int, previewLength int, offset int, count int, fields []string, groupId int) (resp responses.MessagesSearch, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {
@@ -926,7 +926,7 @@ func (m *Messages) Search(q string, peerId int, date int, previewLength int, off
 //   * extended - '1' — return extra information about users and communities
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with user access token)
-func (m *Messages) SearchConversations(q string, count int, fields []objects.UsersFields, groupId int) (resp responses.MessagesSearchConversations, err error) {
+func (m Messages) SearchConversations(q string, count int, fields []objects.UsersFields, groupId int) (resp responses.MessagesSearchConversations, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {
@@ -971,7 +971,7 @@ func (m *Messages) SearchConversations(q string, count int, fields []objects.Use
 //   * payload - NO DESCRIPTION IN JSON SCHEMA
 //   * dontParseLinks - NO DESCRIPTION IN JSON SCHEMA
 //   * disableMentions - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) Send(userId int, randomId int, peerId int, domain string, chatId int, userIds []int, message string, lat float64, long float64, attachment string, replyTo int, forwardMessages []int, forward string, stickerId int, groupId int, keyboard objects.MessagesKeyboard, payload string, dontParseLinks bool, disableMentions bool) (resp responses.MessagesSend, err error) {
+func (m Messages) Send(userId int, randomId int, peerId int, domain string, chatId int, userIds []int, message string, lat float64, long float64, attachment string, replyTo int, forwardMessages []int, forward string, stickerId int, groupId int, keyboard objects.MessagesKeyboard, payload string, dontParseLinks bool, disableMentions bool) (resp responses.MessagesSend, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -1057,7 +1057,7 @@ func (m *Messages) Send(userId int, randomId int, peerId int, domain string, cha
 //   * pType - 'typing' — user has started to type.
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
 //   * groupId - Group ID (for group messages with group access token)
-func (m *Messages) SetActivity(userId int, pType string, peerId int, groupId int) (resp responses.Ok, err error) {
+func (m Messages) SetActivity(userId int, pType string, peerId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -1084,7 +1084,7 @@ func (m *Messages) SetActivity(userId int, pType string, peerId int, groupId int
 // SetChatPhoto - Sets a previously-uploaded picture as the cover picture of a chat.
 // Parameters:
 //   * file - Upload URL from the 'response' field returned by the [vk.com/dev/photos.getChatUploadServer|photos.getChatUploadServer] method upon successfully uploading an image.
-func (m *Messages) SetChatPhoto(file string) (resp responses.MessagesSetChatPhoto, err error) {
+func (m Messages) SetChatPhoto(file string) (resp responses.MessagesSetChatPhoto, err error) {
 	params := map[string]interface{}{}
 
 	params["file"] = file
@@ -1098,7 +1098,7 @@ func (m *Messages) SetChatPhoto(file string) (resp responses.MessagesSetChatPhot
 // Parameters:
 //   * peerId - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (m *Messages) Unpin(peerId int, groupId int) (resp responses.Ok, err error) {
+func (m Messages) Unpin(peerId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
