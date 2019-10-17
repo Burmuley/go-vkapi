@@ -74,7 +74,7 @@ type DatabaseGetRegions struct {
 }
 
 // DatabaseGetSchoolClasses type represents `database_getSchoolClasses_response` API response object
-type DatabaseGetSchoolClasses multiple
+type DatabaseGetSchoolClasses string
 
 // DatabaseGetSchools type represents `database_getSchools_response` API response object
 type DatabaseGetSchools struct {

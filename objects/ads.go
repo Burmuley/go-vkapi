@@ -49,7 +49,7 @@ type AdsAccountType string // Account type
 // AdsAd type represents `ads_ad` API object
 type AdsAd struct {
 	AdFormat              int           `json:"ad_format"`   // Ad format
-	AdPlatform            multiple      `json:"ad_platform"` // Ad platform
+	AdPlatform            string        `json:"ad_platform"` // Ad platform
 	AllLimit              int           `json:"all_limit"`   // Total limit
 	Approved              AdsAdApproved `json:"approved"`
 	CampaignId            int           `json:"campaign_id"`  // Campaign ID
@@ -87,7 +87,7 @@ type AdsAdLayout struct {
 	ImageSrc2x  string        `json:"image_src_2x"` // URL of the preview image in double size
 	LinkDomain  string        `json:"link_domain"`  // Domain of advertised object
 	LinkUrl     string        `json:"link_url"`     // URL of advertised object
-	PreviewLink multiple      `json:"preview_link"` // link to preview an ad as it is shown on the website
+	PreviewLink string        `json:"preview_link"` // link to preview an ad as it is shown on the website
 	Title       string        `json:"title"`        // Ad title
 	Video       BaseBoolInt   `json:"video"`        // Information whether the ad is a video
 }
