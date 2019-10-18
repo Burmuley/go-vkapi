@@ -23,7 +23,6 @@ limitations under the License.
 package go_vkapi
 
 import (
-	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
