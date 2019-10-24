@@ -28,8 +28,8 @@ package objects
 
 // OrdersAmount type represents `orders_amount` API object
 type OrdersAmount struct {
-	Amounts  []OrdersAmountItem `json:"amounts"`
-	Currency string             `json:"currency"` // Currency name
+	Amounts  []*OrdersAmountItem `json:"amounts"`
+	Currency string              `json:"currency"` // Currency name
 }
 
 // OrdersAmountItem type represents `orders_amount_item` API object

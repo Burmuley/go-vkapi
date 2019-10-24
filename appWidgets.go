@@ -23,22 +23,22 @@ limitations under the License.
 package go_vkapi
 
 import (
-	"gitlab.com/Burmuley/go-vkapi/responses"
+	"gitlab.com/Burmuley/go-vkapi/objects"
 )
 
-type AppWidgets struct {
+type Appwidgets struct {
 	*VKApi
 }
 
 /////////////////////////////////////////////////////////////
-// `AppWidgets` methods
+// `Appwidgets` methods
 /////////////////////////////////////////////////////////////
 
 // Update - Allows to update community app widget
 // Parameters:
 //   * code - NO DESCRIPTION IN JSON SCHEMA
 //   * pType - NO DESCRIPTION IN JSON SCHEMA
-func (a AppWidgets) Update(code string, pType string) (resp objects.BaseOk, err error) {
+func (a Appwidgets) Update(code string, pType string) (resp objects.BaseOkResponse, err error) {
 	params := map[string]interface{}{}
 
 	params["code"] = code

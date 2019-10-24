@@ -43,10 +43,10 @@ type SecureSmsNotification struct {
 
 // SecureTokenChecked type represents `secure_token_checked` API object
 type SecureTokenChecked struct {
-	Date    int    `json:"date"`    // Date when access_token has been generated in Unixtime
-	Expire  int    `json:"expire"`  // Date when access_token will expire in Unixtime
-	Success BaseOk `json:"success"` // Returns if successfully processed
-	UserId  int    `json:"user_id"` // User ID
+	Date    int             `json:"date"`    // Date when access_token has been generated in Unixtime
+	Expire  int             `json:"expire"`  // Date when access_token will expire in Unixtime
+	Success *BaseOkResponse `json:"success"` // Returns if successfully processed
+	UserId  int             `json:"user_id"` // User ID
 }
 
 // SecureTransaction type represents `secure_transaction` API object

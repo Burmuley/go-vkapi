@@ -23,6 +23,7 @@ limitations under the License.
 package go_vkapi
 
 import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
@@ -57,11 +58,11 @@ func (f Friends) Add(userId int, text string, follow bool) (resp responses.Frien
 	return
 }
 
-// AddList - Creates a new friend list for the current user.
+// Addlist - Creates a new friend list for the current user.
 // Parameters:
 //   * name - Name of the friend list.
 //   * userIds - IDs of users to be added to the friend list.
-func (f Friends) AddList(name string, userIds []int) (resp responses.FriendsAddList, err error) {
+func (f Friends) Addlist(name string, userIds []int) (resp responses.FriendsAddlist, err error) {
 	params := map[string]interface{}{}
 
 	params["name"] = name
@@ -75,11 +76,11 @@ func (f Friends) AddList(name string, userIds []int) (resp responses.FriendsAddL
 	return
 }
 
-// AreFriends - Checks the current user's friendship status with other specified users.
+// Arefriends - Checks the current user's friendship status with other specified users.
 // Parameters:
 //   * userIds - IDs of the users whose friendship status to check.
 //   * needSign - '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
-func (f Friends) AreFriends(userIds []int, needSign bool) (resp responses.FriendsAreFriends, err error) {
+func (f Friends) Arefriends(userIds []int, needSign bool) (resp responses.FriendsArefriend, err error) {
 	params := map[string]interface{}{}
 
 	params["user_ids"] = SliceToString(userIds)
@@ -94,7 +95,7 @@ func (f Friends) AreFriends(userIds []int, needSign bool) (resp responses.Friend
 // Delete - Declines a friend request or deletes a user from the current user's friend list.
 // Parameters:
 //   * userId - ID of the user whose friend request is to be declined or who is to be deleted from the current user's friend list.
-func (f Friends) Delete(userId int) (resp responses.FriendsDelete, err error) {
+func (f Friends) Delete(userId int) (resp responses.FriendsDelet, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -106,8 +107,8 @@ func (f Friends) Delete(userId int) (resp responses.FriendsDelete, err error) {
 	return
 }
 
-// DeleteAllRequests - Marks all incoming friend requests as viewed.
-func (f Friends) DeleteAllRequests() (resp responses.Ok, err error) {
+// Deleteallrequests - Marks all incoming friend requests as viewed.
+func (f Friends) Deleteallrequests() (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	err = f.SendObjRequest("friends.deleteAllRequests", params, &resp)
@@ -115,10 +116,10 @@ func (f Friends) DeleteAllRequests() (resp responses.Ok, err error) {
 	return
 }
 
-// DeleteList - Deletes a friend list of the current user.
+// Deletelist - Deletes a friend list of the current user.
 // Parameters:
 //   * listId - ID of the friend list to delete.
-func (f Friends) DeleteList(listId int) (resp responses.Ok, err error) {
+func (f Friends) Deletelist(listId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["list_id"] = listId
@@ -146,14 +147,14 @@ func (f Friends) Edit(userId int, listIds []int) (resp responses.Ok, err error) 
 	return
 }
 
-// EditList - Edits a friend list of the current user.
+// Editlist - Edits a friend list of the current user.
 // Parameters:
 //   * name - Name of the friend list.
 //   * listId - Friend list ID.
 //   * userIds - IDs of users in the friend list.
 //   * addUserIds - (Applies if 'user_ids' parameter is not set.), User IDs to add to the friend list.
 //   * deleteUserIds - (Applies if 'user_ids' parameter is not set.), User IDs to delete from the friend list.
-func (f Friends) EditList(name string, listId int, userIds []int, addUserIds []int, deleteUserIds []int) (resp responses.Ok, err error) {
+func (f Friends) Editlist(name string, listId int, userIds []int, addUserIds []int, deleteUserIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if name != "" {
@@ -229,8 +230,8 @@ func (f Friends) Get(userId int, order string, listId int, count int, offset int
 	return
 }
 
-// GetAppUsers - Returns a list of IDs of the current user's friends who installed the application.
-func (f Friends) GetAppUsers() (resp responses.FriendsGetAppUsers, err error) {
+// Getappusers - Returns a list of IDs of the current user's friends who installed the application.
+func (f Friends) Getappusers() (resp responses.FriendsGetappuser, err error) {
 	params := map[string]interface{}{}
 
 	err = f.SendObjRequest("friends.getAppUsers", params, &resp)
@@ -238,11 +239,11 @@ func (f Friends) GetAppUsers() (resp responses.FriendsGetAppUsers, err error) {
 	return
 }
 
-// GetByPhones - Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a given list.
+// Getbyphones - Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a given list.
 // Parameters:
 //   * phones - List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
 //   * fields - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online, counters'.
-func (f Friends) GetByPhones(phones []string, fields []objects.UsersFields) (resp responses.FriendsGetByPhones, err error) {
+func (f Friends) Getbyphones(phones []string, fields []objects.UsersFields) (resp responses.FriendsGetbyph, err error) {
 	params := map[string]interface{}{}
 
 	if len(phones) > 0 {
@@ -258,11 +259,11 @@ func (f Friends) GetByPhones(phones []string, fields []objects.UsersFields) (res
 	return
 }
 
-// GetLists - Returns a list of the user's friend lists.
+// Getlists - Returns a list of the user's friend lists.
 // Parameters:
 //   * userId - User ID.
 //   * returnSystem - '1' — to return system friend lists. By default: '0'.
-func (f Friends) GetLists(userId int, returnSystem bool) (resp responses.FriendsGetLists, err error) {
+func (f Friends) Getlists(userId int, returnSystem bool) (resp responses.FriendsGetlist, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -276,7 +277,7 @@ func (f Friends) GetLists(userId int, returnSystem bool) (resp responses.Friends
 	return
 }
 
-// GetMutual - Returns a list of user IDs of the mutual friends of two users.
+// Getmutual - Returns a list of user IDs of the mutual friends of two users.
 // Parameters:
 //   * sourceUid - ID of the user whose friends will be checked against the friends of the user specified in 'target_uid'.
 //   * targetUid - ID of the user whose friends will be checked against the friends of the user specified in 'source_uid'.
@@ -284,7 +285,7 @@ func (f Friends) GetLists(userId int, returnSystem bool) (resp responses.Friends
 //   * order - Sort order: 'random' — random order
 //   * count - Number of mutual friends to return.
 //   * offset - Offset needed to return a specific subset of mutual friends.
-func (f Friends) GetMutual(sourceUid int, targetUid int, targetUids []int, order string, count int, offset int) (resp responses.FriendsGetMutual, err error) {
+func (f Friends) Getmutual(sourceUid int, targetUid int, targetUids []int, order string, count int, offset int) (resp responses.FriendsGetmutual, err error) {
 	params := map[string]interface{}{}
 
 	if sourceUid > 0 {
@@ -316,7 +317,7 @@ func (f Friends) GetMutual(sourceUid int, targetUid int, targetUids []int, order
 	return
 }
 
-// GetOnline - Returns a list of user IDs of a user's friends who are online.
+// Getonline - Returns a list of user IDs of a user's friends who are online.
 // Parameters:
 //   * userId - User ID.
 //   * listId - Friend list ID. If this parameter is not set, information about all online friends is returned.
@@ -324,7 +325,7 @@ func (f Friends) GetMutual(sourceUid int, targetUid int, targetUids []int, order
 //   * order - Sort order: 'random' — random order
 //   * count - Number of friends to return.
 //   * offset - Offset needed to return a specific subset of friends.
-func (f Friends) GetOnline(userId int, listId int, onlineMobile bool, order string, count int, offset int) (resp responses.FriendsGetOnline, err error) {
+func (f Friends) Getonline(userId int, listId int, onlineMobile bool, order string, count int, offset int) (resp responses.FriendsGetonli, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -354,10 +355,10 @@ func (f Friends) GetOnline(userId int, listId int, onlineMobile bool, order stri
 	return
 }
 
-// GetRecent - Returns a list of user IDs of the current user's recently added friends.
+// Getrecent - Returns a list of user IDs of the current user's recently added friends.
 // Parameters:
 //   * count - Number of recently added friends to return.
-func (f Friends) GetRecent(count int) (resp responses.FriendsGetRecent, err error) {
+func (f Friends) Getrecent(count int) (resp responses.FriendsGetrecent, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -369,7 +370,7 @@ func (f Friends) GetRecent(count int) (resp responses.FriendsGetRecent, err erro
 	return
 }
 
-// GetRequests - Returns information about the current user's incoming and outgoing friend requests.
+// Getrequests - Returns information about the current user's incoming and outgoing friend requests.
 // Parameters:
 //   * offset - Offset needed to return a specific subset of friend requests.
 //   * count - Number of friend requests to return (default 100, maximum 1000).
@@ -381,7 +382,7 @@ func (f Friends) GetRecent(count int) (resp responses.FriendsGetRecent, err erro
 //   * suggested - '1' — to return a list of suggested friends, '0' — to return friend requests (default)
 //   * ref - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (f Friends) GetRequests(offset int, count int, needMutual bool, out bool, sort int, needViewed bool, suggested bool, ref string, fields []objects.UsersFields) (resp responses.FriendsGetRequests, err error) {
+func (f Friends) Getrequests(offset int, count int, needMutual bool, out bool, sort int, needViewed bool, suggested bool, ref string, fields []objects.UsersFields) (resp responses.FriendsGetrequest, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -418,7 +419,7 @@ func (f Friends) GetRequests(offset int, count int, needMutual bool, out bool, s
 	return
 }
 
-// GetRequestsExtended - Returns information about the current user's incoming and outgoing friend requests.
+// GetrequestsExtended - Returns information about the current user's incoming and outgoing friend requests.
 // Parameters:
 //   * offset - Offset needed to return a specific subset of friend requests.
 //   * count - Number of friend requests to return (default 100, maximum 1000).
@@ -430,7 +431,7 @@ func (f Friends) GetRequests(offset int, count int, needMutual bool, out bool, s
 //   * suggested - '1' — to return a list of suggested friends, '0' — to return friend requests (default)
 //   * ref - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (f Friends) GetRequestsExtended(offset int, count int, needMutual bool, out bool, sort int, needViewed bool, suggested bool, ref string, fields []objects.UsersFields) (resp responses.FriendsGetRequestsExtended, err error) {
+func (f Friends) GetrequestsExtended(offset int, count int, needMutual bool, out bool, sort int, needViewed bool, suggested bool, ref string, fields []objects.UsersFields) (resp responses.FriendsGetrequestsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -467,14 +468,14 @@ func (f Friends) GetRequestsExtended(offset int, count int, needMutual bool, out
 	return
 }
 
-// GetSuggestions - Returns a list of profiles of users whom the current user may know.
+// Getsuggestions - Returns a list of profiles of users whom the current user may know.
 // Parameters:
 //   * filter - Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
 //   * count - Number of suggestions to return.
 //   * offset - Offset needed to return a specific subset of suggestions.
 //   * fields - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
 //   * nameCase - Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-func (f Friends) GetSuggestions(filter []string, count int, offset int, fields []objects.UsersFields, nameCase string) (resp responses.FriendsGetSuggestions, err error) {
+func (f Friends) Getsuggestions(filter []string, count int, offset int, fields []objects.UsersFields, nameCase string) (resp responses.FriendsGetsuggesti, err error) {
 	params := map[string]interface{}{}
 
 	if len(filter) > 0 {

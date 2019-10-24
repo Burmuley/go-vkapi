@@ -34,7 +34,7 @@ type Search struct {
 // `Search` methods
 /////////////////////////////////////////////////////////////
 
-// GetHints - Allows the programmer to do a quick search for any substring.
+// Gethints - Allows the programmer to do a quick search for any substring.
 // Parameters:
 //   * q - Search query string.
 //   * offset - Offset for querying specific result subset
@@ -42,7 +42,7 @@ type Search struct {
 //   * filters - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * searchGlobal - NO DESCRIPTION IN JSON SCHEMA
-func (s Search) GetHints(q string, offset int, limit int, filters []string, fields []string, searchGlobal bool) (resp responses.SearchGetHints, err error) {
+func (s Search) Gethints(q string, offset int, limit int, filters []string, fields []string, searchGlobal bool) (resp responses.SearchGethint, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {

@@ -22,32 +22,34 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `utils` group of responses
 /////////////////////////////////////////////////////////////
 
-// UtilsCheckLink type represents `utils_checkLink_response` API response object
-type UtilsCheckLink objects.UtilsLinkChecked
+// UtilsChecklink type represents `utils_checkLink_response` API response object
+type UtilsChecklink *objects.UtilsLinkChecked
 
-// UtilsGetLastShortenedLinks type represents `utils_getLastShortenedLinks_response` API response object
-type UtilsGetLastShortenedLinks struct {
-	Count int                              `json:"count"` // Total number of available results
-	Items []objects.UtilsLastShortenedLink `json:"items"`
+// UtilsGetlastshortenedlink type represents `utils_getLastShortenedLinks_response` API response object
+type UtilsGetlastshortenedlink struct {
+	Count int                               `json:"count"` // Total number of available results
+	Items []*objects.UtilsLastShortenedLink `json:"items"`
 }
 
-// UtilsGetLinkStatsExtended type represents `utils_getLinkStats_extended_response` API response object
-type UtilsGetLinkStatsExtended objects.UtilsLinkStatsExtended
+// UtilsGetlinkstatsExtended type represents `utils_getLinkStats_extended_response` API response object
+type UtilsGetlinkstatsExtended *objects.UtilsLinkStatsExtended
 
-// UtilsGetLinkStats type represents `utils_getLinkStats_response` API response object
-type UtilsGetLinkStats objects.UtilsLinkStats
+// UtilsGetlinkstat type represents `utils_getLinkStats_response` API response object
+type UtilsGetlinkstat *objects.UtilsLinkStats
 
-// UtilsGetServerTime type represents `utils_getServerTime_response` API response object
-type UtilsGetServerTime int // Time as Unixtime
+// UtilsGetservertim type represents `utils_getServerTime_response` API response object
+type UtilsGetservertim int // Time as Unixtime
 
-// UtilsGetShortLink type represents `utils_getShortLink_response` API response object
-type UtilsGetShortLink objects.UtilsShortLink
+// UtilsGetshortlink type represents `utils_getShortLink_response` API response object
+type UtilsGetshortlink *objects.UtilsShortLink
 
-// UtilsResolveScreenName type represents `utils_resolveScreenName_response` API response object
-type UtilsResolveScreenName objects.UtilsDomainResolved
+// UtilsResolvescreennam type represents `utils_resolveScreenName_response` API response object
+type UtilsResolvescreennam *objects.UtilsDomainResolved

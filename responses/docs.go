@@ -22,7 +22,9 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `docs` group of responses
@@ -33,34 +35,34 @@ type DocsAdd struct {
 	Id int `json:"id"` // Doc ID
 }
 
-// DocsGetById type represents `docs_getById_response` API response object
-type DocsGetById objects.DocsDoc
+// DocsGetbyid type represents `docs_getById_response` API response object
+type DocsGetbyid *objects.DocsDoc
 
-// DocsGetTypes type represents `docs_getTypes_response` API response object
-type DocsGetTypes struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.DocsDocTypes `json:"items"`
+// DocsGetty type represents `docs_getTypes_response` API response object
+type DocsGetty struct {
+	Count int                     `json:"count"` // Total number
+	Items []*objects.DocsDocTypes `json:"items"`
 }
 
-// DocsGetUploadServer type represents `docs_getUploadServer` API response object
-type DocsGetUploadServer objects.BaseUploadServer
+// DocsGetuploadserver type represents `docs_getUploadServer` API response object
+type DocsGetuploadserver *objects.BaseUploadServer
 
 // DocsGet type represents `docs_get_response` API response object
 type DocsGet struct {
-	Count int               `json:"count"` // Total number
-	Items []objects.DocsDoc `json:"items"`
+	Count int                `json:"count"` // Total number
+	Items []*objects.DocsDoc `json:"items"`
 }
 
-// DocsSave type represents `docs_save_response` API response object
-type DocsSave struct {
-	AudioMessage objects.MessagesAudioMessage  `json:"audio_message"`
-	Doc          objects.DocsDoc               `json:"doc"`
-	Graffiti     objects.MessagesGraffiti      `json:"graffiti"`
-	Type         objects.DocsDocAttachmentType `json:"type"`
+// DocsSav type represents `docs_save_response` API response object
+type DocsSav struct {
+	AudioMessage *objects.MessagesAudioMessage  `json:"audio_message"`
+	Doc          *objects.DocsDoc               `json:"doc"`
+	Graffiti     *objects.MessagesGraffiti      `json:"graffiti"`
+	Type         *objects.DocsDocAttachmentType `json:"type"`
 }
 
 // DocsSearch type represents `docs_search_response` API response object
 type DocsSearch struct {
-	Count int               `json:"count"` // Total number
-	Items []objects.DocsDoc `json:"items"`
+	Count int                `json:"count"` // Total number
+	Items []*objects.DocsDoc `json:"items"`
 }

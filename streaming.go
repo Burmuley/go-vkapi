@@ -34,8 +34,8 @@ type Streaming struct {
 // `Streaming` methods
 /////////////////////////////////////////////////////////////
 
-// GetServerUrl - Allows to receive data for the connection to Streaming API.
-func (s Streaming) GetServerUrl() (resp responses.StreamingGetServerUrl, err error) {
+// Getserverurl - Allows to receive data for the connection to Streaming API.
+func (s Streaming) Getserverurl() (resp responses.StreamingGetserverurl, err error) {
 	params := map[string]interface{}{}
 
 	err = s.SendObjRequest("streaming.getServerUrl", params, &resp)
@@ -43,10 +43,10 @@ func (s Streaming) GetServerUrl() (resp responses.StreamingGetServerUrl, err err
 	return
 }
 
-// SetSettings - NO DESCRIPTION IN JSON SCHEMA
+// Setsettings - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * monthlyTier - NO DESCRIPTION IN JSON SCHEMA
-func (s Streaming) SetSettings(monthlyTier string) (resp responses.Ok, err error) {
+func (s Streaming) Setsettings(monthlyTier string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if monthlyTier != "" {

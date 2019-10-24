@@ -34,10 +34,10 @@ type Utils struct {
 // `Utils` methods
 /////////////////////////////////////////////////////////////
 
-// CheckLink - Checks whether a link is blocked in VK.
+// Checklink - Checks whether a link is blocked in VK.
 // Parameters:
 //   * url - Link to check (e.g., 'http://google.com').
-func (u Utils) CheckLink(url string) (resp responses.UtilsCheckLink, err error) {
+func (u Utils) Checklink(url string) (resp responses.UtilsChecklink, err error) {
 	params := map[string]interface{}{}
 
 	params["url"] = url
@@ -47,10 +47,10 @@ func (u Utils) CheckLink(url string) (resp responses.UtilsCheckLink, err error) 
 	return
 }
 
-// DeleteFromLastShortened - Deletes shortened link from user's list.
+// Deletefromlastshortened - Deletes shortened link from user's list.
 // Parameters:
 //   * key - Link key (characters after vk.cc/).
-func (u Utils) DeleteFromLastShortened(key string) (resp responses.Ok, err error) {
+func (u Utils) Deletefromlastshortened(key string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["key"] = key
@@ -60,11 +60,11 @@ func (u Utils) DeleteFromLastShortened(key string) (resp responses.Ok, err error
 	return
 }
 
-// GetLastShortenedLinks - Returns a list of user's shortened links.
+// Getlastshortenedlinks - Returns a list of user's shortened links.
 // Parameters:
 //   * count - Number of links to return.
 //   * offset - Offset needed to return a specific subset of links.
-func (u Utils) GetLastShortenedLinks(count int, offset int) (resp responses.UtilsGetLastShortenedLinks, err error) {
+func (u Utils) Getlastshortenedlinks(count int, offset int) (resp responses.UtilsGetlastshortenedlink, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -80,7 +80,7 @@ func (u Utils) GetLastShortenedLinks(count int, offset int) (resp responses.Util
 	return
 }
 
-// GetLinkStats - Returns stats data for shortened link.
+// Getlinkstats - Returns stats data for shortened link.
 // Parameters:
 //   * key - Link key (characters after vk.cc/).
 //   * source - Source of scope
@@ -88,7 +88,7 @@ func (u Utils) GetLastShortenedLinks(count int, offset int) (resp responses.Util
 //   * interval - Interval.
 //   * intervalsCount - Number of intervals to return.
 //   * extended - 1 — to return extended stats data (sex, age, geo). 0 — to return views number only.
-func (u Utils) GetLinkStats(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetLinkStats, err error) {
+func (u Utils) Getlinkstats(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetlinkstat, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -115,7 +115,7 @@ func (u Utils) GetLinkStats(key string, source string, accessKey string, interva
 	return
 }
 
-// GetLinkStatsExtended - Returns stats data for shortened link.
+// GetlinkstatsExtended - Returns stats data for shortened link.
 // Parameters:
 //   * key - Link key (characters after vk.cc/).
 //   * source - Source of scope
@@ -123,7 +123,7 @@ func (u Utils) GetLinkStats(key string, source string, accessKey string, interva
 //   * interval - Interval.
 //   * intervalsCount - Number of intervals to return.
 //   * extended - 1 — to return extended stats data (sex, age, geo). 0 — to return views number only.
-func (u Utils) GetLinkStatsExtended(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetLinkStatsExtended, err error) {
+func (u Utils) GetlinkstatsExtended(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetlinkstatsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -150,8 +150,8 @@ func (u Utils) GetLinkStatsExtended(key string, source string, accessKey string,
 	return
 }
 
-// GetServerTime - Returns the current time of the VK server.
-func (u Utils) GetServerTime() (resp responses.UtilsGetServerTime, err error) {
+// Getservertime - Returns the current time of the VK server.
+func (u Utils) Getservertime() (resp responses.UtilsGetservertim, err error) {
 	params := map[string]interface{}{}
 
 	err = u.SendObjRequest("utils.getServerTime", params, &resp)
@@ -159,11 +159,11 @@ func (u Utils) GetServerTime() (resp responses.UtilsGetServerTime, err error) {
 	return
 }
 
-// GetShortLink - Allows to receive a link shortened via vk.cc.
+// Getshortlink - Allows to receive a link shortened via vk.cc.
 // Parameters:
 //   * url - URL to be shortened.
 //   * private - 1 — private stats, 0 — public stats.
-func (u Utils) GetShortLink(url string, private bool) (resp responses.UtilsGetShortLink, err error) {
+func (u Utils) Getshortlink(url string, private bool) (resp responses.UtilsGetshortlink, err error) {
 	params := map[string]interface{}{}
 
 	params["url"] = url
@@ -175,10 +175,10 @@ func (u Utils) GetShortLink(url string, private bool) (resp responses.UtilsGetSh
 	return
 }
 
-// ResolveScreenName - Detects a type of object (e.g., user, community, application) and its ID by screen name.
+// Resolvescreenname - Detects a type of object (e.g., user, community, application) and its ID by screen name.
 // Parameters:
 //   * screenName - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
-func (u Utils) ResolveScreenName(screenName string) (resp responses.UtilsResolveScreenName, err error) {
+func (u Utils) Resolvescreenname(screenName string) (resp responses.UtilsResolvescreennam, err error) {
 	params := map[string]interface{}{}
 
 	params["screen_name"] = screenName

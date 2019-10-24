@@ -35,10 +35,10 @@ type Stories struct {
 // `Stories` methods
 /////////////////////////////////////////////////////////////
 
-// BanOwner - Allows to hide stories from chosen sources from current user's feed.
+// Banowner - Allows to hide stories from chosen sources from current user's feed.
 // Parameters:
 //   * ownersIds - List of sources IDs
-func (s Stories) BanOwner(ownersIds []int) (resp responses.Ok, err error) {
+func (s Stories) Banowner(ownersIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owners_ids"] = SliceToString(ownersIds)
@@ -98,11 +98,11 @@ func (s Stories) GetExtended(ownerId int) (resp responses.StoriesGetExtended, er
 	return
 }
 
-// GetBanned - Returns list of sources hidden from current user's feed.
+// Getbanned - Returns list of sources hidden from current user's feed.
 // Parameters:
 //   * extended - '1' — to return additional fields for users and communities. Default value is 0.
 //   * fields - Additional fields to return
-func (s Stories) GetBanned(fields []objects.BaseUserGroupFields) (resp responses.StoriesGetBanned, err error) {
+func (s Stories) Getbanned(fields []objects.BaseUserGroupFields) (resp responses.StoriesGetbanned, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -115,11 +115,11 @@ func (s Stories) GetBanned(fields []objects.BaseUserGroupFields) (resp responses
 	return
 }
 
-// GetBannedExtended - Returns list of sources hidden from current user's feed.
+// GetbannedExtended - Returns list of sources hidden from current user's feed.
 // Parameters:
 //   * extended - '1' — to return additional fields for users and communities. Default value is 0.
 //   * fields - Additional fields to return
-func (s Stories) GetBannedExtended(fields []objects.BaseUserGroupFields) (resp responses.StoriesGetBannedExtended, err error) {
+func (s Stories) GetbannedExtended(fields []objects.BaseUserGroupFields) (resp responses.StoriesGetbannedExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -132,12 +132,12 @@ func (s Stories) GetBannedExtended(fields []objects.BaseUserGroupFields) (resp r
 	return
 }
 
-// GetById - Returns story by its ID.
+// Getbyid - Returns story by its ID.
 // Parameters:
 //   * stories - Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
 //   * extended - '1' — to return additional fields for users and communities. Default value is 0.
 //   * fields - Additional fields to return
-func (s Stories) GetById(stories []string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetById, err error) {
+func (s Stories) Getbyid(stories []string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetbyid, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -152,12 +152,12 @@ func (s Stories) GetById(stories []string, fields []objects.BaseUserGroupFields)
 	return
 }
 
-// GetByIdExtended - Returns story by its ID.
+// GetbyidExtended - Returns story by its ID.
 // Parameters:
 //   * stories - Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
 //   * extended - '1' — to return additional fields for users and communities. Default value is 0.
 //   * fields - Additional fields to return
-func (s Stories) GetByIdExtended(stories []string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetByIdExtended, err error) {
+func (s Stories) GetbyidExtended(stories []string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetbyidExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -172,7 +172,7 @@ func (s Stories) GetByIdExtended(stories []string, fields []objects.BaseUserGrou
 	return
 }
 
-// GetPhotoUploadServer - Returns URL for uploading a story with photo.
+// Getphotouploadserver - Returns URL for uploading a story with photo.
 // Parameters:
 //   * addToNews - 1 — to add the story to friend's feed.
 //   * userIds - List of users IDs who can see the story.
@@ -180,7 +180,7 @@ func (s Stories) GetByIdExtended(stories []string, fields []objects.BaseUserGrou
 //   * linkText - Link text (for community's stories only).
 //   * linkUrl - Link URL. Internal links on https://vk.com only.
 //   * groupId - ID of the community to upload the story (should be verified or with the "fire" icon).
-func (s Stories) GetPhotoUploadServer(addToNews bool, userIds []int, replyToStory string, linkText objects.StoriesUploadLinkText, linkUrl string, groupId int) (resp responses.StoriesGetPhotoUploadServer, err error) {
+func (s Stories) Getphotouploadserver(addToNews bool, userIds []int, replyToStory string, linkText objects.StoriesUploadLinkText, linkUrl string, groupId int) (resp responses.StoriesGetphotouploadserver, err error) {
 	params := map[string]interface{}{}
 
 	params["add_to_news"] = addToNews
@@ -191,10 +191,6 @@ func (s Stories) GetPhotoUploadServer(addToNews bool, userIds []int, replyToStor
 
 	if replyToStory != "" {
 		params["reply_to_story"] = replyToStory
-	}
-
-	if linkText != "" {
-		params["link_text"] = linkText
 	}
 
 	if linkUrl != "" {
@@ -210,14 +206,14 @@ func (s Stories) GetPhotoUploadServer(addToNews bool, userIds []int, replyToStor
 	return
 }
 
-// GetReplies - Returns replies to the story.
+// Getreplies - Returns replies to the story.
 // Parameters:
 //   * ownerId - Story owner ID.
 //   * storyId - Story ID.
 //   * accessKey - Access key for the private object.
 //   * extended - '1' — to return additional fields for users and communities. Default value is 0.
 //   * fields - Additional fields to return
-func (s Stories) GetReplies(ownerId int, storyId int, accessKey string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetReplies, err error) {
+func (s Stories) Getreplies(ownerId int, storyId int, accessKey string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetrepli, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -238,14 +234,14 @@ func (s Stories) GetReplies(ownerId int, storyId int, accessKey string, fields [
 	return
 }
 
-// GetRepliesExtended - Returns replies to the story.
+// GetrepliesExtended - Returns replies to the story.
 // Parameters:
 //   * ownerId - Story owner ID.
 //   * storyId - Story ID.
 //   * accessKey - Access key for the private object.
 //   * extended - '1' — to return additional fields for users and communities. Default value is 0.
 //   * fields - Additional fields to return
-func (s Stories) GetRepliesExtended(ownerId int, storyId int, accessKey string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetRepliesExtended, err error) {
+func (s Stories) GetrepliesExtended(ownerId int, storyId int, accessKey string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetrepliesExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -266,11 +262,11 @@ func (s Stories) GetRepliesExtended(ownerId int, storyId int, accessKey string, 
 	return
 }
 
-// GetStats - Returns stories available for current user.
+// Getstats - Returns stories available for current user.
 // Parameters:
 //   * ownerId - Story owner ID.
 //   * storyId - Story ID.
-func (s Stories) GetStats(ownerId int, storyId int) (resp responses.StoriesGetStats, err error) {
+func (s Stories) Getstats(ownerId int, storyId int) (resp responses.StoriesGetstat, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -282,7 +278,7 @@ func (s Stories) GetStats(ownerId int, storyId int) (resp responses.StoriesGetSt
 	return
 }
 
-// GetVideoUploadServer - Allows to receive URL for uploading story with video.
+// Getvideouploadserver - Allows to receive URL for uploading story with video.
 // Parameters:
 //   * addToNews - 1 — to add the story to friend's feed.
 //   * userIds - List of users IDs who can see the story.
@@ -290,7 +286,7 @@ func (s Stories) GetStats(ownerId int, storyId int) (resp responses.StoriesGetSt
 //   * linkText - Link text (for community's stories only).
 //   * linkUrl - Link URL. Internal links on https://vk.com only.
 //   * groupId - ID of the community to upload the story (should be verified or with the "fire" icon).
-func (s Stories) GetVideoUploadServer(addToNews bool, userIds []int, replyToStory string, linkText objects.StoriesUploadLinkText, linkUrl string, groupId int) (resp responses.StoriesGetVideoUploadServer, err error) {
+func (s Stories) Getvideouploadserver(addToNews bool, userIds []int, replyToStory string, linkText objects.StoriesUploadLinkText, linkUrl string, groupId int) (resp responses.StoriesGetvideouploadserver, err error) {
 	params := map[string]interface{}{}
 
 	params["add_to_news"] = addToNews
@@ -301,10 +297,6 @@ func (s Stories) GetVideoUploadServer(addToNews bool, userIds []int, replyToStor
 
 	if replyToStory != "" {
 		params["reply_to_story"] = replyToStory
-	}
-
-	if linkText != "" {
-		params["link_text"] = linkText
 	}
 
 	if linkUrl != "" {
@@ -320,14 +312,14 @@ func (s Stories) GetVideoUploadServer(addToNews bool, userIds []int, replyToStor
 	return
 }
 
-// GetViewers - Returns a list of story viewers.
+// Getviewers - Returns a list of story viewers.
 // Parameters:
 //   * ownerId - Story owner ID.
 //   * storyId - Story ID.
 //   * count - Maximum number of results.
 //   * offset - Offset needed to return a specific subset of results.
 //   * extended - '1' — to return detailed information about photos
-func (s Stories) GetViewers(ownerId int, storyId int, count int, offset int) (resp responses.StoriesGetViewers, err error) {
+func (s Stories) Getviewers(ownerId int, storyId int, count int, offset int) (resp responses.StoriesGetviewer, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -348,14 +340,14 @@ func (s Stories) GetViewers(ownerId int, storyId int, count int, offset int) (re
 	return
 }
 
-// GetViewersExtended - Returns a list of story viewers.
+// GetviewersExtended - Returns a list of story viewers.
 // Parameters:
 //   * ownerId - Story owner ID.
 //   * storyId - Story ID.
 //   * count - Maximum number of results.
 //   * offset - Offset needed to return a specific subset of results.
 //   * extended - '1' — to return detailed information about photos
-func (s Stories) GetViewersExtended(ownerId int, storyId int, count int, offset int) (resp responses.StoriesGetViewersExtended, err error) {
+func (s Stories) GetviewersExtended(ownerId int, storyId int, count int, offset int) (resp responses.StoriesGetviewersExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -376,11 +368,11 @@ func (s Stories) GetViewersExtended(ownerId int, storyId int, count int, offset 
 	return
 }
 
-// HideAllReplies - Hides all replies in the last 24 hours from the user to current user's stories.
+// Hideallreplies - Hides all replies in the last 24 hours from the user to current user's stories.
 // Parameters:
 //   * ownerId - ID of the user whose replies should be hidden.
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (s Stories) HideAllReplies(ownerId int, groupId int) (resp responses.Ok, err error) {
+func (s Stories) Hideallreplies(ownerId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -394,11 +386,11 @@ func (s Stories) HideAllReplies(ownerId int, groupId int) (resp responses.Ok, er
 	return
 }
 
-// HideReply - Hides the reply to the current user's story.
+// Hidereply - Hides the reply to the current user's story.
 // Parameters:
 //   * ownerId - ID of the user whose replies should be hidden.
 //   * storyId - Story ID.
-func (s Stories) HideReply(ownerId int, storyId int) (resp responses.Ok, err error) {
+func (s Stories) Hidereply(ownerId int, storyId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -410,10 +402,10 @@ func (s Stories) HideReply(ownerId int, storyId int) (resp responses.Ok, err err
 	return
 }
 
-// UnbanOwner - Allows to show stories from hidden sources in current user's feed.
+// Unbanowner - Allows to show stories from hidden sources in current user's feed.
 // Parameters:
 //   * ownersIds - List of hidden sources to show stories from.
-func (s Stories) UnbanOwner(ownersIds []int) (resp responses.Ok, err error) {
+func (s Stories) Unbanowner(ownersIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owners_ids"] = SliceToString(ownersIds)

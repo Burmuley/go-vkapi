@@ -22,14 +22,14 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import ()
 
 /////////////////////////////////////////////////////////////
 // `auth` group of responses
 /////////////////////////////////////////////////////////////
 
-// AuthRestore type represents `auth_restore_response` API response object
-type AuthRestore struct {
+// AuthRestor type represents `auth_restore_response` API response object
+type AuthRestor struct {
 	Sid     string `json:"sid"`     // Parameter needed to grant access by code
 	Success int    `json:"success"` // 1 if success
 }

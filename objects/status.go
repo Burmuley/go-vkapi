@@ -28,6 +28,6 @@ package objects
 
 // StatusStatus type represents `status_status` API object
 type StatusStatus struct {
-	Audio AudioAudio `json:"audio"`
-	Text  string     `json:"text"` // Status text
+	Audio *AudioAudio `json:"audio"`
+	Text  string      `json:"text"` // Status text
 }

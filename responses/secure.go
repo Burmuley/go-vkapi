@@ -22,29 +22,31 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `secure` group of responses
 /////////////////////////////////////////////////////////////
 
-// SecureCheckToken type represents `secure_checkToken_response` API response object
-type SecureCheckToken objects.SecureTokenChecked
+// SecureChecktok type represents `secure_checkToken_response` API response object
+type SecureChecktok *objects.SecureTokenChecked
 
-// SecureGetAppBalance type represents `secure_getAppBalance_response` API response object
-type SecureGetAppBalance int // App balance
+// SecureGetappbalanc type represents `secure_getAppBalance_response` API response object
+type SecureGetappbalanc int // App balance
 
-// SecureGetSMSHistory type represents `secure_getSMSHistory_response` API response object
-type SecureGetSMSHistory objects.SecureSmsNotification
+// SecureGetsmshistory type represents `secure_getSMSHistory_response` API response object
+type SecureGetsmshistory *objects.SecureSmsNotification
 
-// SecureGetTransactionsHistory type represents `secure_getTransactionsHistory_response` API response object
-type SecureGetTransactionsHistory objects.SecureTransaction
+// SecureGettransactionshistory type represents `secure_getTransactionsHistory_response` API response object
+type SecureGettransactionshistory *objects.SecureTransaction
 
-// SecureGetUserLevel type represents `secure_getUserLevel_response` API response object
-type SecureGetUserLevel objects.SecureLevel
+// SecureGetuserlevel type represents `secure_getUserLevel_response` API response object
+type SecureGetuserlevel *objects.SecureLevel
 
-// SecureGiveEventSticker type represents `secure_giveEventSticker_response` API response object
-type SecureGiveEventSticker object
+// SecureGiveeventsticker type represents `secure_giveEventSticker_response` API response object
+type SecureGiveeventsticker interface{}
 
-// SecureSendNotification type represents `secure_sendNotification_response` API response object
-type SecureSendNotification int
+// SecureSendnotificati type represents `secure_sendNotification_response` API response object
+type SecureSendnotificati int

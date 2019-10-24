@@ -22,11 +22,13 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `status` group of responses
 /////////////////////////////////////////////////////////////
 
 // StatusGet type represents `status_get_response` API response object
-type StatusGet objects.StatusStatus
+type StatusGet *objects.StatusStatus

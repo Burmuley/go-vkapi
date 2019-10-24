@@ -34,12 +34,12 @@ type Orders struct {
 // `Orders` methods
 /////////////////////////////////////////////////////////////
 
-// CancelSubscription - NO DESCRIPTION IN JSON SCHEMA
+// Cancelsubscription - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * subscriptionId - NO DESCRIPTION IN JSON SCHEMA
 //   * pendingCancel - NO DESCRIPTION IN JSON SCHEMA
-func (o Orders) CancelSubscription(userId int, subscriptionId int, pendingCancel bool) (resp responses.OrdersCancelSubscription, err error) {
+func (o Orders) Cancelsubscription(userId int, subscriptionId int, pendingCancel bool) (resp responses.OrdersCancelsubscripti, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -53,13 +53,13 @@ func (o Orders) CancelSubscription(userId int, subscriptionId int, pendingCancel
 	return
 }
 
-// ChangeState - Changes order status.
+// Changestate - Changes order status.
 // Parameters:
 //   * orderId - order ID.
 //   * action - action to be done with the order. Available actions: *cancel — to cancel unconfirmed order. *charge — to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund — to cancel confirmed order.
 //   * appOrderId - internal ID of the order in the application.
 //   * testMode - if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
-func (o Orders) ChangeState(orderId int, action string, appOrderId int, testMode bool) (resp responses.OrdersChangeState, err error) {
+func (o Orders) Changestate(orderId int, action string, appOrderId int, testMode bool) (resp responses.OrdersChangestat, err error) {
 	params := map[string]interface{}{}
 
 	params["order_id"] = orderId
@@ -100,11 +100,11 @@ func (o Orders) Get(offset int, count int, testMode bool) (resp responses.Orders
 	return
 }
 
-// GetAmount - NO DESCRIPTION IN JSON SCHEMA
+// Getamount - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * votes - NO DESCRIPTION IN JSON SCHEMA
-func (o Orders) GetAmount(userId int, votes []string) (resp responses.OrdersGetAmount, err error) {
+func (o Orders) Getamount(userId int, votes []string) (resp responses.OrdersGetamount, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -116,12 +116,12 @@ func (o Orders) GetAmount(userId int, votes []string) (resp responses.OrdersGetA
 	return
 }
 
-// GetById - Returns information about orders by their IDs.
+// Getbyid - Returns information about orders by their IDs.
 // Parameters:
 //   * orderId - order ID.
 //   * orderIds - order IDs (when information about several orders is requested).
 //   * testMode - if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
-func (o Orders) GetById(orderId int, orderIds []int, testMode bool) (resp responses.OrdersGetById, err error) {
+func (o Orders) Getbyid(orderId int, orderIds []int, testMode bool) (resp responses.OrdersGetbyid, err error) {
 	params := map[string]interface{}{}
 
 	if orderId > 0 {
@@ -139,11 +139,11 @@ func (o Orders) GetById(orderId int, orderIds []int, testMode bool) (resp respon
 	return
 }
 
-// GetUserSubscriptionById - NO DESCRIPTION IN JSON SCHEMA
+// Getusersubscriptionbyid - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * subscriptionId - NO DESCRIPTION IN JSON SCHEMA
-func (o Orders) GetUserSubscriptionById(userId int, subscriptionId int) (resp responses.OrdersGetUserSubscriptionById, err error) {
+func (o Orders) Getusersubscriptionbyid(userId int, subscriptionId int) (resp responses.OrdersGetusersubscriptionbyid, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -155,10 +155,10 @@ func (o Orders) GetUserSubscriptionById(userId int, subscriptionId int) (resp re
 	return
 }
 
-// GetUserSubscriptions - NO DESCRIPTION IN JSON SCHEMA
+// Getusersubscriptions - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
-func (o Orders) GetUserSubscriptions(userId int) (resp responses.OrdersGetUserSubscriptions, err error) {
+func (o Orders) Getusersubscriptions(userId int) (resp responses.OrdersGetusersubscripti, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -168,12 +168,12 @@ func (o Orders) GetUserSubscriptions(userId int) (resp responses.OrdersGetUserSu
 	return
 }
 
-// UpdateSubscription - NO DESCRIPTION IN JSON SCHEMA
+// Updatesubscription - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * subscriptionId - NO DESCRIPTION IN JSON SCHEMA
 //   * price - NO DESCRIPTION IN JSON SCHEMA
-func (o Orders) UpdateSubscription(userId int, subscriptionId int, price int) (resp responses.OrdersUpdateSubscription, err error) {
+func (o Orders) Updatesubscription(userId int, subscriptionId int, price int) (resp responses.OrdersUpdatesubscripti, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId

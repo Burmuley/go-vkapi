@@ -66,7 +66,7 @@ func (l Likes) Add(pType objects.LikesType, ownerId int, itemId int, accessKey s
 //   * pType - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
 //   * ownerId - ID of the user or community that owns the object.
 //   * itemId - Object ID.
-func (l Likes) Delete(pType objects.LikesType, ownerId int, itemId int) (resp responses.LikesDelete, err error) {
+func (l Likes) Delete(pType objects.LikesType, ownerId int, itemId int) (resp responses.LikesDelet, err error) {
 	params := map[string]interface{}{}
 
 	params["type"] = pType
@@ -82,7 +82,7 @@ func (l Likes) Delete(pType objects.LikesType, ownerId int, itemId int) (resp re
 	return
 }
 
-// GetList - Returns a list of IDs of users who added the specified object to their 'Likes' list.
+// Getlist - Returns a list of IDs of users who added the specified object to their 'Likes' list.
 // Parameters:
 //   * pType - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
 //   * ownerId - ID of the user, community, or application that owns the object. If the 'type' parameter is set as 'sitepage', the application ID is passed as 'owner_id'. Use negative value for a community id. If the 'type' parameter is not set, the 'owner_id' is assumed to be either the current user or the same application ID as if the 'type' parameter was set to 'sitepage'.
@@ -94,7 +94,7 @@ func (l Likes) Delete(pType objects.LikesType, ownerId int, itemId int) (resp re
 //   * offset - Offset needed to select a specific subset of users.
 //   * count - Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
 //   * skipOwn - NO DESCRIPTION IN JSON SCHEMA
-func (l Likes) GetList(pType objects.LikesType, ownerId int, itemId int, pageUrl string, filter string, friendsOnly int, offset int, count int, skipOwn bool) (resp responses.LikesGetList, err error) {
+func (l Likes) Getlist(pType objects.LikesType, ownerId int, itemId int, pageUrl string, filter string, friendsOnly int, offset int, count int, skipOwn bool) (resp responses.LikesGetlist, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -135,7 +135,7 @@ func (l Likes) GetList(pType objects.LikesType, ownerId int, itemId int, pageUrl
 	return
 }
 
-// GetListExtended - Returns a list of IDs of users who added the specified object to their 'Likes' list.
+// GetlistExtended - Returns a list of IDs of users who added the specified object to their 'Likes' list.
 // Parameters:
 //   * pType - , Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
 //   * ownerId - ID of the user, community, or application that owns the object. If the 'type' parameter is set as 'sitepage', the application ID is passed as 'owner_id'. Use negative value for a community id. If the 'type' parameter is not set, the 'owner_id' is assumed to be either the current user or the same application ID as if the 'type' parameter was set to 'sitepage'.
@@ -147,7 +147,7 @@ func (l Likes) GetList(pType objects.LikesType, ownerId int, itemId int, pageUrl
 //   * offset - Offset needed to select a specific subset of users.
 //   * count - Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
 //   * skipOwn - NO DESCRIPTION IN JSON SCHEMA
-func (l Likes) GetListExtended(pType objects.LikesType, ownerId int, itemId int, pageUrl string, filter string, friendsOnly int, offset int, count int, skipOwn bool) (resp responses.LikesGetListExtended, err error) {
+func (l Likes) GetlistExtended(pType objects.LikesType, ownerId int, itemId int, pageUrl string, filter string, friendsOnly int, offset int, count int, skipOwn bool) (resp responses.LikesGetlistExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -188,13 +188,13 @@ func (l Likes) GetListExtended(pType objects.LikesType, ownerId int, itemId int,
 	return
 }
 
-// IsLiked - Checks for the object in the 'Likes' list of the specified user.
+// Isliked - Checks for the object in the 'Likes' list of the specified user.
 // Parameters:
 //   * userId - User ID.
 //   * pType - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion
 //   * ownerId - ID of the user or community that owns the object.
 //   * itemId - Object ID.
-func (l Likes) IsLiked(userId int, pType objects.LikesType, ownerId int, itemId int) (resp responses.LikesIsLiked, err error) {
+func (l Likes) Isliked(userId int, pType objects.LikesType, ownerId int, itemId int) (resp responses.LikesIsliked, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {

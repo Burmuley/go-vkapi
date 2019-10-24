@@ -22,37 +22,39 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `fave` group of responses
 /////////////////////////////////////////////////////////////
 
-// FaveAddTag type represents `fave_addTag_response` API response object
-type FaveAddTag objects.FaveTag
+// FaveAddtag type represents `fave_addTag_response` API response object
+type FaveAddtag *objects.FaveTag
 
-// FaveGetPages type represents `fave_getPages_response` API response object
-type FaveGetPages struct {
-	Count int                `json:"count"`
-	Items []objects.FavePage `json:"items"`
+// FaveGetpag type represents `fave_getPages_response` API response object
+type FaveGetpag struct {
+	Count int                 `json:"count"`
+	Items []*objects.FavePage `json:"items"`
 }
 
-// FaveGetTags type represents `fave_getTags_response` API response object
-type FaveGetTags struct {
-	Count int               `json:"count"`
-	Items []objects.FaveTag `json:"items"`
+// FaveGettag type represents `fave_getTags_response` API response object
+type FaveGettag struct {
+	Count int                `json:"count"`
+	Items []*objects.FaveTag `json:"items"`
 }
 
 // FaveGetExtended type represents `fave_get_extended_response` API response object
 type FaveGetExtended struct {
-	Count    int                     `json:"count"` // Total number
-	Groups   []objects.GroupsGroup   `json:"groups"`
-	Items    []objects.FaveBookmark  `json:"items"`
-	Profiles []objects.UsersUserFull `json:"profiles"`
+	Count    int                      `json:"count"` // Total number
+	Groups   []*objects.GroupsGroup   `json:"groups"`
+	Items    []*objects.FaveBookmark  `json:"items"`
+	Profiles []*objects.UsersUserFull `json:"profiles"`
 }
 
 // FaveGet type represents `fave_get_response` API response object
 type FaveGet struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.FaveBookmark `json:"items"`
+	Count int                     `json:"count"` // Total number
+	Items []*objects.FaveBookmark `json:"items"`
 }

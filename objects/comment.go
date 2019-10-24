@@ -28,9 +28,9 @@ package objects
 
 // CommentThread type represents `comment_thread` API object
 type CommentThread struct {
-	CanPost         bool              `json:"can_post"`        // Information whether current user can comment the post
-	Count           int               `json:"count"`           // Comments number
-	GroupsCanPost   bool              `json:"groups_can_post"` // Information whether groups can comment the post
-	Items           []WallWallComment `json:"items"`
-	ShowReplyButton bool              `json:"show_reply_button"` // Information whether recommended to display reply button
+	CanPost         bool               `json:"can_post"`        // Information whether current user can comment the post
+	Count           int                `json:"count"`           // Comments number
+	GroupsCanPost   bool               `json:"groups_can_post"` // Information whether groups can comment the post
+	Items           []*WallWallComment `json:"items"`
+	ShowReplyButton bool               `json:"show_reply_button"` // Information whether recommended to display reply button
 }

@@ -22,49 +22,51 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `account` group of responses
 /////////////////////////////////////////////////////////////
 
-// AccountChangePassword type represents `account_changePassword_response` API response object
-type AccountChangePassword struct {
+// AccountChangepassword type represents `account_changePassword_response` API response object
+type AccountChangepassword struct {
 	Secret string `json:"secret"` // New secret
 	Token  string `json:"token"`  // New token
 }
 
-// AccountGetActiveOffers type represents `account_getActiveOffers_response` API response object
-type AccountGetActiveOffers struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.AccountOffer `json:"items"`
+// AccountGetactiveoffer type represents `account_getActiveOffers_response` API response object
+type AccountGetactiveoffer struct {
+	Count int                     `json:"count"` // Total number
+	Items []*objects.AccountOffer `json:"items"`
 }
 
-// AccountGetAppPermissions type represents `account_getAppPermissions_response` API response object
-type AccountGetAppPermissions int // Permissions mask
+// AccountGetapppermissi type represents `account_getAppPermissions_response` API response object
+type AccountGetapppermissi int // Permissions mask
 
-// AccountGetBanned type represents `account_getBanned_response` API response object
-type AccountGetBanned struct {
-	Count    int                    `json:"count"` // Total number
-	Groups   []objects.GroupsGroup  `json:"groups"`
-	Items    []int                  `json:"items"`
-	Profiles []objects.UsersUserMin `json:"profiles"`
+// AccountGetbanned type represents `account_getBanned_response` API response object
+type AccountGetbanned struct {
+	Count    int                     `json:"count"` // Total number
+	Groups   []*objects.GroupsGroup  `json:"groups"`
+	Items    []int                   `json:"items"`
+	Profiles []*objects.UsersUserMin `json:"profiles"`
 }
 
-// AccountGetCounters type represents `account_getCounters_response` API response object
-type AccountGetCounters objects.AccountAccountCounters
+// AccountGetcounter type represents `account_getCounters_response` API response object
+type AccountGetcounter *objects.AccountAccountCounters
 
-// AccountGetInfo type represents `account_getInfo_response` API response object
-type AccountGetInfo objects.AccountInfo
+// AccountGetinf type represents `account_getInfo_response` API response object
+type AccountGetinf *objects.AccountInfo
 
-// AccountGetProfileInfo type represents `account_getProfileInfo_response` API response object
-type AccountGetProfileInfo objects.AccountUserSettings
+// AccountGetprofileinf type represents `account_getProfileInfo_response` API response object
+type AccountGetprofileinf *objects.AccountUserSettings
 
-// AccountGetPushSettings type represents `account_getPushSettings_response` API response object
-type AccountGetPushSettings objects.AccountPushSettings
+// AccountGetpushsetting type represents `account_getPushSettings_response` API response object
+type AccountGetpushsetting *objects.AccountPushSettings
 
-// AccountSaveProfileInfo type represents `account_saveProfileInfo_response` API response object
-type AccountSaveProfileInfo struct {
-	Changed     objects.BaseBoolInt        `json:"changed"` // 1 if changes has been processed
-	NameRequest objects.AccountNameRequest `json:"name_request"`
+// AccountSaveprofileinf type represents `account_saveProfileInfo_response` API response object
+type AccountSaveprofileinf struct {
+	Changed     *objects.BaseBoolInt        `json:"changed"` // 1 if changes has been processed
+	NameRequest *objects.AccountNameRequest `json:"name_request"`
 }
