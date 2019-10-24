@@ -42,22 +42,22 @@ type AccountAccountCounters struct {
 
 // AccountInfo type represents `account_info` API object
 type AccountInfo struct {
-	TwofaRequired   BaseBoolInt `json:"2fa_required"`      // Two factor authentication is enabled
-	Country         string      `json:"country"`           // Country code
-	HttpsRequired   BaseBoolInt `json:"https_required"`    // Information whether HTTPS-only is enabled
-	Intro           BaseBoolInt `json:"intro"`             // Information whether user has been processed intro
-	Lang            int         `json:"lang"`              // Language ID
-	NoWallReplies   BaseBoolInt `json:"no_wall_replies"`   // Information whether wall comments should be hidden
-	OwnPostsDefault BaseBoolInt `json:"own_posts_default"` // Information whether only owners posts should be shown
+	TwofaRequired   *BaseBoolInt `json:"2fa_required"`      // Two factor authentication is enabled
+	Country         string       `json:"country"`           // Country code
+	HttpsRequired   *BaseBoolInt `json:"https_required"`    // Information whether HTTPS-only is enabled
+	Intro           *BaseBoolInt `json:"intro"`             // Information whether user has been processed intro
+	Lang            int          `json:"lang"`              // Language ID
+	NoWallReplies   *BaseBoolInt `json:"no_wall_replies"`   // Information whether wall comments should be hidden
+	OwnPostsDefault *BaseBoolInt `json:"own_posts_default"` // Information whether only owners posts should be shown
 }
 
 // AccountNameRequest type represents `account_name_request` API object
 type AccountNameRequest struct {
-	FirstName string                   `json:"first_name"` // First name in request
-	Id        int                      `json:"id"`         // Request ID needed to cancel the request
-	Lang      string                   `json:"lang"`
-	LastName  string                   `json:"last_name"` // Last name in request
-	Status    AccountNameRequestStatus `json:"status"`
+	FirstName string                    `json:"first_name"` // First name in request
+	Id        int                       `json:"id"`         // Request ID needed to cancel the request
+	Lang      string                    `json:"lang"`
+	LastName  string                    `json:"last_name"` // Last name in request
+	Status    *AccountNameRequestStatus `json:"status"`
 }
 
 // AccountNameRequestStatus type represents `account_name_request_status` API object
@@ -78,38 +78,38 @@ type AccountOffer struct {
 
 // AccountPushConversations type represents `account_push_conversations` API object
 type AccountPushConversations struct {
-	Count int                            `json:"count"` // Items count
-	Items []AccountPushConversationsItem `json:"items"`
+	Count int                             `json:"count"` // Items count
+	Items []*AccountPushConversationsItem `json:"items"`
 }
 
 // AccountPushConversationsItem type represents `account_push_conversations_item` API object
 type AccountPushConversationsItem struct {
-	DisabledUntil int         `json:"disabled_until"` // Time until that notifications are disabled in seconds
-	PeerId        int         `json:"peer_id"`        // Peer ID
-	Sound         BaseBoolInt `json:"sound"`          // Information whether the sound are enabled
+	DisabledUntil int          `json:"disabled_until"` // Time until that notifications are disabled in seconds
+	PeerId        int          `json:"peer_id"`        // Peer ID
+	Sound         *BaseBoolInt `json:"sound"`          // Information whether the sound are enabled
 }
 
 // AccountPushParams type represents `account_push_params` API object
 type AccountPushParams struct {
-	AppRequest     []AccountPushParamsOnoff    `json:"app_request"`
-	Birthday       []AccountPushParamsOnoff    `json:"birthday"`
-	Chat           []AccountPushParamsMode     `json:"chat"`
-	Comment        []AccountPushParamsSettings `json:"comment"`
-	EventSoon      []AccountPushParamsOnoff    `json:"event_soon"`
-	Friend         []AccountPushParamsOnoff    `json:"friend"`
-	FriendAccepted []AccountPushParamsOnoff    `json:"friend_accepted"`
-	FriendFound    []AccountPushParamsOnoff    `json:"friend_found"`
-	GroupAccepted  []AccountPushParamsOnoff    `json:"group_accepted"`
-	GroupInvite    []AccountPushParamsOnoff    `json:"group_invite"`
-	Like           []AccountPushParamsSettings `json:"like"`
-	Mention        []AccountPushParamsSettings `json:"mention"`
-	Msg            []AccountPushParamsMode     `json:"msg"`
-	NewPost        []AccountPushParamsOnoff    `json:"new_post"`
-	Reply          []AccountPushParamsOnoff    `json:"reply"`
-	Repost         []AccountPushParamsSettings `json:"repost"`
-	SdkOpen        []AccountPushParamsOnoff    `json:"sdk_open"`
-	WallPost       []AccountPushParamsOnoff    `json:"wall_post"`
-	WallPublish    []AccountPushParamsOnoff    `json:"wall_publish"`
+	AppRequest     []*AccountPushParamsOnoff    `json:"app_request"`
+	Birthday       []*AccountPushParamsOnoff    `json:"birthday"`
+	Chat           []*AccountPushParamsMode     `json:"chat"`
+	Comment        []*AccountPushParamsSettings `json:"comment"`
+	EventSoon      []*AccountPushParamsOnoff    `json:"event_soon"`
+	Friend         []*AccountPushParamsOnoff    `json:"friend"`
+	FriendAccepted []*AccountPushParamsOnoff    `json:"friend_accepted"`
+	FriendFound    []*AccountPushParamsOnoff    `json:"friend_found"`
+	GroupAccepted  []*AccountPushParamsOnoff    `json:"group_accepted"`
+	GroupInvite    []*AccountPushParamsOnoff    `json:"group_invite"`
+	Like           []*AccountPushParamsSettings `json:"like"`
+	Mention        []*AccountPushParamsSettings `json:"mention"`
+	Msg            []*AccountPushParamsMode     `json:"msg"`
+	NewPost        []*AccountPushParamsOnoff    `json:"new_post"`
+	Reply          []*AccountPushParamsOnoff    `json:"reply"`
+	Repost         []*AccountPushParamsSettings `json:"repost"`
+	SdkOpen        []*AccountPushParamsOnoff    `json:"sdk_open"`
+	WallPost       []*AccountPushParamsOnoff    `json:"wall_post"`
+	WallPublish    []*AccountPushParamsOnoff    `json:"wall_publish"`
 }
 
 // AccountPushParamsMode type represents `account_push_params_mode` API object
@@ -123,16 +123,16 @@ type AccountPushParamsSettings string // Settings parameters
 
 // AccountPushSettings type represents `account_push_settings` API object
 type AccountPushSettings struct {
-	Conversations AccountPushConversations `json:"conversations"`
-	Disabled      BaseBoolInt              `json:"disabled"`       // Information whether notifications are disabled
-	DisabledUntil int                      `json:"disabled_until"` // Time until that notifications are disabled in Unixtime
-	Settings      AccountPushParams        `json:"settings"`
+	Conversations *AccountPushConversations `json:"conversations"`
+	Disabled      *BaseBoolInt              `json:"disabled"`       // Information whether notifications are disabled
+	DisabledUntil int                       `json:"disabled_until"` // Time until that notifications are disabled in Unixtime
+	Settings      *AccountPushParams        `json:"settings"`
 }
 
 // AccountUserSettings type represents `account_user_settings` API object
 type AccountUserSettings struct {
-	UsersUserMin         UsersUserMin         `json:"UsersUserMin"`
-	UsersUserSettingsXtr UsersUserSettingsXtr `json:"UsersUserSettingsXtr"`
+	Usersusermin         *UsersUserMin         `json:"Usersusermin"`
+	Usersusersettingsxtr *UsersUserSettingsXtr `json:"Usersusersettingsxtr"`
 }
 
 // AccountUserSettingsInterest type represents `account_user_settings_interest` API object
@@ -143,13 +143,13 @@ type AccountUserSettingsInterest struct {
 
 // AccountUserSettingsInterests type represents `account_user_settings_interests` API object
 type AccountUserSettingsInterests struct {
-	About      AccountUserSettingsInterest `json:"about"`
-	Activities AccountUserSettingsInterest `json:"activities"`
-	Books      AccountUserSettingsInterest `json:"books"`
-	Games      AccountUserSettingsInterest `json:"games"`
-	Interests  AccountUserSettingsInterest `json:"interests"`
-	Movies     AccountUserSettingsInterest `json:"movies"`
-	Music      AccountUserSettingsInterest `json:"music"`
-	Quotes     AccountUserSettingsInterest `json:"quotes"`
-	Tv         AccountUserSettingsInterest `json:"tv"`
+	About      *AccountUserSettingsInterest `json:"about"`
+	Activities *AccountUserSettingsInterest `json:"activities"`
+	Books      *AccountUserSettingsInterest `json:"books"`
+	Games      *AccountUserSettingsInterest `json:"games"`
+	Interests  *AccountUserSettingsInterest `json:"interests"`
+	Movies     *AccountUserSettingsInterest `json:"movies"`
+	Music      *AccountUserSettingsInterest `json:"music"`
+	Quotes     *AccountUserSettingsInterest `json:"quotes"`
+	Tv         *AccountUserSettingsInterest `json:"tv"`
 }

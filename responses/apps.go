@@ -22,51 +22,53 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `apps` group of responses
 /////////////////////////////////////////////////////////////
 
-// AppsGetCatalog type represents `apps_getCatalog_response` API response object
-type AppsGetCatalog struct {
-	Count int               `json:"count"` // Total number
-	Items []objects.AppsApp `json:"items"`
+// AppsGetcatalog type represents `apps_getCatalog_response` API response object
+type AppsGetcatalog struct {
+	Count int                `json:"count"` // Total number
+	Items []*objects.AppsApp `json:"items"`
 }
 
-// AppsGetFriendsList type represents `apps_getFriendsList_response` API response object
-type AppsGetFriendsList struct {
-	Count int                     `json:"count"` // Total number
-	Items []objects.UsersUserFull `json:"items"`
+// AppsGetfriendslist type represents `apps_getFriendsList_response` API response object
+type AppsGetfriendslist struct {
+	Count int                      `json:"count"` // Total number
+	Items []*objects.UsersUserFull `json:"items"`
 }
 
-// AppsGetLeaderboardExtended type represents `apps_getLeaderboard_extended_response` API response object
-type AppsGetLeaderboardExtended struct {
-	Count    int                       `json:"count"` // Total number
-	Items    []objects.AppsLeaderboard `json:"items"`
-	Profiles []objects.UsersUserMin    `json:"profiles"`
+// AppsGetleaderboardExtended type represents `apps_getLeaderboard_extended_response` API response object
+type AppsGetleaderboardExtended struct {
+	Count    int                        `json:"count"` // Total number
+	Items    []*objects.AppsLeaderboard `json:"items"`
+	Profiles []*objects.UsersUserMin    `json:"profiles"`
 }
 
-// AppsGetLeaderboard type represents `apps_getLeaderboard_response` API response object
-type AppsGetLeaderboard struct {
-	Count int                       `json:"count"` // Total number
-	Items []objects.AppsLeaderboard `json:"items"`
+// AppsGetleaderboard type represents `apps_getLeaderboard_response` API response object
+type AppsGetleaderboard struct {
+	Count int                        `json:"count"` // Total number
+	Items []*objects.AppsLeaderboard `json:"items"`
 }
 
-// AppsGetScopes type represents `apps_getScopes_response` API response object
-type AppsGetScopes struct {
-	Count int                 `json:"count"` // Total number
-	Items []objects.AppsScope `json:"items"`
+// AppsGetsc type represents `apps_getScopes_response` API response object
+type AppsGetsc struct {
+	Count int                  `json:"count"` // Total number
+	Items []*objects.AppsScope `json:"items"`
 }
 
-// AppsGetScore type represents `apps_getScore_response` API response object
-type AppsGetScore int // Score number
+// AppsGetscor type represents `apps_getScore_response` API response object
+type AppsGetscor int // Score number
 
 // AppsGet type represents `apps_get_response` API response object
 type AppsGet struct {
-	Count int               `json:"count"` // Total number
-	Items []objects.AppsApp `json:"items"`
+	Count int                `json:"count"` // Total number
+	Items []*objects.AppsApp `json:"items"`
 }
 
-// AppsSendRequest type represents `apps_sendRequest_response` API response object
-type AppsSendRequest int // Request ID
+// AppsSendrequest type represents `apps_sendRequest_response` API response object
+type AppsSendrequest int // Request ID

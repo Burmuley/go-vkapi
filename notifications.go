@@ -69,8 +69,8 @@ func (n Notifications) Get(count int, startFrom string, filters []string, startT
 	return
 }
 
-// MarkAsViewed - Resets the counter of new notifications about other users' feedback to the current user's wall posts.
-func (n Notifications) MarkAsViewed() (resp responses.NotificationsMarkAsViewed, err error) {
+// Markasviewed - Resets the counter of new notifications about other users' feedback to the current user's wall posts.
+func (n Notifications) Markasviewed() (resp responses.NotificationsMarkasviewed, err error) {
 	params := map[string]interface{}{}
 
 	err = n.SendObjRequest("notifications.markAsViewed", params, &resp)
@@ -78,13 +78,13 @@ func (n Notifications) MarkAsViewed() (resp responses.NotificationsMarkAsViewed,
 	return
 }
 
-// SendMessage - NO DESCRIPTION IN JSON SCHEMA
+// Sendmessage - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * userIds - NO DESCRIPTION IN JSON SCHEMA
 //   * message - NO DESCRIPTION IN JSON SCHEMA
 //   * fragment - NO DESCRIPTION IN JSON SCHEMA
 //   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (n Notifications) SendMessage(userIds []int, message string, fragment string, groupId int) (resp responses.NotificationsSendMessage, err error) {
+func (n Notifications) Sendmessage(userIds []int, message string, fragment string, groupId int) (resp responses.NotificationsSendmessag, err error) {
 	params := map[string]interface{}{}
 
 	params["user_ids"] = SliceToString(userIds)

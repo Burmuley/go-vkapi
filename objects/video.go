@@ -38,42 +38,42 @@ type VideoSaveResult struct {
 
 // VideoVideo type represents `video_video` API object
 type VideoVideo struct {
-	AccessKey   string             `json:"access_key"`  // Video access key
-	AddingDate  int                `json:"adding_date"` // Date when the video has been added in Unixtime
-	CanAdd      BaseBoolInt        `json:"can_add"`     // Information whether current user can add the video
-	CanComment  BaseBoolInt        `json:"can_comment"` // Information whether current user can comment the video
-	CanEdit     BaseBoolInt        `json:"can_edit"`    // Information whether current user can edit the video
-	CanLike     BaseBoolInt        `json:"can_like"`    // Information whether current user can like the video
-	CanRepost   BaseBoolInt        `json:"can_repost"`  // Information whether current user can repost this video
-	Comments    int                `json:"comments"`    // Number of comments
-	Date        int                `json:"date"`        // Date when video has been uploaded in Unixtime
-	Description string             `json:"description"` // Video description
-	Duration    int                `json:"duration"`    // Video duration in seconds
-	Files       VideoVideoFiles    `json:"files"`
-	FirstFrame  []VideoVideoImage  `json:"first_frame"`
-	Height      int                `json:"height"` // Video height
-	Id          int                `json:"id"`     // Video ID
-	Image       []VideoVideoImage  `json:"image"`
-	IsFavorite  bool               `json:"is_favorite"`
-	Live        BasePropertyExists `json:"live"`       // Returns if the video is a live stream
-	OwnerId     int                `json:"owner_id"`   // Video owner ID
-	Player      string             `json:"player"`     // URL of the page with a player that can be used to play the video in the browser.
-	Processing  BasePropertyExists `json:"processing"` // Returns if the video is processing
-	Title       string             `json:"title"`      // Video title
-	Type        string             `json:"type"`
-	Views       int                `json:"views"` // Number of views
-	Width       int                `json:"width"` // Video width
+	AccessKey   string              `json:"access_key"`  // Video access key
+	AddingDate  int                 `json:"adding_date"` // Date when the video has been added in Unixtime
+	CanAdd      *BaseBoolInt        `json:"can_add"`     // Information whether current user can add the video
+	CanComment  *BaseBoolInt        `json:"can_comment"` // Information whether current user can comment the video
+	CanEdit     *BaseBoolInt        `json:"can_edit"`    // Information whether current user can edit the video
+	CanLike     *BaseBoolInt        `json:"can_like"`    // Information whether current user can like the video
+	CanRepost   *BaseBoolInt        `json:"can_repost"`  // Information whether current user can repost this video
+	Comments    int                 `json:"comments"`    // Number of comments
+	Date        int                 `json:"date"`        // Date when video has been uploaded in Unixtime
+	Description string              `json:"description"` // Video description
+	Duration    int                 `json:"duration"`    // Video duration in seconds
+	Files       *VideoVideoFiles    `json:"files"`
+	FirstFrame  []*VideoVideoImage  `json:"first_frame"`
+	Height      int                 `json:"height"` // Video height
+	Id          int                 `json:"id"`     // Video ID
+	Image       []*VideoVideoImage  `json:"image"`
+	IsFavorite  bool                `json:"is_favorite"`
+	Live        *BasePropertyExists `json:"live"`       // Returns if the video is a live stream
+	OwnerId     int                 `json:"owner_id"`   // Video owner ID
+	Player      string              `json:"player"`     // URL of the page with a player that can be used to play the video in the browser.
+	Processing  *BasePropertyExists `json:"processing"` // Returns if the video is processing
+	Title       string              `json:"title"`      // Video title
+	Type        string              `json:"type"`
+	Views       int                 `json:"views"` // Number of views
+	Width       int                 `json:"width"` // Video width
 }
 
 // VideoVideoAlbumFull type represents `video_video_album_full` API object
 type VideoVideoAlbumFull struct {
-	Count       int               `json:"count"`        // Total number of videos in album
-	Id          int               `json:"id"`           // Album ID
-	Image       []VideoVideoImage `json:"image"`        // Album cover image in different sizes
-	IsSystem    int               `json:"is_system"`    // Information whether album is system
-	OwnerId     int               `json:"owner_id"`     // Album owner's ID
-	Title       string            `json:"title"`        // Album title
-	UpdatedTime int               `json:"updated_time"` // Date when the album has been updated last time in Unixtime
+	Count       int                `json:"count"`        // Total number of videos in album
+	Id          int                `json:"id"`           // Album ID
+	Image       []*VideoVideoImage `json:"image"`        // Album cover image in different sizes
+	IsSystem    int                `json:"is_system"`    // Information whether album is system
+	OwnerId     int                `json:"owner_id"`     // Album owner's ID
+	Title       string             `json:"title"`        // Album title
+	UpdatedTime int                `json:"updated_time"` // Date when the album has been updated last time in Unixtime
 }
 
 // VideoVideoFiles type represents `video_video_files` API object
@@ -88,35 +88,35 @@ type VideoVideoFiles struct {
 
 // VideoVideoFull type represents `video_video_full` API object
 type VideoVideoFull struct {
-	AccessKey      string             `json:"access_key"`       // Video access key
-	AddingDate     int                `json:"adding_date"`      // Date when the video has been added in Unixtime
-	CanAdd         BaseBoolInt        `json:"can_add"`          // Information whether current user can add the video
-	CanAddToFaves  BaseBoolInt        `json:"can_add_to_faves"` // Information whether current user can add the video to favourites
-	CanComment     BaseBoolInt        `json:"can_comment"`      // Information whether current user can comment the video
-	CanEdit        BaseBoolInt        `json:"can_edit"`         // Information whether current user can edit the video
-	CanRepost      BaseBoolInt        `json:"can_repost"`       // Information whether current user can comment the video
-	Comments       int                `json:"comments"`         // Number of comments
-	Date           int                `json:"date"`             // Date when video has been uploaded in Unixtime
-	Description    string             `json:"description"`      // Video description
-	Duration       int                `json:"duration"`         // Video duration in seconds
-	Files          VideoVideoFiles    `json:"files"`
-	FirstFrame     []VideoVideoImage  `json:"first_frame"`
-	FirstFrame1280 string             `json:"first_frame_1280"` // URL of the first frame for the corresponding width.
-	FirstFrame640  string             `json:"first_frame_640"`  // URL of the first frame for the corresponding width.
-	Id             int                `json:"id"`               // Video ID
-	Image          []VideoVideoImage  `json:"image"`
-	Likes          BaseLikes          `json:"likes"`
-	Live           BasePropertyExists `json:"live"`       // Returns if the video is live translation
-	OwnerId        int                `json:"owner_id"`   // Video owner ID
-	Player         string             `json:"player"`     // URL of the page with a player that can be used to play the video in the browser.
-	Processing     BasePropertyExists `json:"processing"` // Returns if the video is processing
-	Repeat         BaseBoolInt        `json:"repeat"`     // Information whether the video is repeated
-	Title          string             `json:"title"`      // Video title
-	Views          int                `json:"views"`      // Number of views
+	AccessKey      string              `json:"access_key"`       // Video access key
+	AddingDate     int                 `json:"adding_date"`      // Date when the video has been added in Unixtime
+	CanAdd         *BaseBoolInt        `json:"can_add"`          // Information whether current user can add the video
+	CanAddToFaves  *BaseBoolInt        `json:"can_add_to_faves"` // Information whether current user can add the video to favourites
+	CanComment     *BaseBoolInt        `json:"can_comment"`      // Information whether current user can comment the video
+	CanEdit        *BaseBoolInt        `json:"can_edit"`         // Information whether current user can edit the video
+	CanRepost      *BaseBoolInt        `json:"can_repost"`       // Information whether current user can comment the video
+	Comments       int                 `json:"comments"`         // Number of comments
+	Date           int                 `json:"date"`             // Date when video has been uploaded in Unixtime
+	Description    string              `json:"description"`      // Video description
+	Duration       int                 `json:"duration"`         // Video duration in seconds
+	Files          *VideoVideoFiles    `json:"files"`
+	FirstFrame     []*VideoVideoImage  `json:"first_frame"`
+	FirstFrame1280 string              `json:"first_frame_1280"` // URL of the first frame for the corresponding width.
+	FirstFrame640  string              `json:"first_frame_640"`  // URL of the first frame for the corresponding width.
+	Id             int                 `json:"id"`               // Video ID
+	Image          []*VideoVideoImage  `json:"image"`
+	Likes          *BaseLikes          `json:"likes"`
+	Live           *BasePropertyExists `json:"live"`       // Returns if the video is live translation
+	OwnerId        int                 `json:"owner_id"`   // Video owner ID
+	Player         string              `json:"player"`     // URL of the page with a player that can be used to play the video in the browser.
+	Processing     *BasePropertyExists `json:"processing"` // Returns if the video is processing
+	Repeat         *BaseBoolInt        `json:"repeat"`     // Information whether the video is repeated
+	Title          string              `json:"title"`      // Video title
+	Views          int                 `json:"views"`      // Number of views
 }
 
 // VideoVideoImage type represents `video_video_image` API object
 type VideoVideoImage struct {
-	BaseImage   BaseImage   `json:"BaseImage"`
-	WithPadding BaseBoolInt `json:"with_padding"`
+	Baseimage   *BaseImage   `json:"Baseimage"`
+	WithPadding *BaseBoolInt `json:"with_padding"`
 }

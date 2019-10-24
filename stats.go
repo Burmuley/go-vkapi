@@ -85,11 +85,11 @@ func (s Stats) Get(groupId int, appId int, timestampFrom int, timestampTo int, i
 	return
 }
 
-// GetPostReach - Returns stats for a wall post.
+// Getpostreach - Returns stats for a wall post.
 // Parameters:
 //   * ownerId - post owner community id. Specify with "-" sign.
 //   * postId - wall post id. Note that stats are available only for '300' last (newest) posts on a community wall.
-func (s Stats) GetPostReach(ownerId string, postId int) (resp responses.StatsGetPostReach, err error) {
+func (s Stats) Getpostreach(ownerId string, postId int) (resp responses.StatsGetpostreach, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -101,10 +101,10 @@ func (s Stats) GetPostReach(ownerId string, postId int) (resp responses.StatsGet
 	return
 }
 
-// TrackVisitor - NO DESCRIPTION IN JSON SCHEMA
+// Trackvisitor - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * id - NO DESCRIPTION IN JSON SCHEMA
-func (s Stats) TrackVisitor(id string) (resp responses.Ok, err error) {
+func (s Stats) Trackvisitor(id string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["id"] = id

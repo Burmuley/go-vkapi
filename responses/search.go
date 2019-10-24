@@ -22,15 +22,17 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `search` group of responses
 /////////////////////////////////////////////////////////////
 
-// SearchGetHints type represents `search_getHints_response` API response object
-type SearchGetHints struct {
-	Count            int                  `json:"count"`
-	Items            []objects.SearchHint `json:"items"`
-	SuggestedQueries []string             `json:"suggested_queries"`
+// SearchGethint type represents `search_getHints_response` API response object
+type SearchGethint struct {
+	Count            int                   `json:"count"`
+	Items            []*objects.SearchHint `json:"items"`
+	SuggestedQueries []string              `json:"suggested_queries"`
 }

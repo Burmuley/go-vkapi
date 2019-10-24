@@ -22,7 +22,9 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `likes` group of responses
@@ -33,25 +35,25 @@ type LikesAdd struct {
 	Likes int `json:"likes"` // Total likes number
 }
 
-// LikesDelete type represents `likes_delete_response` API response object
-type LikesDelete struct {
+// LikesDelet type represents `likes_delete_response` API response object
+type LikesDelet struct {
 	Likes int `json:"likes"` // Total likes number
 }
 
-// LikesGetListExtended type represents `likes_getList_extended_response` API response object
-type LikesGetListExtended struct {
-	Count int                    `json:"count"` // Total number
-	Items []objects.UsersUserMin `json:"items"`
+// LikesGetlistExtended type represents `likes_getList_extended_response` API response object
+type LikesGetlistExtended struct {
+	Count int                     `json:"count"` // Total number
+	Items []*objects.UsersUserMin `json:"items"`
 }
 
-// LikesGetList type represents `likes_getList_response` API response object
-type LikesGetList struct {
+// LikesGetlist type represents `likes_getList_response` API response object
+type LikesGetlist struct {
 	Count int   `json:"count"` // Total number
 	Items []int `json:"items"`
 }
 
-// LikesIsLiked type represents `likes_isLiked_response` API response object
-type LikesIsLiked struct {
-	Copied objects.BaseBoolInt `json:"copied"` // Information whether user reposted the object
-	Liked  objects.BaseBoolInt `json:"liked"`  // Information whether user liked the object
+// LikesIsliked type represents `likes_isLiked_response` API response object
+type LikesIsliked struct {
+	Copied *objects.BaseBoolInt `json:"copied"` // Information whether user reposted the object
+	Liked  *objects.BaseBoolInt `json:"liked"`  // Information whether user liked the object
 }

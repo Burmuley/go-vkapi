@@ -22,14 +22,16 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `base` group of responses
 /////////////////////////////////////////////////////////////
 
 // BaseBool type represents `base_bool_response` API response object
-type BaseBool objects.BaseBoolInt
+type BaseBool *objects.BaseBoolInt
 
-// BaseGetUploadServer type represents `base_getUploadServer_response` API response object
-type BaseGetUploadServer objects.BaseUploadServer
+// BaseGetuploadserver type represents `base_getUploadServer_response` API response object
+type BaseGetuploadserver *objects.BaseUploadServer

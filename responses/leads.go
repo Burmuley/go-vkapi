@@ -22,29 +22,31 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `leads` group of responses
 /////////////////////////////////////////////////////////////
 
-// LeadsCheckUser type represents `leads_checkUser_response` API response object
-type LeadsCheckUser objects.LeadsChecked
+// LeadsCheckuser type represents `leads_checkUser_response` API response object
+type LeadsCheckuser *objects.LeadsChecked
 
-// LeadsComplete type represents `leads_complete_response` API response object
-type LeadsComplete objects.LeadsComplete
+// LeadsComplet type represents `leads_complete_response` API response object
+type LeadsComplet *objects.LeadsComplete
 
-// LeadsGetStats type represents `leads_getStats_response` API response object
-type LeadsGetStats objects.LeadsLead
+// LeadsGetstat type represents `leads_getStats_response` API response object
+type LeadsGetstat *objects.LeadsLead
 
-// LeadsGetUsers type represents `leads_getUsers_response` API response object
-type LeadsGetUsers objects.LeadsEntry
+// LeadsGetuser type represents `leads_getUsers_response` API response object
+type LeadsGetuser *objects.LeadsEntry
 
-// LeadsMetricHit type represents `leads_metricHit_response` API response object
-type LeadsMetricHit struct {
+// LeadsMetrichit type represents `leads_metricHit_response` API response object
+type LeadsMetrichit struct {
 	RedirectLink string `json:"redirect_link"` // Redirect link
 	Result       bool   `json:"result"`        // Information whether request has been processed successfully
 }
 
 // LeadsStart type represents `leads_start_response` API response object
-type LeadsStart objects.LeadsStart
+type LeadsStart *objects.LeadsStart

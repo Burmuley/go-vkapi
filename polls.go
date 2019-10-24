@@ -23,6 +23,7 @@ limitations under the License.
 package go_vkapi
 
 import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
@@ -34,13 +35,13 @@ type Polls struct {
 // `Polls` methods
 /////////////////////////////////////////////////////////////
 
-// AddVote - Adds the current user's vote to the selected answer in the poll.
+// Addvote - Adds the current user's vote to the selected answer in the poll.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
 //   * pollId - Poll ID.
 //   * answerIds - NO DESCRIPTION IN JSON SCHEMA
 //   * isBoard - NO DESCRIPTION IN JSON SCHEMA
-func (p Polls) AddVote(ownerId int, pollId int, answerIds []int, isBoard bool) (resp responses.PollsAddVote, err error) {
+func (p Polls) Addvote(ownerId int, pollId int, answerIds []int, isBoard bool) (resp responses.PollsAddvot, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -68,7 +69,7 @@ func (p Polls) AddVote(ownerId int, pollId int, answerIds []int, isBoard bool) (
 //   * addAnswers - available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
 //   * photoId - NO DESCRIPTION IN JSON SCHEMA
 //   * backgroundId - NO DESCRIPTION IN JSON SCHEMA
-func (p Polls) Create(question string, isAnonymous bool, isMultiple bool, endDate int, ownerId int, addAnswers string, photoId int, backgroundId string) (resp responses.PollsCreate, err error) {
+func (p Polls) Create(question string, isAnonymous bool, isMultiple bool, endDate int, ownerId int, addAnswers string, photoId int, backgroundId string) (resp responses.PollsCreat, err error) {
 	params := map[string]interface{}{}
 
 	if question != "" {
@@ -104,13 +105,13 @@ func (p Polls) Create(question string, isAnonymous bool, isMultiple bool, endDat
 	return
 }
 
-// DeleteVote - Deletes the current user's vote from the selected answer in the poll.
+// Deletevote - Deletes the current user's vote from the selected answer in the poll.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
 //   * pollId - Poll ID.
 //   * answerId - Answer ID.
 //   * isBoard - NO DESCRIPTION IN JSON SCHEMA
-func (p Polls) DeleteVote(ownerId int, pollId int, answerId int, isBoard bool) (resp responses.PollsDeleteVote, err error) {
+func (p Polls) Deletevote(ownerId int, pollId int, answerId int, isBoard bool) (resp responses.PollsDeletevot, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -181,7 +182,7 @@ func (p Polls) Edit(ownerId int, pollId int, question string, addAnswers string,
 	return
 }
 
-// GetById - Returns detailed information about a poll by its ID.
+// Getbyid - Returns detailed information about a poll by its ID.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
 //   * isBoard - '1' – poll is in a board, '0' – poll is on a wall. '0' by default.
@@ -190,7 +191,7 @@ func (p Polls) Edit(ownerId int, pollId int, question string, addAnswers string,
 //   * friendsCount - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * nameCase - NO DESCRIPTION IN JSON SCHEMA
-func (p Polls) GetById(ownerId int, isBoard bool, pollId int, friendsCount int, fields []string, nameCase string) (resp responses.PollsGetById, err error) {
+func (p Polls) Getbyid(ownerId int, isBoard bool, pollId int, friendsCount int, fields []string, nameCase string) (resp responses.PollsGetbyid, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -218,7 +219,7 @@ func (p Polls) GetById(ownerId int, isBoard bool, pollId int, friendsCount int, 
 	return
 }
 
-// GetVoters - Returns a list of IDs of users who selected specific answers in the poll.
+// Getvoters - Returns a list of IDs of users who selected specific answers in the poll.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the poll. Use a negative value to designate a community ID.
 //   * pollId - Poll ID.
@@ -229,7 +230,7 @@ func (p Polls) GetById(ownerId int, isBoard bool, pollId int, friendsCount int, 
 //   * count - Number of user IDs to return (if the 'friends_only' parameter is not set, maximum '1000', otherwise '10'). '100' — (default)
 //   * fields - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate (birthdate)', 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
 //   * nameCase - Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-func (p Polls) GetVoters(ownerId int, pollId int, answerIds []int, isBoard bool, friendsOnly bool, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.PollsGetVoters, err error) {
+func (p Polls) Getvoters(ownerId int, pollId int, answerIds []int, isBoard bool, friendsOnly bool, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.PollsGetvoter, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {

@@ -22,177 +22,179 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `messages` group of responses
 /////////////////////////////////////////////////////////////
 
-// MessagesCreateChat type represents `messages_createChat_response` API response object
-type MessagesCreateChat int // Chat ID
+// MessagesCreatechat type represents `messages_createChat_response` API response object
+type MessagesCreatechat int // Chat ID
 
-// MessagesDeleteChatPhoto type represents `messages_deleteChatPhoto_response` API response object
-type MessagesDeleteChatPhoto struct {
-	Chat      objects.MessagesChat `json:"chat"`
-	MessageId int                  `json:"message_id"` // Service message ID
+// MessagesDeletechatphot type represents `messages_deleteChatPhoto_response` API response object
+type MessagesDeletechatphot struct {
+	Chat      *objects.MessagesChat `json:"chat"`
+	MessageId int                   `json:"message_id"` // Service message ID
 }
 
-// MessagesDeleteConversation type represents `messages_deleteConversation_response` API response object
-type MessagesDeleteConversation struct {
+// MessagesDeleteconversati type represents `messages_deleteConversation_response` API response object
+type MessagesDeleteconversati struct {
 	LastDeletedId int `json:"last_deleted_id"` // Id of the last message, that was deleted
 }
 
-// MessagesDelete type represents `messages_delete_response` API response object
-type MessagesDelete struct {
+// MessagesDelet type represents `messages_delete_response` API response object
+type MessagesDelet struct {
 }
 
 // MessagesEdit type represents `messages_edit_response` API response object
-type MessagesEdit objects.BaseBoolInt // Result
+type MessagesEdit *objects.BaseBoolInt // Result
 
-// MessagesGetByConversationMessageId type represents `messages_getByConversationMessageId_response` API response object
-type MessagesGetByConversationMessageId struct {
-	Count int                       `json:"count"` // Total number
-	Items []objects.MessagesMessage `json:"items"`
+// MessagesGetbyconversationmessageid type represents `messages_getByConversationMessageId_response` API response object
+type MessagesGetbyconversationmessageid struct {
+	Count int                        `json:"count"` // Total number
+	Items []*objects.MessagesMessage `json:"items"`
 }
 
-// MessagesGetByIdExtended type represents `messages_getById_extended_response` API response object
-type MessagesGetByIdExtended struct {
-	Count    int                       `json:"count"` // Total number
-	Groups   []objects.GroupsGroupFull `json:"groups"`
-	Items    []objects.MessagesMessage `json:"items"`
-	Profiles []objects.UsersUserFull   `json:"profiles"`
+// MessagesGetbyidExtended type represents `messages_getById_extended_response` API response object
+type MessagesGetbyidExtended struct {
+	Count    int                        `json:"count"` // Total number
+	Groups   []*objects.GroupsGroupFull `json:"groups"`
+	Items    []*objects.MessagesMessage `json:"items"`
+	Profiles []*objects.UsersUserFull   `json:"profiles"`
 }
 
-// MessagesGetById type represents `messages_getById_response` API response object
-type MessagesGetById struct {
-	Count int                       `json:"count"` // Total number
-	Items []objects.MessagesMessage `json:"items"`
+// MessagesGetbyid type represents `messages_getById_response` API response object
+type MessagesGetbyid struct {
+	Count int                        `json:"count"` // Total number
+	Items []*objects.MessagesMessage `json:"items"`
 }
 
-// MessagesGetChatPreview type represents `messages_getChatPreview_response` API response object
-type MessagesGetChatPreview struct {
-	Preview  objects.MessageChatPreview `json:"preview"`
-	Profiles []objects.UsersUserFull    `json:"profiles"`
+// MessagesGetchatpreview type represents `messages_getChatPreview_response` API response object
+type MessagesGetchatpreview struct {
+	Preview  *objects.MessageChatPreview `json:"preview"`
+	Profiles []*objects.UsersUserFull    `json:"profiles"`
 }
 
-// MessagesGetChatChatIdsFields type represents `messages_getChat_chat_ids_fields_response` API response object
-type MessagesGetChatChatIdsFields objects.MessagesChatFull
+// MessagesGetchatChatIdsField type represents `messages_getChat_chat_ids_fields_response` API response object
+type MessagesGetchatChatIdsField *objects.MessagesChatFull
 
-// MessagesGetChatChatIds type represents `messages_getChat_chat_ids_response` API response object
-type MessagesGetChatChatIds objects.MessagesChat
+// MessagesGetchatChatId type represents `messages_getChat_chat_ids_response` API response object
+type MessagesGetchatChatId *objects.MessagesChat
 
-// MessagesGetChatFields type represents `messages_getChat_fields_response` API response object
-type MessagesGetChatFields objects.MessagesChatFull
+// MessagesGetchatField type represents `messages_getChat_fields_response` API response object
+type MessagesGetchatField *objects.MessagesChatFull
 
-// MessagesGetChat type represents `messages_getChat_response` API response object
-type MessagesGetChat objects.MessagesChat
+// MessagesGetchat type represents `messages_getChat_response` API response object
+type MessagesGetchat *objects.MessagesChat
 
-// MessagesGetConversationMembers type represents `messages_getConversationMembers_response` API response object
-type MessagesGetConversationMembers struct {
-	ChatRestrictions objects.MessagesChatRestrictions     `json:"chat_restrictions"`
-	Count            int                                  `json:"count"` // Chat members count
-	Groups           []objects.GroupsGroupFull            `json:"groups"`
-	Items            []objects.MessagesConversationMember `json:"items"`
-	Profiles         []objects.UsersUserFull              `json:"profiles"`
+// MessagesGetconversationmember type represents `messages_getConversationMembers_response` API response object
+type MessagesGetconversationmember struct {
+	ChatRestrictions *objects.MessagesChatRestrictions     `json:"chat_restrictions"`
+	Count            int                                   `json:"count"` // Chat members count
+	Groups           []*objects.GroupsGroupFull            `json:"groups"`
+	Items            []*objects.MessagesConversationMember `json:"items"`
+	Profiles         []*objects.UsersUserFull              `json:"profiles"`
 }
 
-// MessagesGetConversationsByIdExtended type represents `messages_getConversationsById_extended_response` API response object
-type MessagesGetConversationsByIdExtended struct {
-	Count    int                            `json:"count"` // Total number
-	Items    []objects.MessagesConversation `json:"items"`
-	Profiles []objects.UsersUser            `json:"profiles"`
+// MessagesGetconversationsbyidExtended type represents `messages_getConversationsById_extended_response` API response object
+type MessagesGetconversationsbyidExtended struct {
+	Count    int                             `json:"count"` // Total number
+	Items    []*objects.MessagesConversation `json:"items"`
+	Profiles []*objects.UsersUser            `json:"profiles"`
 }
 
-// MessagesGetConversationsById type represents `messages_getConversationsById_response` API response object
-type MessagesGetConversationsById struct {
-	Count int                            `json:"count"` // Total number
-	Items []objects.MessagesConversation `json:"items"`
+// MessagesGetconversationsbyid type represents `messages_getConversationsById_response` API response object
+type MessagesGetconversationsbyid struct {
+	Count int                             `json:"count"` // Total number
+	Items []*objects.MessagesConversation `json:"items"`
 }
 
-// MessagesGetConversations type represents `messages_getConversations_response` API response object
-type MessagesGetConversations struct {
-	Count       int                                       `json:"count"` // Total number
-	Groups      []objects.GroupsGroupFull                 `json:"groups"`
-	Items       []objects.MessagesConversationWithMessage `json:"items"`
-	Profiles    []objects.UsersUserFull                   `json:"profiles"`
-	UnreadCount int                                       `json:"unread_count"` // Unread dialogs number
+// MessagesGetconversati type represents `messages_getConversations_response` API response object
+type MessagesGetconversati struct {
+	Count       int                                        `json:"count"` // Total number
+	Groups      []*objects.GroupsGroupFull                 `json:"groups"`
+	Items       []*objects.MessagesConversationWithMessage `json:"items"`
+	Profiles    []*objects.UsersUserFull                   `json:"profiles"`
+	UnreadCount int                                        `json:"unread_count"` // Unread dialogs number
 }
 
-// MessagesGetHistoryAttachments type represents `messages_getHistoryAttachments_response` API response object
-type MessagesGetHistoryAttachments struct {
-	Items    []objects.MessagesHistoryAttachment `json:"items"`
-	NextFrom string                              `json:"next_from"` // Value for pagination
+// MessagesGethistoryattachment type represents `messages_getHistoryAttachments_response` API response object
+type MessagesGethistoryattachment struct {
+	Items    []*objects.MessagesHistoryAttachment `json:"items"`
+	NextFrom string                               `json:"next_from"` // Value for pagination
 }
 
-// MessagesGetHistory type represents `messages_getHistory_response` API response object
-type MessagesGetHistory struct {
-	Count    int                       `json:"count"` // Total number
-	Groups   []objects.GroupsGroupFull `json:"groups"`
-	Items    []objects.MessagesMessage `json:"items"`
-	Profiles []objects.UsersUserFull   `json:"profiles"`
+// MessagesGethistory type represents `messages_getHistory_response` API response object
+type MessagesGethistory struct {
+	Count    int                        `json:"count"` // Total number
+	Groups   []*objects.GroupsGroupFull `json:"groups"`
+	Items    []*objects.MessagesMessage `json:"items"`
+	Profiles []*objects.UsersUserFull   `json:"profiles"`
 }
 
-// MessagesGetInviteLink type represents `messages_getInviteLink_response` API response object
-type MessagesGetInviteLink struct {
+// MessagesGetinvitelink type represents `messages_getInviteLink_response` API response object
+type MessagesGetinvitelink struct {
 	Link string `json:"link"`
 }
 
-// MessagesGetLastActivity type represents `messages_getLastActivity_response` API response object
-type MessagesGetLastActivity objects.MessagesLastActivity
+// MessagesGetlastactivity type represents `messages_getLastActivity_response` API response object
+type MessagesGetlastactivity *objects.MessagesLastActivity
 
-// MessagesGetLongPollHistory type represents `messages_getLongPollHistory_response` API response object
-type MessagesGetLongPollHistory struct {
-	Chats         []objects.MessagesChat           `json:"chats"`
-	Conversations []objects.MessagesConversation   `json:"conversations"`
-	Groups        []objects.GroupsGroup            `json:"groups"`
-	History       []int                            `json:"history"`
-	Messages      objects.MessagesLongpollMessages `json:"messages"`
-	More          bool                             `json:"more"`    // Has more
-	NewPts        int                              `json:"new_pts"` // Persistence timestamp
-	Profiles      []objects.UsersUserFull          `json:"profiles"`
+// MessagesGetlongpollhistory type represents `messages_getLongPollHistory_response` API response object
+type MessagesGetlongpollhistory struct {
+	Chats         []*objects.MessagesChat           `json:"chats"`
+	Conversations []*objects.MessagesConversation   `json:"conversations"`
+	Groups        []*objects.GroupsGroup            `json:"groups"`
+	History       []int                             `json:"history"`
+	Messages      *objects.MessagesLongpollMessages `json:"messages"`
+	More          bool                              `json:"more"`    // Has more
+	NewPts        int                               `json:"new_pts"` // Persistence timestamp
+	Profiles      []*objects.UsersUserFull          `json:"profiles"`
 }
 
-// MessagesGetLongPollServer type represents `messages_getLongPollServer_response` API response object
-type MessagesGetLongPollServer objects.MessagesLongpollParams
+// MessagesGetlongpollserver type represents `messages_getLongPollServer_response` API response object
+type MessagesGetlongpollserver *objects.MessagesLongpollParams
 
-// MessagesIsMessagesFromGroupAllowed type represents `messages_isMessagesFromGroupAllowed_response` API response object
-type MessagesIsMessagesFromGroupAllowed struct {
-	IsAllowed objects.BaseBoolInt `json:"is_allowed"`
+// MessagesIsmessagesfromgroupallowed type represents `messages_isMessagesFromGroupAllowed_response` API response object
+type MessagesIsmessagesfromgroupallowed struct {
+	IsAllowed *objects.BaseBoolInt `json:"is_allowed"`
 }
 
-// MessagesJoinChatByInviteLink type represents `messages_joinChatByInviteLink_response` API response object
-type MessagesJoinChatByInviteLink struct {
+// MessagesJoinchatbyinvitelink type represents `messages_joinChatByInviteLink_response` API response object
+type MessagesJoinchatbyinvitelink struct {
 	ChatId int `json:"chat_id"`
 }
 
-// MessagesMarkAsImportant type represents `messages_markAsImportant_response` API response object
-type MessagesMarkAsImportant int
+// MessagesMarkasimportant type represents `messages_markAsImportant_response` API response object
+type MessagesMarkasimportant int
 
-// MessagesPin type represents `messages_pin_response` API response object
-type MessagesPin objects.MessagesPinnedMessage
+// MessagesPi type represents `messages_pin_response` API response object
+type MessagesPi *objects.MessagesPinnedMessage
 
-// MessagesSearchConversations type represents `messages_searchConversations_response` API response object
-type MessagesSearchConversations struct {
-	Count    int                            `json:"count"` // Total results number
-	Groups   []objects.GroupsGroupFull      `json:"groups"`
-	Items    []objects.MessagesConversation `json:"items"`
-	Profiles []objects.UsersUserFull        `json:"profiles"`
+// MessagesSearchconversati type represents `messages_searchConversations_response` API response object
+type MessagesSearchconversati struct {
+	Count    int                             `json:"count"` // Total results number
+	Groups   []*objects.GroupsGroupFull      `json:"groups"`
+	Items    []*objects.MessagesConversation `json:"items"`
+	Profiles []*objects.UsersUserFull        `json:"profiles"`
 }
 
 // MessagesSearch type represents `messages_search_response` API response object
 type MessagesSearch struct {
-	Count int                       `json:"count"` // Total number
-	Items []objects.MessagesMessage `json:"items"`
+	Count int                        `json:"count"` // Total number
+	Items []*objects.MessagesMessage `json:"items"`
 }
 
 // MessagesSend type represents `messages_send_response` API response object
 type MessagesSend int // Message ID
 
-// MessagesSendUserIds type represents `messages_send_user_ids_response` API response object
-type MessagesSendUserIds object
+// MessagesSendUserId type represents `messages_send_user_ids_response` API response object
+type MessagesSendUserId interface{}
 
-// MessagesSetChatPhoto type represents `messages_setChatPhoto_response` API response object
-type MessagesSetChatPhoto struct {
-	Chat      objects.MessagesChat `json:"chat"`
-	MessageId int                  `json:"message_id"` // Service message ID
+// MessagesSetchatphot type represents `messages_setChatPhoto_response` API response object
+type MessagesSetchatphot struct {
+	Chat      *objects.MessagesChat `json:"chat"`
+	MessageId int                   `json:"message_id"` // Service message ID
 }

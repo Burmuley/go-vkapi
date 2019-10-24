@@ -22,7 +22,9 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `gifts` group of responses
@@ -30,6 +32,6 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 
 // GiftsGet type represents `gifts_get_response` API response object
 type GiftsGet struct {
-	Count int                 `json:"count"` // Total number
-	Items []objects.GiftsGift `json:"items"`
+	Count int                  `json:"count"` // Total number
+	Items []*objects.GiftsGift `json:"items"`
 }

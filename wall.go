@@ -23,6 +23,7 @@ limitations under the License.
 package go_vkapi
 
 import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
@@ -34,11 +35,11 @@ type Wall struct {
 // `Wall` methods
 /////////////////////////////////////////////////////////////
 
-// CloseComments - NO DESCRIPTION IN JSON SCHEMA
+// Closecomments - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * postId - NO DESCRIPTION IN JSON SCHEMA
-func (w Wall) CloseComments(ownerId int, postId int) (resp responses.BaseBool, err error) {
+func (w Wall) Closecomments(ownerId int, postId int) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -50,7 +51,7 @@ func (w Wall) CloseComments(ownerId int, postId int) (resp responses.BaseBool, e
 	return
 }
 
-// CreateComment - Adds a comment to a post on a user wall or community wall.
+// Createcomment - Adds a comment to a post on a user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
@@ -60,7 +61,7 @@ func (w Wall) CloseComments(ownerId int, postId int) (resp responses.BaseBool, e
 //   * attachments - (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
 //   * stickerId - Sticker ID.
 //   * guid - Unique identifier to avoid repeated comments.
-func (w Wall) CreateComment(ownerId int, postId int, fromGroup int, message string, replyToComment int, attachments []string, stickerId int, guid string) (resp responses.WallCreateComment, err error) {
+func (w Wall) Createcomment(ownerId int, postId int, fromGroup int, message string, replyToComment int, attachments []string, stickerId int, guid string) (resp responses.WallCreatecomment, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -118,11 +119,11 @@ func (w Wall) Delete(ownerId int, postId int) (resp responses.Ok, err error) {
 	return
 }
 
-// DeleteComment - Deletes a comment on a post on a user wall or community wall.
+// Deletecomment - Deletes a comment on a post on a user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * commentId - Comment ID.
-func (w Wall) DeleteComment(ownerId int, commentId int) (resp responses.Ok, err error) {
+func (w Wall) Deletecomment(ownerId int, commentId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -216,7 +217,7 @@ func (w Wall) Edit(ownerId int, postId int, friendsOnly bool, message string, at
 	return
 }
 
-// EditAdsStealth - Allows to edit hidden post.
+// Editadsstealth - Allows to edit hidden post.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * postId - Post ID. Used for publishing of scheduled and suggested posts.
@@ -230,7 +231,7 @@ func (w Wall) Edit(ownerId int, postId int, friendsOnly bool, message string, at
 //   * linkTitle - Link title
 //   * linkImage - Link image url
 //   * linkVideo - Link video ID in format "<owner_id>_<media_id>"
-func (w Wall) EditAdsStealth(ownerId int, postId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.Ok, err error) {
+func (w Wall) Editadsstealth(ownerId int, postId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -282,13 +283,13 @@ func (w Wall) EditAdsStealth(ownerId int, postId int, message string, attachment
 	return
 }
 
-// EditComment - Edits a comment on a user wall or community wall.
+// Editcomment - Edits a comment on a user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * commentId - Comment ID.
 //   * message - New comment text.
 //   * attachments - List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
-func (w Wall) EditComment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
+func (w Wall) Editcomment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -394,13 +395,13 @@ func (w Wall) GetExtended(ownerId int, domain string, offset int, count int, fil
 	return
 }
 
-// GetById - Returns a list of posts from user or community walls by their IDs.
+// Getbyid - Returns a list of posts from user or community walls by their IDs.
 // Parameters:
 //   * posts - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
 //   * extended - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
 //   * copyHistoryDepth - Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w Wall) GetById(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetById, err error) {
+func (w Wall) Getbyid(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetbyid, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -419,13 +420,13 @@ func (w Wall) GetById(posts []string, copyHistoryDepth int, fields []objects.Bas
 	return
 }
 
-// GetByIdExtended - Returns a list of posts from user or community walls by their IDs.
+// GetbyidExtended - Returns a list of posts from user or community walls by their IDs.
 // Parameters:
 //   * posts - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
 //   * extended - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
 //   * copyHistoryDepth - Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (w Wall) GetByIdExtended(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetByIdExtended, err error) {
+func (w Wall) GetbyidExtended(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetbyidExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -444,7 +445,7 @@ func (w Wall) GetByIdExtended(posts []string, copyHistoryDepth int, fields []obj
 	return
 }
 
-// GetComments - Returns a list of comments on a post on a user wall or community wall.
+// Getcomments - Returns a list of comments on a post on a user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
@@ -458,7 +459,7 @@ func (w Wall) GetByIdExtended(posts []string, copyHistoryDepth int, fields []obj
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * commentId - Comment ID.
 //   * threadItemsCount - Count items in threads.
-func (w Wall) GetComments(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetComments, err error) {
+func (w Wall) Getcomments(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetcomment, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -509,7 +510,7 @@ func (w Wall) GetComments(ownerId int, postId int, needLikes bool, startCommentI
 	return
 }
 
-// GetCommentsExtended - Returns a list of comments on a post on a user wall or community wall.
+// GetcommentsExtended - Returns a list of comments on a post on a user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
@@ -523,7 +524,7 @@ func (w Wall) GetComments(ownerId int, postId int, needLikes bool, startCommentI
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * commentId - Comment ID.
 //   * threadItemsCount - Count items in threads.
-func (w Wall) GetCommentsExtended(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetCommentsExtended, err error) {
+func (w Wall) GetcommentsExtended(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetcommentsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -574,13 +575,13 @@ func (w Wall) GetCommentsExtended(ownerId int, postId int, needLikes bool, start
 	return
 }
 
-// GetReposts - Returns information about reposts of a post on user wall or community wall.
+// Getreposts - Returns information about reposts of a post on user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. By default, current user ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
 //   * offset - Offset needed to return a specific subset of reposts.
 //   * count - Number of reposts to return.
-func (w Wall) GetReposts(ownerId int, postId int, offset int, count int) (resp responses.WallGetReposts, err error) {
+func (w Wall) Getreposts(ownerId int, postId int, offset int, count int) (resp responses.WallGetrepost, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -604,11 +605,11 @@ func (w Wall) GetReposts(ownerId int, postId int, offset int, count int) (resp r
 	return
 }
 
-// OpenComments - NO DESCRIPTION IN JSON SCHEMA
+// Opencomments - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * postId - NO DESCRIPTION IN JSON SCHEMA
-func (w Wall) OpenComments(ownerId int, postId int) (resp responses.BaseBool, err error) {
+func (w Wall) Opencomments(ownerId int, postId int) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -716,7 +717,7 @@ func (w Wall) Post(ownerId int, friendsOnly bool, fromGroup bool, message string
 	return
 }
 
-// PostAdsStealth - Allows to create hidden post which will not be shown on the community's wall and can be used for creating an ad with type "Community post".
+// Postadsstealth - Allows to create hidden post which will not be shown on the community's wall and can be used for creating an ad with type "Community post".
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * message - (Required if 'attachments' is not set.) Text of the post.
@@ -730,7 +731,7 @@ func (w Wall) Post(ownerId int, friendsOnly bool, fromGroup bool, message string
 //   * linkTitle - Link title
 //   * linkImage - Link image url
 //   * linkVideo - Link video ID in format "<owner_id>_<media_id>"
-func (w Wall) PostAdsStealth(ownerId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, guid string, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.WallPostAdsStealth, err error) {
+func (w Wall) Postadsstealth(ownerId int, message string, attachments []string, signed bool, lat float64, long float64, placeId int, guid string, linkButton string, linkTitle string, linkImage string, linkVideo string) (resp responses.WallPostadsstealth, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -782,12 +783,12 @@ func (w Wall) PostAdsStealth(ownerId int, message string, attachments []string, 
 	return
 }
 
-// ReportComment - Reports (submits a complaint about) a comment on a post on a user wall or community wall.
+// Reportcomment - Reports (submits a complaint about) a comment on a post on a user wall or community wall.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the wall.
 //   * commentId - Comment ID.
 //   * reason - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-func (w Wall) ReportComment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
+func (w Wall) Reportcomment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -803,12 +804,12 @@ func (w Wall) ReportComment(ownerId int, commentId int, reason int) (resp respon
 	return
 }
 
-// ReportPost - Reports (submits a complaint about) a post on a user wall or community wall.
+// Reportpost - Reports (submits a complaint about) a post on a user wall or community wall.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the wall.
 //   * postId - Post ID.
 //   * reason - Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-func (w Wall) ReportPost(ownerId int, postId int, reason int) (resp responses.Ok, err error) {
+func (w Wall) Reportpost(ownerId int, postId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -873,11 +874,11 @@ func (w Wall) Restore(ownerId int, postId int) (resp responses.Ok, err error) {
 	return
 }
 
-// RestoreComment - Restores a comment deleted from a user wall or community wall.
+// Restorecomment - Restores a comment deleted from a user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * commentId - Comment ID.
-func (w Wall) RestoreComment(ownerId int, commentId int) (resp responses.Ok, err error) {
+func (w Wall) Restorecomment(ownerId int, commentId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {

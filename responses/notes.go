@@ -22,7 +22,9 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `notes` group of responses
@@ -31,20 +33,20 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 // NotesAdd type represents `notes_add_response` API response object
 type NotesAdd int // Note ID
 
-// NotesCreateComment type represents `notes_createComment_response` API response object
-type NotesCreateComment int // Comment ID
+// NotesCreatecomment type represents `notes_createComment_response` API response object
+type NotesCreatecomment int // Comment ID
 
-// NotesGetById type represents `notes_getById_response` API response object
-type NotesGetById objects.NotesNote
+// NotesGetbyid type represents `notes_getById_response` API response object
+type NotesGetbyid *objects.NotesNote
 
-// NotesGetComments type represents `notes_getComments_response` API response object
-type NotesGetComments struct {
-	Count int                        `json:"count"` // Total number
-	Items []objects.NotesNoteComment `json:"items"`
+// NotesGetcomment type represents `notes_getComments_response` API response object
+type NotesGetcomment struct {
+	Count int                         `json:"count"` // Total number
+	Items []*objects.NotesNoteComment `json:"items"`
 }
 
 // NotesGet type represents `notes_get_response` API response object
 type NotesGet struct {
-	Count int                 `json:"count"` // Total number
-	Items []objects.NotesNote `json:"items"`
+	Count int                  `json:"count"` // Total number
+	Items []*objects.NotesNote `json:"items"`
 }

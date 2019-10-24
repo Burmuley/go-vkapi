@@ -22,14 +22,16 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `wall` group of responses
 /////////////////////////////////////////////////////////////
 
-// WallCreateComment type represents `wall_createComment_response` API response object
-type WallCreateComment struct {
+// WallCreatecomment type represents `wall_createComment_response` API response object
+type WallCreatecomment struct {
 	CommentId int `json:"comment_id"` // Created comment ID
 }
 
@@ -38,60 +40,60 @@ type WallEdit struct {
 	PostId int `json:"post_id"` // Edited post ID
 }
 
-// WallGetByIdExtended type represents `wall_getById_extended_response` API response object
-type WallGetByIdExtended struct {
-	Groups   []objects.GroupsGroupFull  `json:"groups"`
-	Items    []objects.WallWallpostFull `json:"items"`
-	Profiles []objects.UsersUserFull    `json:"profiles"`
+// WallGetbyidExtended type represents `wall_getById_extended_response` API response object
+type WallGetbyidExtended struct {
+	Groups   []*objects.GroupsGroupFull  `json:"groups"`
+	Items    []*objects.WallWallpostFull `json:"items"`
+	Profiles []*objects.UsersUserFull    `json:"profiles"`
 }
 
-// WallGetById type represents `wall_getById_response` API response object
-type WallGetById objects.WallWallpostFull
+// WallGetbyid type represents `wall_getById_response` API response object
+type WallGetbyid *objects.WallWallpostFull
 
-// WallGetCommentsExtended type represents `wall_getComments_extended_response` API response object
-type WallGetCommentsExtended struct {
-	CanPost           bool                      `json:"can_post"`            // Information whether current user can comment the post
-	Count             int                       `json:"count"`               // Total number
-	CurrentLevelCount int                       `json:"current_level_count"` // Count of replies of current level
-	Groups            []objects.GroupsGroup     `json:"groups"`
-	GroupsCanPost     bool                      `json:"groups_can_post"` // Information whether groups can comment the post
-	Items             []objects.WallWallComment `json:"items"`
-	Profiles          []objects.UsersUser       `json:"profiles"`
-	ShowReplyButton   bool                      `json:"show_reply_button"`
+// WallGetcommentsExtended type represents `wall_getComments_extended_response` API response object
+type WallGetcommentsExtended struct {
+	CanPost           bool                       `json:"can_post"`            // Information whether current user can comment the post
+	Count             int                        `json:"count"`               // Total number
+	CurrentLevelCount int                        `json:"current_level_count"` // Count of replies of current level
+	Groups            []*objects.GroupsGroup     `json:"groups"`
+	GroupsCanPost     bool                       `json:"groups_can_post"` // Information whether groups can comment the post
+	Items             []*objects.WallWallComment `json:"items"`
+	Profiles          []*objects.UsersUser       `json:"profiles"`
+	ShowReplyButton   bool                       `json:"show_reply_button"`
 }
 
-// WallGetComments type represents `wall_getComments_response` API response object
-type WallGetComments struct {
-	CanPost           bool                      `json:"can_post"`            // Information whether current user can comment the post
-	Count             int                       `json:"count"`               // Total number
-	CurrentLevelCount int                       `json:"current_level_count"` // Count of replies of current level
-	GroupsCanPost     bool                      `json:"groups_can_post"`     // Information whether groups can comment the post
-	Items             []objects.WallWallComment `json:"items"`
+// WallGetcomment type represents `wall_getComments_response` API response object
+type WallGetcomment struct {
+	CanPost           bool                       `json:"can_post"`            // Information whether current user can comment the post
+	Count             int                        `json:"count"`               // Total number
+	CurrentLevelCount int                        `json:"current_level_count"` // Count of replies of current level
+	GroupsCanPost     bool                       `json:"groups_can_post"`     // Information whether groups can comment the post
+	Items             []*objects.WallWallComment `json:"items"`
 }
 
-// WallGetReposts type represents `wall_getReposts_response` API response object
-type WallGetReposts struct {
-	Groups   []objects.GroupsGroup      `json:"groups"`
-	Items    []objects.WallWallpostFull `json:"items"`
-	Profiles []objects.UsersUser        `json:"profiles"`
+// WallGetrepost type represents `wall_getReposts_response` API response object
+type WallGetrepost struct {
+	Groups   []*objects.GroupsGroup      `json:"groups"`
+	Items    []*objects.WallWallpostFull `json:"items"`
+	Profiles []*objects.UsersUser        `json:"profiles"`
 }
 
 // WallGetExtended type represents `wall_get_extended_response` API response object
 type WallGetExtended struct {
-	Count    int                        `json:"count"` // Total number
-	Groups   []objects.GroupsGroupFull  `json:"groups"`
-	Items    []objects.WallWallpostFull `json:"items"`
-	Profiles []objects.UsersUserFull    `json:"profiles"`
+	Count    int                         `json:"count"` // Total number
+	Groups   []*objects.GroupsGroupFull  `json:"groups"`
+	Items    []*objects.WallWallpostFull `json:"items"`
+	Profiles []*objects.UsersUserFull    `json:"profiles"`
 }
 
 // WallGet type represents `wall_get_response` API response object
 type WallGet struct {
-	Count int                        `json:"count"` // Total number
-	Items []objects.WallWallpostFull `json:"items"`
+	Count int                         `json:"count"` // Total number
+	Items []*objects.WallWallpostFull `json:"items"`
 }
 
-// WallPostAdsStealth type represents `wall_postAdsStealth_response` API response object
-type WallPostAdsStealth struct {
+// WallPostadsstealth type represents `wall_postAdsStealth_response` API response object
+type WallPostadsstealth struct {
 	PostId int `json:"post_id"` // Created post ID
 }
 
@@ -102,22 +104,22 @@ type WallPost struct {
 
 // WallRepost type represents `wall_repost_response` API response object
 type WallRepost struct {
-	LikesCount   int            `json:"likes_count"`   // Reposts number
-	PostId       int            `json:"post_id"`       // Created post ID
-	RepostsCount int            `json:"reposts_count"` // Reposts number
-	Success      objects.BaseOk `json:"success"`
+	LikesCount   int                     `json:"likes_count"`   // Reposts number
+	PostId       int                     `json:"post_id"`       // Created post ID
+	RepostsCount int                     `json:"reposts_count"` // Reposts number
+	Success      *objects.BaseOkResponse `json:"success"`
 }
 
 // WallSearchExtended type represents `wall_search_extended_response` API response object
 type WallSearchExtended struct {
-	Count    int                        `json:"count"` // Total number
-	Groups   []objects.GroupsGroupFull  `json:"groups"`
-	Items    []objects.WallWallpostFull `json:"items"`
-	Profiles []objects.UsersUserFull    `json:"profiles"`
+	Count    int                         `json:"count"` // Total number
+	Groups   []*objects.GroupsGroupFull  `json:"groups"`
+	Items    []*objects.WallWallpostFull `json:"items"`
+	Profiles []*objects.UsersUserFull    `json:"profiles"`
 }
 
 // WallSearch type represents `wall_search_response` API response object
 type WallSearch struct {
-	Count int                        `json:"count"` // Total number
-	Items []objects.WallWallpostFull `json:"items"`
+	Count int                         `json:"count"` // Total number
+	Items []*objects.WallWallpostFull `json:"items"`
 }

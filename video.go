@@ -55,12 +55,12 @@ func (v Video) Add(targetId int, videoId int, ownerId int) (resp responses.Ok, e
 	return
 }
 
-// AddAlbum - Creates an empty album for videos.
+// Addalbum - Creates an empty album for videos.
 // Parameters:
 //   * groupId - Community ID (if the album will be created in a community).
 //   * title - Album title.
 //   * privacy - new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
-func (v Video) AddAlbum(groupId int, title string, privacy []string) (resp responses.VideoAddAlbum, err error) {
+func (v Video) Addalbum(groupId int, title string, privacy []string) (resp responses.VideoAddalbum, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -80,14 +80,14 @@ func (v Video) AddAlbum(groupId int, title string, privacy []string) (resp respo
 	return
 }
 
-// AddToAlbum - NO DESCRIPTION IN JSON SCHEMA
+// Addtoalbum - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * targetId - NO DESCRIPTION IN JSON SCHEMA
 //   * albumId - NO DESCRIPTION IN JSON SCHEMA
 //   * albumIds - NO DESCRIPTION IN JSON SCHEMA
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * videoId - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) AddToAlbum(targetId int, albumId int, albumIds []int, ownerId int, videoId int) (resp responses.Ok, err error) {
+func (v Video) Addtoalbum(targetId int, albumId int, albumIds []int, ownerId int, videoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if targetId > 0 {
@@ -111,7 +111,7 @@ func (v Video) AddToAlbum(targetId int, albumId int, albumIds []int, ownerId int
 	return
 }
 
-// CreateComment - Adds a new comment on a video.
+// Createcomment - Adds a new comment on a video.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video.
 //   * videoId - Video ID.
@@ -121,7 +121,7 @@ func (v Video) AddToAlbum(targetId int, albumId int, albumIds []int, ownerId int
 //   * replyToComment - NO DESCRIPTION IN JSON SCHEMA
 //   * stickerId - NO DESCRIPTION IN JSON SCHEMA
 //   * guid - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) CreateComment(ownerId int, videoId int, message string, attachments []string, fromGroup bool, replyToComment int, stickerId int, guid string) (resp responses.VideoCreateComment, err error) {
+func (v Video) Createcomment(ownerId int, videoId int, message string, attachments []string, fromGroup bool, replyToComment int, stickerId int, guid string) (resp responses.VideoCreatecomment, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -180,11 +180,11 @@ func (v Video) Delete(videoId int, ownerId int, targetId int) (resp responses.Ok
 	return
 }
 
-// DeleteAlbum - Deletes a video album.
+// Deletealbum - Deletes a video album.
 // Parameters:
 //   * groupId - Community ID (if the album is owned by a community).
 //   * albumId - Album ID.
-func (v Video) DeleteAlbum(groupId int, albumId int) (resp responses.Ok, err error) {
+func (v Video) Deletealbum(groupId int, albumId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -198,11 +198,11 @@ func (v Video) DeleteAlbum(groupId int, albumId int) (resp responses.Ok, err err
 	return
 }
 
-// DeleteComment - Deletes a comment on a video.
+// Deletecomment - Deletes a comment on a video.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video.
 //   * commentId - ID of the comment to be deleted.
-func (v Video) DeleteComment(ownerId int, commentId int) (resp responses.Ok, err error) {
+func (v Video) Deletecomment(ownerId int, commentId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -260,13 +260,13 @@ func (v Video) Edit(ownerId int, videoId int, name string, desc string, privacyV
 	return
 }
 
-// EditAlbum - Edits the title of a video album.
+// Editalbum - Edits the title of a video album.
 // Parameters:
 //   * groupId - Community ID (if the album edited is owned by a community).
 //   * albumId - Album ID.
 //   * title - New album title.
 //   * privacy - new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
-func (v Video) EditAlbum(groupId int, albumId int, title string, privacy []string) (resp responses.Ok, err error) {
+func (v Video) Editalbum(groupId int, albumId int, title string, privacy []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -286,13 +286,13 @@ func (v Video) EditAlbum(groupId int, albumId int, title string, privacy []strin
 	return
 }
 
-// EditComment - Edits the text of a comment on a video.
+// Editcomment - Edits the text of a comment on a video.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video.
 //   * commentId - Comment ID.
 //   * message - New comment text.
 //   * attachments - List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
-func (v Video) EditComment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
+func (v Video) Editcomment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -388,11 +388,11 @@ func (v Video) GetExtended(ownerId int, videos []string, albumId int, count int,
 	return
 }
 
-// GetAlbumById - Returns video album info
+// Getalbumbyid - Returns video album info
 // Parameters:
 //   * ownerId - identifier of a user or community to add a video to. Use a negative value to designate a community ID.
 //   * albumId - Album ID.
-func (v Video) GetAlbumById(ownerId int, albumId int) (resp responses.VideoGetAlbumById, err error) {
+func (v Video) Getalbumbyid(ownerId int, albumId int) (resp responses.VideoGetalbumbyid, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -406,14 +406,14 @@ func (v Video) GetAlbumById(ownerId int, albumId int) (resp responses.VideoGetAl
 	return
 }
 
-// GetAlbums - Returns a list of video albums owned by a user or community.
+// Getalbums - Returns a list of video albums owned by a user or community.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video album(s).
 //   * offset - Offset needed to return a specific subset of video albums.
 //   * count - Number of video albums to return.
 //   * extended - '1' — to return additional information about album privacy settings for the current user
 //   * needSystem - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) GetAlbums(ownerId int, offset int, count int, needSystem bool) (resp responses.VideoGetAlbums, err error) {
+func (v Video) Getalbums(ownerId int, offset int, count int, needSystem bool) (resp responses.VideoGetalbum, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -436,14 +436,14 @@ func (v Video) GetAlbums(ownerId int, offset int, count int, needSystem bool) (r
 	return
 }
 
-// GetAlbumsExtended - Returns a list of video albums owned by a user or community.
+// GetalbumsExtended - Returns a list of video albums owned by a user or community.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video album(s).
 //   * offset - Offset needed to return a specific subset of video albums.
 //   * count - Number of video albums to return.
 //   * extended - '1' — to return additional information about album privacy settings for the current user
 //   * needSystem - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) GetAlbumsExtended(ownerId int, offset int, count int, needSystem bool) (resp responses.VideoGetAlbumsExtended, err error) {
+func (v Video) GetalbumsExtended(ownerId int, offset int, count int, needSystem bool) (resp responses.VideoGetalbumsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -466,13 +466,13 @@ func (v Video) GetAlbumsExtended(ownerId int, offset int, count int, needSystem 
 	return
 }
 
-// GetAlbumsByVideo - NO DESCRIPTION IN JSON SCHEMA
+// Getalbumsbyvideo - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * targetId - NO DESCRIPTION IN JSON SCHEMA
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * videoId - NO DESCRIPTION IN JSON SCHEMA
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) GetAlbumsByVideo(targetId int, ownerId int, videoId int) (resp responses.VideoGetAlbumsByVideo, err error) {
+func (v Video) Getalbumsbyvideo(targetId int, ownerId int, videoId int) (resp responses.VideoGetalbumsbyvid, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -489,13 +489,13 @@ func (v Video) GetAlbumsByVideo(targetId int, ownerId int, videoId int) (resp re
 	return
 }
 
-// GetAlbumsByVideoExtended - NO DESCRIPTION IN JSON SCHEMA
+// GetalbumsbyvideoExtended - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * targetId - NO DESCRIPTION IN JSON SCHEMA
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * videoId - NO DESCRIPTION IN JSON SCHEMA
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) GetAlbumsByVideoExtended(targetId int, ownerId int, videoId int) (resp responses.VideoGetAlbumsByVideoExtended, err error) {
+func (v Video) GetalbumsbyvideoExtended(targetId int, ownerId int, videoId int) (resp responses.VideoGetalbumsbyvideoExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -512,7 +512,7 @@ func (v Video) GetAlbumsByVideoExtended(targetId int, ownerId int, videoId int) 
 	return
 }
 
-// GetComments - Returns a list of comments on a video.
+// Getcomments - Returns a list of comments on a video.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video.
 //   * videoId - Video ID.
@@ -523,7 +523,7 @@ func (v Video) GetAlbumsByVideoExtended(targetId int, ownerId int, videoId int) 
 //   * sort - Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) GetComments(ownerId int, videoId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []string) (resp responses.VideoGetComments, err error) {
+func (v Video) Getcomments(ownerId int, videoId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []string) (resp responses.VideoGetcomment, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -560,7 +560,7 @@ func (v Video) GetComments(ownerId int, videoId int, needLikes bool, startCommen
 	return
 }
 
-// GetCommentsExtended - Returns a list of comments on a video.
+// GetcommentsExtended - Returns a list of comments on a video.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video.
 //   * videoId - Video ID.
@@ -571,7 +571,7 @@ func (v Video) GetComments(ownerId int, videoId int, needLikes bool, startCommen
 //   * sort - Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) GetCommentsExtended(ownerId int, videoId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []string) (resp responses.VideoGetCommentsExtended, err error) {
+func (v Video) GetcommentsExtended(ownerId int, videoId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []string) (resp responses.VideoGetcommentsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -608,14 +608,14 @@ func (v Video) GetCommentsExtended(ownerId int, videoId int, needLikes bool, sta
 	return
 }
 
-// RemoveFromAlbum - NO DESCRIPTION IN JSON SCHEMA
+// Removefromalbum - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * targetId - NO DESCRIPTION IN JSON SCHEMA
 //   * albumId - NO DESCRIPTION IN JSON SCHEMA
 //   * albumIds - NO DESCRIPTION IN JSON SCHEMA
 //   * ownerId - NO DESCRIPTION IN JSON SCHEMA
 //   * videoId - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) RemoveFromAlbum(targetId int, albumId int, albumIds []int, ownerId int, videoId int) (resp responses.Ok, err error) {
+func (v Video) Removefromalbum(targetId int, albumId int, albumIds []int, ownerId int, videoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if targetId > 0 {
@@ -639,13 +639,13 @@ func (v Video) RemoveFromAlbum(targetId int, albumId int, albumIds []int, ownerI
 	return
 }
 
-// ReorderAlbums - Reorders the album in the list of user video albums.
+// Reorderalbums - Reorders the album in the list of user video albums.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the albums..
 //   * albumId - Album ID.
 //   * before - ID of the album before which the album in question shall be placed.
 //   * after - ID of the album after which the album in question shall be placed.
-func (v Video) ReorderAlbums(ownerId int, albumId int, before int, after int) (resp responses.Ok, err error) {
+func (v Video) Reorderalbums(ownerId int, albumId int, before int, after int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -667,7 +667,7 @@ func (v Video) ReorderAlbums(ownerId int, albumId int, before int, after int) (r
 	return
 }
 
-// ReorderVideos - Reorders the video in the video album.
+// Reordervideos - Reorders the video in the video album.
 // Parameters:
 //   * targetId - ID of the user or community that owns the album with videos.
 //   * albumId - ID of the video album.
@@ -677,7 +677,7 @@ func (v Video) ReorderAlbums(ownerId int, albumId int, before int, after int) (r
 //   * beforeVideoId - ID of the video before which the video in question shall be placed.
 //   * afterOwnerId - ID of the user or community that owns the video after which the photo in question shall be placed.
 //   * afterVideoId - ID of the video after which the photo in question shall be placed.
-func (v Video) ReorderVideos(targetId int, albumId int, ownerId int, videoId int, beforeOwnerId int, beforeVideoId int, afterOwnerId int, afterVideoId int) (resp responses.Ok, err error) {
+func (v Video) Reordervideos(targetId int, albumId int, ownerId int, videoId int, beforeOwnerId int, beforeVideoId int, afterOwnerId int, afterVideoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if targetId > 0 {
@@ -744,12 +744,12 @@ func (v Video) Report(ownerId int, videoId int, reason int, comment string, sear
 	return
 }
 
-// ReportComment - Reports (submits a complaint about) a comment on a video.
+// Reportcomment - Reports (submits a complaint about) a comment on a video.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video.
 //   * commentId - ID of the comment being reported.
 //   * reason - Reason for the complaint: , 0 – spam , 1 – child pornography , 2 – extremism , 3 – violence , 4 – drug propaganda , 5 – adult material , 6 – insult, abuse
-func (v Video) ReportComment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
+func (v Video) Reportcomment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -783,11 +783,11 @@ func (v Video) Restore(videoId int, ownerId int) (resp responses.Ok, err error) 
 	return
 }
 
-// RestoreComment - Restores a previously deleted comment on a video.
+// Restorecomment - Restores a previously deleted comment on a video.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the video.
 //   * commentId - ID of the deleted comment.
-func (v Video) RestoreComment(ownerId int, commentId int) (resp responses.VideoRestoreComment, err error) {
+func (v Video) Restorecomment(ownerId int, commentId int) (resp responses.VideoRestorecomment, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -815,7 +815,7 @@ func (v Video) RestoreComment(ownerId int, commentId int) (resp responses.VideoR
 //   * noComments - NO DESCRIPTION IN JSON SCHEMA
 //   * repeat - '1' — to repeat the playback of the video, '0' — to play the video once,
 //   * compression - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) Save(name string, description string, isPrivate bool, wallpost bool, link string, groupId int, albumId int, privacyView []string, privacyComment []string, noComments bool, repeat bool, compression bool) (resp responses.VideoSave, err error) {
+func (v Video) Save(name string, description string, isPrivate bool, wallpost bool, link string, groupId int, albumId int, privacyView []string, privacyComment []string, noComments bool, repeat bool, compression bool) (resp responses.VideoSav, err error) {
 	params := map[string]interface{}{}
 
 	if name != "" {

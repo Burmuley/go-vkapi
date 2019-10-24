@@ -22,120 +22,124 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `ads` group of responses
 /////////////////////////////////////////////////////////////
 
-// AdsAddOfficeUsers type represents `ads_addOfficeUsers_response` API response object
+// AdsAddofficeuser type represents `ads_addOfficeUsers_response` API response object
+type AdsAddofficeuser bool // true if success
 
-// AdsCheckLink type represents `ads_checkLink_response` API response object
-type AdsCheckLink objects.AdsLinkStatus
+// AdsChecklink type represents `ads_checkLink_response` API response object
+type AdsChecklink *objects.AdsLinkStatus
 
-// AdsCreateAds type represents `ads_createAds_response` API response object
-type AdsCreateAds int
+// AdsCreatead type represents `ads_createAds_response` API response object
+type AdsCreatead int
 
-// AdsCreateCampaigns type represents `ads_createCampaigns_response` API response object
-type AdsCreateCampaigns int
+// AdsCreatecampaig type represents `ads_createCampaigns_response` API response object
+type AdsCreatecampaig int
 
-// AdsCreateClients type represents `ads_createClients_response` API response object
-type AdsCreateClients int
+// AdsCreateclient type represents `ads_createClients_response` API response object
+type AdsCreateclient int
 
-// AdsCreateTargetGroup type represents `ads_createTargetGroup_response` API response object
-type AdsCreateTargetGroup struct {
+// AdsCreatetargetgrou type represents `ads_createTargetGroup_response` API response object
+type AdsCreatetargetgrou struct {
 	Id    int    `json:"id"`    // Group ID
 	Pixel string `json:"pixel"` // Pixel code
 }
 
-// AdsDeleteAds type represents `ads_deleteAds_response` API response object
-type AdsDeleteAds int
+// AdsDeletead type represents `ads_deleteAds_response` API response object
+type AdsDeletead int
 
-// AdsDeleteCampaigns type represents `ads_deleteCampaigns_response` API response object
-type AdsDeleteCampaigns int // 0 if success
+// AdsDeletecampaig type represents `ads_deleteCampaigns_response` API response object
+type AdsDeletecampaig int // 0 if success
 
-// AdsDeleteClients type represents `ads_deleteClients_response` API response object
-type AdsDeleteClients int // 0 if sucess
+// AdsDeleteclient type represents `ads_deleteClients_response` API response object
+type AdsDeleteclient int // 0 if sucess
 
-// AdsGetAccounts type represents `ads_getAccounts_response` API response object
-type AdsGetAccounts objects.AdsAccount
+// AdsGetaccount type represents `ads_getAccounts_response` API response object
+type AdsGetaccount *objects.AdsAccount
 
-// AdsGetAdsLayout type represents `ads_getAdsLayout_response` API response object
-type AdsGetAdsLayout objects.AdsAdLayout
+// AdsGetadslayout type represents `ads_getAdsLayout_response` API response object
+type AdsGetadslayout *objects.AdsAdLayout
 
-// AdsGetAdsTargeting type represents `ads_getAdsTargeting_response` API response object
-type AdsGetAdsTargeting objects.AdsTargSettings
+// AdsGetadstargeting type represents `ads_getAdsTargeting_response` API response object
+type AdsGetadstargeting *objects.AdsTargSettings
 
-// AdsGetAds type represents `ads_getAds_response` API response object
-type AdsGetAds objects.AdsAd
+// AdsGetad type represents `ads_getAds_response` API response object
+type AdsGetad *objects.AdsAd
 
-// AdsGetBudget type represents `ads_getBudget_response` API response object
-type AdsGetBudget int // Budget
+// AdsGetbudget type represents `ads_getBudget_response` API response object
+type AdsGetbudget int // Budget
 
-// AdsGetCampaigns type represents `ads_getCampaigns_response` API response object
-type AdsGetCampaigns objects.AdsCampaign
+// AdsGetcampaig type represents `ads_getCampaigns_response` API response object
+type AdsGetcampaig *objects.AdsCampaign
 
-// AdsGetCategories type represents `ads_getCategories_response` API response object
-type AdsGetCategories struct {
-	V1 []objects.AdsCategory `json:"v1"` // Old categories
-	V2 []objects.AdsCategory `json:"v2"` // Actual categories
+// AdsGetcategori type represents `ads_getCategories_response` API response object
+type AdsGetcategori struct {
+	V1 []*objects.AdsCategory `json:"v1"` // Old categories
+	V2 []*objects.AdsCategory `json:"v2"` // Actual categories
 }
 
-// AdsGetClients type represents `ads_getClients_response` API response object
-type AdsGetClients objects.AdsClient
+// AdsGetclient type represents `ads_getClients_response` API response object
+type AdsGetclient *objects.AdsClient
 
-// AdsGetDemographics type represents `ads_getDemographics_response` API response object
-type AdsGetDemographics objects.AdsDemoStats
+// AdsGetdemographic type represents `ads_getDemographics_response` API response object
+type AdsGetdemographic *objects.AdsDemoStats
 
-// AdsGetFloodStats type represents `ads_getFloodStats_response` API response object
-type AdsGetFloodStats objects.AdsFloodStats
+// AdsGetfloodstat type represents `ads_getFloodStats_response` API response object
+type AdsGetfloodstat *objects.AdsFloodStats
 
-// AdsGetOfficeUsers type represents `ads_getOfficeUsers_response` API response object
-type AdsGetOfficeUsers objects.AdsUsers
+// AdsGetofficeuser type represents `ads_getOfficeUsers_response` API response object
+type AdsGetofficeuser *objects.AdsUsers
 
-// AdsGetPostsReach type represents `ads_getPostsReach_response` API response object
-type AdsGetPostsReach objects.AdsPromotedPostReach
+// AdsGetpostsreach type represents `ads_getPostsReach_response` API response object
+type AdsGetpostsreach *objects.AdsPromotedPostReach
 
-// AdsGetRejectionReason type represents `ads_getRejectionReason_response` API response object
-type AdsGetRejectionReason objects.AdsRejectReason
+// AdsGetrejectionrea type represents `ads_getRejectionReason_response` API response object
+type AdsGetrejectionrea *objects.AdsRejectReason
 
-// AdsGetStatistics type represents `ads_getStatistics_response` API response object
-type AdsGetStatistics objects.AdsStats
+// AdsGetstatistic type represents `ads_getStatistics_response` API response object
+type AdsGetstatistic *objects.AdsStats
 
-// AdsGetSuggestionsCities type represents `ads_getSuggestions_cities_response` API response object
-type AdsGetSuggestionsCities objects.AdsTargSuggestionsCities
+// AdsGetsuggestionsCiti type represents `ads_getSuggestions_cities_response` API response object
+type AdsGetsuggestionsCiti *objects.AdsTargSuggestionsCities
 
-// AdsGetSuggestionsRegions type represents `ads_getSuggestions_regions_response` API response object
-type AdsGetSuggestionsRegions objects.AdsTargSuggestionsRegions
+// AdsGetsuggestionsRegi type represents `ads_getSuggestions_regions_response` API response object
+type AdsGetsuggestionsRegi *objects.AdsTargSuggestionsRegions
 
-// AdsGetSuggestions type represents `ads_getSuggestions_response` API response object
-type AdsGetSuggestions objects.AdsTargSuggestions
+// AdsGetsuggesti type represents `ads_getSuggestions_response` API response object
+type AdsGetsuggesti *objects.AdsTargSuggestions
 
-// AdsGetSuggestionsSchools type represents `ads_getSuggestions_schools_response` API response object
-type AdsGetSuggestionsSchools objects.AdsTargSuggestionsSchools
+// AdsGetsuggestionsSchool type represents `ads_getSuggestions_schools_response` API response object
+type AdsGetsuggestionsSchool *objects.AdsTargSuggestionsSchools
 
-// AdsGetTargetGroups type represents `ads_getTargetGroups_response` API response object
-type AdsGetTargetGroups objects.AdsTargetGroup
+// AdsGettargetgrou type represents `ads_getTargetGroups_response` API response object
+type AdsGettargetgrou *objects.AdsTargetGroup
 
-// AdsGetTargetingStats type represents `ads_getTargetingStats_response` API response object
-type AdsGetTargetingStats objects.AdsTargStats
+// AdsGettargetingstat type represents `ads_getTargetingStats_response` API response object
+type AdsGettargetingstat *objects.AdsTargStats
 
-// AdsGetUploadURL type represents `ads_getUploadURL_response` API response object
-type AdsGetUploadURL string // Photo upload URL
+// AdsGetuploadurl type represents `ads_getUploadURL_response` API response object
+type AdsGetuploadurl string // Photo upload URL
 
-// AdsGetVideoUploadURL type represents `ads_getVideoUploadURL_response` API response object
-type AdsGetVideoUploadURL string // Video upload URL
+// AdsGetvideouploadurl type represents `ads_getVideoUploadURL_response` API response object
+type AdsGetvideouploadurl string // Video upload URL
 
-// AdsImportTargetContacts type represents `ads_importTargetContacts_response` API response object
-type AdsImportTargetContacts int // Imported contacts number
+// AdsImporttargetcontact type represents `ads_importTargetContacts_response` API response object
+type AdsImporttargetcontact int // Imported contacts number
 
-// AdsRemoveOfficeUsers type represents `ads_removeOfficeUsers_response` API response object
+// AdsRemoveofficeuser type represents `ads_removeOfficeUsers_response` API response object
+type AdsRemoveofficeuser bool // true if success
 
-// AdsUpdateAds type represents `ads_updateAds_response` API response object
-type AdsUpdateAds int
+// AdsUpdatead type represents `ads_updateAds_response` API response object
+type AdsUpdatead int
 
-// AdsUpdateCampaigns type represents `ads_updateCampaigns_response` API response object
-type AdsUpdateCampaigns int // Campaign ID
+// AdsUpdatecampaig type represents `ads_updateCampaigns_response` API response object
+type AdsUpdatecampaig int // Campaign ID
 
-// AdsUpdateClients type represents `ads_updateClients_response` API response object
-type AdsUpdateClients int // Client ID
+// AdsUpdateclient type represents `ads_updateClients_response` API response object
+type AdsUpdateclient int // Client ID

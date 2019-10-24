@@ -22,29 +22,31 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `pages` group of responses
 /////////////////////////////////////////////////////////////
 
-// PagesGetHistory type represents `pages_getHistory_response` API response object
-type PagesGetHistory objects.PagesWikipageHistory
+// PagesGethistory type represents `pages_getHistory_response` API response object
+type PagesGethistory *objects.PagesWikipageHistory
 
-// PagesGetTitles type represents `pages_getTitles_response` API response object
-type PagesGetTitles objects.PagesWikipage
+// PagesGettitl type represents `pages_getTitles_response` API response object
+type PagesGettitl *objects.PagesWikipage
 
-// PagesGetVersion type represents `pages_getVersion_response` API response object
-type PagesGetVersion objects.PagesWikipageFull
+// PagesGetversi type represents `pages_getVersion_response` API response object
+type PagesGetversi *objects.PagesWikipageFull
 
 // PagesGet type represents `pages_get_response` API response object
-type PagesGet objects.PagesWikipageFull
+type PagesGet *objects.PagesWikipageFull
 
-// PagesParseWiki type represents `pages_parseWiki_response` API response object
-type PagesParseWiki string // HTML source
+// PagesParsewiki type represents `pages_parseWiki_response` API response object
+type PagesParsewiki string // HTML source
 
-// PagesSaveAccess type represents `pages_saveAccess_response` API response object
-type PagesSaveAccess int // Page ID
+// PagesSaveacc type represents `pages_saveAccess_response` API response object
+type PagesSaveacc int // Page ID
 
-// PagesSave type represents `pages_save_response` API response object
-type PagesSave int // Page ID
+// PagesSav type represents `pages_save_response` API response object
+type PagesSav int // Page ID

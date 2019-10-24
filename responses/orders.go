@@ -22,35 +22,37 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `orders` group of responses
 /////////////////////////////////////////////////////////////
 
-// OrdersCancelSubscription type represents `orders_cancelSubscription_response` API response object
-type OrdersCancelSubscription objects.BaseBoolInt // Result
+// OrdersCancelsubscripti type represents `orders_cancelSubscription_response` API response object
+type OrdersCancelsubscripti *objects.BaseBoolInt // Result
 
-// OrdersChangeState type represents `orders_changeState_response` API response object
-type OrdersChangeState string // New state
+// OrdersChangestat type represents `orders_changeState_response` API response object
+type OrdersChangestat string // New state
 
-// OrdersGetAmount type represents `orders_getAmount_response` API response object
-type OrdersGetAmount objects.OrdersAmount
+// OrdersGetamount type represents `orders_getAmount_response` API response object
+type OrdersGetamount *objects.OrdersAmount
 
-// OrdersGetById type represents `orders_getById_response` API response object
-type OrdersGetById objects.OrdersOrder
+// OrdersGetbyid type represents `orders_getById_response` API response object
+type OrdersGetbyid *objects.OrdersOrder
 
-// OrdersGetUserSubscriptionById type represents `orders_getUserSubscriptionById_response` API response object
-type OrdersGetUserSubscriptionById objects.OrdersSubscription
+// OrdersGetusersubscriptionbyid type represents `orders_getUserSubscriptionById_response` API response object
+type OrdersGetusersubscriptionbyid *objects.OrdersSubscription
 
-// OrdersGetUserSubscriptions type represents `orders_getUserSubscriptions_response` API response object
-type OrdersGetUserSubscriptions struct {
-	Count int                          `json:"count"` // Total number
-	Items []objects.OrdersSubscription `json:"items"`
+// OrdersGetusersubscripti type represents `orders_getUserSubscriptions_response` API response object
+type OrdersGetusersubscripti struct {
+	Count int                           `json:"count"` // Total number
+	Items []*objects.OrdersSubscription `json:"items"`
 }
 
 // OrdersGet type represents `orders_get_response` API response object
-type OrdersGet objects.OrdersOrder
+type OrdersGet *objects.OrdersOrder
 
-// OrdersUpdateSubscription type represents `orders_updateSubscription_response` API response object
-type OrdersUpdateSubscription objects.BaseBoolInt // Result
+// OrdersUpdatesubscripti type represents `orders_updateSubscription_response` API response object
+type OrdersUpdatesubscripti *objects.BaseBoolInt // Result

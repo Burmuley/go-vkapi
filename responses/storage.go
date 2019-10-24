@@ -22,17 +22,19 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `storage` group of responses
 /////////////////////////////////////////////////////////////
 
-// StorageGetKeys type represents `storage_getKeys_response` API response object
-type StorageGetKeys string
+// StorageGetkey type represents `storage_getKeys_response` API response object
+type StorageGetkey string
 
-// StorageGetKeys type represents `storage_get_keys_response` API response object
-type StorageGetKeys objects.StorageValue
+// StorageGetKey type represents `storage_get_keys_response` API response object
+type StorageGetKey *objects.StorageValue
 
 // StorageGet type represents `storage_get_response` API response object
 type StorageGet string // Value of key

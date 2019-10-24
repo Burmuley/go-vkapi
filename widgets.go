@@ -23,6 +23,7 @@ limitations under the License.
 package go_vkapi
 
 import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
@@ -34,7 +35,7 @@ type Widgets struct {
 // `Widgets` methods
 /////////////////////////////////////////////////////////////
 
-// GetComments - Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
+// Getcomments - Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
 // Parameters:
 //   * widgetApiId - NO DESCRIPTION IN JSON SCHEMA
 //   * url - NO DESCRIPTION IN JSON SCHEMA
@@ -43,7 +44,7 @@ type Widgets struct {
 //   * fields - NO DESCRIPTION IN JSON SCHEMA
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - NO DESCRIPTION IN JSON SCHEMA
-func (w Widgets) GetComments(widgetApiId int, url string, pageId string, order string, fields []objects.UsersFields, offset int, count int) (resp responses.WidgetsGetComments, err error) {
+func (w Widgets) Getcomments(widgetApiId int, url string, pageId string, order string, fields []objects.UsersFields, offset int, count int) (resp responses.WidgetsGetcomment, err error) {
 	params := map[string]interface{}{}
 
 	if widgetApiId > 0 {
@@ -79,14 +80,14 @@ func (w Widgets) GetComments(widgetApiId int, url string, pageId string, order s
 	return
 }
 
-// GetPages - Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like widget] is installed.
+// Getpages - Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like widget] is installed.
 // Parameters:
 //   * widgetApiId - NO DESCRIPTION IN JSON SCHEMA
 //   * order - NO DESCRIPTION IN JSON SCHEMA
 //   * period - NO DESCRIPTION IN JSON SCHEMA
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - NO DESCRIPTION IN JSON SCHEMA
-func (w Widgets) GetPages(widgetApiId int, order string, period string, offset int, count int) (resp responses.WidgetsGetPages, err error) {
+func (w Widgets) Getpages(widgetApiId int, order string, period string, offset int, count int) (resp responses.WidgetsGetpag, err error) {
 	params := map[string]interface{}{}
 
 	if widgetApiId > 0 {

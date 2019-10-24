@@ -28,13 +28,13 @@ package objects
 
 // SearchHint type represents `search_hint` API object
 type SearchHint struct {
-	App         AppsApp           `json:"app"`
-	Description string            `json:"description"` // Object description
-	Global      BaseBoolInt       `json:"global"`      // Information whether the object has been found globally
-	Group       GroupsGroup       `json:"group"`
-	Profile     UsersUserMin      `json:"profile"`
-	Section     SearchHintSection `json:"section"`
-	Type        SearchHintType    `json:"type"`
+	App         *AppsApp           `json:"app"`
+	Description string             `json:"description"` // Object description
+	Global      *BaseBoolInt       `json:"global"`      // Information whether the object has been found globally
+	Group       *GroupsGroup       `json:"group"`
+	Profile     *UsersUserMin      `json:"profile"`
+	Section     *SearchHintSection `json:"section"`
+	Type        *SearchHintType    `json:"type"`
 }
 
 // SearchHintSection type represents `search_hint_section` API object

@@ -22,23 +22,25 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `polls` group of responses
 /////////////////////////////////////////////////////////////
 
-// PollsAddVote type represents `polls_addVote_response` API response object
-type PollsAddVote objects.BaseBoolInt // Result
+// PollsAddvot type represents `polls_addVote_response` API response object
+type PollsAddvot *objects.BaseBoolInt // Result
 
-// PollsCreate type represents `polls_create_response` API response object
-type PollsCreate objects.PollsPoll
+// PollsCreat type represents `polls_create_response` API response object
+type PollsCreat *objects.PollsPoll
 
-// PollsDeleteVote type represents `polls_deleteVote_response` API response object
-type PollsDeleteVote objects.BaseBoolInt // Result
+// PollsDeletevot type represents `polls_deleteVote_response` API response object
+type PollsDeletevot *objects.BaseBoolInt // Result
 
-// PollsGetById type represents `polls_getById_response` API response object
-type PollsGetById objects.PollsPoll
+// PollsGetbyid type represents `polls_getById_response` API response object
+type PollsGetbyid *objects.PollsPoll
 
-// PollsGetVoters type represents `polls_getVoters_response` API response object
-type PollsGetVoters objects.PollsVoters
+// PollsGetvoter type represents `polls_getVoters_response` API response object
+type PollsGetvoter *objects.PollsVoters

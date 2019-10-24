@@ -60,14 +60,14 @@ func (n Notes) Add(title string, text string, privacyView []string, privacyComme
 	return
 }
 
-// CreateComment - Adds a new comment on a note.
+// Createcomment - Adds a new comment on a note.
 // Parameters:
 //   * noteId - Note ID.
 //   * ownerId - Note owner ID.
 //   * replyTo - ID of the user to whom the reply is addressed (if the comment is a reply to another comment).
 //   * message - Comment text.
 //   * guid - NO DESCRIPTION IN JSON SCHEMA
-func (n Notes) CreateComment(noteId int, ownerId int, replyTo int, message string, guid string) (resp responses.NotesCreateComment, err error) {
+func (n Notes) Createcomment(noteId int, ownerId int, replyTo int, message string, guid string) (resp responses.NotesCreatecomment, err error) {
 	params := map[string]interface{}{}
 
 	params["note_id"] = noteId
@@ -104,11 +104,11 @@ func (n Notes) Delete(noteId int) (resp responses.Ok, err error) {
 	return
 }
 
-// DeleteComment - Deletes a comment on a note.
+// Deletecomment - Deletes a comment on a note.
 // Parameters:
 //   * commentId - Comment ID.
 //   * ownerId - Note owner ID.
-func (n Notes) DeleteComment(commentId int, ownerId int) (resp responses.Ok, err error) {
+func (n Notes) Deletecomment(commentId int, ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["comment_id"] = commentId
@@ -151,12 +151,12 @@ func (n Notes) Edit(noteId int, title string, text string, privacyView []string,
 	return
 }
 
-// EditComment - Edits a comment on a note.
+// Editcomment - Edits a comment on a note.
 // Parameters:
 //   * commentId - Comment ID.
 //   * ownerId - Note owner ID.
 //   * message - New comment text.
-func (n Notes) EditComment(commentId int, ownerId int, message string) (resp responses.Ok, err error) {
+func (n Notes) Editcomment(commentId int, ownerId int, message string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["comment_id"] = commentId
@@ -207,12 +207,12 @@ func (n Notes) Get(noteIds []int, userId int, offset int, count int, sort int) (
 	return
 }
 
-// GetById - Returns a note by its ID.
+// Getbyid - Returns a note by its ID.
 // Parameters:
 //   * noteId - Note ID.
 //   * ownerId - Note owner ID.
 //   * needWiki - NO DESCRIPTION IN JSON SCHEMA
-func (n Notes) GetById(noteId int, ownerId int, needWiki bool) (resp responses.NotesGetById, err error) {
+func (n Notes) Getbyid(noteId int, ownerId int, needWiki bool) (resp responses.NotesGetbyid, err error) {
 	params := map[string]interface{}{}
 
 	params["note_id"] = noteId
@@ -228,14 +228,14 @@ func (n Notes) GetById(noteId int, ownerId int, needWiki bool) (resp responses.N
 	return
 }
 
-// GetComments - Returns a list of comments on a note.
+// Getcomments - Returns a list of comments on a note.
 // Parameters:
 //   * noteId - Note ID.
 //   * ownerId - Note owner ID.
 //   * sort - NO DESCRIPTION IN JSON SCHEMA
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - Number of comments to return.
-func (n Notes) GetComments(noteId int, ownerId int, sort int, offset int, count int) (resp responses.NotesGetComments, err error) {
+func (n Notes) Getcomments(noteId int, ownerId int, sort int, offset int, count int) (resp responses.NotesGetcomment, err error) {
 	params := map[string]interface{}{}
 
 	params["note_id"] = noteId
@@ -261,11 +261,11 @@ func (n Notes) GetComments(noteId int, ownerId int, sort int, offset int, count 
 	return
 }
 
-// RestoreComment - Restores a deleted comment on a note.
+// Restorecomment - Restores a deleted comment on a note.
 // Parameters:
 //   * commentId - Comment ID.
 //   * ownerId - Note owner ID.
-func (n Notes) RestoreComment(commentId int, ownerId int) (resp responses.Ok, err error) {
+func (n Notes) Restorecomment(commentId int, ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["comment_id"] = commentId

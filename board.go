@@ -34,14 +34,14 @@ type Board struct {
 // `Board` methods
 /////////////////////////////////////////////////////////////
 
-// AddTopic - Creates a new topic on a community's discussion board.
+// Addtopic - Creates a new topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * title - Topic title.
 //   * text - Text of the topic.
 //   * fromGroup - For a community: '1' — to post the topic as by the community, '0' — to post the topic as by the user (default)
 //   * attachments - List of media objects attached to the topic, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614", , "NOTE: If you try to attach more than one reference, an error will be thrown.",
-func (b Board) AddTopic(groupId int, title string, text string, fromGroup bool, attachments []string) (resp responses.BoardAddTopic, err error) {
+func (b Board) Addtopic(groupId int, title string, text string, fromGroup bool, attachments []string) (resp responses.BoardAddtopic, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -63,11 +63,11 @@ func (b Board) AddTopic(groupId int, title string, text string, fromGroup bool, 
 	return
 }
 
-// CloseTopic - Closes a topic on a community's discussion board so that comments cannot be posted.
+// Closetopic - Closes a topic on a community's discussion board so that comments cannot be posted.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
-func (b Board) CloseTopic(groupId int, topicId int) (resp responses.Ok, err error) {
+func (b Board) Closetopic(groupId int, topicId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -79,7 +79,7 @@ func (b Board) CloseTopic(groupId int, topicId int) (resp responses.Ok, err erro
 	return
 }
 
-// CreateComment - Adds a comment on a topic on a community's discussion board.
+// Createcomment - Adds a comment on a topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - ID of the topic to be commented on.
@@ -88,7 +88,7 @@ func (b Board) CloseTopic(groupId int, topicId int) (resp responses.Ok, err erro
 //   * fromGroup - '1' — to post the comment as by the community, '0' — to post the comment as by the user (default)
 //   * stickerId - Sticker ID.
 //   * guid - Unique identifier to avoid repeated comments.
-func (b Board) CreateComment(groupId int, topicId int, message string, attachments []string, fromGroup bool, stickerId int, guid string) (resp responses.BoardCreateComment, err error) {
+func (b Board) Createcomment(groupId int, topicId int, message string, attachments []string, fromGroup bool, stickerId int, guid string) (resp responses.BoardCreatecomment, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -118,12 +118,12 @@ func (b Board) CreateComment(groupId int, topicId int, message string, attachmen
 	return
 }
 
-// DeleteComment - Deletes a comment on a topic on a community's discussion board.
+// Deletecomment - Deletes a comment on a topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
 //   * commentId - Comment ID.
-func (b Board) DeleteComment(groupId int, topicId int, commentId int) (resp responses.Ok, err error) {
+func (b Board) Deletecomment(groupId int, topicId int, commentId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -137,11 +137,11 @@ func (b Board) DeleteComment(groupId int, topicId int, commentId int) (resp resp
 	return
 }
 
-// DeleteTopic - Deletes a topic from a community's discussion board.
+// Deletetopic - Deletes a topic from a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
-func (b Board) DeleteTopic(groupId int, topicId int) (resp responses.Ok, err error) {
+func (b Board) Deletetopic(groupId int, topicId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -153,14 +153,14 @@ func (b Board) DeleteTopic(groupId int, topicId int) (resp responses.Ok, err err
 	return
 }
 
-// EditComment - Edits a comment on a topic on a community's discussion board.
+// Editcomment - Edits a comment on a topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
 //   * commentId - ID of the comment on the topic.
 //   * message - (Required if 'attachments' is not set). New comment text.
 //   * attachments - (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
-func (b Board) EditComment(groupId int, topicId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
+func (b Board) Editcomment(groupId int, topicId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -182,12 +182,12 @@ func (b Board) EditComment(groupId int, topicId int, commentId int, message stri
 	return
 }
 
-// EditTopic - Edits the title of a topic on a community's discussion board.
+// Edittopic - Edits the title of a topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
 //   * title - New title of the topic.
-func (b Board) EditTopic(groupId int, topicId int, title string) (resp responses.Ok, err error) {
+func (b Board) Edittopic(groupId int, topicId int, title string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -201,11 +201,11 @@ func (b Board) EditTopic(groupId int, topicId int, title string) (resp responses
 	return
 }
 
-// FixTopic - Pins a topic (fixes its place) to the top of a community's discussion board.
+// Fixtopic - Pins a topic (fixes its place) to the top of a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
-func (b Board) FixTopic(groupId int, topicId int) (resp responses.Ok, err error) {
+func (b Board) Fixtopic(groupId int, topicId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -217,7 +217,7 @@ func (b Board) FixTopic(groupId int, topicId int) (resp responses.Ok, err error)
 	return
 }
 
-// GetComments - Returns a list of comments on a topic on a community's discussion board.
+// Getcomments - Returns a list of comments on a topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
@@ -227,7 +227,7 @@ func (b Board) FixTopic(groupId int, topicId int) (resp responses.Ok, err error)
 //   * count - Number of comments to return.
 //   * extended - '1' — to return information about users who posted comments, '0' — to return no additional fields (default)
 //   * sort - Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
-func (b Board) GetComments(groupId int, topicId int, needLikes bool, startCommentId int, offset int, count int, sort string) (resp responses.BoardGetComments, err error) {
+func (b Board) Getcomments(groupId int, topicId int, needLikes bool, startCommentId int, offset int, count int, sort string) (resp responses.BoardGetcomment, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -258,7 +258,7 @@ func (b Board) GetComments(groupId int, topicId int, needLikes bool, startCommen
 	return
 }
 
-// GetCommentsExtended - Returns a list of comments on a topic on a community's discussion board.
+// GetcommentsExtended - Returns a list of comments on a topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
@@ -268,7 +268,7 @@ func (b Board) GetComments(groupId int, topicId int, needLikes bool, startCommen
 //   * count - Number of comments to return.
 //   * extended - '1' — to return information about users who posted comments, '0' — to return no additional fields (default)
 //   * sort - Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
-func (b Board) GetCommentsExtended(groupId int, topicId int, needLikes bool, startCommentId int, offset int, count int, sort string) (resp responses.BoardGetCommentsExtended, err error) {
+func (b Board) GetcommentsExtended(groupId int, topicId int, needLikes bool, startCommentId int, offset int, count int, sort string) (resp responses.BoardGetcommentsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -299,7 +299,7 @@ func (b Board) GetCommentsExtended(groupId int, topicId int, needLikes bool, sta
 	return
 }
 
-// GetTopics - Returns a list of topics on a community's discussion board.
+// Gettopics - Returns a list of topics on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicIds - IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
@@ -309,7 +309,7 @@ func (b Board) GetCommentsExtended(groupId int, topicId int, needLikes bool, sta
 //   * extended - '1' — to return information about users who created topics or who posted there last, '0' — to return no additional fields (default)
 //   * preview - '1' — to return the first comment in each topic,, '2' — to return the last comment in each topic,, '0' — to return no comments. By default: '0'.
 //   * previewLength - Number of characters after which to truncate the previewed comment. To preview the full comment, specify '0'.
-func (b Board) GetTopics(groupId int, topicIds []int, order int, offset int, count int, preview int, previewLength int) (resp responses.BoardGetTopics, err error) {
+func (b Board) Gettopics(groupId int, topicIds []int, order int, offset int, count int, preview int, previewLength int) (resp responses.BoardGettopic, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -344,7 +344,7 @@ func (b Board) GetTopics(groupId int, topicIds []int, order int, offset int, cou
 	return
 }
 
-// GetTopicsExtended - Returns a list of topics on a community's discussion board.
+// GettopicsExtended - Returns a list of topics on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicIds - IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
@@ -354,7 +354,7 @@ func (b Board) GetTopics(groupId int, topicIds []int, order int, offset int, cou
 //   * extended - '1' — to return information about users who created topics or who posted there last, '0' — to return no additional fields (default)
 //   * preview - '1' — to return the first comment in each topic,, '2' — to return the last comment in each topic,, '0' — to return no comments. By default: '0'.
 //   * previewLength - Number of characters after which to truncate the previewed comment. To preview the full comment, specify '0'.
-func (b Board) GetTopicsExtended(groupId int, topicIds []int, order int, offset int, count int, preview int, previewLength int) (resp responses.BoardGetTopicsExtended, err error) {
+func (b Board) GettopicsExtended(groupId int, topicIds []int, order int, offset int, count int, preview int, previewLength int) (resp responses.BoardGettopicsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -389,11 +389,11 @@ func (b Board) GetTopicsExtended(groupId int, topicIds []int, order int, offset 
 	return
 }
 
-// OpenTopic - Re-opens a previously closed topic on a community's discussion board.
+// Opentopic - Re-opens a previously closed topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
-func (b Board) OpenTopic(groupId int, topicId int) (resp responses.Ok, err error) {
+func (b Board) Opentopic(groupId int, topicId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -405,12 +405,12 @@ func (b Board) OpenTopic(groupId int, topicId int) (resp responses.Ok, err error
 	return
 }
 
-// RestoreComment - Restores a comment deleted from a topic on a community's discussion board.
+// Restorecomment - Restores a comment deleted from a topic on a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
 //   * commentId - Comment ID.
-func (b Board) RestoreComment(groupId int, topicId int, commentId int) (resp responses.Ok, err error) {
+func (b Board) Restorecomment(groupId int, topicId int, commentId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -424,11 +424,11 @@ func (b Board) RestoreComment(groupId int, topicId int, commentId int) (resp res
 	return
 }
 
-// UnfixTopic - Unpins a pinned topic from the top of a community's discussion board.
+// Unfixtopic - Unpins a pinned topic from the top of a community's discussion board.
 // Parameters:
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
-func (b Board) UnfixTopic(groupId int, topicId int) (resp responses.Ok, err error) {
+func (b Board) Unfixtopic(groupId int, topicId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId

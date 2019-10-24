@@ -28,43 +28,43 @@ package objects
 
 // NotificationsFeedback type represents `notifications_feedback` API object
 type NotificationsFeedback struct {
-	Attachments []WallWallpostAttachment `json:"attachments"`
-	FromId      int                      `json:"from_id"` // Reply author's ID
-	Geo         BaseGeo                  `json:"geo"`
-	Id          int                      `json:"id"` // Item ID
-	Likes       BaseLikesInfo            `json:"likes"`
-	Text        string                   `json:"text"`  // Reply text
-	ToId        int                      `json:"to_id"` // Wall owner's ID
+	Attachments []*WallWallpostAttachment `json:"attachments"`
+	FromId      int                       `json:"from_id"` // Reply author's ID
+	Geo         *BaseGeo                  `json:"geo"`
+	Id          int                       `json:"id"` // Item ID
+	Likes       *BaseLikesInfo            `json:"likes"`
+	Text        string                    `json:"text"`  // Reply text
+	ToId        int                       `json:"to_id"` // Wall owner's ID
 }
 
 // NotificationsNotification type represents `notifications_notification` API object
 type NotificationsNotification struct {
-	Date     int                             `json:"date"` // Date when the event has been occurred
-	Feedback NotificationsFeedback           `json:"feedback"`
-	Parent   NotificationsNotificationParent `json:"parent"`
-	Reply    NotificationsReply              `json:"reply"`
-	Type     string                          `json:"type"` // Notification type
+	Date     int                              `json:"date"` // Date when the event has been occurred
+	Feedback *NotificationsFeedback           `json:"feedback"`
+	Parent   *NotificationsNotificationParent `json:"parent"`
+	Reply    *NotificationsReply              `json:"reply"`
+	Type     string                           `json:"type"` // Notification type
 }
 
 // NotificationsNotificationParent type represents `notifications_notification_parent` API object
 type NotificationsNotificationParent struct {
-	BoardTopic                        BoardTopic                        `json:"BoardTopic"`
-	NotificationsNotificationsComment NotificationsNotificationsComment `json:"NotificationsNotificationsComment"`
-	PhotosPhoto                       PhotosPhoto                       `json:"PhotosPhoto"`
-	VideoVideo                        VideoVideo                        `json:"VideoVideo"`
-	WallWallpostToId                  WallWallpostToId                  `json:"WallWallpostToId"`
+	Boardtopic                        *BoardTopic                        `json:"Boardtopic"`
+	Notificationsnotificationscomment *NotificationsNotificationsComment `json:"Notificationsnotificationscomment"`
+	Photosphoto                       *PhotosPhoto                       `json:"Photosphoto"`
+	Videovideo                        *VideoVideo                        `json:"Videovideo"`
+	Wallwallposttoid                  *WallWallpostToId                  `json:"Wallwallposttoid"`
 }
 
 // NotificationsNotificationsComment type represents `notifications_notifications_comment` API object
 type NotificationsNotificationsComment struct {
-	Date    int          `json:"date"`     // Date when the comment has been added in Unixtime
-	Id      int          `json:"id"`       // Comment ID
-	OwnerId int          `json:"owner_id"` // Author ID
-	Photo   PhotosPhoto  `json:"photo"`
-	Post    WallWallpost `json:"post"`
-	Text    string       `json:"text"` // Comment text
-	Topic   BoardTopic   `json:"topic"`
-	Video   VideoVideo   `json:"video"`
+	Date    int           `json:"date"`     // Date when the comment has been added in Unixtime
+	Id      int           `json:"id"`       // Comment ID
+	OwnerId int           `json:"owner_id"` // Author ID
+	Photo   *PhotosPhoto  `json:"photo"`
+	Post    *WallWallpost `json:"post"`
+	Text    string        `json:"text"` // Comment text
+	Topic   *BoardTopic   `json:"topic"`
+	Video   *VideoVideo   `json:"video"`
 }
 
 // NotificationsReply type represents `notifications_reply` API object
@@ -82,7 +82,7 @@ type NotificationsSendMessageError struct {
 
 // NotificationsSendMessageItem type represents `notifications_send_message_item` API object
 type NotificationsSendMessageItem struct {
-	Error  NotificationsSendMessageError `json:"error"`
-	Status bool                          `json:"status"`  // Notification status
-	UserId int                           `json:"user_id"` // User ID
+	Error  *NotificationsSendMessageError `json:"error"`
+	Status bool                           `json:"status"`  // Notification status
+	UserId int                            `json:"user_id"` // User ID
 }

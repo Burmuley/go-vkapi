@@ -23,6 +23,7 @@ limitations under the License.
 package go_vkapi
 
 import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
 
@@ -34,8 +35,8 @@ type Apps struct {
 // `Apps` methods
 /////////////////////////////////////////////////////////////
 
-// DeleteAppRequests - Deletes all request notifications from the current app.
-func (a Apps) DeleteAppRequests() (resp responses.Ok, err error) {
+// Deleteapprequests - Deletes all request notifications from the current app.
+func (a Apps) Deleteapprequests() (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	err = a.SendObjRequest("apps.deleteAppRequests", params, &resp)
@@ -82,7 +83,7 @@ func (a Apps) Get(appId int, appIds []string, platform string, returnFriends boo
 	return
 }
 
-// GetCatalog - Returns a list of applications (apps) available to users in the App Catalog.
+// Getcatalog - Returns a list of applications (apps) available to users in the App Catalog.
 // Parameters:
 //   * sort - Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
 //   * offset - Offset required to return a specific subset of apps.
@@ -95,7 +96,7 @@ func (a Apps) Get(appId int, appIds []string, platform string, returnFriends boo
 //   * q - Search query string.
 //   * genreId - NO DESCRIPTION IN JSON SCHEMA
 //   * filter - 'installed' — to return list of installed apps (only for mobile platform).
-func (a Apps) GetCatalog(sort string, offset int, count int, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string, q string, genreId int, filter string) (resp responses.AppsGetCatalog, err error) {
+func (a Apps) Getcatalog(sort string, offset int, count int, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string, q string, genreId int, filter string) (resp responses.AppsGetcatalog, err error) {
 	params := map[string]interface{}{}
 
 	if sort != "" {
@@ -139,14 +140,14 @@ func (a Apps) GetCatalog(sort string, offset int, count int, platform string, re
 	return
 }
 
-// GetFriendsList - Creates friends list for requests and invites in current app.
+// Getfriendslist - Creates friends list for requests and invites in current app.
 // Parameters:
 //   * extended - NO DESCRIPTION IN JSON SCHEMA
 //   * count - List size.
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * pType - List type. Possible values: * 'invite' — available for invites (don't play the game),, * 'request' — available for request (play the game). By default: 'invite'.
 //   * fields - Additional profile fields, see [vk.com/dev/fields|description].
-func (a Apps) GetFriendsList(count int, offset int, pType string, fields []objects.UsersFields) (resp responses.AppsGetFriendsList, err error) {
+func (a Apps) Getfriendslist(count int, offset int, pType string, fields []objects.UsersFields) (resp responses.AppsGetfriendslist, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -170,12 +171,12 @@ func (a Apps) GetFriendsList(count int, offset int, pType string, fields []objec
 	return
 }
 
-// GetLeaderboard - Returns players rating in the game.
+// Getleaderboard - Returns players rating in the game.
 // Parameters:
 //   * pType - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
 //   * global - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
 //   * extended - 1 — to return additional info about users
-func (a Apps) GetLeaderboard(pType string, global bool) (resp responses.AppsGetLeaderboard, err error) {
+func (a Apps) Getleaderboard(pType string, global bool) (resp responses.AppsGetleaderboard, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -188,12 +189,12 @@ func (a Apps) GetLeaderboard(pType string, global bool) (resp responses.AppsGetL
 	return
 }
 
-// GetLeaderboardExtended - Returns players rating in the game.
+// GetleaderboardExtended - Returns players rating in the game.
 // Parameters:
 //   * pType - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
 //   * global - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
 //   * extended - 1 — to return additional info about users
-func (a Apps) GetLeaderboardExtended(pType string, global bool) (resp responses.AppsGetLeaderboardExtended, err error) {
+func (a Apps) GetleaderboardExtended(pType string, global bool) (resp responses.AppsGetleaderboardExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -206,10 +207,10 @@ func (a Apps) GetLeaderboardExtended(pType string, global bool) (resp responses.
 	return
 }
 
-// GetScopes - Returns scopes for auth
+// Getscopes - Returns scopes for auth
 // Parameters:
 //   * pType - NO DESCRIPTION IN JSON SCHEMA
-func (a Apps) GetScopes(pType string) (resp responses.AppsGetScopes, err error) {
+func (a Apps) Getscopes(pType string) (resp responses.AppsGetsc, err error) {
 	params := map[string]interface{}{}
 
 	if pType != "" {
@@ -221,10 +222,10 @@ func (a Apps) GetScopes(pType string) (resp responses.AppsGetScopes, err error) 
 	return
 }
 
-// GetScore - Returns user score in app
+// Getscore - Returns user score in app
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
-func (a Apps) GetScore(userId int) (resp responses.AppsGetScore, err error) {
+func (a Apps) Getscore(userId int) (resp responses.AppsGetscor, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -234,7 +235,7 @@ func (a Apps) GetScore(userId int) (resp responses.AppsGetScore, err error) {
 	return
 }
 
-// SendRequest - Sends a request to another user in an app that uses VK authorization.
+// Sendrequest - Sends a request to another user in an app that uses VK authorization.
 // Parameters:
 //   * userId - id of the user to send a request
 //   * text - request text
@@ -242,7 +243,7 @@ func (a Apps) GetScore(userId int) (resp responses.AppsGetScore, err error) {
 //   * name - NO DESCRIPTION IN JSON SCHEMA
 //   * key - special string key to be sent with the request
 //   * separate - NO DESCRIPTION IN JSON SCHEMA
-func (a Apps) SendRequest(userId int, text string, pType string, name string, key string, separate bool) (resp responses.AppsSendRequest, err error) {
+func (a Apps) Sendrequest(userId int, text string, pType string, name string, key string, separate bool) (resp responses.AppsSendrequest, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId

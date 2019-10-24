@@ -22,14 +22,14 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import ()
 
 /////////////////////////////////////////////////////////////
 // `streaming` group of responses
 /////////////////////////////////////////////////////////////
 
-// StreamingGetServerUrl type represents `streaming_getServerUrl_response` API response object
-type StreamingGetServerUrl struct {
+// StreamingGetserverurl type represents `streaming_getServerUrl_response` API response object
+type StreamingGetserverurl struct {
 	Endpoint string `json:"endpoint"` // Server host
 	Key      string `json:"key"`      // Access key
 }

@@ -22,14 +22,16 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `market` group of responses
 /////////////////////////////////////////////////////////////
 
-// MarketAddAlbum type represents `market_addAlbum_response` API response object
-type MarketAddAlbum struct {
+// MarketAddalbum type represents `market_addAlbum_response` API response object
+type MarketAddalbum struct {
 	MarketAlbumId int `json:"market_album_id"` // Album ID
 }
 
@@ -38,71 +40,71 @@ type MarketAdd struct {
 	MarketItemId int `json:"market_item_id"` // Item ID
 }
 
-// MarketCreateComment type represents `market_createComment_response` API response object
-type MarketCreateComment int // Comment ID
+// MarketCreatecomment type represents `market_createComment_response` API response object
+type MarketCreatecomment int // Comment ID
 
-// MarketDeleteComment type represents `market_deleteComment_response` API response object
-type MarketDeleteComment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
+// MarketDeletecomment type represents `market_deleteComment_response` API response object
+type MarketDeletecomment *objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
 
-// MarketGetAlbumById type represents `market_getAlbumById_response` API response object
-type MarketGetAlbumById struct {
+// MarketGetalbumbyid type represents `market_getAlbumById_response` API response object
+type MarketGetalbumbyid struct {
+	Count int                          `json:"count"` // Total number
+	Items []*objects.MarketMarketAlbum `json:"items"`
+}
+
+// MarketGetalbum type represents `market_getAlbums_response` API response object
+type MarketGetalbum struct {
+	Count int                          `json:"count"` // Total number
+	Items []*objects.MarketMarketAlbum `json:"items"`
+}
+
+// MarketGetbyidExtended type represents `market_getById_extended_response` API response object
+type MarketGetbyidExtended struct {
+	Count int                             `json:"count"` // Total number
+	Items []*objects.MarketMarketItemFull `json:"items"`
+}
+
+// MarketGetbyid type represents `market_getById_response` API response object
+type MarketGetbyid struct {
 	Count int                         `json:"count"` // Total number
-	Items []objects.MarketMarketAlbum `json:"items"`
+	Items []*objects.MarketMarketItem `json:"items"`
 }
 
-// MarketGetAlbums type represents `market_getAlbums_response` API response object
-type MarketGetAlbums struct {
-	Count int                         `json:"count"` // Total number
-	Items []objects.MarketMarketAlbum `json:"items"`
+// MarketGetcategori type represents `market_getCategories_response` API response object
+type MarketGetcategori struct {
+	Count int                             `json:"count"` // Total number
+	Items []*objects.MarketMarketCategory `json:"items"`
 }
 
-// MarketGetByIdExtended type represents `market_getById_extended_response` API response object
-type MarketGetByIdExtended struct {
-	Count int                            `json:"count"` // Total number
-	Items []objects.MarketMarketItemFull `json:"items"`
-}
-
-// MarketGetById type represents `market_getById_response` API response object
-type MarketGetById struct {
+// MarketGetcomment type represents `market_getComments_response` API response object
+type MarketGetcomment struct {
 	Count int                        `json:"count"` // Total number
-	Items []objects.MarketMarketItem `json:"items"`
-}
-
-// MarketGetCategories type represents `market_getCategories_response` API response object
-type MarketGetCategories struct {
-	Count int                            `json:"count"` // Total number
-	Items []objects.MarketMarketCategory `json:"items"`
-}
-
-// MarketGetComments type represents `market_getComments_response` API response object
-type MarketGetComments struct {
-	Count int                       `json:"count"` // Total number
-	Items []objects.WallWallComment `json:"items"`
+	Items []*objects.WallWallComment `json:"items"`
 }
 
 // MarketGetExtended type represents `market_get_extended_response` API response object
 type MarketGetExtended struct {
-	Count int                            `json:"count"` // Total number
-	Items []objects.MarketMarketItemFull `json:"items"`
+	Count int                             `json:"count"` // Total number
+	Items []*objects.MarketMarketItemFull `json:"items"`
 }
 
 // MarketGet type represents `market_get_response` API response object
 type MarketGet struct {
-	Count int                        `json:"count"` // Total number
-	Items []objects.MarketMarketItem `json:"items"`
+	Count int                         `json:"count"` // Total number
+	Items []*objects.MarketMarketItem `json:"items"`
 }
 
-// MarketRestoreComment type represents `market_restoreComment_response` API response object
-type MarketRestoreComment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
+// MarketRestorecomment type represents `market_restoreComment_response` API response object
+type MarketRestorecomment *objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
 
 // MarketSearchExtended type represents `market_search_extended_response` API response object
 type MarketSearchExtended struct {
-	Count int                            `json:"count"` // Total number
-	Items []objects.MarketMarketItemFull `json:"items"`
+	Count int                             `json:"count"` // Total number
+	Items []*objects.MarketMarketItemFull `json:"items"`
 }
 
 // MarketSearch type represents `market_search_response` API response object
 type MarketSearch struct {
-	Count int                        `json:"count"` // Total number
-	Items []objects.MarketMarketItem `json:"items"`
+	Count int                         `json:"count"` // Total number
+	Items []*objects.MarketMarketItem `json:"items"`
 }

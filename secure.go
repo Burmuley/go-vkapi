@@ -34,12 +34,12 @@ type Secure struct {
 // `Secure` methods
 /////////////////////////////////////////////////////////////
 
-// AddAppEvent - Adds user activity information to an application
+// Addappevent - Adds user activity information to an application
 // Parameters:
 //   * userId - ID of a user to save the data
 //   * activityId - there are 2 default activities: , * 1 – level. Works similar to ,, * 2 – points, saves points amount, Any other value is for saving completed missions
 //   * value - depends on activity_id: * 1 – number, current level number,, * 2 – number, current user's points amount, , Any other value is ignored
-func (s Secure) AddAppEvent(userId int, activityId int, value int) (resp responses.Ok, err error) {
+func (s Secure) Addappevent(userId int, activityId int, value int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -55,11 +55,11 @@ func (s Secure) AddAppEvent(userId int, activityId int, value int) (resp respons
 	return
 }
 
-// CheckToken - Checks the user authentication in 'IFrame' and 'Flash' apps using the 'access_token' parameter.
+// Checktoken - Checks the user authentication in 'IFrame' and 'Flash' apps using the 'access_token' parameter.
 // Parameters:
 //   * token - client 'access_token'
 //   * ip - user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
-func (s Secure) CheckToken(token string, ip string) (resp responses.SecureCheckToken, err error) {
+func (s Secure) Checktoken(token string, ip string) (resp responses.SecureChecktok, err error) {
 	params := map[string]interface{}{}
 
 	if token != "" {
@@ -75,8 +75,8 @@ func (s Secure) CheckToken(token string, ip string) (resp responses.SecureCheckT
 	return
 }
 
-// GetAppBalance - Returns payment balance of the application in hundredth of a vote.
-func (s Secure) GetAppBalance() (resp responses.SecureGetAppBalance, err error) {
+// Getappbalance - Returns payment balance of the application in hundredth of a vote.
+func (s Secure) Getappbalance() (resp responses.SecureGetappbalanc, err error) {
 	params := map[string]interface{}{}
 
 	err = s.SendObjRequest("secure.getAppBalance", params, &resp)
@@ -84,13 +84,13 @@ func (s Secure) GetAppBalance() (resp responses.SecureGetAppBalance, err error) 
 	return
 }
 
-// GetSMSHistory - Shows a list of SMS notifications sent by the application using [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
+// Getsmshistory - Shows a list of SMS notifications sent by the application using [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
 // Parameters:
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * dateFrom - filter by start date. It is set as UNIX-time.
 //   * dateTo - filter by end date. It is set as UNIX-time.
 //   * limit - number of returned posts. By default — 1000.
-func (s Secure) GetSMSHistory(userId int, dateFrom int, dateTo int, limit int) (resp responses.SecureGetSMSHistory, err error) {
+func (s Secure) Getsmshistory(userId int, dateFrom int, dateTo int, limit int) (resp responses.SecureGetsmshistory, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -114,7 +114,7 @@ func (s Secure) GetSMSHistory(userId int, dateFrom int, dateTo int, limit int) (
 	return
 }
 
-// GetTransactionsHistory - Shows history of votes transaction between users and the application.
+// Gettransactionshistory - Shows history of votes transaction between users and the application.
 // Parameters:
 //   * pType - NO DESCRIPTION IN JSON SCHEMA
 //   * uidFrom - NO DESCRIPTION IN JSON SCHEMA
@@ -122,7 +122,7 @@ func (s Secure) GetSMSHistory(userId int, dateFrom int, dateTo int, limit int) (
 //   * dateFrom - NO DESCRIPTION IN JSON SCHEMA
 //   * dateTo - NO DESCRIPTION IN JSON SCHEMA
 //   * limit - NO DESCRIPTION IN JSON SCHEMA
-func (s Secure) GetTransactionsHistory(pType int, uidFrom int, uidTo int, dateFrom int, dateTo int, limit int) (resp responses.SecureGetTransactionsHistory, err error) {
+func (s Secure) Gettransactionshistory(pType int, uidFrom int, uidTo int, dateFrom int, dateTo int, limit int) (resp responses.SecureGettransactionshistory, err error) {
 	params := map[string]interface{}{}
 
 	if pType > 0 {
@@ -154,10 +154,10 @@ func (s Secure) GetTransactionsHistory(pType int, uidFrom int, uidTo int, dateFr
 	return
 }
 
-// GetUserLevel - Returns one of the previously set game levels of one or more users in the application.
+// Getuserlevel - Returns one of the previously set game levels of one or more users in the application.
 // Parameters:
 //   * userIds - NO DESCRIPTION IN JSON SCHEMA
-func (s Secure) GetUserLevel(userIds []int) (resp responses.SecureGetUserLevel, err error) {
+func (s Secure) Getuserlevel(userIds []int) (resp responses.SecureGetuserlevel, err error) {
 	params := map[string]interface{}{}
 
 	params["user_ids"] = SliceToString(userIds)
@@ -167,11 +167,11 @@ func (s Secure) GetUserLevel(userIds []int) (resp responses.SecureGetUserLevel, 
 	return
 }
 
-// GiveEventSticker - Opens the game achievement and gives the user a sticker
+// Giveeventsticker - Opens the game achievement and gives the user a sticker
 // Parameters:
 //   * userIds - NO DESCRIPTION IN JSON SCHEMA
 //   * achievementId - NO DESCRIPTION IN JSON SCHEMA
-func (s Secure) GiveEventSticker(userIds []int, achievementId int) (resp responses.SecureGiveEventSticker, err error) {
+func (s Secure) Giveeventsticker(userIds []int, achievementId int) (resp responses.SecureGiveeventsticker, err error) {
 	params := map[string]interface{}{}
 
 	params["user_ids"] = SliceToString(userIds)
@@ -183,12 +183,12 @@ func (s Secure) GiveEventSticker(userIds []int, achievementId int) (resp respons
 	return
 }
 
-// SendNotification - Sends notification to the user.
+// Sendnotification - Sends notification to the user.
 // Parameters:
 //   * userIds - NO DESCRIPTION IN JSON SCHEMA
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * message - notification text which should be sent in 'UTF-8' encoding ('254' characters maximum).
-func (s Secure) SendNotification(userIds []int, userId int, message string) (resp responses.SecureSendNotification, err error) {
+func (s Secure) Sendnotification(userIds []int, userId int, message string) (resp responses.SecureSendnotificati, err error) {
 	params := map[string]interface{}{}
 
 	if len(userIds) > 0 {
@@ -206,11 +206,11 @@ func (s Secure) SendNotification(userIds []int, userId int, message string) (res
 	return
 }
 
-// SendSMSNotification - Sends 'SMS' notification to a user's mobile device.
+// Sendsmsnotification - Sends 'SMS' notification to a user's mobile device.
 // Parameters:
 //   * userId - ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
 //   * message - 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are allowed. Maximum size is '160' characters.
-func (s Secure) SendSMSNotification(userId int, message string) (resp responses.Ok, err error) {
+func (s Secure) Sendsmsnotification(userId int, message string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -222,13 +222,13 @@ func (s Secure) SendSMSNotification(userId int, message string) (resp responses.
 	return
 }
 
-// SetCounter - Sets a counter which is shown to the user in bold in the left menu.
+// Setcounter - Sets a counter which is shown to the user in bold in the left menu.
 // Parameters:
 //   * counters - NO DESCRIPTION IN JSON SCHEMA
 //   * userId - NO DESCRIPTION IN JSON SCHEMA
 //   * counter - counter value.
 //   * increment - NO DESCRIPTION IN JSON SCHEMA
-func (s Secure) SetCounter(counters []string, userId int, counter int, increment bool) (resp responses.Ok, err error) {
+func (s Secure) Setcounter(counters []string, userId int, counter int, increment bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if len(counters) > 0 {
