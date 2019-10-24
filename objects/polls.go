@@ -36,20 +36,20 @@ type PollsAnswer struct {
 
 // PollsPoll type represents `polls_poll` API object
 type PollsPoll struct {
-	Anonymous bool          `json:"anonymous"` // Information whether the field is anonymous
-	AnswerId  int           `json:"answer_id"` // Current user's answer ID
-	Answers   []PollsAnswer `json:"answers"`
-	Created   int           `json:"created"`  // Date when poll has been created in Unixtime
-	Id        int           `json:"id"`       // Poll ID
-	OwnerId   int           `json:"owner_id"` // Poll owner's ID
-	Question  string        `json:"question"` // Poll question
-	Votes     string        `json:"votes"`    // Votes number
+	Anonymous bool           `json:"anonymous"` // Information whether the field is anonymous
+	AnswerId  int            `json:"answer_id"` // Current user's answer ID
+	Answers   []*PollsAnswer `json:"answers"`
+	Created   int            `json:"created"`  // Date when poll has been created in Unixtime
+	Id        int            `json:"id"`       // Poll ID
+	OwnerId   int            `json:"owner_id"` // Poll owner's ID
+	Question  string         `json:"question"` // Poll question
+	Votes     string         `json:"votes"`    // Votes number
 }
 
 // PollsVoters type represents `polls_voters` API object
 type PollsVoters struct {
-	AnswerId int              `json:"answer_id"` // Answer ID
-	Users    PollsVotersUsers `json:"users"`
+	AnswerId int               `json:"answer_id"` // Answer ID
+	Users    *PollsVotersUsers `json:"users"`
 }
 
 // PollsVotersUsers type represents `polls_voters_users` API object

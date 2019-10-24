@@ -22,47 +22,49 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `board` group of responses
 /////////////////////////////////////////////////////////////
 
-// BoardAddTopic type represents `board_addTopic_response` API response object
-type BoardAddTopic int // Topic ID
+// BoardAddtopic type represents `board_addTopic_response` API response object
+type BoardAddtopic int // Topic ID
 
-// BoardCreateComment type represents `board_createComment_response` API response object
-type BoardCreateComment int // Comment ID
+// BoardCreatecomment type represents `board_createComment_response` API response object
+type BoardCreatecomment int // Comment ID
 
-// BoardGetCommentsExtended type represents `board_getComments_extended_response` API response object
-type BoardGetCommentsExtended struct {
-	Count    int                         `json:"count"` // Total number
-	Groups   []objects.GroupsGroup       `json:"groups"`
-	Items    []objects.BoardTopicComment `json:"items"`
-	Poll     objects.BoardTopicPoll      `json:"poll"`
-	Profiles []objects.UsersUser         `json:"profiles"`
+// BoardGetcommentsExtended type represents `board_getComments_extended_response` API response object
+type BoardGetcommentsExtended struct {
+	Count    int                          `json:"count"` // Total number
+	Groups   []*objects.GroupsGroup       `json:"groups"`
+	Items    []*objects.BoardTopicComment `json:"items"`
+	Poll     *objects.BoardTopicPoll      `json:"poll"`
+	Profiles []*objects.UsersUser         `json:"profiles"`
 }
 
-// BoardGetComments type represents `board_getComments_response` API response object
-type BoardGetComments struct {
-	Count int                         `json:"count"` // Total number
-	Items []objects.BoardTopicComment `json:"items"`
-	Poll  objects.BoardTopicPoll      `json:"poll"`
+// BoardGetcomment type represents `board_getComments_response` API response object
+type BoardGetcomment struct {
+	Count int                          `json:"count"` // Total number
+	Items []*objects.BoardTopicComment `json:"items"`
+	Poll  *objects.BoardTopicPoll      `json:"poll"`
 }
 
-// BoardGetTopicsExtended type represents `board_getTopics_extended_response` API response object
-type BoardGetTopicsExtended struct {
-	CanAddTopics objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
-	Count        int                       `json:"count"`          // Total number
-	DefaultOrder objects.BoardDefaultOrder `json:"default_order"`
-	Items        []objects.BoardTopic      `json:"items"`
-	Profiles     []objects.UsersUserMin    `json:"profiles"`
+// BoardGettopicsExtended type represents `board_getTopics_extended_response` API response object
+type BoardGettopicsExtended struct {
+	CanAddTopics *objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
+	Count        int                        `json:"count"`          // Total number
+	DefaultOrder *objects.BoardDefaultOrder `json:"default_order"`
+	Items        []*objects.BoardTopic      `json:"items"`
+	Profiles     []*objects.UsersUserMin    `json:"profiles"`
 }
 
-// BoardGetTopics type represents `board_getTopics_response` API response object
-type BoardGetTopics struct {
-	CanAddTopics objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
-	Count        int                       `json:"count"`          // Total number
-	DefaultOrder objects.BoardDefaultOrder `json:"default_order"`
-	Items        []objects.BoardTopic      `json:"items"`
+// BoardGettopic type represents `board_getTopics_response` API response object
+type BoardGettopic struct {
+	CanAddTopics *objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
+	Count        int                        `json:"count"`          // Total number
+	DefaultOrder *objects.BoardDefaultOrder `json:"default_order"`
+	Items        []*objects.BoardTopic      `json:"items"`
 }

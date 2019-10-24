@@ -22,7 +22,9 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `notifications` group of responses
@@ -30,20 +32,20 @@ import "gitlab.com/Burmuley/go-vkapi/objects"
 
 // NotificationsGet type represents `notifications_get_response` API response object
 type NotificationsGet struct {
-	Apps       []objects.AppsApp     `json:"apps"`
-	Count      int                   `json:"count"` // Total number
-	Groups     []objects.GroupsGroup `json:"groups"`
-	Items      []interface{}         `json:"items"`
-	LastViewed int                   `json:"last_viewed"` // Time when user has been checked notifications last time
-	NextFrom   string                `json:"next_from"`
-	Photos     []objects.PhotosPhoto `json:"photos"`
-	Profiles   []objects.UsersUser   `json:"profiles"`
-	Ttl        int                   `json:"ttl"`
-	Videos     []objects.VideoVideo  `json:"videos"`
+	Apps       []*objects.AppsApp     `json:"apps"`
+	Count      int                    `json:"count"` // Total number
+	Groups     []*objects.GroupsGroup `json:"groups"`
+	Items      []interface{}          `json:"items"`
+	LastViewed int                    `json:"last_viewed"` // Time when user has been checked notifications last time
+	NextFrom   string                 `json:"next_from"`
+	Photos     []*objects.PhotosPhoto `json:"photos"`
+	Profiles   []*objects.UsersUser   `json:"profiles"`
+	Ttl        int                    `json:"ttl"`
+	Videos     []*objects.VideoVideo  `json:"videos"`
 }
 
-// NotificationsMarkAsViewed type represents `notifications_markAsViewed_response` API response object
-type NotificationsMarkAsViewed objects.BaseBoolInt // Result
+// NotificationsMarkasviewed type represents `notifications_markAsViewed_response` API response object
+type NotificationsMarkasviewed *objects.BaseBoolInt // Result
 
-// NotificationsSendMessage type represents `notifications_sendMessage_response` API response object
-type NotificationsSendMessage objects.NotificationsSendMessageItem
+// NotificationsSendmessag type represents `notifications_sendMessage_response` API response object
+type NotificationsSendmessag *objects.NotificationsSendMessageItem

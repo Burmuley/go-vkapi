@@ -31,35 +31,35 @@ type BoardDefaultOrder int // Sort type
 
 // BoardTopic type represents `board_topic` API object
 type BoardTopic struct {
-	Comments  int         `json:"comments"`   // Comments number
-	Created   int         `json:"created"`    // Date when the topic has been created in Unixtime
-	CreatedBy int         `json:"created_by"` // Creator ID
-	Id        int         `json:"id"`         // Topic ID
-	IsClosed  BaseBoolInt `json:"is_closed"`  // Information whether the topic is closed
-	IsFixed   BaseBoolInt `json:"is_fixed"`   // Information whether the topic is fixed
-	Title     string      `json:"title"`      // Topic title
-	Updated   int         `json:"updated"`    // Date when the topic has been updated in Unixtime
-	UpdatedBy int         `json:"updated_by"` // ID of user who updated the topic
+	Comments  int          `json:"comments"`   // Comments number
+	Created   int          `json:"created"`    // Date when the topic has been created in Unixtime
+	CreatedBy int          `json:"created_by"` // Creator ID
+	Id        int          `json:"id"`         // Topic ID
+	IsClosed  *BaseBoolInt `json:"is_closed"`  // Information whether the topic is closed
+	IsFixed   *BaseBoolInt `json:"is_fixed"`   // Information whether the topic is fixed
+	Title     string       `json:"title"`      // Topic title
+	Updated   int          `json:"updated"`    // Date when the topic has been updated in Unixtime
+	UpdatedBy int          `json:"updated_by"` // ID of user who updated the topic
 }
 
 // BoardTopicComment type represents `board_topic_comment` API object
 type BoardTopicComment struct {
-	Attachments []WallCommentAttachment `json:"attachments"`
-	Date        int                     `json:"date"`        // Date when the comment has been added in Unixtime
-	FromId      int                     `json:"from_id"`     // Author ID
-	Id          int                     `json:"id"`          // Comment ID
-	RealOffset  int                     `json:"real_offset"` // Real position of the comment
-	Text        string                  `json:"text"`        // Comment text
+	Attachments []*WallCommentAttachment `json:"attachments"`
+	Date        int                      `json:"date"`        // Date when the comment has been added in Unixtime
+	FromId      int                      `json:"from_id"`     // Author ID
+	Id          int                      `json:"id"`          // Comment ID
+	RealOffset  int                      `json:"real_offset"` // Real position of the comment
+	Text        string                   `json:"text"`        // Comment text
 }
 
 // BoardTopicPoll type represents `board_topic_poll` API object
 type BoardTopicPoll struct {
-	AnswerId int           `json:"answer_id"` // Current user's answer ID
-	Answers  []PollsAnswer `json:"answers"`
-	Created  int           `json:"created"`   // Date when poll has been created in Unixtime
-	IsClosed BaseBoolInt   `json:"is_closed"` // Information whether the poll is closed
-	OwnerId  int           `json:"owner_id"`  // Poll owner's ID
-	PollId   int           `json:"poll_id"`   // Poll ID
-	Question string        `json:"question"`  // Poll question
-	Votes    string        `json:"votes"`     // Votes number
+	AnswerId int            `json:"answer_id"` // Current user's answer ID
+	Answers  []*PollsAnswer `json:"answers"`
+	Created  int            `json:"created"`   // Date when poll has been created in Unixtime
+	IsClosed *BaseBoolInt   `json:"is_closed"` // Information whether the poll is closed
+	OwnerId  int            `json:"owner_id"`  // Poll owner's ID
+	PollId   int            `json:"poll_id"`   // Poll ID
+	Question string         `json:"question"`  // Poll question
+	Votes    string         `json:"votes"`     // Votes number
 }

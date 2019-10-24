@@ -28,12 +28,12 @@ package objects
 
 // EventsEventAttach type represents `events_event_attach` API object
 type EventsEventAttach struct {
-	Address      string                      `json:"address"`       // address of event
-	ButtonText   string                      `json:"button_text"`   // text of attach
-	Friends      []int                       `json:"friends"`       // array of friends ids
-	Id           int                         `json:"id"`            // event ID
-	IsFavorite   bool                        `json:"is_favorite"`   // is favorite
-	MemberStatus GroupsGroupFullMemberStatus `json:"member_status"` // Current user's member status
-	Text         string                      `json:"text"`          // text of attach
-	Time         int                         `json:"time"`          // event start time
+	Address      string                       `json:"address"`       // address of event
+	ButtonText   string                       `json:"button_text"`   // text of attach
+	Friends      []int                        `json:"friends"`       // array of friends ids
+	Id           int                          `json:"id"`            // event ID
+	IsFavorite   bool                         `json:"is_favorite"`   // is favorite
+	MemberStatus *GroupsGroupFullMemberStatus `json:"member_status"` // Current user's member status
+	Text         string                       `json:"text"`          // text of attach
+	Time         int                          `json:"time"`          // event start time
 }

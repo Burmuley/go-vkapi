@@ -22,97 +22,99 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `stories` group of responses
 /////////////////////////////////////////////////////////////
 
-// StoriesGetBannedExtended type represents `stories_getBanned_extended_response` API response object
-type StoriesGetBannedExtended struct {
-	Count    int                       `json:"count"` // Stories count
-	Groups   []objects.GroupsGroupFull `json:"groups"`
-	Items    []int                     `json:"items"`
-	Profiles []objects.UsersUserFull   `json:"profiles"`
+// StoriesGetbannedExtended type represents `stories_getBanned_extended_response` API response object
+type StoriesGetbannedExtended struct {
+	Count    int                        `json:"count"` // Stories count
+	Groups   []*objects.GroupsGroupFull `json:"groups"`
+	Items    []int                      `json:"items"`
+	Profiles []*objects.UsersUserFull   `json:"profiles"`
 }
 
-// StoriesGetBanned type represents `stories_getBanned_response` API response object
-type StoriesGetBanned struct {
+// StoriesGetbanned type represents `stories_getBanned_response` API response object
+type StoriesGetbanned struct {
 	Count int   `json:"count"` // Stories count
 	Items []int `json:"items"`
 }
 
-// StoriesGetByIdExtended type represents `stories_getById_extended_response` API response object
-type StoriesGetByIdExtended struct {
-	Count    int                       `json:"count"` // Stories count
-	Groups   []objects.GroupsGroupFull `json:"groups"`
-	Items    []objects.StoriesStory    `json:"items"`
-	Profiles []objects.UsersUserFull   `json:"profiles"`
+// StoriesGetbyidExtended type represents `stories_getById_extended_response` API response object
+type StoriesGetbyidExtended struct {
+	Count    int                        `json:"count"` // Stories count
+	Groups   []*objects.GroupsGroupFull `json:"groups"`
+	Items    []*objects.StoriesStory    `json:"items"`
+	Profiles []*objects.UsersUserFull   `json:"profiles"`
 }
 
-// StoriesGetById type represents `stories_getById_response` API response object
-type StoriesGetById struct {
-	Count int                    `json:"count"` // Stories count
-	Items []objects.StoriesStory `json:"items"`
+// StoriesGetbyid type represents `stories_getById_response` API response object
+type StoriesGetbyid struct {
+	Count int                     `json:"count"` // Stories count
+	Items []*objects.StoriesStory `json:"items"`
 }
 
-// StoriesGetPhotoUploadServer type represents `stories_getPhotoUploadServer_response` API response object
-type StoriesGetPhotoUploadServer struct {
+// StoriesGetphotouploadserver type represents `stories_getPhotoUploadServer_response` API response object
+type StoriesGetphotouploadserver struct {
 	UploadUrl string `json:"upload_url"` // Upload URL
 	UserIds   []int  `json:"user_ids"`   // Users ID who can to see story.
 }
 
-// StoriesGetRepliesExtended type represents `stories_getReplies_extended_response` API response object
-type StoriesGetRepliesExtended struct {
-	Count    int                       `json:"count"` // Stories count
-	Groups   []objects.GroupsGroupFull `json:"groups"`
-	Items    []objects.StoriesStory    `json:"items"`
-	Profiles []objects.UsersUserFull   `json:"profiles"`
+// StoriesGetrepliesExtended type represents `stories_getReplies_extended_response` API response object
+type StoriesGetrepliesExtended struct {
+	Count    int                        `json:"count"` // Stories count
+	Groups   []*objects.GroupsGroupFull `json:"groups"`
+	Items    []*objects.StoriesStory    `json:"items"`
+	Profiles []*objects.UsersUserFull   `json:"profiles"`
 }
 
-// StoriesGetReplies type represents `stories_getReplies_response` API response object
-type StoriesGetReplies struct {
-	Count int                    `json:"count"` // Stories count
-	Items []objects.StoriesStory `json:"items"`
+// StoriesGetrepli type represents `stories_getReplies_response` API response object
+type StoriesGetrepli struct {
+	Count int                     `json:"count"` // Stories count
+	Items []*objects.StoriesStory `json:"items"`
 }
 
-// StoriesGetStats type represents `stories_getStats_response` API response object
-type StoriesGetStats objects.StoriesStoryStats
+// StoriesGetstat type represents `stories_getStats_response` API response object
+type StoriesGetstat *objects.StoriesStoryStats
 
-// StoriesGetVideoUploadServer type represents `stories_getVideoUploadServer_response` API response object
-type StoriesGetVideoUploadServer struct {
+// StoriesGetvideouploadserver type represents `stories_getVideoUploadServer_response` API response object
+type StoriesGetvideouploadserver struct {
 	UploadUrl string `json:"upload_url"` // Upload URL
 	UserIds   []int  `json:"user_ids"`   // Users ID who can to see story.
 }
 
-// StoriesGetViewersExtended type represents `stories_getViewers_extended_response` API response object
-type StoriesGetViewersExtended struct {
-	Count int                     `json:"count"` // Viewers count
-	Items []objects.UsersUserFull `json:"items"`
+// StoriesGetviewersExtended type represents `stories_getViewers_extended_response` API response object
+type StoriesGetviewersExtended struct {
+	Count int                      `json:"count"` // Viewers count
+	Items []*objects.UsersUserFull `json:"items"`
 }
 
-// StoriesGetViewers type represents `stories_getViewers_response` API response object
-type StoriesGetViewers struct {
+// StoriesGetviewer type represents `stories_getViewers_response` API response object
+type StoriesGetviewer struct {
 	Count int   `json:"count"` // Viewers count
 	Items []int `json:"items"`
 }
 
 // StoriesGetExtended type represents `stories_get_extended_response` API response object
 type StoriesGetExtended struct {
-	Count    int                    `json:"count"` // Stories count
-	Groups   []objects.GroupsGroup  `json:"groups"`
-	Items    []objects.StoriesStory `json:"items"`
-	Profiles []objects.UsersUser    `json:"profiles"`
+	Count    int                     `json:"count"` // Stories count
+	Groups   []*objects.GroupsGroup  `json:"groups"`
+	Items    []*objects.StoriesStory `json:"items"`
+	Profiles []*objects.UsersUser    `json:"profiles"`
 }
 
 // StoriesGet type represents `stories_get_response` API response object
 type StoriesGet struct {
-	Count     int                       `json:"count"` // Stories count
-	Items     []objects.StoriesStory    `json:"items"`
-	PromoData objects.StoriesPromoBlock `json:"promo_data"`
+	Count     int                        `json:"count"` // Stories count
+	Items     []*objects.StoriesStory    `json:"items"`
+	PromoData *objects.StoriesPromoBlock `json:"promo_data"`
 }
 
 // StoriesUpload type represents `stories_upload_response` API response object
 type StoriesUpload struct {
-	Story objects.StoriesStory `json:"story"`
+	Story *objects.StoriesStory `json:"story"`
 }

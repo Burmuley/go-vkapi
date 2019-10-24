@@ -22,14 +22,16 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `stats` group of responses
 /////////////////////////////////////////////////////////////
 
-// StatsGetPostReach type represents `stats_getPostReach_response` API response object
-type StatsGetPostReach objects.StatsWallpostStat
+// StatsGetpostreach type represents `stats_getPostReach_response` API response object
+type StatsGetpostreach *objects.StatsWallpostStat
 
 // StatsGet type represents `stats_get_response` API response object
-type StatsGet objects.StatsPeriod
+type StatsGet *objects.StatsPeriod

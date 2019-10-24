@@ -22,20 +22,22 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `widgets` group of responses
 /////////////////////////////////////////////////////////////
 
-// WidgetsGetComments type represents `widgets_getComments_response` API response object
-type WidgetsGetComments struct {
-	Count int                            `json:"count"` // Total number
-	Posts []objects.WidgetsWidgetComment `json:"posts"`
+// WidgetsGetcomment type represents `widgets_getComments_response` API response object
+type WidgetsGetcomment struct {
+	Count int                             `json:"count"` // Total number
+	Posts []*objects.WidgetsWidgetComment `json:"posts"`
 }
 
-// WidgetsGetPages type represents `widgets_getPages_response` API response object
-type WidgetsGetPages struct {
-	Count int                         `json:"count"` // Total number
-	Pages []objects.WidgetsWidgetPage `json:"pages"`
+// WidgetsGetpag type represents `widgets_getPages_response` API response object
+type WidgetsGetpag struct {
+	Count int                          `json:"count"` // Total number
+	Pages []*objects.WidgetsWidgetPage `json:"pages"`
 }

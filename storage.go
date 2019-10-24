@@ -34,13 +34,13 @@ type Storage struct {
 // `Storage` methods
 /////////////////////////////////////////////////////////////
 
-// GetKeys - Returns the names of all variables.
+// Getkeys - Returns the names of all variables.
 // Parameters:
 //   * userId - user id, whose variables names are returned if they were requested with a server method.
 //   * global - NO DESCRIPTION IN JSON SCHEMA
 //   * offset - NO DESCRIPTION IN JSON SCHEMA
 //   * count - amount of variable names the info needs to be collected from.
-func (s Storage) GetKeys(userId int, global bool, offset int, count int) (resp responses.StorageGetKeys, err error) {
+func (s Storage) Getkeys(userId int, global bool, offset int, count int) (resp responses.StorageGetkey, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {

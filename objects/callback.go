@@ -35,27 +35,27 @@ type CallbackBoardPostDelete struct {
 
 // CallbackConfirmationMessage type represents `callback_confirmation_message` API object
 type CallbackConfirmationMessage struct {
-	GroupId int                 `json:"group_id"`
-	Secret  string              `json:"secret"`
-	Type    CallbackMessageType `json:"type"`
+	GroupId int                  `json:"group_id"`
+	Secret  string               `json:"secret"`
+	Type    *CallbackMessageType `json:"type"`
 }
 
 // CallbackGroupChangePhoto type represents `callback_group_change_photo` API object
 type CallbackGroupChangePhoto struct {
-	Photo  PhotosPhoto `json:"photo"`
-	UserId int         `json:"user_id"`
+	Photo  *PhotosPhoto `json:"photo"`
+	UserId int          `json:"user_id"`
 }
 
 // CallbackGroupChangeSettings type represents `callback_group_change_settings` API object
 type CallbackGroupChangeSettings struct {
-	Self   BaseBoolInt `json:"self"`
-	UserId int         `json:"user_id"`
+	Self   *BaseBoolInt `json:"self"`
+	UserId int          `json:"user_id"`
 }
 
 // CallbackGroupJoin type represents `callback_group_join` API object
 type CallbackGroupJoin struct {
-	JoinType CallbackGroupJoinType `json:"join_type"`
-	UserId   int                   `json:"user_id"`
+	JoinType *CallbackGroupJoinType `json:"join_type"`
+	UserId   int                    `json:"user_id"`
 }
 
 // CallbackGroupJoinType type represents `callback_group_join_type` API object
@@ -63,8 +63,8 @@ type CallbackGroupJoinType string
 
 // CallbackGroupLeave type represents `callback_group_leave` API object
 type CallbackGroupLeave struct {
-	Self   BaseBoolInt `json:"self"`
-	UserId int         `json:"user_id"`
+	Self   *BaseBoolInt `json:"self"`
+	UserId int          `json:"user_id"`
 }
 
 // CallbackGroupMarket type represents `callback_group_market` API object
@@ -75,27 +75,27 @@ type CallbackGroupOfficerRole int
 
 // CallbackGroupOfficersEdit type represents `callback_group_officers_edit` API object
 type CallbackGroupOfficersEdit struct {
-	AdminId  int                      `json:"admin_id"`
-	LevelNew CallbackGroupOfficerRole `json:"level_new"`
-	LevelOld CallbackGroupOfficerRole `json:"level_old"`
-	UserId   int                      `json:"user_id"`
+	AdminId  int                       `json:"admin_id"`
+	LevelNew *CallbackGroupOfficerRole `json:"level_new"`
+	LevelOld *CallbackGroupOfficerRole `json:"level_old"`
+	UserId   int                       `json:"user_id"`
 }
 
 // CallbackGroupSettingsChanges type represents `callback_group_settings_changes` API object
 type CallbackGroupSettingsChanges struct {
-	Access              GroupsGroupIsClosed      `json:"access"`
-	AgeLimits           GroupsGroupFullAgeLimits `json:"age_limits"`
-	Description         string                   `json:"description"`
-	EnableAudio         GroupsGroupAudio         `json:"enable_audio"`
-	EnableMarket        CallbackGroupMarket      `json:"enable_market"`
-	EnablePhoto         GroupsGroupPhotos        `json:"enable_photo"`
-	EnableStatusDefault GroupsGroupWall          `json:"enable_status_default"`
-	EnableVideo         GroupsGroupVideo         `json:"enable_video"`
-	PublicCategory      int                      `json:"public_category"`
-	PublicSubcategory   int                      `json:"public_subcategory"`
-	ScreenName          string                   `json:"screen_name"`
-	Title               string                   `json:"title"`
-	Website             string                   `json:"website"`
+	Access              *GroupsGroupIsClosed      `json:"access"`
+	AgeLimits           *GroupsGroupFullAgeLimits `json:"age_limits"`
+	Description         string                    `json:"description"`
+	EnableAudio         *GroupsGroupAudio         `json:"enable_audio"`
+	EnableMarket        *CallbackGroupMarket      `json:"enable_market"`
+	EnablePhoto         *GroupsGroupPhotos        `json:"enable_photo"`
+	EnableStatusDefault *GroupsGroupWall          `json:"enable_status_default"`
+	EnableVideo         *GroupsGroupVideo         `json:"enable_video"`
+	PublicCategory      int                       `json:"public_category"`
+	PublicSubcategory   int                       `json:"public_subcategory"`
+	ScreenName          string                    `json:"screen_name"`
+	Title               string                    `json:"title"`
+	Website             string                    `json:"website"`
 }
 
 // CallbackMarketComment type represents `callback_market_comment` API object
@@ -124,9 +124,9 @@ type CallbackMessageAllow struct {
 
 // CallbackMessageBase type represents `callback_message_base` API object
 type CallbackMessageBase struct {
-	GroupId int                 `json:"group_id"`
-	Object  object              `json:"object"`
-	Type    CallbackMessageType `json:"type"`
+	GroupId int                  `json:"group_id"`
+	Object  interface{}          `json:"object"`
+	Type    *CallbackMessageType `json:"type"`
 }
 
 // CallbackMessageDeny type represents `callback_message_deny` API object

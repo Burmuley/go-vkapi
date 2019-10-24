@@ -127,10 +127,10 @@ func (d Docs) Get(count int, offset int, pType int, ownerId int) (resp responses
 	return
 }
 
-// GetById - Returns information about documents by their IDs.
+// Getbyid - Returns information about documents by their IDs.
 // Parameters:
 //   * docs - Document IDs. Example: , "66748_91488,66748_91455",
-func (d Docs) GetById(docs []string) (resp responses.DocsGetById, err error) {
+func (d Docs) Getbyid(docs []string) (resp responses.DocsGetbyid, err error) {
 	params := map[string]interface{}{}
 
 	params["docs"] = SliceToString(docs)
@@ -140,11 +140,11 @@ func (d Docs) GetById(docs []string) (resp responses.DocsGetById, err error) {
 	return
 }
 
-// GetMessagesUploadServer - Returns the server address for document upload.
+// Getmessagesuploadserver - Returns the server address for document upload.
 // Parameters:
 //   * pType - Document type.
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
-func (d Docs) GetMessagesUploadServer(pType string, peerId int) (resp responses.BaseGetUploadServer, err error) {
+func (d Docs) Getmessagesuploadserver(pType string, peerId int) (resp responses.BaseGetuploadserver, err error) {
 	params := map[string]interface{}{}
 
 	if pType != "" {
@@ -160,10 +160,10 @@ func (d Docs) GetMessagesUploadServer(pType string, peerId int) (resp responses.
 	return
 }
 
-// GetTypes - Returns documents types available for current user.
+// Gettypes - Returns documents types available for current user.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
-func (d Docs) GetTypes(ownerId int) (resp responses.DocsGetTypes, err error) {
+func (d Docs) Gettypes(ownerId int) (resp responses.DocsGetty, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -173,10 +173,10 @@ func (d Docs) GetTypes(ownerId int) (resp responses.DocsGetTypes, err error) {
 	return
 }
 
-// GetUploadServer - Returns the server address for document upload.
+// Getuploadserver - Returns the server address for document upload.
 // Parameters:
 //   * groupId - Community ID (if the document will be uploaded to the community).
-func (d Docs) GetUploadServer(groupId int) (resp responses.DocsGetUploadServer, err error) {
+func (d Docs) Getuploadserver(groupId int) (resp responses.DocsGetuploadserver, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -188,10 +188,10 @@ func (d Docs) GetUploadServer(groupId int) (resp responses.DocsGetUploadServer, 
 	return
 }
 
-// GetWallUploadServer - Returns the server address for document upload onto a user's or community's wall.
+// Getwalluploadserver - Returns the server address for document upload onto a user's or community's wall.
 // Parameters:
 //   * groupId - Community ID (if the document will be uploaded to the community).
-func (d Docs) GetWallUploadServer(groupId int) (resp responses.BaseGetUploadServer, err error) {
+func (d Docs) Getwalluploadserver(groupId int) (resp responses.BaseGetuploadserver, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -208,7 +208,7 @@ func (d Docs) GetWallUploadServer(groupId int) (resp responses.BaseGetUploadServ
 //   * file - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
 //   * title - Document title.
 //   * tags - Document tags.
-func (d Docs) Save(file string, title string, tags string) (resp responses.DocsSave, err error) {
+func (d Docs) Save(file string, title string, tags string) (resp responses.DocsSav, err error) {
 	params := map[string]interface{}{}
 
 	params["file"] = file

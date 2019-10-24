@@ -22,11 +22,13 @@ limitations under the License.
 
 package responses
 
-import "gitlab.com/Burmuley/go-vkapi/objects"
+import (
+	"gitlab.com/Burmuley/go-vkapi/objects"
+)
 
 /////////////////////////////////////////////////////////////
 // `ok` group of responses
 /////////////////////////////////////////////////////////////
 
 // Ok type represents `ok_response` API response object
-type Ok objects.BaseOk
+type Ok *objects.BaseOkResponse
