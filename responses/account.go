@@ -36,37 +36,37 @@ type AccountChangepassword struct {
 	Token  string `json:"token"`  // New token
 }
 
-// AccountGetactiveoffer type represents `account_getActiveOffers_response` API response object
-type AccountGetactiveoffer struct {
-	Count int                     `json:"count"` // Total number
-	Items []*objects.AccountOffer `json:"items"`
+// AccountGetactiveoffers type represents `account_getActiveOffers_response` API response object
+type AccountGetactiveoffers struct {
+	Count int                    `json:"count"` // Total number
+	Items []objects.AccountOffer `json:"items"`
 }
 
-// AccountGetapppermissi type represents `account_getAppPermissions_response` API response object
-type AccountGetapppermissi int // Permissions mask
+// AccountGetapppermissions type represents `account_getAppPermissions_response` API response object
+type AccountGetapppermissions int // Permissions mask
 
 // AccountGetbanned type represents `account_getBanned_response` API response object
 type AccountGetbanned struct {
-	Count    int                     `json:"count"` // Total number
-	Groups   []*objects.GroupsGroup  `json:"groups"`
-	Items    []int                   `json:"items"`
-	Profiles []*objects.UsersUserMin `json:"profiles"`
+	Count    int                    `json:"count"` // Total number
+	Groups   []objects.GroupsGroup  `json:"groups"`
+	Items    []int                  `json:"items"`
+	Profiles []objects.UsersUserMin `json:"profiles"`
 }
 
-// AccountGetcounter type represents `account_getCounters_response` API response object
-type AccountGetcounter *objects.AccountAccountCounters
+// AccountGetcounters type represents `account_getCounters_response` API response object
+type AccountGetcounters objects.AccountAccountCounters
 
-// AccountGetinf type represents `account_getInfo_response` API response object
-type AccountGetinf *objects.AccountInfo
+// AccountGetinfo type represents `account_getInfo_response` API response object
+type AccountGetinfo objects.AccountInfo
 
-// AccountGetprofileinf type represents `account_getProfileInfo_response` API response object
-type AccountGetprofileinf *objects.AccountUserSettings
+// AccountGetprofileinfo type represents `account_getProfileInfo_response` API response object
+type AccountGetprofileinfo objects.AccountUserSettings
 
-// AccountGetpushsetting type represents `account_getPushSettings_response` API response object
-type AccountGetpushsetting *objects.AccountPushSettings
+// AccountGetpushsettings type represents `account_getPushSettings_response` API response object
+type AccountGetpushsettings objects.AccountPushSettings
 
-// AccountSaveprofileinf type represents `account_saveProfileInfo_response` API response object
-type AccountSaveprofileinf struct {
-	Changed     *objects.BaseBoolInt        `json:"changed"` // 1 if changes has been processed
-	NameRequest *objects.AccountNameRequest `json:"name_request"`
+// AccountSaveprofileinfo type represents `account_saveProfileInfo_response` API response object
+type AccountSaveprofileinfo struct {
+	Changed     objects.BaseBoolInt        `json:"changed"` // 1 if changes has been processed
+	NameRequest objects.AccountNameRequest `json:"name_request"`
 }

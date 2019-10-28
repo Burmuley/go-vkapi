@@ -39,73 +39,73 @@ type VideoAddalbum struct {
 type VideoCreatecomment int // Created comment ID
 
 // VideoGetalbumbyid type represents `video_getAlbumById_response` API response object
-type VideoGetalbumbyid *objects.VideoVideoAlbumFull
+type VideoGetalbumbyid objects.VideoVideoAlbumFull
 
 // VideoGetalbumsbyvideoExtended type represents `video_getAlbumsByVideo_extended_response` API response object
 type VideoGetalbumsbyvideoExtended struct {
-	Count int                            `json:"count"` // Total number
-	Items []*objects.VideoVideoAlbumFull `json:"items"`
+	Count int                           `json:"count"` // Total number
+	Items []objects.VideoVideoAlbumFull `json:"items"`
 }
 
-// VideoGetalbumsbyvid type represents `video_getAlbumsByVideo_response` API response object
-type VideoGetalbumsbyvid int
+// VideoGetalbumsbyvideo type represents `video_getAlbumsByVideo_response` API response object
+type VideoGetalbumsbyvideo int
 
 // VideoGetalbumsExtended type represents `video_getAlbums_extended_response` API response object
 type VideoGetalbumsExtended struct {
-	Count int                            `json:"count"` // Total number
-	Items []*objects.VideoVideoAlbumFull `json:"items"`
+	Count int                           `json:"count"` // Total number
+	Items []objects.VideoVideoAlbumFull `json:"items"`
 }
 
-// VideoGetalbum type represents `video_getAlbums_response` API response object
-type VideoGetalbum struct {
-	Count int                            `json:"count"` // Total number
-	Items []*objects.VideoVideoAlbumFull `json:"items"`
+// VideoGetalbums type represents `video_getAlbums_response` API response object
+type VideoGetalbums struct {
+	Count int                           `json:"count"` // Total number
+	Items []objects.VideoVideoAlbumFull `json:"items"`
 }
 
 // VideoGetcommentsExtended type represents `video_getComments_extended_response` API response object
 type VideoGetcommentsExtended struct {
-	Count    int                        `json:"count"` // Total number
-	Groups   []*objects.GroupsGroupFull `json:"groups"`
-	Items    []*objects.WallWallComment `json:"items"`
-	Profiles []*objects.UsersUserMin    `json:"profiles"`
+	Count    int                       `json:"count"` // Total number
+	Groups   []objects.GroupsGroupFull `json:"groups"`
+	Items    []objects.WallWallComment `json:"items"`
+	Profiles []objects.UsersUserMin    `json:"profiles"`
 }
 
-// VideoGetcomment type represents `video_getComments_response` API response object
-type VideoGetcomment struct {
-	Count int                        `json:"count"` // Total number
-	Items []*objects.WallWallComment `json:"items"`
+// VideoGetcomments type represents `video_getComments_response` API response object
+type VideoGetcomments struct {
+	Count int                       `json:"count"` // Total number
+	Items []objects.WallWallComment `json:"items"`
 }
 
 // VideoGetExtended type represents `video_get_extended_response` API response object
 type VideoGetExtended struct {
-	Count    int                        `json:"count"` // Total number
-	Groups   []*objects.GroupsGroupFull `json:"groups"`
-	Items    []*objects.VideoVideoFull  `json:"items"`
-	Profiles []*objects.UsersUserMin    `json:"profiles"`
+	Count    int                       `json:"count"` // Total number
+	Groups   []objects.GroupsGroupFull `json:"groups"`
+	Items    []objects.VideoVideoFull  `json:"items"`
+	Profiles []objects.UsersUserMin    `json:"profiles"`
 }
 
 // VideoGet type represents `video_get_response` API response object
 type VideoGet struct {
-	Count int                   `json:"count"` // Total number
-	Items []*objects.VideoVideo `json:"items"`
+	Count int                  `json:"count"` // Total number
+	Items []objects.VideoVideo `json:"items"`
 }
 
 // VideoRestorecomment type represents `video_restoreComment_response` API response object
-type VideoRestorecomment *objects.BaseBoolInt // Returns 1 if request has been processed successfully, 0 if the comment is not found
+type VideoRestorecomment objects.BaseBoolInt // Returns 1 if request has been processed successfully, 0 if the comment is not found
 
-// VideoSav type represents `video_save_response` API response object
-type VideoSav *objects.VideoSaveResult
+// VideoSave type represents `video_save_response` API response object
+type VideoSave objects.VideoSaveResult
 
 // VideoSearchExtended type represents `video_search_extended_response` API response object
 type VideoSearchExtended struct {
-	Count    int                        `json:"count"` // Total number
-	Groups   []*objects.GroupsGroupFull `json:"groups"`
-	Items    []*objects.VideoVideo      `json:"items"`
-	Profiles []*objects.UsersUserMin    `json:"profiles"`
+	Count    int                       `json:"count"` // Total number
+	Groups   []objects.GroupsGroupFull `json:"groups"`
+	Items    []objects.VideoVideo      `json:"items"`
+	Profiles []objects.UsersUserMin    `json:"profiles"`
 }
 
 // VideoSearch type represents `video_search_response` API response object
 type VideoSearch struct {
-	Count int                   `json:"count"` // Total number
-	Items []*objects.VideoVideo `json:"items"`
+	Count int                  `json:"count"` // Total number
+	Items []objects.VideoVideo `json:"items"`
 }

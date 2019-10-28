@@ -30,23 +30,23 @@ import (
 // `secure` group of responses
 /////////////////////////////////////////////////////////////
 
-// SecureChecktok type represents `secure_checkToken_response` API response object
-type SecureChecktok *objects.SecureTokenChecked
+// SecureChecktoken type represents `secure_checkToken_response` API response object
+type SecureChecktoken objects.SecureTokenChecked
 
-// SecureGetappbalanc type represents `secure_getAppBalance_response` API response object
-type SecureGetappbalanc int // App balance
+// SecureGetappbalance type represents `secure_getAppBalance_response` API response object
+type SecureGetappbalance int // App balance
 
 // SecureGetsmshistory type represents `secure_getSMSHistory_response` API response object
-type SecureGetsmshistory *objects.SecureSmsNotification
+type SecureGetsmshistory objects.SecureSmsNotification
 
 // SecureGettransactionshistory type represents `secure_getTransactionsHistory_response` API response object
-type SecureGettransactionshistory *objects.SecureTransaction
+type SecureGettransactionshistory objects.SecureTransaction
 
 // SecureGetuserlevel type represents `secure_getUserLevel_response` API response object
-type SecureGetuserlevel *objects.SecureLevel
+type SecureGetuserlevel objects.SecureLevel
 
 // SecureGiveeventsticker type represents `secure_giveEventSticker_response` API response object
 type SecureGiveeventsticker interface{}
 
-// SecureSendnotificati type represents `secure_sendNotification_response` API response object
-type SecureSendnotificati int
+// SecureSendnotification type represents `secure_sendNotification_response` API response object
+type SecureSendnotification int

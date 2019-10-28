@@ -28,10 +28,7 @@ package objects
 
 // DatabaseCity type represents `database_city` API object
 type DatabaseCity struct {
-	Baseobject *BaseObject  `json:"Baseobject"`
-	Area       string       `json:"area"`      // Area title
-	Important  *BaseBoolInt `json:"important"` // Information whether the city is included in important cities list
-	Region     string       `json:"region"`    // Region title
+	BaseObject
 }
 
 // DatabaseFaculty type represents `database_faculty` API object

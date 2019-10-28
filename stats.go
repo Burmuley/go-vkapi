@@ -38,13 +38,13 @@ type Stats struct {
 // Parameters:
 //   * groupId - Community ID.
 //   * appId - Application ID.
-//   * timestampFrom - NO DESCRIPTION IN JSON SCHEMA
-//   * timestampTo - NO DESCRIPTION IN JSON SCHEMA
-//   * interval - NO DESCRIPTION IN JSON SCHEMA
-//   * intervalsCount - NO DESCRIPTION IN JSON SCHEMA
-//   * filters - NO DESCRIPTION IN JSON SCHEMA
-//   * statsGroups - NO DESCRIPTION IN JSON SCHEMA
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
+//   * timestampFrom - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * timestampTo - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * interval - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * intervalsCount - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * filters - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * statsGroups - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (s Stats) Get(groupId int, appId int, timestampFrom int, timestampTo int, interval string, intervalsCount int, filters []string, statsGroups []string) (resp responses.StatsGet, err error) {
 	params := map[string]interface{}{}
 
@@ -103,7 +103,7 @@ func (s Stats) Getpostreach(ownerId string, postId int) (resp responses.StatsGet
 
 // Trackvisitor - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * id - NO DESCRIPTION IN JSON SCHEMA
+//   * id - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (s Stats) Trackvisitor(id string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 

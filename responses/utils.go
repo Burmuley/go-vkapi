@@ -31,25 +31,25 @@ import (
 /////////////////////////////////////////////////////////////
 
 // UtilsChecklink type represents `utils_checkLink_response` API response object
-type UtilsChecklink *objects.UtilsLinkChecked
+type UtilsChecklink objects.UtilsLinkChecked
 
-// UtilsGetlastshortenedlink type represents `utils_getLastShortenedLinks_response` API response object
-type UtilsGetlastshortenedlink struct {
-	Count int                               `json:"count"` // Total number of available results
-	Items []*objects.UtilsLastShortenedLink `json:"items"`
+// UtilsGetlastshortenedlinks type represents `utils_getLastShortenedLinks_response` API response object
+type UtilsGetlastshortenedlinks struct {
+	Count int                              `json:"count"` // Total number of available results
+	Items []objects.UtilsLastShortenedLink `json:"items"`
 }
 
 // UtilsGetlinkstatsExtended type represents `utils_getLinkStats_extended_response` API response object
-type UtilsGetlinkstatsExtended *objects.UtilsLinkStatsExtended
+type UtilsGetlinkstatsExtended objects.UtilsLinkStatsExtended
 
-// UtilsGetlinkstat type represents `utils_getLinkStats_response` API response object
-type UtilsGetlinkstat *objects.UtilsLinkStats
+// UtilsGetlinkstats type represents `utils_getLinkStats_response` API response object
+type UtilsGetlinkstats objects.UtilsLinkStats
 
-// UtilsGetservertim type represents `utils_getServerTime_response` API response object
-type UtilsGetservertim int // Time as Unixtime
+// UtilsGetservertime type represents `utils_getServerTime_response` API response object
+type UtilsGetservertime int // Time as Unixtime
 
 // UtilsGetshortlink type represents `utils_getShortLink_response` API response object
-type UtilsGetshortlink *objects.UtilsShortLink
+type UtilsGetshortlink objects.UtilsShortLink
 
-// UtilsResolvescreennam type represents `utils_resolveScreenName_response` API response object
-type UtilsResolvescreennam *objects.UtilsDomainResolved
+// UtilsResolvescreenname type represents `utils_resolveScreenName_response` API response object
+type UtilsResolvescreenname objects.UtilsDomainResolved

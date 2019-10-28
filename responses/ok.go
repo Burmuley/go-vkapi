@@ -31,4 +31,4 @@ import (
 /////////////////////////////////////////////////////////////
 
 // Ok type represents `ok_response` API response object
-type Ok *objects.BaseOkResponse
+type Ok objects.BaseOkResponse

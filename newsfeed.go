@@ -37,8 +37,8 @@ type Newsfeed struct {
 
 // Addban - Prevents news from specified users and communities from appearing in the current user's newsfeed.
 // Parameters:
-//   * userIds - NO DESCRIPTION IN JSON SCHEMA
-//   * groupIds - NO DESCRIPTION IN JSON SCHEMA
+//   * userIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Newsfeed) Addban(userIds []int, groupIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -57,8 +57,8 @@ func (n Newsfeed) Addban(userIds []int, groupIds []int) (resp responses.Ok, err 
 
 // Deleteban - Allows news from previously banned users and communities to be shown in the current user's newsfeed.
 // Parameters:
-//   * userIds - NO DESCRIPTION IN JSON SCHEMA
-//   * groupIds - NO DESCRIPTION IN JSON SCHEMA
+//   * userIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Newsfeed) Deleteban(userIds []int, groupIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -77,7 +77,7 @@ func (n Newsfeed) Deleteban(userIds []int, groupIds []int) (resp responses.Ok, e
 
 // Deletelist - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * listId - NO DESCRIPTION IN JSON SCHEMA
+//   * listId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Newsfeed) Deletelist(listId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -99,7 +99,7 @@ func (n Newsfeed) Deletelist(listId int) (resp responses.Ok, err error) {
 //   * startFrom - identifier required to get the next page of results. Value for this parameter is returned in 'next_from' field in a reply.
 //   * count - Number of news items to return (default 50, maximum 100). For auto feed, you can use the 'new_offset' parameter returned by this method.
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-//   * section - NO DESCRIPTION IN JSON SCHEMA
+//   * section - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Newsfeed) Get(filters []objects.NewsfeedFilters, returnBanned bool, startTime int, endTime int, maxPhotos int, sourceIds string, startFrom string, count int, fields []objects.BaseUserGroupFields, section string) (resp responses.NewsfeedGet, err error) {
 	params := map[string]interface{}{}
 
@@ -197,10 +197,10 @@ func (n Newsfeed) GetbannedExtended(fields []objects.UsersFields, nameCase strin
 //   * reposts - Object ID, comments on repost of which shall be returned, e.g. 'wall1_45486'. (If the parameter is set, the 'filters' parameter is optional.),
 //   * startTime - Earliest timestamp (in Unix time) of a comment to return. By default, 24 hours ago.
 //   * endTime - Latest timestamp (in Unix time) of a comment to return. By default, the current time.
-//   * lastCommentsCount - NO DESCRIPTION IN JSON SCHEMA
+//   * lastCommentsCount - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * startFrom - Identificator needed to return the next page with results. Value for this parameter returns in 'next_from' field.
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
-func (n Newsfeed) Getcomments(count int, filters []objects.NewsfeedCommentsFilters, reposts string, startTime int, endTime int, lastCommentsCount int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetcomment, err error) {
+func (n Newsfeed) Getcomments(count int, filters []objects.NewsfeedCommentsFilters, reposts string, startTime int, endTime int, lastCommentsCount int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetcomments, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -244,7 +244,7 @@ func (n Newsfeed) Getcomments(count int, filters []objects.NewsfeedCommentsFilte
 // Parameters:
 //   * listIds - numeric list identifiers.
 //   * extended - Return additional list info
-func (n Newsfeed) Getlists(listIds []int) (resp responses.NewsfeedGetlist, err error) {
+func (n Newsfeed) Getlists(listIds []int) (resp responses.NewsfeedGetlists, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -281,7 +281,7 @@ func (n Newsfeed) GetlistsExtended(listIds []int) (resp responses.NewsfeedGetlis
 //   * endTime - Latest timestamp (in Unix time) of a post to return. By default, the current time.
 //   * offset - Offset needed to return a specific subset of posts.
 //   * count - Number of posts to return.
-func (n Newsfeed) Getmentions(ownerId int, startTime int, endTime int, offset int, count int) (resp responses.NewsfeedGetmenti, err error) {
+func (n Newsfeed) Getmentions(ownerId int, startTime int, endTime int, offset int, count int) (resp responses.NewsfeedGetmentions, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -355,7 +355,7 @@ func (n Newsfeed) Getrecommended(startTime int, endTime int, maxPhotos int, star
 //   * count - amount of communities or users to return.
 //   * shuffle - shuffle the returned list or not.
 //   * fields - list of extra fields to be returned. See available fields for [vk.com/dev/fields|users] and [vk.com/dev/fields_groups|communities].
-func (n Newsfeed) Getsuggestedsources(offset int, count int, shuffle bool, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetsuggestedsourc, err error) {
+func (n Newsfeed) Getsuggestedsources(offset int, count int, shuffle bool, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedGetsuggestedsources, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -431,7 +431,7 @@ func (n Newsfeed) Savelist(listId int, title string, sourceIds []int, noReposts 
 //   * longitude - Geographical longitude point (in degrees, -180 to 180) within which to search.
 //   * startTime - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
 //   * endTime - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
-//   * startFrom - NO DESCRIPTION IN JSON SCHEMA
+//   * startFrom - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
 func (n Newsfeed) Search(q string, count int, latitude float64, longitude float64, startTime int, endTime int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedSearch, err error) {
 	params := map[string]interface{}{}
@@ -483,7 +483,7 @@ func (n Newsfeed) Search(q string, count int, latitude float64, longitude float6
 //   * longitude - Geographical longitude point (in degrees, -180 to 180) within which to search.
 //   * startTime - Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
 //   * endTime - Latest timestamp (in Unix time) of a news item to return. By default, the current time.
-//   * startFrom - NO DESCRIPTION IN JSON SCHEMA
+//   * startFrom - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * fields - Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
 func (n Newsfeed) SearchExtended(q string, count int, latitude float64, longitude float64, startTime int, endTime int, startFrom string, fields []objects.BaseUserGroupFields) (resp responses.NewsfeedSearchExtended, err error) {
 	params := map[string]interface{}{}

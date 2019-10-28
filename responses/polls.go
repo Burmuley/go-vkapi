@@ -30,17 +30,17 @@ import (
 // `polls` group of responses
 /////////////////////////////////////////////////////////////
 
-// PollsAddvot type represents `polls_addVote_response` API response object
-type PollsAddvot *objects.BaseBoolInt // Result
+// PollsAddvote type represents `polls_addVote_response` API response object
+type PollsAddvote objects.BaseBoolInt // Result
 
-// PollsCreat type represents `polls_create_response` API response object
-type PollsCreat *objects.PollsPoll
+// PollsCreate type represents `polls_create_response` API response object
+type PollsCreate objects.PollsPoll
 
-// PollsDeletevot type represents `polls_deleteVote_response` API response object
-type PollsDeletevot *objects.BaseBoolInt // Result
+// PollsDeletevote type represents `polls_deleteVote_response` API response object
+type PollsDeletevote objects.BaseBoolInt // Result
 
 // PollsGetbyid type represents `polls_getById_response` API response object
-type PollsGetbyid *objects.PollsPoll
+type PollsGetbyid objects.PollsPoll
 
-// PollsGetvoter type represents `polls_getVoters_response` API response object
-type PollsGetvoter *objects.PollsVoters
+// PollsGetvoters type represents `polls_getVoters_response` API response object
+type PollsGetvoters objects.PollsVoters

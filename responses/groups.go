@@ -36,133 +36,133 @@ type GroupsAddcallbackserver struct {
 }
 
 // GroupsAddlink type represents `groups_addLink_response` API response object
-type GroupsAddlink *objects.GroupsGroupLink
+type GroupsAddlink objects.GroupsGroupLink
 
-// GroupsAddAddr type represents `groups_add_address_response` API response object
-type GroupsAddAddr *objects.GroupsAddress
+// GroupsAddAddress type represents `groups_add_address_response` API response object
+type GroupsAddAddress objects.GroupsAddress
 
-// GroupsCreat type represents `groups_create_response` API response object
-type GroupsCreat *objects.GroupsGroup
+// GroupsCreate type represents `groups_create_response` API response object
+type GroupsCreate objects.GroupsGroup
 
-// GroupsEditaddr type represents `groups_editAddress_response` API response object
-type GroupsEditaddr *objects.GroupsAddress // Result
+// GroupsEditaddress type represents `groups_editAddress_response` API response object
+type GroupsEditaddress objects.GroupsAddress // Result
 
-// GroupsGetaddr type represents `groups_getAddresses_response` API response object
-type GroupsGetaddr struct {
-	Count int                      `json:"count"` // Total count of addresses
-	Items []*objects.GroupsAddress `json:"items"`
+// GroupsGetaddresses type represents `groups_getAddresses_response` API response object
+type GroupsGetaddresses struct {
+	Count int                     `json:"count"` // Total count of addresses
+	Items []objects.GroupsAddress `json:"items"`
 }
 
 // GroupsGetbanned type represents `groups_getBanned_response` API response object
 type GroupsGetbanned struct {
-	Count int                         `json:"count"` // Total users number
-	Items []*objects.GroupsBannedItem `json:"items"`
+	Count int                        `json:"count"` // Total users number
+	Items []objects.GroupsBannedItem `json:"items"`
 }
 
 // GroupsGetbyid type represents `groups_getById_response` API response object
-type GroupsGetbyid *objects.GroupsGroupFull
+type GroupsGetbyid objects.GroupsGroupFull
 
-// GroupsGetcallbackconfirmationcod type represents `groups_getCallbackConfirmationCode_response` API response object
-type GroupsGetcallbackconfirmationcod struct {
+// GroupsGetcallbackconfirmationcode type represents `groups_getCallbackConfirmationCode_response` API response object
+type GroupsGetcallbackconfirmationcode struct {
 	Code string `json:"code"` // Confirmation code
 }
 
-// GroupsGetcallbackserver type represents `groups_getCallbackServers_response` API response object
-type GroupsGetcallbackserver struct {
-	Count int                             `json:"count"`
-	Items []*objects.GroupsCallbackServer `json:"items"`
+// GroupsGetcallbackservers type represents `groups_getCallbackServers_response` API response object
+type GroupsGetcallbackservers struct {
+	Count int                            `json:"count"`
+	Items []objects.GroupsCallbackServer `json:"items"`
 }
 
-// GroupsGetcallbacksetting type represents `groups_getCallbackSettings_response` API response object
-type GroupsGetcallbacksetting *objects.GroupsCallbackSettings
+// GroupsGetcallbacksettings type represents `groups_getCallbackSettings_response` API response object
+type GroupsGetcallbacksettings objects.GroupsCallbackSettings
 
 // GroupsGetcataloginfoExtended type represents `groups_getCatalogInfo_extended_response` API response object
 type GroupsGetcataloginfoExtended struct {
-	Categories []*objects.GroupsGroupCategoryFull `json:"categories"`
-	Enabled    int                                `json:"enabled"` // Information whether catalog is enabled for current user
+	Categories []objects.GroupsGroupCategoryFull `json:"categories"`
+	Enabled    int                               `json:"enabled"` // Information whether catalog is enabled for current user
 }
 
-// GroupsGetcataloginf type represents `groups_getCatalogInfo_response` API response object
-type GroupsGetcataloginf struct {
-	Categories []*objects.GroupsGroupCategory `json:"categories"`
-	Enabled    int                            `json:"enabled"` // Information whether catalog is enabled for current user
+// GroupsGetcataloginfo type represents `groups_getCatalogInfo_response` API response object
+type GroupsGetcataloginfo struct {
+	Categories []objects.GroupsGroupCategory `json:"categories"`
+	Enabled    int                           `json:"enabled"` // Information whether catalog is enabled for current user
 }
 
 // GroupsGetcatalog type represents `groups_getCatalog_response` API response object
 type GroupsGetcatalog struct {
-	Count int                    `json:"count"` // Total communities number
-	Items []*objects.GroupsGroup `json:"items"`
+	Count int                   `json:"count"` // Total communities number
+	Items []objects.GroupsGroup `json:"items"`
 }
 
-// GroupsGetinviteduser type represents `groups_getInvitedUsers_response` API response object
-type GroupsGetinviteduser struct {
-	Count int                      `json:"count"` // Total communities number
-	Items []*objects.UsersUserFull `json:"items"`
+// GroupsGetinvitedusers type represents `groups_getInvitedUsers_response` API response object
+type GroupsGetinvitedusers struct {
+	Count int                     `json:"count"` // Total communities number
+	Items []objects.UsersUserFull `json:"items"`
 }
 
 // GroupsGetinvitesExtended type represents `groups_getInvites_extended_response` API response object
 type GroupsGetinvitesExtended struct {
-	Count    int                                `json:"count"` // Total communities number
-	Groups   []*objects.GroupsGroupFull         `json:"groups"`
-	Items    []*objects.GroupsGroupXtrInvitedBy `json:"items"`
-	Profiles []*objects.UsersUserMin            `json:"profiles"`
+	Count    int                               `json:"count"` // Total communities number
+	Groups   []objects.GroupsGroupFull         `json:"groups"`
+	Items    []objects.GroupsGroupXtrInvitedBy `json:"items"`
+	Profiles []objects.UsersUserMin            `json:"profiles"`
 }
 
-// GroupsGetinvit type represents `groups_getInvites_response` API response object
-type GroupsGetinvit struct {
-	Count int                                `json:"count"` // Total communities number
-	Items []*objects.GroupsGroupXtrInvitedBy `json:"items"`
+// GroupsGetinvites type represents `groups_getInvites_response` API response object
+type GroupsGetinvites struct {
+	Count int                               `json:"count"` // Total communities number
+	Items []objects.GroupsGroupXtrInvitedBy `json:"items"`
 }
 
 // GroupsGetlongpollserver type represents `groups_getLongPollServer_response` API response object
-type GroupsGetlongpollserver *objects.GroupsLongPollServer
+type GroupsGetlongpollserver objects.GroupsLongPollServer
 
-// GroupsGetlongpollsetting type represents `groups_getLongPollSettings_response` API response object
-type GroupsGetlongpollsetting *objects.GroupsLongPollSettings
+// GroupsGetlongpollsettings type represents `groups_getLongPollSettings_response` API response object
+type GroupsGetlongpollsettings objects.GroupsLongPollSettings
 
-// GroupsGetmembersField type represents `groups_getMembers_fields_response` API response object
-type GroupsGetmembersField struct {
-	Count int                          `json:"count"` // Total members number
-	Items []*objects.GroupsUserXtrRole `json:"items"`
+// GroupsGetmembersFields type represents `groups_getMembers_fields_response` API response object
+type GroupsGetmembersFields struct {
+	Count int                         `json:"count"` // Total members number
+	Items []objects.GroupsUserXtrRole `json:"items"`
 }
 
 // GroupsGetmembersFilter type represents `groups_getMembers_filter_response` API response object
 type GroupsGetmembersFilter struct {
-	Count int                         `json:"count"` // Total members number
-	Items []*objects.GroupsMemberRole `json:"items"`
+	Count int                        `json:"count"` // Total members number
+	Items []objects.GroupsMemberRole `json:"items"`
 }
 
-// GroupsGetmember type represents `groups_getMembers_response` API response object
-type GroupsGetmember struct {
+// GroupsGetmembers type represents `groups_getMembers_response` API response object
+type GroupsGetmembers struct {
 	Count int   `json:"count"` // Total members number
 	Items []int `json:"items"`
 }
 
-// GroupsGetrequestsField type represents `groups_getRequests_fields_response` API response object
-type GroupsGetrequestsField struct {
-	Count int                      `json:"count"` // Total communities number
-	Items []*objects.UsersUserFull `json:"items"`
+// GroupsGetrequestsFields type represents `groups_getRequests_fields_response` API response object
+type GroupsGetrequestsFields struct {
+	Count int                     `json:"count"` // Total communities number
+	Items []objects.UsersUserFull `json:"items"`
 }
 
-// GroupsGetrequest type represents `groups_getRequests_response` API response object
-type GroupsGetrequest struct {
+// GroupsGetrequests type represents `groups_getRequests_response` API response object
+type GroupsGetrequests struct {
 	Count int   `json:"count"` // Total communities number
 	Items []int `json:"items"`
 }
 
-// GroupsGetsetting type represents `groups_getSettings_response` API response object
-type GroupsGetsetting *objects.GroupsGroupSettings
+// GroupsGetsettings type represents `groups_getSettings_response` API response object
+type GroupsGetsettings objects.GroupsGroupSettings
 
-// GroupsGettokenpermissi type represents `groups_getTokenPermissions_response` API response object
-type GroupsGettokenpermissi struct {
-	Mask        int                                     `json:"mask"`
-	Permissions []*objects.GroupsTokenPermissionSetting `json:"permissions"`
+// GroupsGettokenpermissions type represents `groups_getTokenPermissions_response` API response object
+type GroupsGettokenpermissions struct {
+	Mask        int                                    `json:"mask"`
+	Permissions []objects.GroupsTokenPermissionSetting `json:"permissions"`
 }
 
 // GroupsGetExtended type represents `groups_get_extended_response` API response object
 type GroupsGetExtended struct {
-	Count int                        `json:"count"` // Total communities number
-	Items []*objects.GroupsGroupFull `json:"items"`
+	Count int                       `json:"count"` // Total communities number
+	Items []objects.GroupsGroupFull `json:"items"`
 }
 
 // GroupsGet type represents `groups_get_response` API response object
@@ -173,24 +173,24 @@ type GroupsGet struct {
 
 // GroupsIsmemberExtended type represents `groups_isMember_extended_response` API response object
 type GroupsIsmemberExtended struct {
-	CanInvite  *objects.BaseBoolInt `json:"can_invite"` // Information whether user can be invited
-	CanRecall  *objects.BaseBoolInt `json:"can_recall"` // Information whether user's invite to the group can be recalled
-	Invitation *objects.BaseBoolInt `json:"invitation"` // Information whether user has been invited to the group
-	Member     *objects.BaseBoolInt `json:"member"`     // Information whether user is a member of the group
-	Request    *objects.BaseBoolInt `json:"request"`    // Information whether user has sent request to the group
+	CanInvite  objects.BaseBoolInt `json:"can_invite"` // Information whether user can be invited
+	CanRecall  objects.BaseBoolInt `json:"can_recall"` // Information whether user's invite to the group can be recalled
+	Invitation objects.BaseBoolInt `json:"invitation"` // Information whether user has been invited to the group
+	Member     objects.BaseBoolInt `json:"member"`     // Information whether user is a member of the group
+	Request    objects.BaseBoolInt `json:"request"`    // Information whether user has sent request to the group
 }
 
 // GroupsIsmember type represents `groups_isMember_response` API response object
-type GroupsIsmember *objects.BaseBoolInt // Information whether user is a member of the group
+type GroupsIsmember objects.BaseBoolInt // Information whether user is a member of the group
 
 // GroupsIsmemberUserIdsExtended type represents `groups_isMember_user_ids_extended_response` API response object
-type GroupsIsmemberUserIdsExtended *objects.GroupsMemberStatusFull
+type GroupsIsmemberUserIdsExtended objects.GroupsMemberStatusFull
 
-// GroupsIsmemberUserId type represents `groups_isMember_user_ids_response` API response object
-type GroupsIsmemberUserId *objects.GroupsMemberStatus
+// GroupsIsmemberUserIds type represents `groups_isMember_user_ids_response` API response object
+type GroupsIsmemberUserIds objects.GroupsMemberStatus
 
 // GroupsSearch type represents `groups_search_response` API response object
 type GroupsSearch struct {
-	Count int                    `json:"count"` // Total communities number
-	Items []*objects.GroupsGroup `json:"items"`
+	Count int                   `json:"count"` // Total communities number
+	Items []objects.GroupsGroup `json:"items"`
 }

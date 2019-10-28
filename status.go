@@ -37,7 +37,7 @@ type Status struct {
 // Get - Returns data required to show the status of a user or community.
 // Parameters:
 //   * userId - User ID or community ID. Use a negative value to designate a community ID.
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (s Status) Get(userId int, groupId int) (resp responses.StatusGet, err error) {
 	params := map[string]interface{}{}
 
