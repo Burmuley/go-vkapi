@@ -37,7 +37,7 @@ type Notifications struct {
 // Get - Returns a list of notifications about other users' feedback to the current user's wall posts.
 // Parameters:
 //   * count - Number of notifications to return.
-//   * startFrom - NO DESCRIPTION IN JSON SCHEMA
+//   * startFrom - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * filters - Type of notifications to return: 'wall' — wall posts, 'mentions' — mentions in wall posts, comments, or topics, 'comments' — comments to wall posts, photos, and videos, 'likes' — likes, 'reposted' — wall posts that are copied from the current user's wall, 'followers' — new followers, 'friends' — accepted friend requests
 //   * startTime - Earliest timestamp (in Unix time) of a notification to return. By default, 24 hours ago.
 //   * endTime - Latest timestamp (in Unix time) of a notification to return. By default, the current time.
@@ -80,11 +80,11 @@ func (n Notifications) Markasviewed() (resp responses.NotificationsMarkasviewed,
 
 // Sendmessage - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * userIds - NO DESCRIPTION IN JSON SCHEMA
-//   * message - NO DESCRIPTION IN JSON SCHEMA
-//   * fragment - NO DESCRIPTION IN JSON SCHEMA
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (n Notifications) Sendmessage(userIds []int, message string, fragment string, groupId int) (resp responses.NotificationsSendmessag, err error) {
+//   * userIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * message - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fragment - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (n Notifications) Sendmessage(userIds []int, message string, fragment string, groupId int) (resp responses.NotificationsSendmessage, err error) {
 	params := map[string]interface{}{}
 
 	params["user_ids"] = SliceToString(userIds)

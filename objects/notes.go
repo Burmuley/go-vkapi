@@ -28,16 +28,16 @@ package objects
 
 // NotesNote type represents `notes_note` API object
 type NotesNote struct {
-	CanComment   *BaseBoolInt `json:"can_comment"` // Information whether current user can comment the note
-	Comments     int          `json:"comments"`    // Comments number
-	Date         int          `json:"date"`        // Date when the note has been created in Unixtime
-	Id           int          `json:"id"`          // Note ID
-	OwnerId      int          `json:"owner_id"`    // Note owner's ID
-	ReadComments int          `json:"read_comments"`
-	Text         string       `json:"text"`      // Note text
-	TextWiki     string       `json:"text_wiki"` // Note text in wiki format
-	Title        string       `json:"title"`     // Note title
-	ViewUrl      string       `json:"view_url"`  // URL of the page with note preview
+	CanComment   BaseBoolInt `json:"can_comment"` // Information whether current user can comment the note
+	Comments     int         `json:"comments"`    // Comments number
+	Date         int         `json:"date"`        // Date when the note has been created in Unixtime
+	Id           int         `json:"id"`          // Note ID
+	OwnerId      int         `json:"owner_id"`    // Note owner's ID
+	ReadComments int         `json:"read_comments"`
+	Text         string      `json:"text"`      // Note text
+	TextWiki     string      `json:"text_wiki"` // Note text in wiki format
+	Title        string      `json:"title"`     // Note title
+	ViewUrl      string      `json:"view_url"`  // URL of the page with note preview
 }
 
 // NotesNoteComment type represents `notes_note_comment` API object

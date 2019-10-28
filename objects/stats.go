@@ -53,23 +53,23 @@ type StatsCountry struct {
 
 // StatsPeriod type represents `stats_period` API object
 type StatsPeriod struct {
-	Activity   *StatsActivity `json:"activity"`
-	PeriodFrom int            `json:"period_from"` // Unix timestamp
-	PeriodTo   int            `json:"period_to"`   // Unix timestamp
-	Reach      *StatsReach    `json:"reach"`
-	Visitors   *StatsViews    `json:"visitors"`
+	Activity   StatsActivity `json:"activity"`
+	PeriodFrom int           `json:"period_from"` // Unix timestamp
+	PeriodTo   int           `json:"period_to"`   // Unix timestamp
+	Reach      StatsReach    `json:"reach"`
+	Visitors   StatsViews    `json:"visitors"`
 }
 
 // StatsReach type represents `stats_reach` API object
 type StatsReach struct {
-	Age              []*StatsSexAge  `json:"age"`
-	Cities           []*StatsCity    `json:"cities"`
-	Countries        []*StatsCountry `json:"countries"`
-	MobileReach      int             `json:"mobile_reach"`      // Reach count from mobile devices
-	Reach            int             `json:"reach"`             // Reach count
-	ReachSubscribers int             `json:"reach_subscribers"` // Subscribers reach count
-	Sex              []*StatsSexAge  `json:"sex"`
-	SexAge           []*StatsSexAge  `json:"sex_age"`
+	Age              []StatsSexAge  `json:"age"`
+	Cities           []StatsCity    `json:"cities"`
+	Countries        []StatsCountry `json:"countries"`
+	MobileReach      int            `json:"mobile_reach"`      // Reach count from mobile devices
+	Reach            int            `json:"reach"`             // Reach count
+	ReachSubscribers int            `json:"reach_subscribers"` // Subscribers reach count
+	Sex              []StatsSexAge  `json:"sex"`
+	SexAge           []StatsSexAge  `json:"sex_age"`
 }
 
 // StatsSexAge type represents `stats_sex_age` API object
@@ -80,14 +80,14 @@ type StatsSexAge struct {
 
 // StatsViews type represents `stats_views` API object
 type StatsViews struct {
-	Age         []*StatsSexAge  `json:"age"`
-	Cities      []*StatsCity    `json:"cities"`
-	Countries   []*StatsCountry `json:"countries"`
-	MobileViews int             `json:"mobile_views"` // Number of views from mobile devices
-	Sex         []*StatsSexAge  `json:"sex"`
-	SexAge      []*StatsSexAge  `json:"sex_age"`
-	Views       int             `json:"views"`    // Views number
-	Visitors    int             `json:"visitors"` // Visitors number
+	Age         []StatsSexAge  `json:"age"`
+	Cities      []StatsCity    `json:"cities"`
+	Countries   []StatsCountry `json:"countries"`
+	MobileViews int            `json:"mobile_views"` // Number of views from mobile devices
+	Sex         []StatsSexAge  `json:"sex"`
+	SexAge      []StatsSexAge  `json:"sex_age"`
+	Views       int            `json:"views"`    // Views number
+	Visitors    int            `json:"visitors"` // Visitors number
 }
 
 // StatsWallpostStat type represents `stats_wallpost_stat` API object

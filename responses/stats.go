@@ -31,7 +31,7 @@ import (
 /////////////////////////////////////////////////////////////
 
 // StatsGetpostreach type represents `stats_getPostReach_response` API response object
-type StatsGetpostreach *objects.StatsWallpostStat
+type StatsGetpostreach objects.StatsWallpostStat
 
 // StatsGet type represents `stats_get_response` API response object
-type StatsGet *objects.StatsPeriod
+type StatsGet objects.StatsPeriod

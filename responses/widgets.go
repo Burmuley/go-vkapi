@@ -30,14 +30,14 @@ import (
 // `widgets` group of responses
 /////////////////////////////////////////////////////////////
 
-// WidgetsGetcomment type represents `widgets_getComments_response` API response object
-type WidgetsGetcomment struct {
-	Count int                             `json:"count"` // Total number
-	Posts []*objects.WidgetsWidgetComment `json:"posts"`
+// WidgetsGetcomments type represents `widgets_getComments_response` API response object
+type WidgetsGetcomments struct {
+	Count int                            `json:"count"` // Total number
+	Posts []objects.WidgetsWidgetComment `json:"posts"`
 }
 
-// WidgetsGetpag type represents `widgets_getPages_response` API response object
-type WidgetsGetpag struct {
-	Count int                          `json:"count"` // Total number
-	Pages []*objects.WidgetsWidgetPage `json:"pages"`
+// WidgetsGetpages type represents `widgets_getPages_response` API response object
+type WidgetsGetpages struct {
+	Count int                         `json:"count"` // Total number
+	Pages []objects.WidgetsWidgetPage `json:"pages"`
 }

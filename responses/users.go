@@ -30,38 +30,38 @@ import (
 // `users` group of responses
 /////////////////////////////////////////////////////////////
 
-// UsersGetfollowersField type represents `users_getFollowers_fields_response` API response object
-type UsersGetfollowersField struct {
-	Count int                      `json:"count"` // Total number of available results
-	Items []*objects.UsersUserFull `json:"items"`
+// UsersGetfollowersFields type represents `users_getFollowers_fields_response` API response object
+type UsersGetfollowersFields struct {
+	Count int                     `json:"count"` // Total number of available results
+	Items []objects.UsersUserFull `json:"items"`
 }
 
-// UsersGetfollower type represents `users_getFollowers_response` API response object
-type UsersGetfollower struct {
+// UsersGetfollowers type represents `users_getFollowers_response` API response object
+type UsersGetfollowers struct {
 	Count int   `json:"count"` // Total friends number
 	Items []int `json:"items"`
 }
 
 // UsersGetsubscriptionsExtended type represents `users_getSubscriptions_extended_response` API response object
 type UsersGetsubscriptionsExtended struct {
-	Count int                               `json:"count"` // Total number of available results
-	Items []*objects.UsersSubscriptionsItem `json:"items"`
+	Count int                              `json:"count"` // Total number of available results
+	Items []objects.UsersSubscriptionsItem `json:"items"`
 }
 
-// UsersGetsubscripti type represents `users_getSubscriptions_response` API response object
-type UsersGetsubscripti struct {
-	Groups *objects.GroupsGroupsArray `json:"groups"`
-	Users  *objects.UsersUsersArray   `json:"users"`
+// UsersGetsubscriptions type represents `users_getSubscriptions_response` API response object
+type UsersGetsubscriptions struct {
+	Groups objects.GroupsGroupsArray `json:"groups"`
+	Users  objects.UsersUsersArray   `json:"users"`
 }
 
 // UsersGet type represents `users_get_response` API response object
-type UsersGet *objects.UsersUserXtrCounters
+type UsersGet objects.UsersUserXtrCounters
 
 // UsersIsappuser type represents `users_isAppUser_response` API response object
-type UsersIsappuser *objects.BaseBoolInt // Information whether the user have installed an app
+type UsersIsappuser objects.BaseBoolInt // Information whether the user have installed an app
 
 // UsersSearch type represents `users_search_response` API response object
 type UsersSearch struct {
-	Count int                      `json:"count"` // Total number of available results
-	Items []*objects.UsersUserFull `json:"items"`
+	Count int                     `json:"count"` // Total number of available results
+	Items []objects.UsersUserFull `json:"items"`
 }

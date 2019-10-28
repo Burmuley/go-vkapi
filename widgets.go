@@ -37,14 +37,14 @@ type Widgets struct {
 
 // Getcomments - Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
 // Parameters:
-//   * widgetApiId - NO DESCRIPTION IN JSON SCHEMA
-//   * url - NO DESCRIPTION IN JSON SCHEMA
-//   * pageId - NO DESCRIPTION IN JSON SCHEMA
-//   * order - NO DESCRIPTION IN JSON SCHEMA
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
-//   * offset - NO DESCRIPTION IN JSON SCHEMA
-//   * count - NO DESCRIPTION IN JSON SCHEMA
-func (w Widgets) Getcomments(widgetApiId int, url string, pageId string, order string, fields []objects.UsersFields, offset int, count int) (resp responses.WidgetsGetcomment, err error) {
+//   * widgetApiId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * url - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * pageId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * order - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * count - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (w Widgets) Getcomments(widgetApiId int, url string, pageId string, order string, fields []objects.UsersFields, offset int, count int) (resp responses.WidgetsGetcomments, err error) {
 	params := map[string]interface{}{}
 
 	if widgetApiId > 0 {
@@ -82,12 +82,12 @@ func (w Widgets) Getcomments(widgetApiId int, url string, pageId string, order s
 
 // Getpages - Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like widget] is installed.
 // Parameters:
-//   * widgetApiId - NO DESCRIPTION IN JSON SCHEMA
-//   * order - NO DESCRIPTION IN JSON SCHEMA
-//   * period - NO DESCRIPTION IN JSON SCHEMA
-//   * offset - NO DESCRIPTION IN JSON SCHEMA
-//   * count - NO DESCRIPTION IN JSON SCHEMA
-func (w Widgets) Getpages(widgetApiId int, order string, period string, offset int, count int) (resp responses.WidgetsGetpag, err error) {
+//   * widgetApiId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * order - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * period - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * count - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (w Widgets) Getpages(widgetApiId int, order string, period string, offset int, count int) (resp responses.WidgetsGetpages, err error) {
 	params := map[string]interface{}{}
 
 	if widgetApiId > 0 {

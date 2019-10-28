@@ -30,11 +30,11 @@ import (
 // `storage` group of responses
 /////////////////////////////////////////////////////////////
 
-// StorageGetkey type represents `storage_getKeys_response` API response object
-type StorageGetkey string
+// StorageGetkeys type represents `storage_getKeys_response` API response object
+type StorageGetkeys string
 
-// StorageGetKey type represents `storage_get_keys_response` API response object
-type StorageGetKey *objects.StorageValue
+// StorageGetKeys type represents `storage_get_keys_response` API response object
+type StorageGetKeys objects.StorageValue
 
 // StorageGet type represents `storage_get_response` API response object
 type StorageGet string // Value of key

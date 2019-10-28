@@ -36,7 +36,7 @@ type Account struct {
 
 // Ban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (a Account) Ban(ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -79,9 +79,9 @@ func (a Account) Changepassword(restoreSid string, changePasswordHash string, ol
 
 // Getactiveoffers - Returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes to his balance in the application.
 // Parameters:
-//   * offset - NO DESCRIPTION IN JSON SCHEMA
+//   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of results to return.
-func (a Account) Getactiveoffers(offset int, count int) (resp responses.AccountGetactiveoffer, err error) {
+func (a Account) Getactiveoffers(offset int, count int) (resp responses.AccountGetactiveoffers, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -100,7 +100,7 @@ func (a Account) Getactiveoffers(offset int, count int) (resp responses.AccountG
 // Getapppermissions - Gets settings of the user in this application.
 // Parameters:
 //   * userId - User ID whose settings information shall be got. By default: current user.
-func (a Account) Getapppermissions(userId int) (resp responses.AccountGetapppermissi, err error) {
+func (a Account) Getapppermissions(userId int) (resp responses.AccountGetapppermissions, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -133,7 +133,7 @@ func (a Account) Getbanned(offset int, count int) (resp responses.AccountGetbann
 // Getcounters - Returns non-null values of user counters.
 // Parameters:
 //   * filter - Counters to be returned.
-func (a Account) Getcounters(filter []string) (resp responses.AccountGetcounter, err error) {
+func (a Account) Getcounters(filter []string) (resp responses.AccountGetcounters, err error) {
 	params := map[string]interface{}{}
 
 	if len(filter) > 0 {
@@ -148,7 +148,7 @@ func (a Account) Getcounters(filter []string) (resp responses.AccountGetcounter,
 // Getinfo - Returns current account info.
 // Parameters:
 //   * fields - Fields to return. Possible values: *'country' — user country,, *'https_required' — is "HTTPS only" option enabled,, *'own_posts_default' — is "Show my posts only" option is enabled,, *'no_wall_replies' — are wall replies disabled or not,, *'intro' — is intro passed by user or not,, *'lang' — user language. By default: all.
-func (a Account) Getinfo(fields []string) (resp responses.AccountGetinf, err error) {
+func (a Account) Getinfo(fields []string) (resp responses.AccountGetinfo, err error) {
 	params := map[string]interface{}{}
 
 	if len(fields) > 0 {
@@ -161,7 +161,7 @@ func (a Account) Getinfo(fields []string) (resp responses.AccountGetinf, err err
 }
 
 // Getprofileinfo - Returns the current account info.
-func (a Account) Getprofileinfo() (resp responses.AccountGetprofileinf, err error) {
+func (a Account) Getprofileinfo() (resp responses.AccountGetprofileinfo, err error) {
 	params := map[string]interface{}{}
 
 	err = a.SendObjRequest("account.getProfileInfo", params, &resp)
@@ -172,7 +172,7 @@ func (a Account) Getprofileinfo() (resp responses.AccountGetprofileinf, err erro
 // Getpushsettings - Gets settings of push notifications.
 // Parameters:
 //   * deviceId - Unique device ID.
-func (a Account) Getpushsettings(deviceId string) (resp responses.AccountGetpushsetting, err error) {
+func (a Account) Getpushsettings(deviceId string) (resp responses.AccountGetpushsettings, err error) {
 	params := map[string]interface{}{}
 
 	if deviceId != "" {
@@ -192,7 +192,7 @@ func (a Account) Getpushsettings(deviceId string) (resp responses.AccountGetpush
 //   * deviceId - Unique device ID.
 //   * systemVersion - String version of device operating system.
 //   * settings - Push settings in a [vk.com/dev/push_settings|special format].
-//   * sandbox - NO DESCRIPTION IN JSON SCHEMA
+//   * sandbox - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (a Account) Registerdevice(token string, deviceModel string, deviceYear int, deviceId string, systemVersion string, settings string, sandbox bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -239,7 +239,7 @@ func (a Account) Registerdevice(token string, deviceModel string, deviceYear int
 //   * countryId - User country.
 //   * cityId - User city.
 //   * status - Status text.
-func (a Account) Saveprofileinfo(firstName string, lastName string, maidenName string, screenName string, cancelRequestId int, sex int, relation int, relationPartnerId int, bdate string, bdateVisibility int, homeTown string, countryId int, cityId int, status string) (resp responses.AccountSaveprofileinf, err error) {
+func (a Account) Saveprofileinfo(firstName string, lastName string, maidenName string, screenName string, cancelRequestId int, sex int, relation int, relationPartnerId int, bdate string, bdateVisibility int, homeTown string, countryId int, cityId int, status string) (resp responses.AccountSaveprofileinfo, err error) {
 	params := map[string]interface{}{}
 
 	if firstName != "" {
@@ -423,7 +423,7 @@ func (a Account) Setsilencemode(deviceId string, time int, peerId int, sound int
 
 // Unban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (a Account) Unban(ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -439,7 +439,7 @@ func (a Account) Unban(ownerId int) (resp responses.Ok, err error) {
 // Unregisterdevice - Unsubscribes a device from push notifications.
 // Parameters:
 //   * deviceId - Unique device ID.
-//   * sandbox - NO DESCRIPTION IN JSON SCHEMA
+//   * sandbox - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (a Account) Unregisterdevice(deviceId string, sandbox bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 

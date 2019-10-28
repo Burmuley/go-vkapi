@@ -42,7 +42,7 @@ type Market struct {
 //   * description - Item description.
 //   * categoryId - Item category ID.
 //   * price - Item price.
-//   * oldPrice - NO DESCRIPTION IN JSON SCHEMA
+//   * oldPrice - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * deleted - Item status ('1' — deleted, '0' — not deleted).
 //   * mainPhotoId - Cover photo ID.
 //   * photoIds - IDs of additional photos.
@@ -318,7 +318,7 @@ func (m Market) Editcomment(ownerId int, commentId int, message string, attachme
 // Get - Returns items list for a community.
 // Parameters:
 //   * ownerId - ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
-//   * albumId - NO DESCRIPTION IN JSON SCHEMA
+//   * albumId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of items to return.
 //   * offset - Offset needed to return a specific subset of results.
 //   * extended - '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
@@ -348,7 +348,7 @@ func (m Market) Get(ownerId int, albumId int, count int, offset int) (resp respo
 // GetExtended - Returns items list for a community.
 // Parameters:
 //   * ownerId - ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
-//   * albumId - NO DESCRIPTION IN JSON SCHEMA
+//   * albumId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of items to return.
 //   * offset - Offset needed to return a specific subset of results.
 //   * extended - '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
@@ -396,7 +396,7 @@ func (m Market) Getalbumbyid(ownerId int, albumIds []int) (resp responses.Market
 //   * ownerId - ID of an items owner community.
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of items to return.
-func (m Market) Getalbums(ownerId int, offset int, count int) (resp responses.MarketGetalbum, err error) {
+func (m Market) Getalbums(ownerId int, offset int, count int) (resp responses.MarketGetalbums, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -448,7 +448,7 @@ func (m Market) GetbyidExtended(itemIds []string) (resp responses.MarketGetbyidE
 // Parameters:
 //   * count - Number of results to return.
 //   * offset - Offset needed to return a specific subset of results.
-func (m Market) Getcategories(count int, offset int) (resp responses.MarketGetcategori, err error) {
+func (m Market) Getcategories(count int, offset int) (resp responses.MarketGetcategories, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -470,12 +470,12 @@ func (m Market) Getcategories(count int, offset int) (resp responses.MarketGetca
 //   * itemId - Item ID.
 //   * needLikes - '1' — to return likes info.
 //   * startCommentId - ID of a comment to start a list from (details below).
-//   * offset - NO DESCRIPTION IN JSON SCHEMA
+//   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of results to return.
 //   * sort - Sort order ('asc' — from old to new, 'desc' — from new to old)
 //   * extended - '1' — comments will be returned as numbered objects, in addition lists of 'profiles' and 'groups' objects will be returned.
 //   * fields - List of additional profile fields to return. See the [vk.com/dev/fields|details]
-func (m Market) Getcomments(ownerId int, itemId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []objects.UsersFields) (resp responses.MarketGetcomment, err error) {
+func (m Market) Getcomments(ownerId int, itemId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []objects.UsersFields) (resp responses.MarketGetcomments, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -660,17 +660,17 @@ func (m Market) Restorecomment(ownerId int, commentId int) (resp responses.Marke
 // Search - Searches market items in a community's catalog
 // Parameters:
 //   * ownerId - ID of an items owner community.
-//   * albumId - NO DESCRIPTION IN JSON SCHEMA
+//   * albumId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * q - Search query, for example "pink slippers".
 //   * priceFrom - Minimum item price value.
 //   * priceTo - Maximum item price value.
 //   * tags - Comma-separated tag IDs list.
-//   * sort - NO DESCRIPTION IN JSON SCHEMA
+//   * sort - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * rev - '0' — do not use reverse order, '1' — use reverse order
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of items to return.
 //   * extended - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
-//   * status - NO DESCRIPTION IN JSON SCHEMA
+//   * status - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Market) Search(ownerId int, albumId int, q string, priceFrom int, priceTo int, tags []int, sort int, rev int, offset int, count int, status int) (resp responses.MarketSearch, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
@@ -725,17 +725,17 @@ func (m Market) Search(ownerId int, albumId int, q string, priceFrom int, priceT
 // SearchExtended - Searches market items in a community's catalog
 // Parameters:
 //   * ownerId - ID of an items owner community.
-//   * albumId - NO DESCRIPTION IN JSON SCHEMA
+//   * albumId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * q - Search query, for example "pink slippers".
 //   * priceFrom - Minimum item price value.
 //   * priceTo - Maximum item price value.
 //   * tags - Comma-separated tag IDs list.
-//   * sort - NO DESCRIPTION IN JSON SCHEMA
+//   * sort - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * rev - '0' — do not use reverse order, '1' — use reverse order
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of items to return.
 //   * extended - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
-//   * status - NO DESCRIPTION IN JSON SCHEMA
+//   * status - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Market) SearchExtended(ownerId int, albumId int, q string, priceFrom int, priceTo int, tags []int, sort int, rev int, offset int, count int, status int) (resp responses.MarketSearchExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"

@@ -32,6 +32,6 @@ import (
 
 // GiftsGet type represents `gifts_get_response` API response object
 type GiftsGet struct {
-	Count int                  `json:"count"` // Total number
-	Items []*objects.GiftsGift `json:"items"`
+	Count int                 `json:"count"` // Total number
+	Items []objects.GiftsGift `json:"items"`
 }

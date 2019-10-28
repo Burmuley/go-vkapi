@@ -49,8 +49,8 @@ func (a Apps) Deleteapprequests() (resp responses.Ok, err error) {
 //   * appId - Application ID
 //   * appIds - List of application ID
 //   * platform - platform. Possible values: *'ios' — iOS,, *'android' — Android,, *'winphone' — Windows Phone,, *'web' — приложения на vk.com. By default: 'web'.
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
-//   * returnFriends - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * returnFriends - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * fields - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', (only if return_friends - 1)
 //   * nameCase - Case for declension of user name and surname: 'nom' — nominative (default),, 'gen' — genitive,, 'dat' — dative,, 'acc' — accusative,, 'ins' — instrumental,, 'abl' — prepositional. (only if 'return_friends' = '1')
 func (a Apps) Get(appId int, appIds []string, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string) (resp responses.AppsGet, err error) {
@@ -88,13 +88,13 @@ func (a Apps) Get(appId int, appIds []string, platform string, returnFriends boo
 //   * sort - Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
 //   * offset - Offset required to return a specific subset of apps.
 //   * count - Number of apps to return.
-//   * platform - NO DESCRIPTION IN JSON SCHEMA
+//   * platform - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * extended - '1' — to return additional fields 'screenshots', 'MAU', 'catalog_position', and 'international'. If set, 'count' must be less than or equal to '100'. '0' — not to return additional fields (default).
-//   * returnFriends - NO DESCRIPTION IN JSON SCHEMA
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
-//   * nameCase - NO DESCRIPTION IN JSON SCHEMA
+//   * returnFriends - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * nameCase - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * q - Search query string.
-//   * genreId - NO DESCRIPTION IN JSON SCHEMA
+//   * genreId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * filter - 'installed' — to return list of installed apps (only for mobile platform).
 func (a Apps) Getcatalog(sort string, offset int, count int, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string, q string, genreId int, filter string) (resp responses.AppsGetcatalog, err error) {
 	params := map[string]interface{}{}
@@ -142,9 +142,9 @@ func (a Apps) Getcatalog(sort string, offset int, count int, platform string, re
 
 // Getfriendslist - Creates friends list for requests and invites in current app.
 // Parameters:
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - List size.
-//   * offset - NO DESCRIPTION IN JSON SCHEMA
+//   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * pType - List type. Possible values: * 'invite' — available for invites (don't play the game),, * 'request' — available for request (play the game). By default: 'invite'.
 //   * fields - Additional profile fields, see [vk.com/dev/fields|description].
 func (a Apps) Getfriendslist(count int, offset int, pType string, fields []objects.UsersFields) (resp responses.AppsGetfriendslist, err error) {
@@ -209,8 +209,8 @@ func (a Apps) GetleaderboardExtended(pType string, global bool) (resp responses.
 
 // Getscopes - Returns scopes for auth
 // Parameters:
-//   * pType - NO DESCRIPTION IN JSON SCHEMA
-func (a Apps) Getscopes(pType string) (resp responses.AppsGetsc, err error) {
+//   * pType - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (a Apps) Getscopes(pType string) (resp responses.AppsGetscopes, err error) {
 	params := map[string]interface{}{}
 
 	if pType != "" {
@@ -224,8 +224,8 @@ func (a Apps) Getscopes(pType string) (resp responses.AppsGetsc, err error) {
 
 // Getscore - Returns user score in app
 // Parameters:
-//   * userId - NO DESCRIPTION IN JSON SCHEMA
-func (a Apps) Getscore(userId int) (resp responses.AppsGetscor, err error) {
+//   * userId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (a Apps) Getscore(userId int) (resp responses.AppsGetscore, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -240,9 +240,9 @@ func (a Apps) Getscore(userId int) (resp responses.AppsGetscor, err error) {
 //   * userId - id of the user to send a request
 //   * text - request text
 //   * pType - request type. Values: 'invite' – if the request is sent to a user who does not have the app installed,, 'request' – if a user has already installed the app
-//   * name - NO DESCRIPTION IN JSON SCHEMA
+//   * name - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * key - special string key to be sent with the request
-//   * separate - NO DESCRIPTION IN JSON SCHEMA
+//   * separate - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (a Apps) Sendrequest(userId int, text string, pType string, name string, key string, separate bool) (resp responses.AppsSendrequest, err error) {
 	params := map[string]interface{}{}
 

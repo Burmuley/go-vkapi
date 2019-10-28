@@ -31,22 +31,22 @@ import (
 /////////////////////////////////////////////////////////////
 
 // PagesGethistory type represents `pages_getHistory_response` API response object
-type PagesGethistory *objects.PagesWikipageHistory
+type PagesGethistory objects.PagesWikipageHistory
 
-// PagesGettitl type represents `pages_getTitles_response` API response object
-type PagesGettitl *objects.PagesWikipage
+// PagesGettitles type represents `pages_getTitles_response` API response object
+type PagesGettitles objects.PagesWikipage
 
-// PagesGetversi type represents `pages_getVersion_response` API response object
-type PagesGetversi *objects.PagesWikipageFull
+// PagesGetversion type represents `pages_getVersion_response` API response object
+type PagesGetversion objects.PagesWikipageFull
 
 // PagesGet type represents `pages_get_response` API response object
-type PagesGet *objects.PagesWikipageFull
+type PagesGet objects.PagesWikipageFull
 
 // PagesParsewiki type represents `pages_parseWiki_response` API response object
 type PagesParsewiki string // HTML source
 
-// PagesSaveacc type represents `pages_saveAccess_response` API response object
-type PagesSaveacc int // Page ID
+// PagesSaveaccess type represents `pages_saveAccess_response` API response object
+type PagesSaveaccess int // Page ID
 
-// PagesSav type represents `pages_save_response` API response object
-type PagesSav int // Page ID
+// PagesSave type represents `pages_save_response` API response object
+type PagesSave int // Page ID

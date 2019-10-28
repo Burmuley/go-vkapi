@@ -35,15 +35,15 @@ type LikesAdd struct {
 	Likes int `json:"likes"` // Total likes number
 }
 
-// LikesDelet type represents `likes_delete_response` API response object
-type LikesDelet struct {
+// LikesDelete type represents `likes_delete_response` API response object
+type LikesDelete struct {
 	Likes int `json:"likes"` // Total likes number
 }
 
 // LikesGetlistExtended type represents `likes_getList_extended_response` API response object
 type LikesGetlistExtended struct {
-	Count int                     `json:"count"` // Total number
-	Items []*objects.UsersUserMin `json:"items"`
+	Count int                    `json:"count"` // Total number
+	Items []objects.UsersUserMin `json:"items"`
 }
 
 // LikesGetlist type represents `likes_getList_response` API response object
@@ -54,6 +54,6 @@ type LikesGetlist struct {
 
 // LikesIsliked type represents `likes_isLiked_response` API response object
 type LikesIsliked struct {
-	Copied *objects.BaseBoolInt `json:"copied"` // Information whether user reposted the object
-	Liked  *objects.BaseBoolInt `json:"liked"`  // Information whether user liked the object
+	Copied objects.BaseBoolInt `json:"copied"` // Information whether user reposted the object
+	Liked  objects.BaseBoolInt `json:"liked"`  // Information whether user liked the object
 }

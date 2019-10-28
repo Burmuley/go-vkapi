@@ -30,14 +30,14 @@ import (
 // `prettyCards` group of responses
 /////////////////////////////////////////////////////////////
 
-// PrettycardsCreat type represents `prettyCards_create_response` API response object
-type PrettycardsCreat struct {
+// PrettycardsCreate type represents `prettyCards_create_response` API response object
+type PrettycardsCreate struct {
 	CardId  string `json:"card_id"`  // Card ID of created pretty card
 	OwnerId int    `json:"owner_id"` // Owner ID of created pretty card
 }
 
-// PrettycardsDelet type represents `prettyCards_delete_response` API response object
-type PrettycardsDelet struct {
+// PrettycardsDelete type represents `prettyCards_delete_response` API response object
+type PrettycardsDelete struct {
 	CardId  string `json:"card_id"`  // Card ID of deleted pretty card
 	Error   string `json:"error"`    // Error reason if error happened
 	OwnerId int    `json:"owner_id"` // Owner ID of deleted pretty card
@@ -50,13 +50,13 @@ type PrettycardsEdit struct {
 }
 
 // PrettycardsGetbyid type represents `prettyCards_getById_response` API response object
-type PrettycardsGetbyid *objects.PrettycardsPrettycard
+type PrettycardsGetbyid objects.PrettycardsPrettycard
 
 // PrettycardsGetuploadurl type represents `prettyCards_getUploadURL_response` API response object
 type PrettycardsGetuploadurl string // Upload URL
 
 // PrettycardsGet type represents `prettyCards_get_response` API response object
 type PrettycardsGet struct {
-	Count int                              `json:"count"` // Total number
-	Items []*objects.PrettycardsPrettycard `json:"items"`
+	Count int                             `json:"count"` // Total number
+	Items []objects.PrettycardsPrettycard `json:"items"`
 }

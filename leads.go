@@ -38,8 +38,8 @@ type Leads struct {
 // Parameters:
 //   * leadId - Lead ID.
 //   * testResult - Value to be return in 'result' field when test mode is used.
-//   * testMode - NO DESCRIPTION IN JSON SCHEMA
-//   * autoStart - NO DESCRIPTION IN JSON SCHEMA
+//   * testMode - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * autoStart - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * age - User age.
 //   * country - User country code.
 func (l Leads) Checkuser(leadId int, testResult int, testMode bool, autoStart bool, age int, country string) (resp responses.LeadsCheckuser, err error) {
@@ -73,7 +73,7 @@ func (l Leads) Checkuser(leadId int, testResult int, testMode bool, autoStart bo
 //   * vkSid - Session obtained as GET parameter when session started.
 //   * secret - Secret key from the lead testing interface.
 //   * comment - Comment text.
-func (l Leads) Complete(vkSid string, secret string, comment string) (resp responses.LeadsComplet, err error) {
+func (l Leads) Complete(vkSid string, secret string, comment string) (resp responses.LeadsComplete, err error) {
 	params := map[string]interface{}{}
 
 	params["vk_sid"] = vkSid
@@ -95,7 +95,7 @@ func (l Leads) Complete(vkSid string, secret string, comment string) (resp respo
 //   * secret - Secret key obtained from the lead testing interface.
 //   * dateStart - Day to start stats from (YYYY_MM_DD, e.g.2011-09-17).
 //   * dateEnd - Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
-func (l Leads) Getstats(leadId int, secret string, dateStart string, dateEnd string) (resp responses.LeadsGetstat, err error) {
+func (l Leads) Getstats(leadId int, secret string, dateStart string, dateEnd string) (resp responses.LeadsGetstats, err error) {
 	params := map[string]interface{}{}
 
 	params["lead_id"] = leadId
@@ -125,7 +125,7 @@ func (l Leads) Getstats(leadId int, secret string, dateStart string, dateEnd str
 //   * count - Number of results to return.
 //   * status - Action type. Possible values: *'0' — start,, *'1' — finish,, *'2' — blocking users,, *'3' — start in a test mode,, *'4' — finish in a test mode.
 //   * reverse - Sort order. Possible values: *'1' — chronological,, *'0' — reverse chronological.
-func (l Leads) Getusers(offerId int, secret string, offset int, count int, status int, reverse bool) (resp responses.LeadsGetuser, err error) {
+func (l Leads) Getusers(offerId int, secret string, offset int, count int, status int, reverse bool) (resp responses.LeadsGetusers, err error) {
 	params := map[string]interface{}{}
 
 	params["offer_id"] = offerId
@@ -168,10 +168,10 @@ func (l Leads) Metrichit(data string) (resp responses.LeadsMetrichit, err error)
 // Parameters:
 //   * leadId - Lead ID.
 //   * secret - Secret key from the lead testing interface.
-//   * uid - NO DESCRIPTION IN JSON SCHEMA
-//   * aid - NO DESCRIPTION IN JSON SCHEMA
-//   * testMode - NO DESCRIPTION IN JSON SCHEMA
-//   * force - NO DESCRIPTION IN JSON SCHEMA
+//   * uid - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * aid - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * testMode - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * force - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (l Leads) Start(leadId int, secret string, uid int, aid int, testMode bool, force bool) (resp responses.LeadsStart, err error) {
 	params := map[string]interface{}{}
 

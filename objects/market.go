@@ -34,37 +34,37 @@ type MarketCurrency struct {
 
 // MarketMarketAlbum type represents `market_market_album` API object
 type MarketMarketAlbum struct {
-	Count       int          `json:"count"`    // Items number
-	Id          int          `json:"id"`       // Market album ID
-	OwnerId     int          `json:"owner_id"` // Market album owner's ID
-	Photo       *PhotosPhoto `json:"photo"`
-	Title       string       `json:"title"`        // Market album title
-	UpdatedTime int          `json:"updated_time"` // Date when album has been updated last time in Unixtime
+	Count       int         `json:"count"`    // Items number
+	Id          int         `json:"id"`       // Market album ID
+	OwnerId     int         `json:"owner_id"` // Market album owner's ID
+	Photo       PhotosPhoto `json:"photo"`
+	Title       string      `json:"title"`        // Market album title
+	UpdatedTime int         `json:"updated_time"` // Date when album has been updated last time in Unixtime
 }
 
 // MarketMarketCategory type represents `market_market_category` API object
 type MarketMarketCategory struct {
-	Id      int            `json:"id"`   // Category ID
-	Name    string         `json:"name"` // Category name
-	Section *MarketSection `json:"section"`
+	Id      int           `json:"id"`   // Category ID
+	Name    string        `json:"name"` // Category name
+	Section MarketSection `json:"section"`
 }
 
 // MarketMarketItem type represents `market_market_item` API object
 type MarketMarketItem struct {
-	AccessKey    string                        `json:"access_key"` // Access key for the market item
-	Availability *MarketMarketItemAvailability `json:"availability"`
-	ButtonTitle  string                        `json:"button_title"` // Title for button for url
-	Category     *MarketMarketCategory         `json:"category"`
-	Date         int                           `json:"date"`        // Date when the item has been created in Unixtime
-	Description  string                        `json:"description"` // Item description
-	ExternalId   string                        `json:"external_id"`
-	Id           int                           `json:"id"` // Item ID
-	IsFavorite   bool                          `json:"is_favorite"`
-	OwnerId      int                           `json:"owner_id"` // Item owner's ID
-	Price        *MarketPrice                  `json:"price"`
-	ThumbPhoto   string                        `json:"thumb_photo"` // URL of the preview image
-	Title        string                        `json:"title"`       // Item title
-	Url          string                        `json:"url"`         // URL to item
+	AccessKey    string                       `json:"access_key"` // Access key for the market item
+	Availability MarketMarketItemAvailability `json:"availability"`
+	ButtonTitle  string                       `json:"button_title"` // Title for button for url
+	Category     MarketMarketCategory         `json:"category"`
+	Date         int                          `json:"date"`        // Date when the item has been created in Unixtime
+	Description  string                       `json:"description"` // Item description
+	ExternalId   string                       `json:"external_id"`
+	Id           int                          `json:"id"` // Item ID
+	IsFavorite   bool                         `json:"is_favorite"`
+	OwnerId      int                          `json:"owner_id"` // Item owner's ID
+	Price        MarketPrice                  `json:"price"`
+	ThumbPhoto   string                       `json:"thumb_photo"` // URL of the preview image
+	Title        string                       `json:"title"`       // Item title
+	Url          string                       `json:"url"`         // URL to item
 }
 
 // MarketMarketItemAvailability type represents `market_market_item_availability` API object
@@ -72,23 +72,16 @@ type MarketMarketItemAvailability int // Information whether the item is availab
 
 // MarketMarketItemFull type represents `market_market_item_full` API object
 type MarketMarketItemFull struct {
-	Marketmarketitem *MarketMarketItem `json:"Marketmarketitem"`
-	AlbumsIds        []int             `json:"albums_ids"`
-	CanComment       *BaseBoolInt      `json:"can_comment"` // Information whether current use can comment the item
-	CanRepost        *BaseBoolInt      `json:"can_repost"`  // Information whether current use can repost the item
-	Likes            *BaseLikes        `json:"likes"`
-	Photos           []*PhotosPhoto    `json:"photos"`
-	Reposts          *BaseRepostsInfo  `json:"reposts"`
-	ViewsCount       int               `json:"views_count"` // Views number
+	MarketMarketItem
 }
 
 // MarketPrice type represents `market_price` API object
 type MarketPrice struct {
-	Amount       string          `json:"amount"` // Amount
-	Currency     *MarketCurrency `json:"currency"`
-	DiscountRate int             `json:"discount_rate"`
-	OldAmount    string          `json:"old_amount"`
-	Text         string          `json:"text"` // Text
+	Amount       string         `json:"amount"` // Amount
+	Currency     MarketCurrency `json:"currency"`
+	DiscountRate int            `json:"discount_rate"`
+	OldAmount    string         `json:"old_amount"`
+	Text         string         `json:"text"` // Text
 }
 
 // MarketSection type represents `market_section` API object

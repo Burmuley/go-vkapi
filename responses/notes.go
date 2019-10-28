@@ -37,16 +37,16 @@ type NotesAdd int // Note ID
 type NotesCreatecomment int // Comment ID
 
 // NotesGetbyid type represents `notes_getById_response` API response object
-type NotesGetbyid *objects.NotesNote
+type NotesGetbyid objects.NotesNote
 
-// NotesGetcomment type represents `notes_getComments_response` API response object
-type NotesGetcomment struct {
-	Count int                         `json:"count"` // Total number
-	Items []*objects.NotesNoteComment `json:"items"`
+// NotesGetcomments type represents `notes_getComments_response` API response object
+type NotesGetcomments struct {
+	Count int                        `json:"count"` // Total number
+	Items []objects.NotesNoteComment `json:"items"`
 }
 
 // NotesGet type represents `notes_get_response` API response object
 type NotesGet struct {
-	Count int                  `json:"count"` // Total number
-	Items []*objects.NotesNote `json:"items"`
+	Count int                 `json:"count"` // Total number
+	Items []objects.NotesNote `json:"items"`
 }
