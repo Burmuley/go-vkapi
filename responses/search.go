@@ -30,9 +30,9 @@ import (
 // `search` group of responses
 /////////////////////////////////////////////////////////////
 
-// SearchGethint type represents `search_getHints_response` API response object
-type SearchGethint struct {
-	Count            int                   `json:"count"`
-	Items            []*objects.SearchHint `json:"items"`
-	SuggestedQueries []string              `json:"suggested_queries"`
+// SearchGethints type represents `search_getHints_response` API response object
+type SearchGethints struct {
+	Count            int                  `json:"count"`
+	Items            []objects.SearchHint `json:"items"`
+	SuggestedQueries []string             `json:"suggested_queries"`
 }

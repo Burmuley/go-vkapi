@@ -67,7 +67,7 @@ func (u Users) Get(userIds []string, fields []objects.UsersFields, nameCase stri
 //   * count - Number of followers to return.
 //   * fields - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
 //   * nameCase - Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-func (u Users) Getfollowers(userId int, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.UsersGetfollower, err error) {
+func (u Users) Getfollowers(userId int, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.UsersGetfollowers, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -101,8 +101,8 @@ func (u Users) Getfollowers(userId int, offset int, count int, fields []objects.
 //   * extended - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
 //   * offset - Offset needed to return a specific subset of subscriptions.
 //   * count - Number of users and communities to return.
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (u Users) Getsubscriptions(userId int, offset int, count int, fields []objects.UsersFields) (resp responses.UsersGetsubscripti, err error) {
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (u Users) Getsubscriptions(userId int, offset int, count int, fields []objects.UsersFields) (resp responses.UsersGetsubscriptions, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -133,7 +133,7 @@ func (u Users) Getsubscriptions(userId int, offset int, count int, fields []obje
 //   * extended - '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
 //   * offset - Offset needed to return a specific subset of subscriptions.
 //   * count - Number of users and communities to return.
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (u Users) GetsubscriptionsExtended(userId int, offset int, count int, fields []objects.UsersFields) (resp responses.UsersGetsubscriptionsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
@@ -161,7 +161,7 @@ func (u Users) GetsubscriptionsExtended(userId int, offset int, count int, field
 
 // Isappuser - Returns information whether a user installed the application.
 // Parameters:
-//   * userId - NO DESCRIPTION IN JSON SCHEMA
+//   * userId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (u Users) Isappuser(userId int) (resp responses.UsersIsappuser, err error) {
 	params := map[string]interface{}{}
 
@@ -221,7 +221,7 @@ func (u Users) Report(userId int, pType string, comment string) (resp responses.
 //   * hasPhoto - '1' — with photo only, '0' — all users
 //   * schoolCountry - ID of the country where users finished school.
 //   * schoolCity - ID of the city where users finished school.
-//   * schoolClass - NO DESCRIPTION IN JSON SCHEMA
+//   * schoolClass - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * school - ID of the school.
 //   * schoolYear - School graduation year.
 //   * religion - Users' religious affiliation.
@@ -229,7 +229,7 @@ func (u Users) Report(userId int, pType string, comment string) (resp responses.
 //   * company - Name of the company where users work.
 //   * position - Job position.
 //   * groupId - ID of a community to search in communities.
-//   * fromList - NO DESCRIPTION IN JSON SCHEMA
+//   * fromList - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (u Users) Search(q string, sort int, offset int, count int, fields []objects.UsersFields, city int, country int, hometown string, universityCountry int, university int, universityYear int, universityFaculty int, universityChair int, sex int, status int, ageFrom int, ageTo int, birthDay int, birthMonth int, birthYear int, online bool, hasPhoto bool, schoolCountry int, schoolCity int, schoolClass int, school int, schoolYear int, religion string, interests string, company string, position string, groupId int, fromList []string) (resp responses.UsersSearch, err error) {
 	params := map[string]interface{}{}
 

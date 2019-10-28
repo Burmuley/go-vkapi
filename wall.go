@@ -37,8 +37,8 @@ type Wall struct {
 
 // Closecomments - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-//   * postId - NO DESCRIPTION IN JSON SCHEMA
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * postId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Closecomments(ownerId int, postId int) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
@@ -140,21 +140,21 @@ func (w Wall) Deletecomment(ownerId int, commentId int) (resp responses.Ok, err 
 // Edit - Edits a post on a user wall or community wall.
 // Parameters:
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
-//   * postId - NO DESCRIPTION IN JSON SCHEMA
-//   * friendsOnly - NO DESCRIPTION IN JSON SCHEMA
+//   * postId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * friendsOnly - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * message - (Required if 'attachments' is not set.) Text of the post.
 //   * attachments - (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
-//   * services - NO DESCRIPTION IN JSON SCHEMA
-//   * signed - NO DESCRIPTION IN JSON SCHEMA
-//   * publishDate - NO DESCRIPTION IN JSON SCHEMA
-//   * lat - NO DESCRIPTION IN JSON SCHEMA
-//   * long - NO DESCRIPTION IN JSON SCHEMA
-//   * placeId - NO DESCRIPTION IN JSON SCHEMA
-//   * markAsAds - NO DESCRIPTION IN JSON SCHEMA
-//   * closeComments - NO DESCRIPTION IN JSON SCHEMA
-//   * posterBkgId - NO DESCRIPTION IN JSON SCHEMA
-//   * posterBkgOwnerId - NO DESCRIPTION IN JSON SCHEMA
-//   * posterBkgAccessHash - NO DESCRIPTION IN JSON SCHEMA
+//   * services - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * signed - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * publishDate - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * lat - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * long - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * placeId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * markAsAds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * closeComments - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * posterBkgId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * posterBkgOwnerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * posterBkgAccessHash - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Edit(ownerId int, postId int, friendsOnly bool, message string, attachments []string, services string, signed bool, publishDate int, lat float64, long float64, placeId int, markAsAds bool, closeComments bool, posterBkgId int, posterBkgOwnerId int, posterBkgAccessHash string) (resp responses.WallEdit, err error) {
 	params := map[string]interface{}{}
 
@@ -319,7 +319,7 @@ func (w Wall) Editcomment(ownerId int, commentId int, message string, attachment
 //   * count - Number of posts to return (maximum 100).
 //   * filter - Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
 //   * extended - '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Get(ownerId int, domain string, offset int, count int, filter string, fields []objects.BaseUserGroupFields) (resp responses.WallGet, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
@@ -361,7 +361,7 @@ func (w Wall) Get(ownerId int, domain string, offset int, count int, filter stri
 //   * count - Number of posts to return (maximum 100).
 //   * filter - Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
 //   * extended - '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) GetExtended(ownerId int, domain string, offset int, count int, filter string, fields []objects.BaseUserGroupFields) (resp responses.WallGetExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
@@ -400,7 +400,7 @@ func (w Wall) GetExtended(ownerId int, domain string, offset int, count int, fil
 //   * posts - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
 //   * extended - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
 //   * copyHistoryDepth - Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Getbyid(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetbyid, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
@@ -425,7 +425,7 @@ func (w Wall) Getbyid(posts []string, copyHistoryDepth int, fields []objects.Bas
 //   * posts - User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
 //   * extended - '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
 //   * copyHistoryDepth - Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) GetbyidExtended(posts []string, copyHistoryDepth int, fields []objects.BaseUserGroupFields) (resp responses.WallGetbyidExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
@@ -450,16 +450,16 @@ func (w Wall) GetbyidExtended(posts []string, copyHistoryDepth int, fields []obj
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
 //   * needLikes - '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
-//   * startCommentId - NO DESCRIPTION IN JSON SCHEMA
+//   * startCommentId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of comments.
 //   * count - Number of comments to return (maximum 100).
 //   * sort - Sort order: 'asc' — chronological, 'desc' — reverse chronological
 //   * previewLength - Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * commentId - Comment ID.
 //   * threadItemsCount - Count items in threads.
-func (w Wall) Getcomments(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetcomment, err error) {
+func (w Wall) Getcomments(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetcomments, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -515,13 +515,13 @@ func (w Wall) Getcomments(ownerId int, postId int, needLikes bool, startCommentI
 //   * ownerId - User ID or community ID. Use a negative value to designate a community ID.
 //   * postId - Post ID.
 //   * needLikes - '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
-//   * startCommentId - NO DESCRIPTION IN JSON SCHEMA
+//   * startCommentId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of comments.
 //   * count - Number of comments to return (maximum 100).
 //   * sort - Sort order: 'asc' — chronological, 'desc' — reverse chronological
 //   * previewLength - Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * commentId - Comment ID.
 //   * threadItemsCount - Count items in threads.
 func (w Wall) GetcommentsExtended(ownerId int, postId int, needLikes bool, startCommentId int, offset int, count int, sort string, previewLength int, fields []objects.BaseUserGroupFields, commentId int, threadItemsCount int) (resp responses.WallGetcommentsExtended, err error) {
@@ -581,7 +581,7 @@ func (w Wall) GetcommentsExtended(ownerId int, postId int, needLikes bool, start
 //   * postId - Post ID.
 //   * offset - Offset needed to return a specific subset of reposts.
 //   * count - Number of reposts to return.
-func (w Wall) Getreposts(ownerId int, postId int, offset int, count int) (resp responses.WallGetrepost, err error) {
+func (w Wall) Getreposts(ownerId int, postId int, offset int, count int) (resp responses.WallGetreposts, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -607,8 +607,8 @@ func (w Wall) Getreposts(ownerId int, postId int, offset int, count int) (resp r
 
 // Opencomments - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-//   * postId - NO DESCRIPTION IN JSON SCHEMA
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * postId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Opencomments(ownerId int, postId int) (resp responses.BaseBool, err error) {
 	params := map[string]interface{}{}
 
@@ -653,10 +653,10 @@ func (w Wall) Pin(ownerId int, postId int) (resp responses.Ok, err error) {
 //   * long - Geographical longitude of a check-in, in degrees (from -180 to 180).
 //   * placeId - ID of the location where the user was tagged.
 //   * postId - Post ID. Used for publishing of scheduled and suggested posts.
-//   * guid - NO DESCRIPTION IN JSON SCHEMA
-//   * markAsAds - NO DESCRIPTION IN JSON SCHEMA
-//   * closeComments - NO DESCRIPTION IN JSON SCHEMA
-//   * muteNotifications - NO DESCRIPTION IN JSON SCHEMA
+//   * guid - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * markAsAds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * closeComments - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * muteNotifications - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Post(ownerId int, friendsOnly bool, fromGroup bool, message string, attachments []string, services string, signed bool, publishDate int, lat float64, long float64, placeId int, postId int, guid string, markAsAds bool, closeComments bool, muteNotifications bool) (resp responses.WallPost, err error) {
 	params := map[string]interface{}{}
 
@@ -830,8 +830,8 @@ func (w Wall) Reportpost(ownerId int, postId int, reason int) (resp responses.Ok
 //   * object - ID of the object to be reposted on the wall. Example: "wall66748_3675"
 //   * message - Comment to be added along with the reposted object.
 //   * groupId - Target community ID when reposting to a community.
-//   * markAsAds - NO DESCRIPTION IN JSON SCHEMA
-//   * muteNotifications - NO DESCRIPTION IN JSON SCHEMA
+//   * markAsAds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * muteNotifications - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Repost(object string, message string, groupId int, markAsAds bool, muteNotifications bool) (resp responses.WallRepost, err error) {
 	params := map[string]interface{}{}
 
@@ -901,7 +901,7 @@ func (w Wall) Restorecomment(ownerId int, commentId int) (resp responses.Ok, err
 //   * count - count of posts to return.
 //   * offset - Offset needed to return a specific subset of posts.
 //   * extended - show extended post info.
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) Search(ownerId int, domain string, query string, ownersOnly bool, count int, offset int, fields []objects.BaseUserGroupFields) (resp responses.WallSearch, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
@@ -946,7 +946,7 @@ func (w Wall) Search(ownerId int, domain string, query string, ownersOnly bool, 
 //   * count - count of posts to return.
 //   * offset - Offset needed to return a specific subset of posts.
 //   * extended - show extended post info.
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (w Wall) SearchExtended(ownerId int, domain string, query string, ownersOnly bool, count int, offset int, fields []objects.BaseUserGroupFields) (resp responses.WallSearchExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"

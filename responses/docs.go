@@ -36,33 +36,33 @@ type DocsAdd struct {
 }
 
 // DocsGetbyid type represents `docs_getById_response` API response object
-type DocsGetbyid *objects.DocsDoc
+type DocsGetbyid objects.DocsDoc
 
-// DocsGetty type represents `docs_getTypes_response` API response object
-type DocsGetty struct {
-	Count int                     `json:"count"` // Total number
-	Items []*objects.DocsDocTypes `json:"items"`
+// DocsGettypes type represents `docs_getTypes_response` API response object
+type DocsGettypes struct {
+	Count int                    `json:"count"` // Total number
+	Items []objects.DocsDocTypes `json:"items"`
 }
 
 // DocsGetuploadserver type represents `docs_getUploadServer` API response object
-type DocsGetuploadserver *objects.BaseUploadServer
+type DocsGetuploadserver objects.BaseUploadServer
 
 // DocsGet type represents `docs_get_response` API response object
 type DocsGet struct {
-	Count int                `json:"count"` // Total number
-	Items []*objects.DocsDoc `json:"items"`
+	Count int               `json:"count"` // Total number
+	Items []objects.DocsDoc `json:"items"`
 }
 
-// DocsSav type represents `docs_save_response` API response object
-type DocsSav struct {
-	AudioMessage *objects.MessagesAudioMessage  `json:"audio_message"`
-	Doc          *objects.DocsDoc               `json:"doc"`
-	Graffiti     *objects.MessagesGraffiti      `json:"graffiti"`
-	Type         *objects.DocsDocAttachmentType `json:"type"`
+// DocsSave type represents `docs_save_response` API response object
+type DocsSave struct {
+	AudioMessage objects.MessagesAudioMessage  `json:"audio_message"`
+	Doc          objects.DocsDoc               `json:"doc"`
+	Graffiti     objects.MessagesGraffiti      `json:"graffiti"`
+	Type         objects.DocsDocAttachmentType `json:"type"`
 }
 
 // DocsSearch type represents `docs_search_response` API response object
 type DocsSearch struct {
-	Count int                `json:"count"` // Total number
-	Items []*objects.DocsDoc `json:"items"`
+	Count int               `json:"count"` // Total number
+	Items []objects.DocsDoc `json:"items"`
 }

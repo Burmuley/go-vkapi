@@ -82,11 +82,11 @@ func (v Video) Addalbum(groupId int, title string, privacy []string) (resp respo
 
 // Addtoalbum - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * targetId - NO DESCRIPTION IN JSON SCHEMA
-//   * albumId - NO DESCRIPTION IN JSON SCHEMA
-//   * albumIds - NO DESCRIPTION IN JSON SCHEMA
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-//   * videoId - NO DESCRIPTION IN JSON SCHEMA
+//   * targetId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * albumId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * albumIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * videoId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) Addtoalbum(targetId int, albumId int, albumIds []int, ownerId int, videoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -118,9 +118,9 @@ func (v Video) Addtoalbum(targetId int, albumId int, albumIds []int, ownerId int
 //   * message - New comment text.
 //   * attachments - List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
 //   * fromGroup - '1' — to post the comment from a community name (only if 'owner_id'<0)
-//   * replyToComment - NO DESCRIPTION IN JSON SCHEMA
-//   * stickerId - NO DESCRIPTION IN JSON SCHEMA
-//   * guid - NO DESCRIPTION IN JSON SCHEMA
+//   * replyToComment - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * stickerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * guid - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) Createcomment(ownerId int, videoId int, message string, attachments []string, fromGroup bool, replyToComment int, stickerId int, guid string) (resp responses.VideoCreatecomment, err error) {
 	params := map[string]interface{}{}
 
@@ -161,7 +161,7 @@ func (v Video) Createcomment(ownerId int, videoId int, message string, attachmen
 // Parameters:
 //   * videoId - Video ID.
 //   * ownerId - ID of the user or community that owns the video.
-//   * targetId - NO DESCRIPTION IN JSON SCHEMA
+//   * targetId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) Delete(videoId int, ownerId int, targetId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -412,8 +412,8 @@ func (v Video) Getalbumbyid(ownerId int, albumId int) (resp responses.VideoGetal
 //   * offset - Offset needed to return a specific subset of video albums.
 //   * count - Number of video albums to return.
 //   * extended - '1' — to return additional information about album privacy settings for the current user
-//   * needSystem - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) Getalbums(ownerId int, offset int, count int, needSystem bool) (resp responses.VideoGetalbum, err error) {
+//   * needSystem - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (v Video) Getalbums(ownerId int, offset int, count int, needSystem bool) (resp responses.VideoGetalbums, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -442,7 +442,7 @@ func (v Video) Getalbums(ownerId int, offset int, count int, needSystem bool) (r
 //   * offset - Offset needed to return a specific subset of video albums.
 //   * count - Number of video albums to return.
 //   * extended - '1' — to return additional information about album privacy settings for the current user
-//   * needSystem - NO DESCRIPTION IN JSON SCHEMA
+//   * needSystem - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) GetalbumsExtended(ownerId int, offset int, count int, needSystem bool) (resp responses.VideoGetalbumsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
@@ -468,11 +468,11 @@ func (v Video) GetalbumsExtended(ownerId int, offset int, count int, needSystem 
 
 // Getalbumsbyvideo - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * targetId - NO DESCRIPTION IN JSON SCHEMA
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-//   * videoId - NO DESCRIPTION IN JSON SCHEMA
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) Getalbumsbyvideo(targetId int, ownerId int, videoId int) (resp responses.VideoGetalbumsbyvid, err error) {
+//   * targetId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * videoId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (v Video) Getalbumsbyvideo(targetId int, ownerId int, videoId int) (resp responses.VideoGetalbumsbyvideo, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -491,10 +491,10 @@ func (v Video) Getalbumsbyvideo(targetId int, ownerId int, videoId int) (resp re
 
 // GetalbumsbyvideoExtended - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * targetId - NO DESCRIPTION IN JSON SCHEMA
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-//   * videoId - NO DESCRIPTION IN JSON SCHEMA
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
+//   * targetId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * videoId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) GetalbumsbyvideoExtended(targetId int, ownerId int, videoId int) (resp responses.VideoGetalbumsbyvideoExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
@@ -517,13 +517,13 @@ func (v Video) GetalbumsbyvideoExtended(targetId int, ownerId int, videoId int) 
 //   * ownerId - ID of the user or community that owns the video.
 //   * videoId - Video ID.
 //   * needLikes - '1' — to return an additional 'likes' field
-//   * startCommentId - NO DESCRIPTION IN JSON SCHEMA
+//   * startCommentId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of comments.
 //   * count - Number of comments to return.
 //   * sort - Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) Getcomments(ownerId int, videoId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []string) (resp responses.VideoGetcomment, err error) {
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (v Video) Getcomments(ownerId int, videoId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []string) (resp responses.VideoGetcomments, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -565,12 +565,12 @@ func (v Video) Getcomments(ownerId int, videoId int, needLikes bool, startCommen
 //   * ownerId - ID of the user or community that owns the video.
 //   * videoId - Video ID.
 //   * needLikes - '1' — to return an additional 'likes' field
-//   * startCommentId - NO DESCRIPTION IN JSON SCHEMA
+//   * startCommentId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of comments.
 //   * count - Number of comments to return.
 //   * sort - Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) GetcommentsExtended(ownerId int, videoId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []string) (resp responses.VideoGetcommentsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
@@ -610,11 +610,11 @@ func (v Video) GetcommentsExtended(ownerId int, videoId int, needLikes bool, sta
 
 // Removefromalbum - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * targetId - NO DESCRIPTION IN JSON SCHEMA
-//   * albumId - NO DESCRIPTION IN JSON SCHEMA
-//   * albumIds - NO DESCRIPTION IN JSON SCHEMA
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-//   * videoId - NO DESCRIPTION IN JSON SCHEMA
+//   * targetId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * albumId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * albumIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * videoId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) Removefromalbum(targetId int, albumId int, albumIds []int, ownerId int, videoId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -810,12 +810,12 @@ func (v Video) Restorecomment(ownerId int, commentId int) (resp responses.VideoR
 //   * link - URL for embedding the video from an external website.
 //   * groupId - ID of the community in which the video will be saved. By default, the current user's page.
 //   * albumId - ID of the album to which the saved video will be added.
-//   * privacyView - NO DESCRIPTION IN JSON SCHEMA
-//   * privacyComment - NO DESCRIPTION IN JSON SCHEMA
-//   * noComments - NO DESCRIPTION IN JSON SCHEMA
+//   * privacyView - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * privacyComment - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * noComments - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * repeat - '1' — to repeat the playback of the video, '0' — to play the video once,
-//   * compression - NO DESCRIPTION IN JSON SCHEMA
-func (v Video) Save(name string, description string, isPrivate bool, wallpost bool, link string, groupId int, albumId int, privacyView []string, privacyComment []string, noComments bool, repeat bool, compression bool) (resp responses.VideoSav, err error) {
+//   * compression - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (v Video) Save(name string, description string, isPrivate bool, wallpost bool, link string, groupId int, albumId int, privacyView []string, privacyComment []string, noComments bool, repeat bool, compression bool) (resp responses.VideoSave, err error) {
 	params := map[string]interface{}{}
 
 	if name != "" {
@@ -868,12 +868,12 @@ func (v Video) Save(name string, description string, isPrivate bool, wallpost bo
 //   * hd - If not null, only searches for high-definition videos.
 //   * adult - '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
 //   * filters - Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
-//   * searchOwn - NO DESCRIPTION IN JSON SCHEMA
+//   * searchOwn - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of videos.
-//   * longer - NO DESCRIPTION IN JSON SCHEMA
-//   * shorter - NO DESCRIPTION IN JSON SCHEMA
+//   * longer - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * shorter - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of videos to return.
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) Search(q string, sort int, hd int, adult bool, filters []string, searchOwn bool, offset int, longer int, shorter int, count int) (resp responses.VideoSearch, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
@@ -924,12 +924,12 @@ func (v Video) Search(q string, sort int, hd int, adult bool, filters []string, 
 //   * hd - If not null, only searches for high-definition videos.
 //   * adult - '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
 //   * filters - Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
-//   * searchOwn - NO DESCRIPTION IN JSON SCHEMA
+//   * searchOwn - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of videos.
-//   * longer - NO DESCRIPTION IN JSON SCHEMA
-//   * shorter - NO DESCRIPTION IN JSON SCHEMA
+//   * longer - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * shorter - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of videos to return.
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (v Video) SearchExtended(q string, sort int, hd int, adult bool, filters []string, searchOwn bool, offset int, longer int, shorter int, count int) (resp responses.VideoSearchExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"

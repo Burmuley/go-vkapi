@@ -28,8 +28,8 @@ import ()
 // `auth` group of responses
 /////////////////////////////////////////////////////////////
 
-// AuthRestor type represents `auth_restore_response` API response object
-type AuthRestor struct {
+// AuthRestore type represents `auth_restore_response` API response object
+type AuthRestore struct {
 	Sid     string `json:"sid"`     // Parameter needed to grant access by code
 	Success int    `json:"success"` // 1 if success
 }

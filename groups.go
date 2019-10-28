@@ -37,20 +37,20 @@ type Groups struct {
 
 // Addaddress - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * title - NO DESCRIPTION IN JSON SCHEMA
-//   * address - NO DESCRIPTION IN JSON SCHEMA
-//   * additionalAddress - NO DESCRIPTION IN JSON SCHEMA
-//   * countryId - NO DESCRIPTION IN JSON SCHEMA
-//   * cityId - NO DESCRIPTION IN JSON SCHEMA
-//   * metroId - NO DESCRIPTION IN JSON SCHEMA
-//   * latitude - NO DESCRIPTION IN JSON SCHEMA
-//   * longitude - NO DESCRIPTION IN JSON SCHEMA
-//   * phone - NO DESCRIPTION IN JSON SCHEMA
-//   * workInfoStatus - NO DESCRIPTION IN JSON SCHEMA
-//   * timetable - NO DESCRIPTION IN JSON SCHEMA
-//   * isMainAddress - NO DESCRIPTION IN JSON SCHEMA
-func (g Groups) Addaddress(groupId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsAddAddr, err error) {
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * title - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * address - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * additionalAddress - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * countryId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * cityId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * metroId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * latitude - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * longitude - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * phone - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * workInfoStatus - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * timetable - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * isMainAddress - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (g Groups) Addaddress(groupId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsAddAddress, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -92,10 +92,10 @@ func (g Groups) Addaddress(groupId int, title string, address string, additional
 
 // Addcallbackserver - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * url - NO DESCRIPTION IN JSON SCHEMA
-//   * title - NO DESCRIPTION IN JSON SCHEMA
-//   * secretKey - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * url - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * title - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * secretKey - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Addcallbackserver(groupId int, url string, title string, secretKey string) (resp responses.GroupsAddcallbackserver, err error) {
 	params := map[string]interface{}{}
 
@@ -153,12 +153,12 @@ func (g Groups) Approverequest(groupId int, userId int) (resp responses.Ok, err 
 
 // Ban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
-//   * endDate - NO DESCRIPTION IN JSON SCHEMA
-//   * reason - NO DESCRIPTION IN JSON SCHEMA
-//   * comment - NO DESCRIPTION IN JSON SCHEMA
-//   * commentVisible - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * endDate - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * reason - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * comment - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * commentVisible - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Ban(groupId int, ownerId int, endDate int, reason int, comment string, commentVisible bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -194,7 +194,7 @@ func (g Groups) Ban(groupId int, ownerId int, endDate int, reason int, comment s
 //   * pType - Community type. Possible values: *'group' – group,, *'event' – event,, *'public' – public page
 //   * publicCategory - Category ID (for 'type' = 'public' only).
 //   * subtype - Public page subtype. Possible values: *'1' – place or small business,, *'2' – company, organization or website,, *'3' – famous person or group of people,, *'4' – product or work of art.
-func (g Groups) Create(title string, description string, pType string, publicCategory int, subtype int) (resp responses.GroupsCreat, err error) {
+func (g Groups) Create(title string, description string, pType string, publicCategory int, subtype int) (resp responses.GroupsCreate, err error) {
 	params := map[string]interface{}{}
 
 	params["title"] = title
@@ -222,8 +222,8 @@ func (g Groups) Create(title string, description string, pType string, publicCat
 
 // Deletecallbackserver - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * serverId - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * serverId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Deletecallbackserver(groupId int, serverId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -254,7 +254,7 @@ func (g Groups) Deletelink(groupId int, linkId int) (resp responses.Ok, err erro
 
 // Disableonline - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Disableonline(groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -295,8 +295,8 @@ func (g Groups) Disableonline(groupId int) (resp responses.Ok, err error) {
 //   * docs - Documents settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
 //   * wiki - Wiki pages settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
 //   * messages - Community messages. Possible values: *'0' — disabled,, *'1' — enabled.
-//   * articles - NO DESCRIPTION IN JSON SCHEMA
-//   * addresses - NO DESCRIPTION IN JSON SCHEMA
+//   * articles - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * addresses - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * ageLimits - Community age limits. Possible values: *'1' — no limits,, *'2' — 16+,, *'3' — 18+.
 //   * market - Market settings. Possible values: *'0' – disabled,, *'1' – enabled.
 //   * marketComments - market comments settings. Possible values: *'0' – disabled,, *'1' – enabled.
@@ -308,8 +308,8 @@ func (g Groups) Disableonline(groupId int) (resp responses.Ok, err error) {
 //   * obsceneFilter - Obscene expressions filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
 //   * obsceneStopwords - Stopwords filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
 //   * obsceneWords - Keywords for stopwords filter.
-//   * mainSection - NO DESCRIPTION IN JSON SCHEMA
-//   * secondarySection - NO DESCRIPTION IN JSON SCHEMA
+//   * mainSection - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * secondarySection - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * country - Country of the community.
 //   * city - City of the community.
 func (g Groups) Edit(groupId int, title string, description string, screenName string, access objects.GroupsGroupAccess, website string, subject objects.GroupsGroupSubject, email string, phone string, rss string, eventStartDate int, eventFinishDate int, eventGroupId int, publicCategory int, publicSubcategory int, publicDate string, wall objects.GroupsGroupWall, topics objects.GroupsGroupTopics, photos objects.GroupsGroupPhotos, video objects.GroupsGroupVideo, audio objects.GroupsGroupAudio, links bool, events bool, places bool, contacts bool, docs objects.GroupsGroupDocs, wiki objects.GroupsGroupWiki, messages bool, articles bool, addresses bool, ageLimits objects.GroupsGroupAgeLimits, market bool, marketComments bool, marketCountry []int, marketCity []int, marketCurrency objects.GroupsGroupMarketCurrency, marketContact int, marketWiki int, obsceneFilter bool, obsceneStopwords bool, obsceneWords []string, mainSection int, secondarySection int, country int, city int) (resp responses.Ok, err error) {
@@ -474,21 +474,21 @@ func (g Groups) Edit(groupId int, title string, description string, screenName s
 
 // Editaddress - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * addressId - NO DESCRIPTION IN JSON SCHEMA
-//   * title - NO DESCRIPTION IN JSON SCHEMA
-//   * address - NO DESCRIPTION IN JSON SCHEMA
-//   * additionalAddress - NO DESCRIPTION IN JSON SCHEMA
-//   * countryId - NO DESCRIPTION IN JSON SCHEMA
-//   * cityId - NO DESCRIPTION IN JSON SCHEMA
-//   * metroId - NO DESCRIPTION IN JSON SCHEMA
-//   * latitude - NO DESCRIPTION IN JSON SCHEMA
-//   * longitude - NO DESCRIPTION IN JSON SCHEMA
-//   * phone - NO DESCRIPTION IN JSON SCHEMA
-//   * workInfoStatus - NO DESCRIPTION IN JSON SCHEMA
-//   * timetable - NO DESCRIPTION IN JSON SCHEMA
-//   * isMainAddress - NO DESCRIPTION IN JSON SCHEMA
-func (g Groups) Editaddress(groupId int, addressId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsEditaddr, err error) {
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * addressId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * title - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * address - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * additionalAddress - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * countryId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * cityId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * metroId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * latitude - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * longitude - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * phone - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * workInfoStatus - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * timetable - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * isMainAddress - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (g Groups) Editaddress(groupId int, addressId int, title string, address string, additionalAddress string, countryId int, cityId int, metroId int, latitude float64, longitude float64, phone string, workInfoStatus objects.GroupsAddressWorkInfoStatus, timetable string, isMainAddress bool) (resp responses.GroupsEditaddress, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -544,11 +544,11 @@ func (g Groups) Editaddress(groupId int, addressId int, title string, address st
 
 // Editcallbackserver - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * serverId - NO DESCRIPTION IN JSON SCHEMA
-//   * url - NO DESCRIPTION IN JSON SCHEMA
-//   * title - NO DESCRIPTION IN JSON SCHEMA
-//   * secretKey - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * serverId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * url - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * title - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * secretKey - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Editcallbackserver(groupId int, serverId int, url string, title string, secretKey string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -627,7 +627,7 @@ func (g Groups) Editmanager(groupId int, userId int, role objects.GroupsGroupRol
 
 // Enableonline - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Enableonline(groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -715,13 +715,13 @@ func (g Groups) GetExtended(userId int, filter []objects.GroupsFilter, fields []
 // Getaddresses - Returns a list of community addresses.
 // Parameters:
 //   * groupId - ID or screen name of the community.
-//   * addressIds - NO DESCRIPTION IN JSON SCHEMA
+//   * addressIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * latitude - Latitude of  the user geo position.
 //   * longitude - Longitude of the user geo position.
 //   * offset - Offset needed to return a specific subset of community addresses.
 //   * count - Number of community addresses to return.
 //   * fields - Address fields
-func (g Groups) Getaddresses(groupId int, addressIds []int, latitude float64, longitude float64, offset int, count int, fields []objects.AddressesFields) (resp responses.GroupsGetaddr, err error) {
+func (g Groups) Getaddresses(groupId int, addressIds []int, latitude float64, longitude float64, offset int, count int, fields []objects.AddressesFields) (resp responses.GroupsGetaddresses, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -760,8 +760,8 @@ func (g Groups) Getaddresses(groupId int, addressIds []int, latitude float64, lo
 //   * groupId - Community ID.
 //   * offset - Offset needed to return a specific subset of users.
 //   * count - Number of users to return.
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Getbanned(groupId int, offset int, count int, fields []objects.BaseUserGroupFields, ownerId int) (resp responses.GroupsGetbanned, err error) {
 	params := map[string]interface{}{}
 
@@ -816,7 +816,7 @@ func (g Groups) Getbyid(groupIds []string, groupId string, fields []objects.Grou
 // Getcallbackconfirmationcode - Returns Callback API confirmation code for the community.
 // Parameters:
 //   * groupId - Community ID.
-func (g Groups) Getcallbackconfirmationcode(groupId int) (resp responses.GroupsGetcallbackconfirmationcod, err error) {
+func (g Groups) Getcallbackconfirmationcode(groupId int) (resp responses.GroupsGetcallbackconfirmationcode, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -828,9 +828,9 @@ func (g Groups) Getcallbackconfirmationcode(groupId int) (resp responses.GroupsG
 
 // Getcallbackservers - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * serverIds - NO DESCRIPTION IN JSON SCHEMA
-func (g Groups) Getcallbackservers(groupId int, serverIds []int) (resp responses.GroupsGetcallbackserver, err error) {
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * serverIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (g Groups) Getcallbackservers(groupId int, serverIds []int) (resp responses.GroupsGetcallbackservers, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -848,7 +848,7 @@ func (g Groups) Getcallbackservers(groupId int, serverIds []int) (resp responses
 // Parameters:
 //   * groupId - Community ID.
 //   * serverId - Server ID.
-func (g Groups) Getcallbacksettings(groupId int, serverId int) (resp responses.GroupsGetcallbacksetting, err error) {
+func (g Groups) Getcallbacksettings(groupId int, serverId int) (resp responses.GroupsGetcallbacksettings, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -886,7 +886,7 @@ func (g Groups) Getcatalog(categoryId int, subcategoryId int) (resp responses.Gr
 // Parameters:
 //   * extended - 1 – to return communities count and three communities for preview. By default: 0.
 //   * subcategories - 1 – to return subcategories info. By default: 0.
-func (g Groups) Getcataloginfo(subcategories bool) (resp responses.GroupsGetcataloginf, err error) {
+func (g Groups) Getcataloginfo(subcategories bool) (resp responses.GroupsGetcataloginfo, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -919,7 +919,7 @@ func (g Groups) GetcataloginfoExtended(subcategories bool) (resp responses.Group
 //   * count - Number of results to return.
 //   * fields - List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
 //   * nameCase - Case for declension of user name and surname. Possible values: *'nom' — nominative (default),, *'gen' — genitive,, *'dat' — dative,, *'acc' — accusative, , *'ins' — instrumental,, *'abl' — prepositional.
-func (g Groups) Getinvitedusers(groupId int, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.GroupsGetinviteduser, err error) {
+func (g Groups) Getinvitedusers(groupId int, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.GroupsGetinvitedusers, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -950,7 +950,7 @@ func (g Groups) Getinvitedusers(groupId int, offset int, count int, fields []obj
 //   * offset - Offset needed to return a specific subset of invitations.
 //   * count - Number of invitations to return.
 //   * extended - '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
-func (g Groups) Getinvites(offset int, count int) (resp responses.GroupsGetinvit, err error) {
+func (g Groups) Getinvites(offset int, count int) (resp responses.GroupsGetinvites, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -1005,7 +1005,7 @@ func (g Groups) Getlongpollserver(groupId int) (resp responses.GroupsGetlongpoll
 // Getlongpollsettings - Returns Long Poll notification settings
 // Parameters:
 //   * groupId - Community ID.
-func (g Groups) Getlongpollsettings(groupId int) (resp responses.GroupsGetlongpollsetting, err error) {
+func (g Groups) Getlongpollsettings(groupId int) (resp responses.GroupsGetlongpollsettings, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1023,7 +1023,7 @@ func (g Groups) Getlongpollsettings(groupId int) (resp responses.GroupsGetlongpo
 //   * count - Number of community members to return.
 //   * fields - List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
 //   * filter - *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
-func (g Groups) Getmembers(groupId string, sort string, offset int, count int, fields []objects.UsersFields, filter string) (resp responses.GroupsGetmember, err error) {
+func (g Groups) Getmembers(groupId string, sort string, offset int, count int, fields []objects.UsersFields, filter string) (resp responses.GroupsGetmembers, err error) {
 	params := map[string]interface{}{}
 
 	if groupId != "" {
@@ -1061,7 +1061,7 @@ func (g Groups) Getmembers(groupId string, sort string, offset int, count int, f
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of results to return.
 //   * fields - Profile fields to return.
-func (g Groups) Getrequests(groupId int, offset int, count int, fields []objects.UsersFields) (resp responses.GroupsGetrequest, err error) {
+func (g Groups) Getrequests(groupId int, offset int, count int, fields []objects.UsersFields) (resp responses.GroupsGetrequests, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1086,7 +1086,7 @@ func (g Groups) Getrequests(groupId int, offset int, count int, fields []objects
 // Getsettings - Returns community settings.
 // Parameters:
 //   * groupId - Community ID.
-func (g Groups) Getsettings(groupId int) (resp responses.GroupsGetsetting, err error) {
+func (g Groups) Getsettings(groupId int) (resp responses.GroupsGetsettings, err error) {
 	params := map[string]interface{}{}
 
 	params["group_id"] = groupId
@@ -1097,7 +1097,7 @@ func (g Groups) Getsettings(groupId int) (resp responses.GroupsGetsetting, err e
 }
 
 // Gettokenpermissions - NO DESCRIPTION IN JSON SCHEMA
-func (g Groups) Gettokenpermissions() (resp responses.GroupsGettokenpermissi, err error) {
+func (g Groups) Gettokenpermissions() (resp responses.GroupsGettokenpermissions, err error) {
 	params := map[string]interface{}{}
 
 	err = g.SendObjRequest("groups.getTokenPermissions", params, &resp)
@@ -1294,13 +1294,13 @@ func (g Groups) Search(q string, pType string, countryId int, cityId int, future
 // Parameters:
 //   * groupId - Community ID.
 //   * serverId - Server ID.
-//   * apiVersion - NO DESCRIPTION IN JSON SCHEMA
+//   * apiVersion - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * messageNew - A new incoming message has been received ('0' — disabled, '1' — enabled).
 //   * messageReply - A new outcoming message has been received ('0' — disabled, '1' — enabled).
 //   * messageAllow - Allowed messages notifications ('0' — disabled, '1' — enabled).
-//   * messageEdit - NO DESCRIPTION IN JSON SCHEMA
+//   * messageEdit - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * messageDeny - Denied messages notifications ('0' — disabled, '1' — enabled).
-//   * messageTypingState - NO DESCRIPTION IN JSON SCHEMA
+//   * messageTypingState - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * photoNew - New photos notifications ('0' — disabled, '1' — enabled).
 //   * audioNew - New audios notifications ('0' — disabled, '1' — enabled).
 //   * videoNew - New videos notifications ('0' — disabled, '1' — enabled).
@@ -1329,9 +1329,9 @@ func (g Groups) Search(q string, pType string, countryId int, cityId int, future
 //   * pollVoteNew - A vote in a public poll has been added ('0' — disabled, '1' — enabled).
 //   * groupJoin - Joined community notifications ('0' — disabled, '1' — enabled).
 //   * groupLeave - Left community notifications ('0' — disabled, '1' — enabled).
-//   * groupChangeSettings - NO DESCRIPTION IN JSON SCHEMA
-//   * groupChangePhoto - NO DESCRIPTION IN JSON SCHEMA
-//   * groupOfficersEdit - NO DESCRIPTION IN JSON SCHEMA
+//   * groupChangeSettings - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupChangePhoto - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupOfficersEdit - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * userBlock - User added to community blacklist
 //   * userUnblock - User removed from community blacklist
 //   * leadFormsNew - New form in lead forms
@@ -1437,13 +1437,13 @@ func (g Groups) Setcallbacksettings(groupId int, serverId int, apiVersion string
 // Parameters:
 //   * groupId - Community ID.
 //   * enabled - Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
-//   * apiVersion - NO DESCRIPTION IN JSON SCHEMA
+//   * apiVersion - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * messageNew - A new incoming message has been received ('0' — disabled, '1' — enabled).
 //   * messageReply - A new outcoming message has been received ('0' — disabled, '1' — enabled).
 //   * messageAllow - Allowed messages notifications ('0' — disabled, '1' — enabled).
 //   * messageDeny - Denied messages notifications ('0' — disabled, '1' — enabled).
 //   * messageEdit - A message has been edited ('0' — disabled, '1' — enabled).
-//   * messageTypingState - NO DESCRIPTION IN JSON SCHEMA
+//   * messageTypingState - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * photoNew - New photos notifications ('0' — disabled, '1' — enabled).
 //   * audioNew - New audios notifications ('0' — disabled, '1' — enabled).
 //   * videoNew - New videos notifications ('0' — disabled, '1' — enabled).
@@ -1472,9 +1472,9 @@ func (g Groups) Setcallbacksettings(groupId int, serverId int, apiVersion string
 //   * pollVoteNew - A vote in a public poll has been added ('0' — disabled, '1' — enabled).
 //   * groupJoin - Joined community notifications ('0' — disabled, '1' — enabled).
 //   * groupLeave - Left community notifications ('0' — disabled, '1' — enabled).
-//   * groupChangeSettings - NO DESCRIPTION IN JSON SCHEMA
-//   * groupChangePhoto - NO DESCRIPTION IN JSON SCHEMA
-//   * groupOfficersEdit - NO DESCRIPTION IN JSON SCHEMA
+//   * groupChangeSettings - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupChangePhoto - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupOfficersEdit - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * userBlock - User added to community blacklist
 //   * userUnblock - User removed from community blacklist
 func (g Groups) Setlongpollsettings(groupId int, enabled bool, apiVersion string, messageNew bool, messageReply bool, messageAllow bool, messageDeny bool, messageEdit bool, messageTypingState bool, photoNew bool, audioNew bool, videoNew bool, wallReplyNew bool, wallReplyEdit bool, wallReplyDelete bool, wallReplyRestore bool, wallPostNew bool, wallRepost bool, boardPostNew bool, boardPostEdit bool, boardPostRestore bool, boardPostDelete bool, photoCommentNew bool, photoCommentEdit bool, photoCommentDelete bool, photoCommentRestore bool, videoCommentNew bool, videoCommentEdit bool, videoCommentDelete bool, videoCommentRestore bool, marketCommentNew bool, marketCommentEdit bool, marketCommentDelete bool, marketCommentRestore bool, pollVoteNew bool, groupJoin bool, groupLeave bool, groupChangeSettings bool, groupChangePhoto bool, groupOfficersEdit bool, userBlock bool, userUnblock bool) (resp responses.Ok, err error) {
@@ -1573,8 +1573,8 @@ func (g Groups) Setlongpollsettings(groupId int, enabled bool, apiVersion string
 
 // Unban - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-//   * ownerId - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (g Groups) Unban(groupId int, ownerId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 

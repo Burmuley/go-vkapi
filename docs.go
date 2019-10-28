@@ -101,7 +101,7 @@ func (d Docs) Edit(ownerId int, docId int, title string, tags []string) (resp re
 // Parameters:
 //   * count - Number of documents to return. By default, all documents.
 //   * offset - Offset needed to return a specific subset of documents.
-//   * pType - NO DESCRIPTION IN JSON SCHEMA
+//   * pType - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * ownerId - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
 func (d Docs) Get(count int, offset int, pType int, ownerId int) (resp responses.DocsGet, err error) {
 	params := map[string]interface{}{}
@@ -163,7 +163,7 @@ func (d Docs) Getmessagesuploadserver(pType string, peerId int) (resp responses.
 // Gettypes - Returns documents types available for current user.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
-func (d Docs) Gettypes(ownerId int) (resp responses.DocsGetty, err error) {
+func (d Docs) Gettypes(ownerId int) (resp responses.DocsGettypes, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -208,7 +208,7 @@ func (d Docs) Getwalluploadserver(groupId int) (resp responses.BaseGetuploadserv
 //   * file - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
 //   * title - Document title.
 //   * tags - Document tags.
-func (d Docs) Save(file string, title string, tags string) (resp responses.DocsSav, err error) {
+func (d Docs) Save(file string, title string, tags string) (resp responses.DocsSave, err error) {
 	params := map[string]interface{}{}
 
 	params["file"] = file
@@ -229,7 +229,7 @@ func (d Docs) Save(file string, title string, tags string) (resp responses.DocsS
 // Search - Returns a list of documents matching the search criteria.
 // Parameters:
 //   * q - Search query string.
-//   * searchOwn - NO DESCRIPTION IN JSON SCHEMA
+//   * searchOwn - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of results to return.
 //   * offset - Offset needed to return a specific subset of results.
 func (d Docs) Search(q string, searchOwn bool, count int, offset int) (resp responses.DocsSearch, err error) {

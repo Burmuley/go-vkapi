@@ -36,8 +36,8 @@ type Appwidgets struct {
 
 // Update - Allows to update community app widget
 // Parameters:
-//   * code - NO DESCRIPTION IN JSON SCHEMA
-//   * pType - NO DESCRIPTION IN JSON SCHEMA
+//   * code - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * pType - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (a Appwidgets) Update(code string, pType string) (resp objects.BaseOkResponse, err error) {
 	params := map[string]interface{}{}
 

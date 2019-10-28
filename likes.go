@@ -66,7 +66,7 @@ func (l Likes) Add(pType objects.LikesType, ownerId int, itemId int, accessKey s
 //   * pType - Object type: 'post' — post on user or community wall, 'comment' — comment on a wall post, 'photo' — photo, 'audio' — audio, 'video' — video, 'note' — note, 'photo_comment' — comment on the photo, 'video_comment' — comment on the video, 'topic_comment' — comment in the discussion, 'sitepage' — page of the site where the [vk.com/dev/Like|Like widget] is installed
 //   * ownerId - ID of the user or community that owns the object.
 //   * itemId - Object ID.
-func (l Likes) Delete(pType objects.LikesType, ownerId int, itemId int) (resp responses.LikesDelet, err error) {
+func (l Likes) Delete(pType objects.LikesType, ownerId int, itemId int) (resp responses.LikesDelete, err error) {
 	params := map[string]interface{}{}
 
 	params["type"] = pType
@@ -93,7 +93,7 @@ func (l Likes) Delete(pType objects.LikesType, ownerId int, itemId int) (resp re
 //   * extended - Specifies whether extended information will be returned. '1' — to return extended information about users and communities from the 'Likes' list, '0' — to return no additional information (default)
 //   * offset - Offset needed to select a specific subset of users.
 //   * count - Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
-//   * skipOwn - NO DESCRIPTION IN JSON SCHEMA
+//   * skipOwn - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (l Likes) Getlist(pType objects.LikesType, ownerId int, itemId int, pageUrl string, filter string, friendsOnly int, offset int, count int, skipOwn bool) (resp responses.LikesGetlist, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
@@ -146,7 +146,7 @@ func (l Likes) Getlist(pType objects.LikesType, ownerId int, itemId int, pageUrl
 //   * extended - Specifies whether extended information will be returned. '1' — to return extended information about users and communities from the 'Likes' list, '0' — to return no additional information (default)
 //   * offset - Offset needed to select a specific subset of users.
 //   * count - Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
-//   * skipOwn - NO DESCRIPTION IN JSON SCHEMA
+//   * skipOwn - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (l Likes) GetlistExtended(pType objects.LikesType, ownerId int, itemId int, pageUrl string, filter string, friendsOnly int, offset int, count int, skipOwn bool) (resp responses.LikesGetlistExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"

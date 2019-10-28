@@ -32,8 +32,8 @@ import (
 
 // NewsfeedGetbannedExtended type represents `newsfeed_getBanned_extended_response` API response object
 type NewsfeedGetbannedExtended struct {
-	Groups   []*objects.UsersUserFull   `json:"groups"`
-	Profiles []*objects.GroupsGroupFull `json:"profiles"`
+	Groups   []objects.UsersUserFull   `json:"groups"`
+	Profiles []objects.GroupsGroupFull `json:"profiles"`
 }
 
 // NewsfeedGetbanned type represents `newsfeed_getBanned_response` API response object
@@ -42,56 +42,56 @@ type NewsfeedGetbanned struct {
 	Members []int `json:"members"`
 }
 
-// NewsfeedGetcomment type represents `newsfeed_getComments_response` API response object
-type NewsfeedGetcomment struct {
-	Groups   []*objects.GroupsGroupFull      `json:"groups"`
-	Items    []*objects.NewsfeedNewsfeedItem `json:"items"`
-	NextFrom string                          `json:"next_from"` // New from value
-	Profiles []*objects.UsersUserFull        `json:"profiles"`
+// NewsfeedGetcomments type represents `newsfeed_getComments_response` API response object
+type NewsfeedGetcomments struct {
+	Groups   []objects.GroupsGroupFull      `json:"groups"`
+	Items    []objects.NewsfeedNewsfeedItem `json:"items"`
+	NextFrom string                         `json:"next_from"` // New from value
+	Profiles []objects.UsersUserFull        `json:"profiles"`
 }
 
 // NewsfeedGetlistsExtended type represents `newsfeed_getLists_extended_response` API response object
 type NewsfeedGetlistsExtended struct {
-	Count int                         `json:"count"` // Total number
-	Items []*objects.NewsfeedListFull `json:"items"`
+	Count int                        `json:"count"` // Total number
+	Items []objects.NewsfeedListFull `json:"items"`
 }
 
-// NewsfeedGetlist type represents `newsfeed_getLists_response` API response object
-type NewsfeedGetlist struct {
-	Count int                     `json:"count"` // Total number
-	Items []*objects.NewsfeedList `json:"items"`
+// NewsfeedGetlists type represents `newsfeed_getLists_response` API response object
+type NewsfeedGetlists struct {
+	Count int                    `json:"count"` // Total number
+	Items []objects.NewsfeedList `json:"items"`
 }
 
-// NewsfeedGetmenti type represents `newsfeed_getMentions_response` API response object
-type NewsfeedGetmenti struct {
-	Count int                         `json:"count"` // Total number
-	Items []*objects.WallWallpostToId `json:"items"`
+// NewsfeedGetmentions type represents `newsfeed_getMentions_response` API response object
+type NewsfeedGetmentions struct {
+	Count int                        `json:"count"` // Total number
+	Items []objects.WallWallpostToId `json:"items"`
 }
 
 // NewsfeedGetrecommended type represents `newsfeed_getRecommended_response` API response object
 type NewsfeedGetrecommended struct {
-	Groups    []*objects.GroupsGroupFull      `json:"groups"`
-	Items     []*objects.NewsfeedNewsfeedItem `json:"items"`
-	NewOffset string                          `json:"new_offset"` // New offset value
-	NextFrom  string                          `json:"next_from"`  // Next from value
-	Profiles  []*objects.UsersUserFull        `json:"profiles"`
+	Groups    []objects.GroupsGroupFull      `json:"groups"`
+	Items     []objects.NewsfeedNewsfeedItem `json:"items"`
+	NewOffset string                         `json:"new_offset"` // New offset value
+	NextFrom  string                         `json:"next_from"`  // Next from value
+	Profiles  []objects.UsersUserFull        `json:"profiles"`
 }
 
-// NewsfeedGetsuggestedsourc type represents `newsfeed_getSuggestedSources_response` API response object
-type NewsfeedGetsuggestedsourc struct {
+// NewsfeedGetsuggestedsources type represents `newsfeed_getSuggestedSources_response` API response object
+type NewsfeedGetsuggestedsources struct {
 	Count int `json:"count"` // Total number
 	Items []struct {
-		*objects.GroupsGroupFull
-		*objects.UsersUserXtrType
+		objects.GroupsGroupFull
+		objects.UsersUserXtrType
 	} `json:"items"`
 }
 
 // NewsfeedGet type represents `newsfeed_get_response` API response object
 type NewsfeedGet struct {
-	Groups   []*objects.GroupsGroupFull      `json:"groups"`
-	Items    []*objects.NewsfeedNewsfeedItem `json:"items"`
-	NextFrom string                          `json:"next_from"` // New from value
-	Profiles []*objects.UsersUserFull        `json:"profiles"`
+	Groups   []objects.GroupsGroupFull      `json:"groups"`
+	Items    []objects.NewsfeedNewsfeedItem `json:"items"`
+	NextFrom string                         `json:"next_from"` // New from value
+	Profiles []objects.UsersUserFull        `json:"profiles"`
 }
 
 // NewsfeedSavelist type represents `newsfeed_saveList_response` API response object
@@ -99,16 +99,16 @@ type NewsfeedSavelist int // List ID
 
 // NewsfeedSearchExtended type represents `newsfeed_search_extended_response` API response object
 type NewsfeedSearchExtended struct {
-	Count      int                         `json:"count"` // Filtered number
-	Groups     []*objects.GroupsGroupFull  `json:"groups"`
-	Items      []*objects.WallWallpostFull `json:"items"`
-	NextFrom   string                      `json:"next_from"`
-	Profiles   []*objects.UsersUserFull    `json:"profiles"`
-	TotalCount int                         `json:"total_count"` // Total number
+	Count      int                        `json:"count"` // Filtered number
+	Groups     []objects.GroupsGroupFull  `json:"groups"`
+	Items      []objects.WallWallpostFull `json:"items"`
+	NextFrom   string                     `json:"next_from"`
+	Profiles   []objects.UsersUserFull    `json:"profiles"`
+	TotalCount int                        `json:"total_count"` // Total number
 }
 
 // NewsfeedSearch type represents `newsfeed_search_response` API response object
 type NewsfeedSearch struct {
-	Items            []*objects.WallWallpostFull `json:"items"`
-	SuggestedQueries []string                    `json:"suggested_queries"`
+	Items            []objects.WallWallpostFull `json:"items"`
+	SuggestedQueries []string                   `json:"suggested_queries"`
 }

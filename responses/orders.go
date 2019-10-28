@@ -30,29 +30,29 @@ import (
 // `orders` group of responses
 /////////////////////////////////////////////////////////////
 
-// OrdersCancelsubscripti type represents `orders_cancelSubscription_response` API response object
-type OrdersCancelsubscripti *objects.BaseBoolInt // Result
+// OrdersCancelsubscription type represents `orders_cancelSubscription_response` API response object
+type OrdersCancelsubscription objects.BaseBoolInt // Result
 
-// OrdersChangestat type represents `orders_changeState_response` API response object
-type OrdersChangestat string // New state
+// OrdersChangestate type represents `orders_changeState_response` API response object
+type OrdersChangestate string // New state
 
 // OrdersGetamount type represents `orders_getAmount_response` API response object
-type OrdersGetamount *objects.OrdersAmount
+type OrdersGetamount objects.OrdersAmount
 
 // OrdersGetbyid type represents `orders_getById_response` API response object
-type OrdersGetbyid *objects.OrdersOrder
+type OrdersGetbyid objects.OrdersOrder
 
 // OrdersGetusersubscriptionbyid type represents `orders_getUserSubscriptionById_response` API response object
-type OrdersGetusersubscriptionbyid *objects.OrdersSubscription
+type OrdersGetusersubscriptionbyid objects.OrdersSubscription
 
-// OrdersGetusersubscripti type represents `orders_getUserSubscriptions_response` API response object
-type OrdersGetusersubscripti struct {
-	Count int                           `json:"count"` // Total number
-	Items []*objects.OrdersSubscription `json:"items"`
+// OrdersGetusersubscriptions type represents `orders_getUserSubscriptions_response` API response object
+type OrdersGetusersubscriptions struct {
+	Count int                          `json:"count"` // Total number
+	Items []objects.OrdersSubscription `json:"items"`
 }
 
 // OrdersGet type represents `orders_get_response` API response object
-type OrdersGet *objects.OrdersOrder
+type OrdersGet objects.OrdersOrder
 
-// OrdersUpdatesubscripti type represents `orders_updateSubscription_response` API response object
-type OrdersUpdatesubscripti *objects.BaseBoolInt // Result
+// OrdersUpdatesubscription type represents `orders_updateSubscription_response` API response object
+type OrdersUpdatesubscription objects.BaseBoolInt // Result

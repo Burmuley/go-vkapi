@@ -32,42 +32,42 @@ import (
 
 // AppsGetcatalog type represents `apps_getCatalog_response` API response object
 type AppsGetcatalog struct {
-	Count int                `json:"count"` // Total number
-	Items []*objects.AppsApp `json:"items"`
+	Count int               `json:"count"` // Total number
+	Items []objects.AppsApp `json:"items"`
 }
 
 // AppsGetfriendslist type represents `apps_getFriendsList_response` API response object
 type AppsGetfriendslist struct {
-	Count int                      `json:"count"` // Total number
-	Items []*objects.UsersUserFull `json:"items"`
+	Count int                     `json:"count"` // Total number
+	Items []objects.UsersUserFull `json:"items"`
 }
 
 // AppsGetleaderboardExtended type represents `apps_getLeaderboard_extended_response` API response object
 type AppsGetleaderboardExtended struct {
-	Count    int                        `json:"count"` // Total number
-	Items    []*objects.AppsLeaderboard `json:"items"`
-	Profiles []*objects.UsersUserMin    `json:"profiles"`
+	Count    int                       `json:"count"` // Total number
+	Items    []objects.AppsLeaderboard `json:"items"`
+	Profiles []objects.UsersUserMin    `json:"profiles"`
 }
 
 // AppsGetleaderboard type represents `apps_getLeaderboard_response` API response object
 type AppsGetleaderboard struct {
-	Count int                        `json:"count"` // Total number
-	Items []*objects.AppsLeaderboard `json:"items"`
+	Count int                       `json:"count"` // Total number
+	Items []objects.AppsLeaderboard `json:"items"`
 }
 
-// AppsGetsc type represents `apps_getScopes_response` API response object
-type AppsGetsc struct {
-	Count int                  `json:"count"` // Total number
-	Items []*objects.AppsScope `json:"items"`
+// AppsGetscopes type represents `apps_getScopes_response` API response object
+type AppsGetscopes struct {
+	Count int                 `json:"count"` // Total number
+	Items []objects.AppsScope `json:"items"`
 }
 
-// AppsGetscor type represents `apps_getScore_response` API response object
-type AppsGetscor int // Score number
+// AppsGetscore type represents `apps_getScore_response` API response object
+type AppsGetscore int // Score number
 
 // AppsGet type represents `apps_get_response` API response object
 type AppsGet struct {
-	Count int                `json:"count"` // Total number
-	Items []*objects.AppsApp `json:"items"`
+	Count int               `json:"count"` // Total number
+	Items []objects.AppsApp `json:"items"`
 }
 
 // AppsSendrequest type represents `apps_sendRequest_response` API response object

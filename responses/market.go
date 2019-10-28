@@ -44,67 +44,67 @@ type MarketAdd struct {
 type MarketCreatecomment int // Comment ID
 
 // MarketDeletecomment type represents `market_deleteComment_response` API response object
-type MarketDeletecomment *objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
+type MarketDeletecomment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
 
 // MarketGetalbumbyid type represents `market_getAlbumById_response` API response object
 type MarketGetalbumbyid struct {
-	Count int                          `json:"count"` // Total number
-	Items []*objects.MarketMarketAlbum `json:"items"`
+	Count int                         `json:"count"` // Total number
+	Items []objects.MarketMarketAlbum `json:"items"`
 }
 
-// MarketGetalbum type represents `market_getAlbums_response` API response object
-type MarketGetalbum struct {
-	Count int                          `json:"count"` // Total number
-	Items []*objects.MarketMarketAlbum `json:"items"`
+// MarketGetalbums type represents `market_getAlbums_response` API response object
+type MarketGetalbums struct {
+	Count int                         `json:"count"` // Total number
+	Items []objects.MarketMarketAlbum `json:"items"`
 }
 
 // MarketGetbyidExtended type represents `market_getById_extended_response` API response object
 type MarketGetbyidExtended struct {
-	Count int                             `json:"count"` // Total number
-	Items []*objects.MarketMarketItemFull `json:"items"`
+	Count int                            `json:"count"` // Total number
+	Items []objects.MarketMarketItemFull `json:"items"`
 }
 
 // MarketGetbyid type represents `market_getById_response` API response object
 type MarketGetbyid struct {
-	Count int                         `json:"count"` // Total number
-	Items []*objects.MarketMarketItem `json:"items"`
-}
-
-// MarketGetcategori type represents `market_getCategories_response` API response object
-type MarketGetcategori struct {
-	Count int                             `json:"count"` // Total number
-	Items []*objects.MarketMarketCategory `json:"items"`
-}
-
-// MarketGetcomment type represents `market_getComments_response` API response object
-type MarketGetcomment struct {
 	Count int                        `json:"count"` // Total number
-	Items []*objects.WallWallComment `json:"items"`
+	Items []objects.MarketMarketItem `json:"items"`
+}
+
+// MarketGetcategories type represents `market_getCategories_response` API response object
+type MarketGetcategories struct {
+	Count int                            `json:"count"` // Total number
+	Items []objects.MarketMarketCategory `json:"items"`
+}
+
+// MarketGetcomments type represents `market_getComments_response` API response object
+type MarketGetcomments struct {
+	Count int                       `json:"count"` // Total number
+	Items []objects.WallWallComment `json:"items"`
 }
 
 // MarketGetExtended type represents `market_get_extended_response` API response object
 type MarketGetExtended struct {
-	Count int                             `json:"count"` // Total number
-	Items []*objects.MarketMarketItemFull `json:"items"`
+	Count int                            `json:"count"` // Total number
+	Items []objects.MarketMarketItemFull `json:"items"`
 }
 
 // MarketGet type represents `market_get_response` API response object
 type MarketGet struct {
-	Count int                         `json:"count"` // Total number
-	Items []*objects.MarketMarketItem `json:"items"`
+	Count int                        `json:"count"` // Total number
+	Items []objects.MarketMarketItem `json:"items"`
 }
 
 // MarketRestorecomment type represents `market_restoreComment_response` API response object
-type MarketRestorecomment *objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
+type MarketRestorecomment objects.BaseBoolInt // Returns 1 if request has been processed successfully (0 if the comment is not found)
 
 // MarketSearchExtended type represents `market_search_extended_response` API response object
 type MarketSearchExtended struct {
-	Count int                             `json:"count"` // Total number
-	Items []*objects.MarketMarketItemFull `json:"items"`
+	Count int                            `json:"count"` // Total number
+	Items []objects.MarketMarketItemFull `json:"items"`
 }
 
 // MarketSearch type represents `market_search_response` API response object
 type MarketSearch struct {
-	Count int                         `json:"count"` // Total number
-	Items []*objects.MarketMarketItem `json:"items"`
+	Count int                        `json:"count"` // Total number
+	Items []objects.MarketMarketItem `json:"items"`
 }

@@ -31,7 +31,7 @@ import (
 /////////////////////////////////////////////////////////////
 
 // BaseBool type represents `base_bool_response` API response object
-type BaseBool *objects.BaseBoolInt
+type BaseBool objects.BaseBoolInt
 
 // BaseGetuploadserver type represents `base_getUploadServer_response` API response object
-type BaseGetuploadserver *objects.BaseUploadServer
+type BaseGetuploadserver objects.BaseUploadServer

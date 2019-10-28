@@ -38,8 +38,8 @@ type Notes struct {
 // Parameters:
 //   * title - Note title.
 //   * text - Note text.
-//   * privacyView - NO DESCRIPTION IN JSON SCHEMA
-//   * privacyComment - NO DESCRIPTION IN JSON SCHEMA
+//   * privacyView - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * privacyComment - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Notes) Add(title string, text string, privacyView []string, privacyComment []string) (resp responses.NotesAdd, err error) {
 	params := map[string]interface{}{}
 
@@ -66,7 +66,7 @@ func (n Notes) Add(title string, text string, privacyView []string, privacyComme
 //   * ownerId - Note owner ID.
 //   * replyTo - ID of the user to whom the reply is addressed (if the comment is a reply to another comment).
 //   * message - Comment text.
-//   * guid - NO DESCRIPTION IN JSON SCHEMA
+//   * guid - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Notes) Createcomment(noteId int, ownerId int, replyTo int, message string, guid string) (resp responses.NotesCreatecomment, err error) {
 	params := map[string]interface{}{}
 
@@ -127,8 +127,8 @@ func (n Notes) Deletecomment(commentId int, ownerId int) (resp responses.Ok, err
 //   * noteId - Note ID.
 //   * title - Note title.
 //   * text - Note text.
-//   * privacyView - NO DESCRIPTION IN JSON SCHEMA
-//   * privacyComment - NO DESCRIPTION IN JSON SCHEMA
+//   * privacyView - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * privacyComment - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Notes) Edit(noteId int, title string, text string, privacyView []string, privacyComment []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -176,9 +176,9 @@ func (n Notes) Editcomment(commentId int, ownerId int, message string) (resp res
 // Parameters:
 //   * noteIds - Note IDs.
 //   * userId - Note owner ID.
-//   * offset - NO DESCRIPTION IN JSON SCHEMA
+//   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of notes to return.
-//   * sort - NO DESCRIPTION IN JSON SCHEMA
+//   * sort - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Notes) Get(noteIds []int, userId int, offset int, count int, sort int) (resp responses.NotesGet, err error) {
 	params := map[string]interface{}{}
 
@@ -211,7 +211,7 @@ func (n Notes) Get(noteIds []int, userId int, offset int, count int, sort int) (
 // Parameters:
 //   * noteId - Note ID.
 //   * ownerId - Note owner ID.
-//   * needWiki - NO DESCRIPTION IN JSON SCHEMA
+//   * needWiki - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (n Notes) Getbyid(noteId int, ownerId int, needWiki bool) (resp responses.NotesGetbyid, err error) {
 	params := map[string]interface{}{}
 
@@ -232,10 +232,10 @@ func (n Notes) Getbyid(noteId int, ownerId int, needWiki bool) (resp responses.N
 // Parameters:
 //   * noteId - Note ID.
 //   * ownerId - Note owner ID.
-//   * sort - NO DESCRIPTION IN JSON SCHEMA
-//   * offset - NO DESCRIPTION IN JSON SCHEMA
+//   * sort - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of comments to return.
-func (n Notes) Getcomments(noteId int, ownerId int, sort int, offset int, count int) (resp responses.NotesGetcomment, err error) {
+func (n Notes) Getcomments(noteId int, ownerId int, sort int, offset int, count int) (resp responses.NotesGetcomments, err error) {
 	params := map[string]interface{}{}
 
 	params["note_id"] = noteId

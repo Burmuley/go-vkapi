@@ -28,13 +28,13 @@ package objects
 
 // GiftsGift type represents `gifts_gift` API object
 type GiftsGift struct {
-	Date     int               `json:"date"`    // Date when gist has been sent in Unixtime
-	FromId   int               `json:"from_id"` // Gift sender ID
-	Gift     *GiftsLayout      `json:"gift"`
-	GiftHash string            `json:"gift_hash"` // Hash
-	Id       int               `json:"id"`        // Gift ID
-	Message  string            `json:"message"`   // Comment text
-	Privacy  *GiftsGiftPrivacy `json:"privacy"`
+	Date     int              `json:"date"`    // Date when gist has been sent in Unixtime
+	FromId   int              `json:"from_id"` // Gift sender ID
+	Gift     GiftsLayout      `json:"gift"`
+	GiftHash string           `json:"gift_hash"` // Hash
+	Id       int              `json:"id"`        // Gift ID
+	Message  string           `json:"message"`   // Comment text
+	Privacy  GiftsGiftPrivacy `json:"privacy"`
 }
 
 // GiftsGiftPrivacy type represents `gifts_gift_privacy` API object

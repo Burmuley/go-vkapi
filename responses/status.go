@@ -31,4 +31,4 @@ import (
 /////////////////////////////////////////////////////////////
 
 // StatusGet type represents `status_get_response` API response object
-type StatusGet *objects.StatusStatus
+type StatusGet objects.StatusStatus

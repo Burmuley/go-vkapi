@@ -28,11 +28,11 @@ package objects
 
 // FriendsFriendStatus type represents `friends_friend_status` API object
 type FriendsFriendStatus struct {
-	FriendStatus   *FriendsFriendStatusStatus `json:"friend_status"`
-	ReadState      *BaseBoolInt               `json:"read_state"`      // Information whether request is unviewed
-	RequestMessage string                     `json:"request_message"` // Message sent with request
-	Sign           string                     `json:"sign"`            // MD5 hash for the result validation
-	UserId         int                        `json:"user_id"`         // User ID
+	FriendStatus   FriendsFriendStatusStatus `json:"friend_status"`
+	ReadState      BaseBoolInt               `json:"read_state"`      // Information whether request is unviewed
+	RequestMessage string                    `json:"request_message"` // Message sent with request
+	Sign           string                    `json:"sign"`            // MD5 hash for the result validation
+	UserId         int                       `json:"user_id"`         // User ID
 }
 
 // FriendsFriendStatusStatus type represents `friends_friend_status_status` API object
@@ -53,9 +53,9 @@ type FriendsMutualFriend struct {
 
 // FriendsRequests type represents `friends_requests` API object
 type FriendsRequests struct {
-	From   string                 `json:"from"` // ID of the user by whom friend has been suggested
-	Mutual *FriendsRequestsMutual `json:"mutual"`
-	UserId int                    `json:"user_id"` // User ID
+	From   string                `json:"from"` // ID of the user by whom friend has been suggested
+	Mutual FriendsRequestsMutual `json:"mutual"`
+	UserId int                   `json:"user_id"` // User ID
 }
 
 // FriendsRequestsMutual type represents `friends_requests_mutual` API object
@@ -66,20 +66,18 @@ type FriendsRequestsMutual struct {
 
 // FriendsRequestsXtrMessage type represents `friends_requests_xtr_message` API object
 type FriendsRequestsXtrMessage struct {
-	From    string                 `json:"from"`    // ID of the user by whom friend has been suggested
-	Message string                 `json:"message"` // Message sent with a request
-	Mutual  *FriendsRequestsMutual `json:"mutual"`
-	UserId  int                    `json:"user_id"` // User ID
+	From    string                `json:"from"`    // ID of the user by whom friend has been suggested
+	Message string                `json:"message"` // Message sent with a request
+	Mutual  FriendsRequestsMutual `json:"mutual"`
+	UserId  int                   `json:"user_id"` // User ID
 }
 
 // FriendsUserXtrLists type represents `friends_user_xtr_lists` API object
 type FriendsUserXtrLists struct {
-	Usersuserfull *UsersUserFull `json:"Usersuserfull"`
-	Lists         []int          `json:"lists"`
+	UsersUserFull
 }
 
 // FriendsUserXtrPhone type represents `friends_user_xtr_phone` API object
 type FriendsUserXtrPhone struct {
-	Usersuserfull *UsersUserFull `json:"Usersuserfull"`
-	Phone         string         `json:"phone"` // User phone
+	UsersUserFull
 }

@@ -213,7 +213,7 @@ func (s Stories) Getphotouploadserver(addToNews bool, userIds []int, replyToStor
 //   * accessKey - Access key for the private object.
 //   * extended - '1' — to return additional fields for users and communities. Default value is 0.
 //   * fields - Additional fields to return
-func (s Stories) Getreplies(ownerId int, storyId int, accessKey string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetrepli, err error) {
+func (s Stories) Getreplies(ownerId int, storyId int, accessKey string, fields []objects.BaseUserGroupFields) (resp responses.StoriesGetreplies, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -266,7 +266,7 @@ func (s Stories) GetrepliesExtended(ownerId int, storyId int, accessKey string, 
 // Parameters:
 //   * ownerId - Story owner ID.
 //   * storyId - Story ID.
-func (s Stories) Getstats(ownerId int, storyId int) (resp responses.StoriesGetstat, err error) {
+func (s Stories) Getstats(ownerId int, storyId int) (resp responses.StoriesGetstats, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -319,7 +319,7 @@ func (s Stories) Getvideouploadserver(addToNews bool, userIds []int, replyToStor
 //   * count - Maximum number of results.
 //   * offset - Offset needed to return a specific subset of results.
 //   * extended - '1' — to return detailed information about photos
-func (s Stories) Getviewers(ownerId int, storyId int, count int, offset int) (resp responses.StoriesGetviewer, err error) {
+func (s Stories) Getviewers(ownerId int, storyId int, count int, offset int) (resp responses.StoriesGetviewers, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -371,7 +371,7 @@ func (s Stories) GetviewersExtended(ownerId int, storyId int, count int, offset 
 // Hideallreplies - Hides all replies in the last 24 hours from the user to current user's stories.
 // Parameters:
 //   * ownerId - ID of the user whose replies should be hidden.
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (s Stories) Hideallreplies(ownerId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 

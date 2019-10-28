@@ -31,16 +31,16 @@ import (
 /////////////////////////////////////////////////////////////
 
 // LeadsCheckuser type represents `leads_checkUser_response` API response object
-type LeadsCheckuser *objects.LeadsChecked
+type LeadsCheckuser objects.LeadsChecked
 
-// LeadsComplet type represents `leads_complete_response` API response object
-type LeadsComplet *objects.LeadsComplete
+// LeadsComplete type represents `leads_complete_response` API response object
+type LeadsComplete objects.LeadsComplete
 
-// LeadsGetstat type represents `leads_getStats_response` API response object
-type LeadsGetstat *objects.LeadsLead
+// LeadsGetstats type represents `leads_getStats_response` API response object
+type LeadsGetstats objects.LeadsLead
 
-// LeadsGetuser type represents `leads_getUsers_response` API response object
-type LeadsGetuser *objects.LeadsEntry
+// LeadsGetusers type represents `leads_getUsers_response` API response object
+type LeadsGetusers objects.LeadsEntry
 
 // LeadsMetrichit type represents `leads_metricHit_response` API response object
 type LeadsMetrichit struct {
@@ -49,4 +49,4 @@ type LeadsMetrichit struct {
 }
 
 // LeadsStart type represents `leads_start_response` API response object
-type LeadsStart *objects.LeadsStart
+type LeadsStart objects.LeadsStart

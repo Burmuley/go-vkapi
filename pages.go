@@ -54,7 +54,7 @@ func (p Pages) Clearcache(url string) (resp responses.Ok, err error) {
 //   * global - '1' — to return information about a global wiki page
 //   * sitePreview - '1' — resulting wiki page is a preview for the attached link
 //   * title - Wiki page title.
-//   * needSource - NO DESCRIPTION IN JSON SCHEMA
+//   * needSource - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * needHtml - '1' — to return the page as HTML,
 func (p Pages) Get(ownerId int, pageId int, global bool, sitePreview bool, title string, needSource bool, needHtml bool) (resp responses.PagesGet, err error) {
 	params := map[string]interface{}{}
@@ -88,7 +88,7 @@ func (p Pages) Get(ownerId int, pageId int, global bool, sitePreview bool, title
 // Parameters:
 //   * pageId - Wiki page ID.
 //   * groupId - ID of the community that owns the wiki page.
-//   * userId - NO DESCRIPTION IN JSON SCHEMA
+//   * userId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (p Pages) Gethistory(pageId int, groupId int, userId int) (resp responses.PagesGethistory, err error) {
 	params := map[string]interface{}{}
 
@@ -110,7 +110,7 @@ func (p Pages) Gethistory(pageId int, groupId int, userId int) (resp responses.P
 // Gettitles - Returns a list of wiki pages in a group.
 // Parameters:
 //   * groupId - ID of the community that owns the wiki page.
-func (p Pages) Gettitles(groupId int) (resp responses.PagesGettitl, err error) {
+func (p Pages) Gettitles(groupId int) (resp responses.PagesGettitles, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -124,11 +124,11 @@ func (p Pages) Gettitles(groupId int) (resp responses.PagesGettitl, err error) {
 
 // Getversion - Returns the text of one of the previous versions of a wiki page.
 // Parameters:
-//   * versionId - NO DESCRIPTION IN JSON SCHEMA
+//   * versionId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * groupId - ID of the community that owns the wiki page.
-//   * userId - NO DESCRIPTION IN JSON SCHEMA
+//   * userId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * needHtml - '1' — to return the page as HTML
-func (p Pages) Getversion(versionId int, groupId int, userId int, needHtml bool) (resp responses.PagesGetversi, err error) {
+func (p Pages) Getversion(versionId int, groupId int, userId int, needHtml bool) (resp responses.PagesGetversion, err error) {
 	params := map[string]interface{}{}
 
 	params["version_id"] = versionId
@@ -173,7 +173,7 @@ func (p Pages) Parsewiki(text string, groupId int) (resp responses.PagesParsewik
 //   * groupId - ID of the community that owns the wiki page.
 //   * userId - User ID
 //   * title - Wiki page title.
-func (p Pages) Save(text string, pageId int, groupId int, userId int, title string) (resp responses.PagesSav, err error) {
+func (p Pages) Save(text string, pageId int, groupId int, userId int, title string) (resp responses.PagesSave, err error) {
 	params := map[string]interface{}{}
 
 	if text != "" {
@@ -205,10 +205,10 @@ func (p Pages) Save(text string, pageId int, groupId int, userId int, title stri
 // Parameters:
 //   * pageId - Wiki page ID.
 //   * groupId - ID of the community that owns the wiki page.
-//   * userId - NO DESCRIPTION IN JSON SCHEMA
+//   * userId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * view - Who can view the wiki page: '1' — only community members, '2' — all users can view the page, '0' — only community managers
 //   * edit - Who can edit the wiki page: '1' — only community members, '2' — all users can edit the page, '0' — only community managers
-func (p Pages) Saveaccess(pageId int, groupId int, userId int, view int, edit int) (resp responses.PagesSaveacc, err error) {
+func (p Pages) Saveaccess(pageId int, groupId int, userId int, view int, edit int) (resp responses.PagesSaveaccess, err error) {
 	params := map[string]interface{}{}
 
 	params["page_id"] = pageId

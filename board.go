@@ -222,12 +222,12 @@ func (b Board) Fixtopic(groupId int, topicId int) (resp responses.Ok, err error)
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
 //   * needLikes - '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
-//   * startCommentId - NO DESCRIPTION IN JSON SCHEMA
+//   * startCommentId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of comments.
 //   * count - Number of comments to return.
 //   * extended - '1' — to return information about users who posted comments, '0' — to return no additional fields (default)
 //   * sort - Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
-func (b Board) Getcomments(groupId int, topicId int, needLikes bool, startCommentId int, offset int, count int, sort string) (resp responses.BoardGetcomment, err error) {
+func (b Board) Getcomments(groupId int, topicId int, needLikes bool, startCommentId int, offset int, count int, sort string) (resp responses.BoardGetcomments, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -263,7 +263,7 @@ func (b Board) Getcomments(groupId int, topicId int, needLikes bool, startCommen
 //   * groupId - ID of the community that owns the discussion board.
 //   * topicId - Topic ID.
 //   * needLikes - '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
-//   * startCommentId - NO DESCRIPTION IN JSON SCHEMA
+//   * startCommentId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - Offset needed to return a specific subset of comments.
 //   * count - Number of comments to return.
 //   * extended - '1' — to return information about users who posted comments, '0' — to return no additional fields (default)
@@ -309,7 +309,7 @@ func (b Board) GetcommentsExtended(groupId int, topicId int, needLikes bool, sta
 //   * extended - '1' — to return information about users who created topics or who posted there last, '0' — to return no additional fields (default)
 //   * preview - '1' — to return the first comment in each topic,, '2' — to return the last comment in each topic,, '0' — to return no comments. By default: '0'.
 //   * previewLength - Number of characters after which to truncate the previewed comment. To preview the full comment, specify '0'.
-func (b Board) Gettopics(groupId int, topicIds []int, order int, offset int, count int, preview int, previewLength int) (resp responses.BoardGettopic, err error) {
+func (b Board) Gettopics(groupId int, topicIds []int, order int, offset int, count int, preview int, previewLength int) (resp responses.BoardGettopics, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 

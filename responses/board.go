@@ -38,33 +38,33 @@ type BoardCreatecomment int // Comment ID
 
 // BoardGetcommentsExtended type represents `board_getComments_extended_response` API response object
 type BoardGetcommentsExtended struct {
-	Count    int                          `json:"count"` // Total number
-	Groups   []*objects.GroupsGroup       `json:"groups"`
-	Items    []*objects.BoardTopicComment `json:"items"`
-	Poll     *objects.BoardTopicPoll      `json:"poll"`
-	Profiles []*objects.UsersUser         `json:"profiles"`
+	Count    int                         `json:"count"` // Total number
+	Groups   []objects.GroupsGroup       `json:"groups"`
+	Items    []objects.BoardTopicComment `json:"items"`
+	Poll     objects.BoardTopicPoll      `json:"poll"`
+	Profiles []objects.UsersUser         `json:"profiles"`
 }
 
-// BoardGetcomment type represents `board_getComments_response` API response object
-type BoardGetcomment struct {
-	Count int                          `json:"count"` // Total number
-	Items []*objects.BoardTopicComment `json:"items"`
-	Poll  *objects.BoardTopicPoll      `json:"poll"`
+// BoardGetcomments type represents `board_getComments_response` API response object
+type BoardGetcomments struct {
+	Count int                         `json:"count"` // Total number
+	Items []objects.BoardTopicComment `json:"items"`
+	Poll  objects.BoardTopicPoll      `json:"poll"`
 }
 
 // BoardGettopicsExtended type represents `board_getTopics_extended_response` API response object
 type BoardGettopicsExtended struct {
-	CanAddTopics *objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
-	Count        int                        `json:"count"`          // Total number
-	DefaultOrder *objects.BoardDefaultOrder `json:"default_order"`
-	Items        []*objects.BoardTopic      `json:"items"`
-	Profiles     []*objects.UsersUserMin    `json:"profiles"`
+	CanAddTopics objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
+	Count        int                       `json:"count"`          // Total number
+	DefaultOrder objects.BoardDefaultOrder `json:"default_order"`
+	Items        []objects.BoardTopic      `json:"items"`
+	Profiles     []objects.UsersUserMin    `json:"profiles"`
 }
 
-// BoardGettopic type represents `board_getTopics_response` API response object
-type BoardGettopic struct {
-	CanAddTopics *objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
-	Count        int                        `json:"count"`          // Total number
-	DefaultOrder *objects.BoardDefaultOrder `json:"default_order"`
-	Items        []*objects.BoardTopic      `json:"items"`
+// BoardGettopics type represents `board_getTopics_response` API response object
+type BoardGettopics struct {
+	CanAddTopics objects.BaseBoolInt       `json:"can_add_topics"` // Information whether current user can add topic
+	Count        int                       `json:"count"`          // Total number
+	DefaultOrder objects.BoardDefaultOrder `json:"default_order"`
+	Items        []objects.BoardTopic      `json:"items"`
 }

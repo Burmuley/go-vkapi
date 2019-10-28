@@ -56,7 +56,7 @@ func (m Messages) Addchatuser(chatId int, userId int) (resp responses.Ok, err er
 // Allowmessagesfromgroup - Allows sending messages from community to the current user.
 // Parameters:
 //   * groupId - Group ID.
-//   * key - NO DESCRIPTION IN JSON SCHEMA
+//   * key - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Messages) Allowmessagesfromgroup(groupId int, key string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -97,7 +97,7 @@ func (m Messages) Createchat(userIds []int, title string) (resp responses.Messag
 //   * spam - '1' — to mark message as spam.
 //   * groupId - Group ID (for group messages with user access token)
 //   * deleteForAll - '1' — delete message for for all.
-func (m Messages) Delete(messageIds []int, spam bool, groupId int, deleteForAll bool) (resp responses.MessagesDelet, err error) {
+func (m Messages) Delete(messageIds []int, spam bool, groupId int, deleteForAll bool) (resp responses.MessagesDelete, err error) {
 	params := map[string]interface{}{}
 
 	if len(messageIds) > 0 {
@@ -120,8 +120,8 @@ func (m Messages) Delete(messageIds []int, spam bool, groupId int, deleteForAll 
 // Deletechatphoto - Deletes a chat's cover picture.
 // Parameters:
 //   * chatId - Chat ID.
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
-func (m Messages) Deletechatphoto(chatId int, groupId int) (resp responses.MessagesDeletechatphot, err error) {
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (m Messages) Deletechatphoto(chatId int, groupId int) (resp responses.MessagesDeletechatphoto, err error) {
 	params := map[string]interface{}{}
 
 	params["chat_id"] = chatId
@@ -140,7 +140,7 @@ func (m Messages) Deletechatphoto(chatId int, groupId int) (resp responses.Messa
 //   * userId - User ID. To clear a chat history use 'chat_id'
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
 //   * groupId - Group ID (for group messages with user access token)
-func (m Messages) Deleteconversation(userId int, peerId int, groupId int) (resp responses.MessagesDeleteconversati, err error) {
+func (m Messages) Deleteconversation(userId int, peerId int, groupId int) (resp responses.MessagesDeleteconversation, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -177,14 +177,14 @@ func (m Messages) Denymessagesfromgroup(groupId int) (resp responses.Ok, err err
 // Parameters:
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
 //   * message - (Required if 'attachments' is not set.) Text of the message.
-//   * messageId - NO DESCRIPTION IN JSON SCHEMA
+//   * messageId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * lat - Geographical latitude of a check-in, in degrees (from -90 to 90).
 //   * long - Geographical longitude of a check-in, in degrees (from -180 to 180).
 //   * attachment - (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
 //   * keepForwardMessages - '1' — to keep forwarded, messages.
 //   * keepSnippets - '1' — to keep attached snippets.
 //   * groupId - Group ID (for group messages with user access token)
-//   * dontParseLinks - NO DESCRIPTION IN JSON SCHEMA
+//   * dontParseLinks - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Messages) Edit(peerId int, message string, messageId int, lat float64, long float64, attachment string, keepForwardMessages bool, keepSnippets bool, groupId int, dontParseLinks bool) (resp responses.MessagesEdit, err error) {
 	params := map[string]interface{}{}
 
@@ -328,7 +328,7 @@ func (m Messages) GetbyidExtended(messageIds []int, previewLength int, fields []
 
 // Getchatpreview - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * peerId - NO DESCRIPTION IN JSON SCHEMA
+//   * peerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * link - Invitation link.
 //   * fields - Profile fields to return.
 func (m Messages) Getchatpreview(peerId int, link string, fields []objects.UsersFields) (resp responses.MessagesGetchatpreview, err error) {
@@ -356,7 +356,7 @@ func (m Messages) Getchatpreview(peerId int, link string, fields []objects.Users
 //   * peerId - Peer ID.
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m Messages) Getconversationmembers(peerId int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetconversationmember, err error) {
+func (m Messages) Getconversationmembers(peerId int, fields []objects.UsersFields, groupId int) (resp responses.MessagesGetconversationmembers, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -383,7 +383,7 @@ func (m Messages) Getconversationmembers(peerId int, fields []objects.UsersField
 //   * startMessageId - ID of the message from what to return dialogs.
 //   * fields - Profile and communities fields to return.
 //   * groupId - Group ID (for group messages with group access token)
-func (m Messages) Getconversations(offset int, count int, filter string, startMessageId int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetconversati, err error) {
+func (m Messages) Getconversations(offset int, count int, filter string, startMessageId int, fields []objects.BaseUserGroupFields, groupId int) (resp responses.MessagesGetconversations, err error) {
 	params := map[string]interface{}{}
 
 	if offset > 0 {
@@ -470,7 +470,7 @@ func (m Messages) GetconversationsbyidExtended(peerIds []int, fields []objects.B
 //   * offset - Offset needed to return a specific subset of messages.
 //   * count - Number of messages to return.
 //   * userId - ID of the user whose message history you want to return.
-//   * peerId - NO DESCRIPTION IN JSON SCHEMA
+//   * peerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * startMessageId - Starting message ID from which to return history.
 //   * rev - Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
 //   * extended - Information whether the response should be extended
@@ -525,9 +525,9 @@ func (m Messages) Gethistory(offset int, count int, userId int, peerId int, star
 //   * photoSizes - '1' — to return photo sizes in a
 //   * fields - Additional profile [vk.com/dev/fields|fields] to return.
 //   * groupId - Group ID (for group messages with group access token)
-//   * preserveOrder - NO DESCRIPTION IN JSON SCHEMA
-//   * maxForwardsLevel - NO DESCRIPTION IN JSON SCHEMA
-func (m Messages) Gethistoryattachments(peerId int, mediaType string, startFrom string, count int, photoSizes bool, fields []objects.UsersFields, groupId int, preserveOrder bool, maxForwardsLevel int) (resp responses.MessagesGethistoryattachment, err error) {
+//   * preserveOrder - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * maxForwardsLevel - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (m Messages) Gethistoryattachments(peerId int, mediaType string, startFrom string, count int, photoSizes bool, fields []objects.UsersFields, groupId int, preserveOrder bool, maxForwardsLevel int) (resp responses.MessagesGethistoryattachments, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -610,9 +610,9 @@ func (m Messages) Getlastactivity(userId int) (resp responses.MessagesGetlastact
 //   * msgsLimit - Maximum number of messages to return.
 //   * maxMsgId - Maximum ID of the message among existing ones in the local copy. Both messages received with API methods (for example, , ), and data received from a Long Poll server (events with code 4) are taken into account.
 //   * groupId - Group ID (for group messages with user access token)
-//   * lpVersion - NO DESCRIPTION IN JSON SCHEMA
-//   * lastN - NO DESCRIPTION IN JSON SCHEMA
-//   * credentials - NO DESCRIPTION IN JSON SCHEMA
+//   * lpVersion - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * lastN - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * credentials - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Messages) Getlongpollhistory(ts int, pts int, previewLength int, onlines bool, fields []objects.UsersFields, eventsLimit int, msgsLimit int, maxMsgId int, groupId int, lpVersion int, lastN int, credentials bool) (resp responses.MessagesGetlongpollhistory, err error) {
 	params := map[string]interface{}{}
 
@@ -812,8 +812,8 @@ func (m Messages) Markasread(messageIds []int, peerId int, startMessageId int, g
 // Pin - Pin a message.
 // Parameters:
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
-//   * messageId - NO DESCRIPTION IN JSON SCHEMA
-func (m Messages) Pin(peerId int, messageId int) (resp responses.MessagesPi, err error) {
+//   * messageId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+func (m Messages) Pin(peerId int, messageId int) (resp responses.MessagesPin, err error) {
 	params := map[string]interface{}{}
 
 	params["peer_id"] = peerId
@@ -831,7 +831,7 @@ func (m Messages) Pin(peerId int, messageId int) (resp responses.MessagesPi, err
 // Parameters:
 //   * chatId - Chat ID.
 //   * userId - ID of the user to be removed from the chat.
-//   * memberId - NO DESCRIPTION IN JSON SCHEMA
+//   * memberId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Messages) Removechatuser(chatId int, userId int, memberId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
@@ -876,8 +876,8 @@ func (m Messages) Restore(messageId int, groupId int) (resp responses.Ok, err er
 //   * previewLength - Number of characters after which to truncate a previewed message. To preview the full message, specify '0'. "NOTE: Messages are not truncated by default. Messages are truncated by words."
 //   * offset - Offset needed to return a specific subset of messages.
 //   * count - Number of messages to return.
-//   * extended - NO DESCRIPTION IN JSON SCHEMA
-//   * fields - NO DESCRIPTION IN JSON SCHEMA
+//   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * groupId - Group ID (for group messages with group access token)
 func (m Messages) Search(q string, peerId int, date int, previewLength int, offset int, count int, fields []string, groupId int) (resp responses.MessagesSearch, err error) {
 	params := map[string]interface{}{}
@@ -926,7 +926,7 @@ func (m Messages) Search(q string, peerId int, date int, previewLength int, offs
 //   * extended - '1' — return extra information about users and communities
 //   * fields - Profile fields to return.
 //   * groupId - Group ID (for group messages with user access token)
-func (m Messages) Searchconversations(q string, count int, fields []objects.UsersFields, groupId int) (resp responses.MessagesSearchconversati, err error) {
+func (m Messages) Searchconversations(q string, count int, fields []objects.UsersFields, groupId int) (resp responses.MessagesSearchconversations, err error) {
 	params := map[string]interface{}{}
 
 	if q != "" {
@@ -962,15 +962,15 @@ func (m Messages) Searchconversations(q string, count int, fields []objects.User
 //   * lat - Geographical latitude of a check-in, in degrees (from -90 to 90).
 //   * long - Geographical longitude of a check-in, in degrees (from -180 to 180).
 //   * attachment - (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
-//   * replyTo - NO DESCRIPTION IN JSON SCHEMA
+//   * replyTo - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * forwardMessages - ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
-//   * forward - NO DESCRIPTION IN JSON SCHEMA
+//   * forward - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * stickerId - Sticker id.
 //   * groupId - Group ID (for group messages with group access token)
-//   * keyboard - NO DESCRIPTION IN JSON SCHEMA
-//   * payload - NO DESCRIPTION IN JSON SCHEMA
-//   * dontParseLinks - NO DESCRIPTION IN JSON SCHEMA
-//   * disableMentions - NO DESCRIPTION IN JSON SCHEMA
+//   * keyboard - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * payload - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * dontParseLinks - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * disableMentions - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Messages) Send(userId int, randomId int, peerId int, domain string, chatId int, userIds []int, message string, lat float64, long float64, attachment string, replyTo int, forwardMessages []int, forward string, stickerId int, groupId int, keyboard objects.MessagesKeyboard, payload string, dontParseLinks bool, disableMentions bool) (resp responses.MessagesSend, err error) {
 	params := map[string]interface{}{}
 
@@ -1080,7 +1080,7 @@ func (m Messages) Setactivity(userId int, pType string, peerId int, groupId int)
 // Setchatphoto - Sets a previously-uploaded picture as the cover picture of a chat.
 // Parameters:
 //   * file - Upload URL from the 'response' field returned by the [vk.com/dev/photos.getChatUploadServer|photos.getChatUploadServer] method upon successfully uploading an image.
-func (m Messages) Setchatphoto(file string) (resp responses.MessagesSetchatphot, err error) {
+func (m Messages) Setchatphoto(file string) (resp responses.MessagesSetchatphoto, err error) {
 	params := map[string]interface{}{}
 
 	params["file"] = file
@@ -1092,8 +1092,8 @@ func (m Messages) Setchatphoto(file string) (resp responses.MessagesSetchatphot,
 
 // Unpin - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * peerId - NO DESCRIPTION IN JSON SCHEMA
-//   * groupId - NO DESCRIPTION IN JSON SCHEMA
+//   * peerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
+//   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (m Messages) Unpin(peerId int, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 

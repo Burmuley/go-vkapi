@@ -28,14 +28,14 @@ package objects
 
 // FaveBookmark type represents `fave_bookmark` API object
 type FaveBookmark struct {
-	AddedDate int               `json:"added_date"` // Timestamp, when this item was bookmarked
-	Link      *BaseLink         `json:"link"`
-	Post      *WallWallpostFull `json:"post"`
-	Product   *MarketMarketItem `json:"product"`
-	Seen      bool              `json:"seen"` // Has user seen this item
-	Tags      []*FaveTag        `json:"tags"`
-	Type      *FaveBookmarkType `json:"type"` // Item type
-	Video     *VideoVideo       `json:"video"`
+	AddedDate int              `json:"added_date"` // Timestamp, when this item was bookmarked
+	Link      BaseLink         `json:"link"`
+	Post      WallWallpostFull `json:"post"`
+	Product   MarketMarketItem `json:"product"`
+	Seen      bool             `json:"seen"` // Has user seen this item
+	Tags      []FaveTag        `json:"tags"`
+	Type      FaveBookmarkType `json:"type"` // Item type
+	Video     VideoVideo       `json:"video"`
 }
 
 // FaveBookmarkType type represents `fave_bookmark_type` API object
@@ -43,12 +43,12 @@ type FaveBookmarkType string
 
 // FavePage type represents `fave_page` API object
 type FavePage struct {
-	Description string           `json:"description"` // Some info about user or group
-	Group       *GroupsGroupFull `json:"group"`
-	Tags        []*FaveTag       `json:"tags"`
-	Type        *FavePageType    `json:"type"`         // Item type
-	UpdatedDate int              `json:"updated_date"` // Timestamp, when this page was bookmarked
-	User        *UsersUserFull   `json:"user"`
+	Description string          `json:"description"` // Some info about user or group
+	Group       GroupsGroupFull `json:"group"`
+	Tags        []FaveTag       `json:"tags"`
+	Type        FavePageType    `json:"type"`         // Item type
+	UpdatedDate int             `json:"updated_date"` // Timestamp, when this page was bookmarked
+	User        UsersUserFull   `json:"user"`
 }
 
 // FavePageType type represents `fave_page_type` API object

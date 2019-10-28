@@ -45,7 +45,7 @@ func (s Streaming) Getserverurl() (resp responses.StreamingGetserverurl, err err
 
 // Setsettings - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
-//   * monthlyTier - NO DESCRIPTION IN JSON SCHEMA
+//   * monthlyTier - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 func (s Streaming) Setsettings(monthlyTier string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
