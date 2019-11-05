@@ -45,7 +45,7 @@ type Stats struct {
 //   * filters - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * statsGroups - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * extended - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (s Stats) Get(groupId int, appId int, timestampFrom int, timestampTo int, interval string, intervalsCount int, filters []string, statsGroups []string) (resp responses.StatsGet, err error) {
+func (s *Stats) Get(groupId int, appId int, timestampFrom int, timestampTo int, interval string, intervalsCount int, filters []string, statsGroups []string) (resp responses.StatsGet, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -89,7 +89,7 @@ func (s Stats) Get(groupId int, appId int, timestampFrom int, timestampTo int, i
 // Parameters:
 //   * ownerId - post owner community id. Specify with "-" sign.
 //   * postId - wall post id. Note that stats are available only for '300' last (newest) posts on a community wall.
-func (s Stats) Getpostreach(ownerId string, postId int) (resp responses.StatsGetpostreach, err error) {
+func (s *Stats) Getpostreach(ownerId string, postId int) (resp responses.StatsGetpostreach, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -104,7 +104,7 @@ func (s Stats) Getpostreach(ownerId string, postId int) (resp responses.StatsGet
 // Trackvisitor - NO DESCRIPTION IN JSON SCHEMA
 // Parameters:
 //   * id - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (s Stats) Trackvisitor(id string) (resp responses.Ok, err error) {
+func (s *Stats) Trackvisitor(id string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["id"] = id

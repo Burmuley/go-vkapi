@@ -39,7 +39,7 @@ type Docs struct {
 //   * ownerId - ID of the user or community that owns the document. Use a negative value to designate a community ID.
 //   * docId - Document ID.
 //   * accessKey - Access key. This parameter is required if 'access_key' was returned with the document's data.
-func (d Docs) Add(ownerId int, docId int, accessKey string) (resp responses.DocsAdd, err error) {
+func (d *Docs) Add(ownerId int, docId int, accessKey string) (resp responses.DocsAdd, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -59,7 +59,7 @@ func (d Docs) Add(ownerId int, docId int, accessKey string) (resp responses.Docs
 // Parameters:
 //   * ownerId - ID of the user or community that owns the document. Use a negative value to designate a community ID.
 //   * docId - Document ID.
-func (d Docs) Delete(ownerId int, docId int) (resp responses.Ok, err error) {
+func (d *Docs) Delete(ownerId int, docId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -77,7 +77,7 @@ func (d Docs) Delete(ownerId int, docId int) (resp responses.Ok, err error) {
 //   * docId - Document ID.
 //   * title - Document title.
 //   * tags - Document tags.
-func (d Docs) Edit(ownerId int, docId int, title string, tags []string) (resp responses.Ok, err error) {
+func (d *Docs) Edit(ownerId int, docId int, title string, tags []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -103,7 +103,7 @@ func (d Docs) Edit(ownerId int, docId int, title string, tags []string) (resp re
 //   * offset - Offset needed to return a specific subset of documents.
 //   * pType - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * ownerId - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
-func (d Docs) Get(count int, offset int, pType int, ownerId int) (resp responses.DocsGet, err error) {
+func (d *Docs) Get(count int, offset int, pType int, ownerId int) (resp responses.DocsGet, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -130,7 +130,7 @@ func (d Docs) Get(count int, offset int, pType int, ownerId int) (resp responses
 // Getbyid - Returns information about documents by their IDs.
 // Parameters:
 //   * docs - Document IDs. Example: , "66748_91488,66748_91455",
-func (d Docs) Getbyid(docs []string) (resp responses.DocsGetbyid, err error) {
+func (d *Docs) Getbyid(docs []string) (resp responses.DocsGetbyid, err error) {
 	params := map[string]interface{}{}
 
 	params["docs"] = SliceToString(docs)
@@ -144,7 +144,7 @@ func (d Docs) Getbyid(docs []string) (resp responses.DocsGetbyid, err error) {
 // Parameters:
 //   * pType - Document type.
 //   * peerId - Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
-func (d Docs) Getmessagesuploadserver(pType string, peerId int) (resp responses.BaseGetuploadserver, err error) {
+func (d *Docs) Getmessagesuploadserver(pType string, peerId int) (resp responses.BaseGetuploadserver, err error) {
 	params := map[string]interface{}{}
 
 	if pType != "" {
@@ -163,7 +163,7 @@ func (d Docs) Getmessagesuploadserver(pType string, peerId int) (resp responses.
 // Gettypes - Returns documents types available for current user.
 // Parameters:
 //   * ownerId - ID of the user or community that owns the documents. Use a negative value to designate a community ID.
-func (d Docs) Gettypes(ownerId int) (resp responses.DocsGettypes, err error) {
+func (d *Docs) Gettypes(ownerId int) (resp responses.DocsGettypes, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -176,7 +176,7 @@ func (d Docs) Gettypes(ownerId int) (resp responses.DocsGettypes, err error) {
 // Getuploadserver - Returns the server address for document upload.
 // Parameters:
 //   * groupId - Community ID (if the document will be uploaded to the community).
-func (d Docs) Getuploadserver(groupId int) (resp responses.DocsGetuploadserver, err error) {
+func (d *Docs) Getuploadserver(groupId int) (resp responses.DocsGetuploadserver, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -191,7 +191,7 @@ func (d Docs) Getuploadserver(groupId int) (resp responses.DocsGetuploadserver, 
 // Getwalluploadserver - Returns the server address for document upload onto a user's or community's wall.
 // Parameters:
 //   * groupId - Community ID (if the document will be uploaded to the community).
-func (d Docs) Getwalluploadserver(groupId int) (resp responses.BaseGetuploadserver, err error) {
+func (d *Docs) Getwalluploadserver(groupId int) (resp responses.BaseGetuploadserver, err error) {
 	params := map[string]interface{}{}
 
 	if groupId > 0 {
@@ -208,7 +208,7 @@ func (d Docs) Getwalluploadserver(groupId int) (resp responses.BaseGetuploadserv
 //   * file - This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
 //   * title - Document title.
 //   * tags - Document tags.
-func (d Docs) Save(file string, title string, tags string) (resp responses.DocsSave, err error) {
+func (d *Docs) Save(file string, title string, tags string) (resp responses.DocsSave, err error) {
 	params := map[string]interface{}{}
 
 	params["file"] = file
@@ -232,7 +232,7 @@ func (d Docs) Save(file string, title string, tags string) (resp responses.DocsS
 //   * searchOwn - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - Number of results to return.
 //   * offset - Offset needed to return a specific subset of results.
-func (d Docs) Search(q string, searchOwn bool, count int, offset int) (resp responses.DocsSearch, err error) {
+func (d *Docs) Search(q string, searchOwn bool, count int, offset int) (resp responses.DocsSearch, err error) {
 	params := map[string]interface{}{}
 
 	params["q"] = q

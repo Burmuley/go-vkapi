@@ -41,7 +41,7 @@ type Polls struct {
 //   * pollId - Poll ID.
 //   * answerIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * isBoard - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Polls) Addvote(ownerId int, pollId int, answerIds []int, isBoard bool) (resp responses.PollsAddvote, err error) {
+func (p *Polls) Addvote(ownerId int, pollId int, answerIds []int, isBoard bool) (resp responses.PollsAddvote, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -69,7 +69,7 @@ func (p Polls) Addvote(ownerId int, pollId int, answerIds []int, isBoard bool) (
 //   * addAnswers - available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
 //   * photoId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * backgroundId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Polls) Create(question string, isAnonymous bool, isMultiple bool, endDate int, ownerId int, addAnswers string, photoId int, backgroundId string) (resp responses.PollsCreate, err error) {
+func (p *Polls) Create(question string, isAnonymous bool, isMultiple bool, endDate int, ownerId int, addAnswers string, photoId int, backgroundId string) (resp responses.PollsCreate, err error) {
 	params := map[string]interface{}{}
 
 	if question != "" {
@@ -111,7 +111,7 @@ func (p Polls) Create(question string, isAnonymous bool, isMultiple bool, endDat
 //   * pollId - Poll ID.
 //   * answerId - Answer ID.
 //   * isBoard - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Polls) Deletevote(ownerId int, pollId int, answerId int, isBoard bool) (resp responses.PollsDeletevote, err error) {
+func (p *Polls) Deletevote(ownerId int, pollId int, answerId int, isBoard bool) (resp responses.PollsDeletevote, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -140,7 +140,7 @@ func (p Polls) Deletevote(ownerId int, pollId int, answerId int, isBoard bool) (
 //   * endDate - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * photoId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * backgroundId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Polls) Edit(ownerId int, pollId int, question string, addAnswers string, editAnswers string, deleteAnswers string, endDate int, photoId int, backgroundId string) (resp responses.Ok, err error) {
+func (p *Polls) Edit(ownerId int, pollId int, question string, addAnswers string, editAnswers string, deleteAnswers string, endDate int, photoId int, backgroundId string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -191,7 +191,7 @@ func (p Polls) Edit(ownerId int, pollId int, question string, addAnswers string,
 //   * friendsCount - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * fields - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * nameCase - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Polls) Getbyid(ownerId int, isBoard bool, pollId int, friendsCount int, fields []string, nameCase string) (resp responses.PollsGetbyid, err error) {
+func (p *Polls) Getbyid(ownerId int, isBoard bool, pollId int, friendsCount int, fields []string, nameCase string) (resp responses.PollsGetbyid, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
@@ -230,7 +230,7 @@ func (p Polls) Getbyid(ownerId int, isBoard bool, pollId int, friendsCount int, 
 //   * count - Number of user IDs to return (if the 'friends_only' parameter is not set, maximum '1000', otherwise '10'). '100' — (default)
 //   * fields - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate (birthdate)', 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
 //   * nameCase - Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-func (p Polls) Getvoters(ownerId int, pollId int, answerIds []int, isBoard bool, friendsOnly bool, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.PollsGetvoters, err error) {
+func (p *Polls) Getvoters(ownerId int, pollId int, answerIds []int, isBoard bool, friendsOnly bool, offset int, count int, fields []objects.UsersFields, nameCase string) (resp responses.PollsGetvoters, err error) {
 	params := map[string]interface{}{}
 
 	if ownerId > 0 {
