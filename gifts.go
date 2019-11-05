@@ -39,7 +39,7 @@ type Gifts struct {
 //   * userId - User ID.
 //   * count - Number of gifts to return.
 //   * offset - Offset needed to return a specific subset of results.
-func (g Gifts) Get(userId int, count int, offset int) (resp responses.GiftsGet, err error) {
+func (g *Gifts) Get(userId int, count int, offset int) (resp responses.GiftsGet, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {

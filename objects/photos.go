@@ -22,6 +22,10 @@ limitations under the License.
 
 package objects
 
+import (
+	"encoding/json"
+)
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // `photos` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,8 +96,8 @@ type PhotosPhoto struct {
 	Height    int                `json:"height"`     // Original photo height
 	Id        int                `json:"id"`         // Photo ID
 	Images    []PhotosImage      `json:"images"`
-	Lat       float64            `json:"lat"`      // Latitude
-	Long      float64            `json:"long"`     // Longitude
+	Lat       json.Number        `json:"lat"`      // Latitude
+	Long      json.Number        `json:"long"`     // Longitude
 	OwnerId   int                `json:"owner_id"` // Photo owner's ID
 	PostId    int                `json:"post_id"`  // Post ID
 	Sizes     []PhotosPhotoSizes `json:"sizes"`
@@ -142,9 +146,9 @@ type PhotosPhotoFull struct {
 	Height     int             `json:"height"` // Original photo height
 	Id         int             `json:"id"`     // Photo ID
 	Images     []PhotosImage   `json:"images"`
-	Lat        float64         `json:"lat"` // Latitude
+	Lat        json.Number     `json:"lat"` // Latitude
 	Likes      BaseLikes       `json:"likes"`
-	Long       float64         `json:"long"`     // Longitude
+	Long       json.Number     `json:"long"`     // Longitude
 	OwnerId    int             `json:"owner_id"` // Photo owner's ID
 	PostId     int             `json:"post_id"`  // Post ID
 	Reposts    BaseObjectCount `json:"reposts"`
@@ -164,9 +168,9 @@ type PhotosPhotoFullXtrRealOffset struct {
 	Height     int                `json:"height"` // Original photo height
 	Hidden     BasePropertyExists `json:"hidden"` // Returns if the photo is hidden above the wall
 	Id         int                `json:"id"`     // Photo ID
-	Lat        float64            `json:"lat"`    // Latitude
+	Lat        json.Number        `json:"lat"`    // Latitude
 	Likes      BaseLikes          `json:"likes"`
-	Long       float64            `json:"long"`        // Longitude
+	Long       json.Number        `json:"long"`        // Longitude
 	OwnerId    int                `json:"owner_id"`    // Photo owner's ID
 	Photo1280  string             `json:"photo_1280"`  // URL of image with 1280 px width
 	Photo130   string             `json:"photo_130"`   // URL of image with 130 px width
@@ -203,10 +207,10 @@ type PhotosPhotoTag struct {
 	TaggedName string      `json:"tagged_name"` // Tag description
 	UserId     int         `json:"user_id"`     // Tagged user ID
 	Viewed     BaseBoolInt `json:"viewed"`      // Information whether the tag is reviewed
-	X          float64     `json:"x"`           // Coordinate X of the left upper corner
-	X2         float64     `json:"x2"`          // Coordinate X of the right lower corner
-	Y          float64     `json:"y"`           // Coordinate Y of the left upper corner
-	Y2         float64     `json:"y2"`          // Coordinate Y of the right lower corner
+	X          json.Number `json:"x"`           // Coordinate X of the left upper corner
+	X2         json.Number `json:"x2"`          // Coordinate X of the right lower corner
+	Y          json.Number `json:"y"`           // Coordinate Y of the left upper corner
+	Y2         json.Number `json:"y2"`          // Coordinate Y of the right lower corner
 }
 
 // PhotosPhotoUpload type represents `photos_photo_upload` API object
@@ -232,8 +236,8 @@ type PhotosPhotoXtrRealOffset struct {
 	Height     int                `json:"height"`      // Original photo height
 	Hidden     BasePropertyExists `json:"hidden"`      // Returns if the photo is hidden above the wall
 	Id         int                `json:"id"`          // Photo ID
-	Lat        float64            `json:"lat"`         // Latitude
-	Long       float64            `json:"long"`        // Longitude
+	Lat        json.Number        `json:"lat"`         // Latitude
+	Long       json.Number        `json:"long"`        // Longitude
 	OwnerId    int                `json:"owner_id"`    // Photo owner's ID
 	Photo1280  string             `json:"photo_1280"`  // URL of image with 1280 px width
 	Photo130   string             `json:"photo_130"`   // URL of image with 130 px width
@@ -256,8 +260,8 @@ type PhotosPhotoXtrTagInfo struct {
 	Date       int                `json:"date"`       // Date when uploaded
 	Height     int                `json:"height"`     // Original photo height
 	Id         int                `json:"id"`         // Photo ID
-	Lat        float64            `json:"lat"`        // Latitude
-	Long       float64            `json:"long"`       // Longitude
+	Lat        json.Number        `json:"lat"`        // Latitude
+	Long       json.Number        `json:"long"`       // Longitude
 	OwnerId    int                `json:"owner_id"`   // Photo owner's ID
 	Photo1280  string             `json:"photo_1280"` // URL of image with 1280 px width
 	Photo130   string             `json:"photo_130"`  // URL of image with 130 px width

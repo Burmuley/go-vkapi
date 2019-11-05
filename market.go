@@ -23,6 +23,7 @@ limitations under the License.
 package go_vkapi
 
 import (
+	"encoding/json"
 	"gitlab.com/Burmuley/go-vkapi/objects"
 	"gitlab.com/Burmuley/go-vkapi/responses"
 )
@@ -47,7 +48,7 @@ type Market struct {
 //   * mainPhotoId - Cover photo ID.
 //   * photoIds - IDs of additional photos.
 //   * url - Url for button in market item.
-func (m Market) Add(ownerId int, name string, description string, categoryId int, price float64, oldPrice float64, deleted bool, mainPhotoId int, photoIds []int, url string) (resp responses.MarketAdd, err error) {
+func (m *Market) Add(ownerId int, name string, description string, categoryId int, price json.Number, oldPrice json.Number, deleted bool, mainPhotoId int, photoIds []int, url string) (resp responses.MarketAdd, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -58,12 +59,16 @@ func (m Market) Add(ownerId int, name string, description string, categoryId int
 
 	params["category_id"] = categoryId
 
-	if price > 0 {
-		params["price"] = price
+	if v, err := price.Int64(); err == nil && v > 0 {
+		params["price"] = v
+	} else if v := price.String(); v != "" {
+		params["price"] = v
 	}
 
-	if oldPrice > 0 {
-		params["old_price"] = oldPrice
+	if v, err := oldPrice.Int64(); err == nil && v > 0 {
+		params["old_price"] = v
+	} else if v := oldPrice.String(); v != "" {
+		params["old_price"] = v
 	}
 
 	params["deleted"] = deleted
@@ -89,7 +94,7 @@ func (m Market) Add(ownerId int, name string, description string, categoryId int
 //   * title - Collection title.
 //   * photoId - Cover photo ID.
 //   * mainAlbum - Set as main ('1' – set, '0' – no).
-func (m Market) Addalbum(ownerId int, title string, photoId int, mainAlbum bool) (resp responses.MarketAddalbum, err error) {
+func (m *Market) Addalbum(ownerId int, title string, photoId int, mainAlbum bool) (resp responses.MarketAddalbum, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -112,7 +117,7 @@ func (m Market) Addalbum(ownerId int, title string, photoId int, mainAlbum bool)
 //   * ownerId - ID of an item owner community.
 //   * itemId - Item ID.
 //   * albumIds - Collections IDs to add item to.
-func (m Market) Addtoalbum(ownerId int, itemId int, albumIds []int) (resp responses.Ok, err error) {
+func (m *Market) Addtoalbum(ownerId int, itemId int, albumIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -136,7 +141,7 @@ func (m Market) Addtoalbum(ownerId int, itemId int, albumIds []int) (resp respon
 //   * replyToComment - ID of a comment to reply with current comment to.
 //   * stickerId - Sticker ID.
 //   * guid - Random value to avoid resending one comment.
-func (m Market) Createcomment(ownerId int, itemId int, message string, attachments []string, fromGroup bool, replyToComment int, stickerId int, guid string) (resp responses.MarketCreatecomment, err error) {
+func (m *Market) Createcomment(ownerId int, itemId int, message string, attachments []string, fromGroup bool, replyToComment int, stickerId int, guid string) (resp responses.MarketCreatecomment, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -174,7 +179,7 @@ func (m Market) Createcomment(ownerId int, itemId int, message string, attachmen
 // Parameters:
 //   * ownerId - ID of an item owner community.
 //   * itemId - Item ID.
-func (m Market) Delete(ownerId int, itemId int) (resp responses.Ok, err error) {
+func (m *Market) Delete(ownerId int, itemId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -190,7 +195,7 @@ func (m Market) Delete(ownerId int, itemId int) (resp responses.Ok, err error) {
 // Parameters:
 //   * ownerId - ID of an collection owner community.
 //   * albumId - Collection ID.
-func (m Market) Deletealbum(ownerId int, albumId int) (resp responses.Ok, err error) {
+func (m *Market) Deletealbum(ownerId int, albumId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -206,7 +211,7 @@ func (m Market) Deletealbum(ownerId int, albumId int) (resp responses.Ok, err er
 // Parameters:
 //   * ownerId - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
 //   * commentId - comment id
-func (m Market) Deletecomment(ownerId int, commentId int) (resp responses.MarketDeletecomment, err error) {
+func (m *Market) Deletecomment(ownerId int, commentId int) (resp responses.MarketDeletecomment, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -230,7 +235,7 @@ func (m Market) Deletecomment(ownerId int, commentId int) (resp responses.Market
 //   * mainPhotoId - Cover photo ID.
 //   * photoIds - IDs of additional photos.
 //   * url - Url for button in market item.
-func (m Market) Edit(ownerId int, itemId int, name string, description string, categoryId int, price float64, deleted bool, mainPhotoId int, photoIds []int, url string) (resp responses.Ok, err error) {
+func (m *Market) Edit(ownerId int, itemId int, name string, description string, categoryId int, price json.Number, deleted bool, mainPhotoId int, photoIds []int, url string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -269,7 +274,7 @@ func (m Market) Edit(ownerId int, itemId int, name string, description string, c
 //   * title - Collection title.
 //   * photoId - Cover photo id
 //   * mainAlbum - Set as main ('1' – set, '0' – no).
-func (m Market) Editalbum(ownerId int, albumId int, title string, photoId int, mainAlbum bool) (resp responses.Ok, err error) {
+func (m *Market) Editalbum(ownerId int, albumId int, title string, photoId int, mainAlbum bool) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -295,7 +300,7 @@ func (m Market) Editalbum(ownerId int, albumId int, title string, photoId int, m
 //   * commentId - Comment ID.
 //   * message - New comment text (required if 'attachments' are not specified), , 2048 symbols maximum.
 //   * attachments - Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
-func (m Market) Editcomment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
+func (m *Market) Editcomment(ownerId int, commentId int, message string, attachments []string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -322,7 +327,7 @@ func (m Market) Editcomment(ownerId int, commentId int, message string, attachme
 //   * count - Number of items to return.
 //   * offset - Offset needed to return a specific subset of results.
 //   * extended - '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
-func (m Market) Get(ownerId int, albumId int, count int, offset int) (resp responses.MarketGet, err error) {
+func (m *Market) Get(ownerId int, albumId int, count int, offset int) (resp responses.MarketGet, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -352,7 +357,7 @@ func (m Market) Get(ownerId int, albumId int, count int, offset int) (resp respo
 //   * count - Number of items to return.
 //   * offset - Offset needed to return a specific subset of results.
 //   * extended - '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
-func (m Market) GetExtended(ownerId int, albumId int, count int, offset int) (resp responses.MarketGetExtended, err error) {
+func (m *Market) GetExtended(ownerId int, albumId int, count int, offset int) (resp responses.MarketGetExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -379,7 +384,7 @@ func (m Market) GetExtended(ownerId int, albumId int, count int, offset int) (re
 // Parameters:
 //   * ownerId - identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
 //   * albumIds - collections identifiers to obtain data from
-func (m Market) Getalbumbyid(ownerId int, albumIds []int) (resp responses.MarketGetalbumbyid, err error) {
+func (m *Market) Getalbumbyid(ownerId int, albumIds []int) (resp responses.MarketGetalbumbyid, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -396,7 +401,7 @@ func (m Market) Getalbumbyid(ownerId int, albumIds []int) (resp responses.Market
 //   * ownerId - ID of an items owner community.
 //   * offset - Offset needed to return a specific subset of results.
 //   * count - Number of items to return.
-func (m Market) Getalbums(ownerId int, offset int, count int) (resp responses.MarketGetalbums, err error) {
+func (m *Market) Getalbums(ownerId int, offset int, count int) (resp responses.MarketGetalbums, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -418,7 +423,7 @@ func (m Market) Getalbums(ownerId int, offset int, count int) (resp responses.Ma
 // Parameters:
 //   * itemIds - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
 //   * extended - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
-func (m Market) Getbyid(itemIds []string) (resp responses.MarketGetbyid, err error) {
+func (m *Market) Getbyid(itemIds []string) (resp responses.MarketGetbyid, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -433,7 +438,7 @@ func (m Market) Getbyid(itemIds []string) (resp responses.MarketGetbyid, err err
 // Parameters:
 //   * itemIds - Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
 //   * extended - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
-func (m Market) GetbyidExtended(itemIds []string) (resp responses.MarketGetbyidExtended, err error) {
+func (m *Market) GetbyidExtended(itemIds []string) (resp responses.MarketGetbyidExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -448,7 +453,7 @@ func (m Market) GetbyidExtended(itemIds []string) (resp responses.MarketGetbyidE
 // Parameters:
 //   * count - Number of results to return.
 //   * offset - Offset needed to return a specific subset of results.
-func (m Market) Getcategories(count int, offset int) (resp responses.MarketGetcategories, err error) {
+func (m *Market) Getcategories(count int, offset int) (resp responses.MarketGetcategories, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -475,7 +480,7 @@ func (m Market) Getcategories(count int, offset int) (resp responses.MarketGetca
 //   * sort - Sort order ('asc' — from old to new, 'desc' — from new to old)
 //   * extended - '1' — comments will be returned as numbered objects, in addition lists of 'profiles' and 'groups' objects will be returned.
 //   * fields - List of additional profile fields to return. See the [vk.com/dev/fields|details]
-func (m Market) Getcomments(ownerId int, itemId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []objects.UsersFields) (resp responses.MarketGetcomments, err error) {
+func (m *Market) Getcomments(ownerId int, itemId int, needLikes bool, startCommentId int, offset int, count int, sort string, fields []objects.UsersFields) (resp responses.MarketGetcomments, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -514,7 +519,7 @@ func (m Market) Getcomments(ownerId int, itemId int, needLikes bool, startCommen
 //   * ownerId - ID of an item owner community.
 //   * itemId - Item ID.
 //   * albumIds - Collections IDs to remove item from.
-func (m Market) Removefromalbum(ownerId int, itemId int, albumIds []int) (resp responses.Ok, err error) {
+func (m *Market) Removefromalbum(ownerId int, itemId int, albumIds []int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -534,7 +539,7 @@ func (m Market) Removefromalbum(ownerId int, itemId int, albumIds []int) (resp r
 //   * albumId - Collection ID.
 //   * before - ID of a collection to place current collection before it.
 //   * after - ID of a collection to place current collection after it.
-func (m Market) Reorderalbums(ownerId int, albumId int, before int, after int) (resp responses.Ok, err error) {
+func (m *Market) Reorderalbums(ownerId int, albumId int, before int, after int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -561,7 +566,7 @@ func (m Market) Reorderalbums(ownerId int, albumId int, before int, after int) (
 //   * itemId - Item ID.
 //   * before - ID of an item to place current item before it.
 //   * after - ID of an item to place current item after it.
-func (m Market) Reorderitems(ownerId int, albumId int, itemId int, before int, after int) (resp responses.Ok, err error) {
+func (m *Market) Reorderitems(ownerId int, albumId int, itemId int, before int, after int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -590,7 +595,7 @@ func (m Market) Reorderitems(ownerId int, albumId int, itemId int, before int, a
 //   * ownerId - ID of an item owner community.
 //   * itemId - Item ID.
 //   * reason - Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
-func (m Market) Report(ownerId int, itemId int, reason int) (resp responses.Ok, err error) {
+func (m *Market) Report(ownerId int, itemId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -611,7 +616,7 @@ func (m Market) Report(ownerId int, itemId int, reason int) (resp responses.Ok, 
 //   * ownerId - ID of an item owner community.
 //   * commentId - Comment ID.
 //   * reason - Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
-func (m Market) Reportcomment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
+func (m *Market) Reportcomment(ownerId int, commentId int, reason int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -629,7 +634,7 @@ func (m Market) Reportcomment(ownerId int, commentId int, reason int) (resp resp
 // Parameters:
 //   * ownerId - ID of an item owner community.
 //   * itemId - Deleted item ID.
-func (m Market) Restore(ownerId int, itemId int) (resp responses.Ok, err error) {
+func (m *Market) Restore(ownerId int, itemId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -645,7 +650,7 @@ func (m Market) Restore(ownerId int, itemId int) (resp responses.Ok, err error) 
 // Parameters:
 //   * ownerId - identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
 //   * commentId - deleted comment id
-func (m Market) Restorecomment(ownerId int, commentId int) (resp responses.MarketRestorecomment, err error) {
+func (m *Market) Restorecomment(ownerId int, commentId int) (resp responses.MarketRestorecomment, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -671,7 +676,7 @@ func (m Market) Restorecomment(ownerId int, commentId int) (resp responses.Marke
 //   * count - Number of items to return.
 //   * extended - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
 //   * status - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (m Market) Search(ownerId int, albumId int, q string, priceFrom int, priceTo int, tags []int, sort int, rev int, offset int, count int, status int) (resp responses.MarketSearch, err error) {
+func (m *Market) Search(ownerId int, albumId int, q string, priceFrom int, priceTo int, tags []int, sort int, rev int, offset int, count int, status int) (resp responses.MarketSearch, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -736,7 +741,7 @@ func (m Market) Search(ownerId int, albumId int, q string, priceFrom int, priceT
 //   * count - Number of items to return.
 //   * extended - '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
 //   * status - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (m Market) SearchExtended(ownerId int, albumId int, q string, priceFrom int, priceTo int, tags []int, sort int, rev int, offset int, count int, status int) (resp responses.MarketSearchExtended, err error) {
+func (m *Market) SearchExtended(ownerId int, albumId int, q string, priceFrom int, priceTo int, tags []int, sort int, rev int, offset int, count int, status int) (resp responses.MarketSearchExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 

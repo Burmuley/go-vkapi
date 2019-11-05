@@ -37,7 +37,7 @@ type Utils struct {
 // Checklink - Checks whether a link is blocked in VK.
 // Parameters:
 //   * url - Link to check (e.g., 'http://google.com').
-func (u Utils) Checklink(url string) (resp responses.UtilsChecklink, err error) {
+func (u *Utils) Checklink(url string) (resp responses.UtilsChecklink, err error) {
 	params := map[string]interface{}{}
 
 	params["url"] = url
@@ -50,7 +50,7 @@ func (u Utils) Checklink(url string) (resp responses.UtilsChecklink, err error) 
 // Deletefromlastshortened - Deletes shortened link from user's list.
 // Parameters:
 //   * key - Link key (characters after vk.cc/).
-func (u Utils) Deletefromlastshortened(key string) (resp responses.Ok, err error) {
+func (u *Utils) Deletefromlastshortened(key string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["key"] = key
@@ -64,7 +64,7 @@ func (u Utils) Deletefromlastshortened(key string) (resp responses.Ok, err error
 // Parameters:
 //   * count - Number of links to return.
 //   * offset - Offset needed to return a specific subset of links.
-func (u Utils) Getlastshortenedlinks(count int, offset int) (resp responses.UtilsGetlastshortenedlinks, err error) {
+func (u *Utils) Getlastshortenedlinks(count int, offset int) (resp responses.UtilsGetlastshortenedlinks, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -88,7 +88,7 @@ func (u Utils) Getlastshortenedlinks(count int, offset int) (resp responses.Util
 //   * interval - Interval.
 //   * intervalsCount - Number of intervals to return.
 //   * extended - 1 — to return extended stats data (sex, age, geo). 0 — to return views number only.
-func (u Utils) Getlinkstats(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetlinkstats, err error) {
+func (u *Utils) Getlinkstats(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetlinkstats, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -123,7 +123,7 @@ func (u Utils) Getlinkstats(key string, source string, accessKey string, interva
 //   * interval - Interval.
 //   * intervalsCount - Number of intervals to return.
 //   * extended - 1 — to return extended stats data (sex, age, geo). 0 — to return views number only.
-func (u Utils) GetlinkstatsExtended(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetlinkstatsExtended, err error) {
+func (u *Utils) GetlinkstatsExtended(key string, source string, accessKey string, interval string, intervalsCount int) (resp responses.UtilsGetlinkstatsExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -151,7 +151,7 @@ func (u Utils) GetlinkstatsExtended(key string, source string, accessKey string,
 }
 
 // Getservertime - Returns the current time of the VK server.
-func (u Utils) Getservertime() (resp responses.UtilsGetservertime, err error) {
+func (u *Utils) Getservertime() (resp responses.UtilsGetservertime, err error) {
 	params := map[string]interface{}{}
 
 	err = u.SendObjRequest("utils.getServerTime", params, &resp)
@@ -163,7 +163,7 @@ func (u Utils) Getservertime() (resp responses.UtilsGetservertime, err error) {
 // Parameters:
 //   * url - URL to be shortened.
 //   * private - 1 — private stats, 0 — public stats.
-func (u Utils) Getshortlink(url string, private bool) (resp responses.UtilsGetshortlink, err error) {
+func (u *Utils) Getshortlink(url string, private bool) (resp responses.UtilsGetshortlink, err error) {
 	params := map[string]interface{}{}
 
 	params["url"] = url
@@ -178,7 +178,7 @@ func (u Utils) Getshortlink(url string, private bool) (resp responses.UtilsGetsh
 // Resolvescreenname - Detects a type of object (e.g., user, community, application) and its ID by screen name.
 // Parameters:
 //   * screenName - Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
-func (u Utils) Resolvescreenname(screenName string) (resp responses.UtilsResolvescreenname, err error) {
+func (u *Utils) Resolvescreenname(screenName string) (resp responses.UtilsResolvescreenname, err error) {
 	params := map[string]interface{}{}
 
 	params["screen_name"] = screenName

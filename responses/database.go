@@ -23,6 +23,7 @@ limitations under the License.
 package responses
 
 import (
+	"encoding/json"
 	"gitlab.com/Burmuley/go-vkapi/objects"
 )
 
@@ -76,7 +77,7 @@ type DatabaseGetregions struct {
 }
 
 // DatabaseGetschoolclasses type represents `database_getSchoolClasses_response` API response object
-type DatabaseGetschoolclasses string
+type DatabaseGetschoolclasses json.Number
 
 // DatabaseGetschools type represents `database_getSchools_response` API response object
 type DatabaseGetschools struct {

@@ -79,11 +79,9 @@ type NewsfeedGetrecommended struct {
 
 // NewsfeedGetsuggestedsources type represents `newsfeed_getSuggestedSources_response` API response object
 type NewsfeedGetsuggestedsources struct {
-	Count int `json:"count"` // Total number
-	Items []struct {
-		objects.GroupsGroupFull
-		objects.UsersUserXtrType
-	} `json:"items"`
+	Count                    int `json:"count"` // Total number
+	Items                    []objects.GroupsGroupFull
+	objects.UsersUserXtrType `json:"items"`
 }
 
 // NewsfeedGet type represents `newsfeed_get_response` API response object
