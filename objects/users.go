@@ -22,6 +22,10 @@ limitations under the License.
 
 package objects
 
+import (
+	"encoding/json"
+)
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // `users` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,18 +51,18 @@ type UsersCropPhoto struct {
 
 // UsersCropPhotoCrop type represents `users_crop_photo_crop` API object
 type UsersCropPhotoCrop struct {
-	X  float64 `json:"x"`  // Coordinate X of the left upper corner
-	X2 float64 `json:"x2"` // Coordinate X of the right lower corner
-	Y  float64 `json:"y"`  // Coordinate Y of the left upper corner
-	Y2 float64 `json:"y2"` // Coordinate Y of the right lower corner
+	X  json.Number `json:"x"`  // Coordinate X of the left upper corner
+	X2 json.Number `json:"x2"` // Coordinate X of the right lower corner
+	Y  json.Number `json:"y"`  // Coordinate Y of the left upper corner
+	Y2 json.Number `json:"y2"` // Coordinate Y of the right lower corner
 }
 
 // UsersCropPhotoRect type represents `users_crop_photo_rect` API object
 type UsersCropPhotoRect struct {
-	X  float64 `json:"x"`  // Coordinate X of the left upper corner
-	X2 float64 `json:"x2"` // Coordinate X of the right lower corner
-	Y  float64 `json:"y"`  // Coordinate Y of the left upper corner
-	Y2 float64 `json:"y2"` // Coordinate Y of the right lower corner
+	X  json.Number `json:"x"`  // Coordinate X of the left upper corner
+	X2 json.Number `json:"x2"` // Coordinate X of the right lower corner
+	Y  json.Number `json:"y"`  // Coordinate Y of the left upper corner
+	Y2 json.Number `json:"y2"` // Coordinate Y of the right lower corner
 }
 
 // UsersExports type represents `users_exports` API object

@@ -22,6 +22,10 @@ limitations under the License.
 
 package objects
 
+import (
+	"encoding/json"
+)
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // `groups` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,8 +38,8 @@ type GroupsAddress struct {
 	CountryId         int                         `json:"country_id"`         // Country id of address
 	Distance          int                         `json:"distance"`           // Distance from the point
 	Id                int                         `json:"id"`                 // Address id
-	Latitude          float64                     `json:"latitude"`           // Address latitude
-	Longitude         float64                     `json:"longitude"`          // Address longitude
+	Latitude          json.Number                 `json:"latitude"`           // Address latitude
+	Longitude         json.Number                 `json:"longitude"`          // Address longitude
 	MetroStationId    int                         `json:"metro_station_id"`   // Metro id of address
 	Phone             string                      `json:"phone"`              // Address phone
 	TimeOffset        int                         `json:"time_offset"`        // Time offset int minutes from utc time

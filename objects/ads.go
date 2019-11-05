@@ -22,6 +22,10 @@ limitations under the License.
 
 package objects
 
+import (
+	"encoding/json"
+)
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // `ads` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,11 +52,9 @@ type AdsAccountType string // Account type
 
 // AdsAd type represents `ads_ad` API object
 type AdsAd struct {
-	AdFormat   int `json:"ad_format"` // Ad format
-	AdPlatform struct {
-		string
-	} `json:"ad_platform"` // Ad platform
-	AllLimit              int           `json:"all_limit"` // Total limit
+	AdFormat              int           `json:"ad_format"`   // Ad format
+	AdPlatform            json.Number   `json:"ad_platform"` // Ad platform
+	AllLimit              int           `json:"all_limit"`   // Total limit
 	Approved              AdsAdApproved `json:"approved"`
 	CampaignId            int           `json:"campaign_id"`  // Campaign ID
 	Category1Id           int           `json:"category1_id"` // Category ID
@@ -89,11 +91,9 @@ type AdsAdLayout struct {
 	ImageSrc2x  string        `json:"image_src_2x"` // URL of the preview image in double size
 	LinkDomain  string        `json:"link_domain"`  // Domain of advertised object
 	LinkUrl     string        `json:"link_url"`     // URL of advertised object
-	PreviewLink struct {
-		string
-	} `json:"preview_link"` // link to preview an ad as it is shown on the website
-	Title string      `json:"title"` // Ad title
-	Video BaseBoolInt `json:"video"` // Information whether the ad is a video
+	PreviewLink json.Number   `json:"preview_link"` // link to preview an ad as it is shown on the website
+	Title       string        `json:"title"`        // Ad title
+	Video       BaseBoolInt   `json:"video"`        // Information whether the ad is a video
 }
 
 // AdsAdStatus type represents `ads_ad_status` API object
@@ -248,17 +248,17 @@ type AdsStats struct {
 
 // AdsStatsAge type represents `ads_stats_age` API object
 type AdsStatsAge struct {
-	ClicksRate      float64 `json:"clicks_rate"`      // Clicks rate
-	ImpressionsRate float64 `json:"impressions_rate"` // Impressions rate
-	Value           string  `json:"value"`            // Age interval
+	ClicksRate      json.Number `json:"clicks_rate"`      // Clicks rate
+	ImpressionsRate json.Number `json:"impressions_rate"` // Impressions rate
+	Value           string      `json:"value"`            // Age interval
 }
 
 // AdsStatsCities type represents `ads_stats_cities` API object
 type AdsStatsCities struct {
-	ClicksRate      float64 `json:"clicks_rate"`      // Clicks rate
-	ImpressionsRate float64 `json:"impressions_rate"` // Impressions rate
-	Name            string  `json:"name"`             // City name
-	Value           int     `json:"value"`            // City ID
+	ClicksRate      json.Number `json:"clicks_rate"`      // Clicks rate
+	ImpressionsRate json.Number `json:"impressions_rate"` // Impressions rate
+	Name            string      `json:"name"`             // City name
+	Value           int         `json:"value"`            // City ID
 }
 
 // AdsStatsFormat type represents `ads_stats_format` API object
@@ -279,16 +279,16 @@ type AdsStatsFormat struct {
 
 // AdsStatsSex type represents `ads_stats_sex` API object
 type AdsStatsSex struct {
-	ClicksRate      float64          `json:"clicks_rate"`      // Clicks rate
-	ImpressionsRate float64          `json:"impressions_rate"` // Impressions rate
+	ClicksRate      json.Number      `json:"clicks_rate"`      // Clicks rate
+	ImpressionsRate json.Number      `json:"impressions_rate"` // Impressions rate
 	Value           AdsStatsSexValue `json:"value"`
 }
 
 // AdsStatsSexAge type represents `ads_stats_sex_age` API object
 type AdsStatsSexAge struct {
-	ClicksRate      float64 `json:"clicks_rate"`      // Clicks rate
-	ImpressionsRate float64 `json:"impressions_rate"` // Impressions rate
-	Value           string  `json:"value"`            // Sex and age interval
+	ClicksRate      json.Number `json:"clicks_rate"`      // Clicks rate
+	ImpressionsRate json.Number `json:"impressions_rate"` // Impressions rate
+	Value           string      `json:"value"`            // Sex and age interval
 }
 
 // AdsStatsSexValue type represents `ads_stats_sex_value` API object
@@ -301,9 +301,9 @@ type AdsTargSettings struct {
 
 // AdsTargStats type represents `ads_targ_stats` API object
 type AdsTargStats struct {
-	AudienceCount  int     `json:"audience_count"`  // Audience
-	RecommendedCpc float64 `json:"recommended_cpc"` // Recommended CPC value
-	RecommendedCpm float64 `json:"recommended_cpm"` // Recommended CPM value
+	AudienceCount  int         `json:"audience_count"`  // Audience
+	RecommendedCpc json.Number `json:"recommended_cpc"` // Recommended CPC value
+	RecommendedCpm json.Number `json:"recommended_cpm"` // Recommended CPM value
 }
 
 // AdsTargSuggestions type represents `ads_targ_suggestions` API object

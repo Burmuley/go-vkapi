@@ -22,6 +22,10 @@ limitations under the License.
 
 package objects
 
+import (
+	"encoding/json"
+)
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // `base` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,8 +69,8 @@ type BaseGeo struct {
 
 // BaseGeoCoordinates type represents `base_geo_coordinates` API object
 type BaseGeoCoordinates struct {
-	Latitude  float64 `json:"latitude"`
-	Longitude float64 `json:"longitude"`
+	Latitude  json.Number `json:"latitude"`
+	Longitude json.Number `json:"longitude"`
 }
 
 // BaseImage type represents `base_image` API object
@@ -109,14 +113,14 @@ type BaseLink struct {
 
 // BaseLinkApplication type represents `base_link_application` API object
 type BaseLinkApplication struct {
-	AppId float64                  `json:"app_id"` // Application Id
+	AppId json.Number              `json:"app_id"` // Application Id
 	Store BaseLinkApplicationStore `json:"store"`
 }
 
 // BaseLinkApplicationStore type represents `base_link_application_store` API object
 type BaseLinkApplicationStore struct {
-	Id   float64 `json:"id"`   // Store Id
-	Name string  `json:"name"` // Store name
+	Id   json.Number `json:"id"`   // Store Id
+	Name string      `json:"name"` // Store name
 }
 
 // BaseLinkButton type represents `base_link_button` API object
@@ -143,8 +147,8 @@ type BaseLinkProduct struct {
 
 // BaseLinkRating type represents `base_link_rating` API object
 type BaseLinkRating struct {
-	ReviewsCount int     `json:"reviews_count"` // Count of reviews
-	Stars        float64 `json:"stars"`         // Count of stars
+	ReviewsCount int         `json:"reviews_count"` // Count of reviews
+	Stars        json.Number `json:"stars"`         // Count of stars
 }
 
 // BaseMessageError type represents `base_message_error` API object
@@ -175,17 +179,17 @@ type BaseOkResponse int // Returns 1 if request has been processed successfully
 
 // BasePlace type represents `base_place` API object
 type BasePlace struct {
-	Address   string  `json:"address"`   // Place address
-	Checkins  int     `json:"checkins"`  // Checkins number
-	City      string  `json:"city"`      // City name
-	Country   string  `json:"country"`   // Country name
-	Created   int     `json:"created"`   // Date of the place creation in Unixtime
-	Icon      string  `json:"icon"`      // URL of the place's icon
-	Id        int     `json:"id"`        // Place ID
-	Latitude  float64 `json:"latitude"`  // Place latitude
-	Longitude float64 `json:"longitude"` // Place longitude
-	Title     string  `json:"title"`     // Place title
-	Type      string  `json:"type"`      // Place type
+	Address   string      `json:"address"`   // Place address
+	Checkins  int         `json:"checkins"`  // Checkins number
+	City      string      `json:"city"`      // City name
+	Country   string      `json:"country"`   // Country name
+	Created   int         `json:"created"`   // Date of the place creation in Unixtime
+	Icon      string      `json:"icon"`      // URL of the place's icon
+	Id        int         `json:"id"`        // Place ID
+	Latitude  json.Number `json:"latitude"`  // Place latitude
+	Longitude json.Number `json:"longitude"` // Place longitude
+	Title     string      `json:"title"`     // Place title
+	Type      string      `json:"type"`      // Place type
 }
 
 // BasePropertyExists type represents `base_property_exists` API object

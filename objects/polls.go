@@ -22,16 +22,20 @@ limitations under the License.
 
 package objects
 
+import (
+	"encoding/json"
+)
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // `polls` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // PollsAnswer type represents `polls_answer` API object
 type PollsAnswer struct {
-	Id    int     `json:"id"`    // Answer ID
-	Rate  float64 `json:"rate"`  // Answer rate in percents
-	Text  string  `json:"text"`  // Answer text
-	Votes int     `json:"votes"` // Votes number
+	Id    int         `json:"id"`    // Answer ID
+	Rate  json.Number `json:"rate"`  // Answer rate in percents
+	Text  string      `json:"text"`  // Answer text
+	Votes int         `json:"votes"` // Votes number
 }
 
 // PollsPoll type represents `polls_poll` API object

@@ -36,7 +36,7 @@ type Apps struct {
 /////////////////////////////////////////////////////////////
 
 // Deleteapprequests - Deletes all request notifications from the current app.
-func (a Apps) Deleteapprequests() (resp responses.Ok, err error) {
+func (a *Apps) Deleteapprequests() (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	err = a.SendObjRequest("apps.deleteAppRequests", params, &resp)
@@ -53,7 +53,7 @@ func (a Apps) Deleteapprequests() (resp responses.Ok, err error) {
 //   * returnFriends - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * fields - Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', (only if return_friends - 1)
 //   * nameCase - Case for declension of user name and surname: 'nom' — nominative (default),, 'gen' — genitive,, 'dat' — dative,, 'acc' — accusative,, 'ins' — instrumental,, 'abl' — prepositional. (only if 'return_friends' = '1')
-func (a Apps) Get(appId int, appIds []string, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string) (resp responses.AppsGet, err error) {
+func (a *Apps) Get(appId int, appIds []string, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string) (resp responses.AppsGet, err error) {
 	params := map[string]interface{}{}
 
 	if appId > 0 {
@@ -96,7 +96,7 @@ func (a Apps) Get(appId int, appIds []string, platform string, returnFriends boo
 //   * q - Search query string.
 //   * genreId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * filter - 'installed' — to return list of installed apps (only for mobile platform).
-func (a Apps) Getcatalog(sort string, offset int, count int, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string, q string, genreId int, filter string) (resp responses.AppsGetcatalog, err error) {
+func (a *Apps) Getcatalog(sort string, offset int, count int, platform string, returnFriends bool, fields []objects.UsersFields, nameCase string, q string, genreId int, filter string) (resp responses.AppsGetcatalog, err error) {
 	params := map[string]interface{}{}
 
 	if sort != "" {
@@ -147,7 +147,7 @@ func (a Apps) Getcatalog(sort string, offset int, count int, platform string, re
 //   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * pType - List type. Possible values: * 'invite' — available for invites (don't play the game),, * 'request' — available for request (play the game). By default: 'invite'.
 //   * fields - Additional profile fields, see [vk.com/dev/fields|description].
-func (a Apps) Getfriendslist(count int, offset int, pType string, fields []objects.UsersFields) (resp responses.AppsGetfriendslist, err error) {
+func (a *Apps) Getfriendslist(count int, offset int, pType string, fields []objects.UsersFields) (resp responses.AppsGetfriendslist, err error) {
 	params := map[string]interface{}{}
 
 	if count > 0 {
@@ -176,7 +176,7 @@ func (a Apps) Getfriendslist(count int, offset int, pType string, fields []objec
 //   * pType - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
 //   * global - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
 //   * extended - 1 — to return additional info about users
-func (a Apps) Getleaderboard(pType string, global bool) (resp responses.AppsGetleaderboard, err error) {
+func (a *Apps) Getleaderboard(pType string, global bool) (resp responses.AppsGetleaderboard, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "0"
 
@@ -194,7 +194,7 @@ func (a Apps) Getleaderboard(pType string, global bool) (resp responses.AppsGetl
 //   * pType - Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
 //   * global - Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
 //   * extended - 1 — to return additional info about users
-func (a Apps) GetleaderboardExtended(pType string, global bool) (resp responses.AppsGetleaderboardExtended, err error) {
+func (a *Apps) GetleaderboardExtended(pType string, global bool) (resp responses.AppsGetleaderboardExtended, err error) {
 	params := map[string]interface{}{}
 	params["extended"] = "1"
 
@@ -210,7 +210,7 @@ func (a Apps) GetleaderboardExtended(pType string, global bool) (resp responses.
 // Getscopes - Returns scopes for auth
 // Parameters:
 //   * pType - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (a Apps) Getscopes(pType string) (resp responses.AppsGetscopes, err error) {
+func (a *Apps) Getscopes(pType string) (resp responses.AppsGetscopes, err error) {
 	params := map[string]interface{}{}
 
 	if pType != "" {
@@ -225,7 +225,7 @@ func (a Apps) Getscopes(pType string) (resp responses.AppsGetscopes, err error) 
 // Getscore - Returns user score in app
 // Parameters:
 //   * userId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (a Apps) Getscore(userId int) (resp responses.AppsGetscore, err error) {
+func (a *Apps) Getscore(userId int) (resp responses.AppsGetscore, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId
@@ -243,7 +243,7 @@ func (a Apps) Getscore(userId int) (resp responses.AppsGetscore, err error) {
 //   * name - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * key - special string key to be sent with the request
 //   * separate - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (a Apps) Sendrequest(userId int, text string, pType string, name string, key string, separate bool) (resp responses.AppsSendrequest, err error) {
+func (a *Apps) Sendrequest(userId int, text string, pType string, name string, key string, separate bool) (resp responses.AppsSendrequest, err error) {
 	params := map[string]interface{}{}
 
 	params["user_id"] = userId

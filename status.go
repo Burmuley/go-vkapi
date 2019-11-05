@@ -38,7 +38,7 @@ type Status struct {
 // Parameters:
 //   * userId - User ID or community ID. Use a negative value to designate a community ID.
 //   * groupId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (s Status) Get(userId int, groupId int) (resp responses.StatusGet, err error) {
+func (s *Status) Get(userId int, groupId int) (resp responses.StatusGet, err error) {
 	params := map[string]interface{}{}
 
 	if userId > 0 {
@@ -58,7 +58,7 @@ func (s Status) Get(userId int, groupId int) (resp responses.StatusGet, err erro
 // Parameters:
 //   * text - Text of the new status.
 //   * groupId - Identifier of a community to set a status in. If left blank the status is set to current user.
-func (s Status) Set(text string, groupId int) (resp responses.Ok, err error) {
+func (s *Status) Set(text string, groupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	if text != "" {

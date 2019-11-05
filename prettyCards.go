@@ -43,7 +43,7 @@ type Prettycards struct {
 //   * price - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * priceOld - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * button - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Prettycards) Create(ownerId int, photo string, title string, link string, price string, priceOld string, button string) (resp responses.PrettycardsCreate, err error) {
+func (p *Prettycards) Create(ownerId int, photo string, title string, link string, price string, priceOld string, button string) (resp responses.PrettycardsCreate, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -75,7 +75,7 @@ func (p Prettycards) Create(ownerId int, photo string, title string, link string
 // Parameters:
 //   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * cardId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Prettycards) Delete(ownerId int, cardId int) (resp responses.PrettycardsDelete, err error) {
+func (p *Prettycards) Delete(ownerId int, cardId int) (resp responses.PrettycardsDelete, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -97,7 +97,7 @@ func (p Prettycards) Delete(ownerId int, cardId int) (resp responses.Prettycards
 //   * price - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * priceOld - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * button - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Prettycards) Edit(ownerId int, cardId int, photo string, title string, link string, price string, priceOld string, button string) (resp responses.PrettycardsEdit, err error) {
+func (p *Prettycards) Edit(ownerId int, cardId int, photo string, title string, link string, price string, priceOld string, button string) (resp responses.PrettycardsEdit, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -138,7 +138,7 @@ func (p Prettycards) Edit(ownerId int, cardId int, photo string, title string, l
 //   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * offset - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * count - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Prettycards) Get(ownerId int, offset int, count int) (resp responses.PrettycardsGet, err error) {
+func (p *Prettycards) Get(ownerId int, offset int, count int) (resp responses.PrettycardsGet, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -160,7 +160,7 @@ func (p Prettycards) Get(ownerId int, offset int, count int) (resp responses.Pre
 // Parameters:
 //   * ownerId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * cardIds - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (p Prettycards) Getbyid(ownerId int, cardIds []int) (resp responses.PrettycardsGetbyid, err error) {
+func (p *Prettycards) Getbyid(ownerId int, cardIds []int) (resp responses.PrettycardsGetbyid, err error) {
 	params := map[string]interface{}{}
 
 	params["owner_id"] = ownerId
@@ -173,7 +173,7 @@ func (p Prettycards) Getbyid(ownerId int, cardIds []int) (resp responses.Prettyc
 }
 
 // Getuploadurl - NO DESCRIPTION IN JSON SCHEMA
-func (p Prettycards) Getuploadurl() (resp responses.PrettycardsGetuploadurl, err error) {
+func (p *Prettycards) Getuploadurl() (resp responses.PrettycardsGetuploadurl, err error) {
 	params := map[string]interface{}{}
 
 	err = p.SendObjRequest("prettyCards.getUploadURL", params, &resp)

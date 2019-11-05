@@ -38,7 +38,7 @@ type Ads struct {
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * data - Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
-func (a Ads) Addofficeusers(accountId int, data string) (resp responses.AdsAddofficeusers, err error) {
+func (a *Ads) Addofficeusers(accountId int, data string) (resp responses.AdsAddofficeusers, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -56,7 +56,7 @@ func (a Ads) Addofficeusers(accountId int, data string) (resp responses.AdsAddof
 //   * linkType - Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
 //   * linkUrl - Object URL.
 //   * campaignId - Campaign ID
-func (a Ads) Checklink(accountId int, linkType string, linkUrl string, campaignId int) (resp responses.AdsChecklink, err error) {
+func (a *Ads) Checklink(accountId int, linkType string, linkUrl string, campaignId int) (resp responses.AdsChecklink, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -78,7 +78,7 @@ func (a Ads) Checklink(accountId int, linkType string, linkUrl string, campaignI
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * data - Serialized JSON array of objects that describe created ads. Description of 'ad_specification' objects see below.
-func (a Ads) Createads(accountId int, data string) (resp responses.AdsCreateads, err error) {
+func (a *Ads) Createads(accountId int, data string) (resp responses.AdsCreateads, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -94,7 +94,7 @@ func (a Ads) Createads(accountId int, data string) (resp responses.AdsCreateads,
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * data - Serialized JSON array of objects that describe created campaigns. Description of 'campaign_specification' objects see below.
-func (a Ads) Createcampaigns(accountId int, data string) (resp responses.AdsCreatecampaigns, err error) {
+func (a *Ads) Createcampaigns(accountId int, data string) (resp responses.AdsCreatecampaigns, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -110,7 +110,7 @@ func (a Ads) Createcampaigns(accountId int, data string) (resp responses.AdsCrea
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * data - Serialized JSON array of objects that describe created campaigns. Description of 'client_specification' objects see below.
-func (a Ads) Createclients(accountId int, data string) (resp responses.AdsCreateclients, err error) {
+func (a *Ads) Createclients(accountId int, data string) (resp responses.AdsCreateclients, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -130,7 +130,7 @@ func (a Ads) Createclients(accountId int, data string) (resp responses.AdsCreate
 //   * lifetime - 'For groups with auditory created with pixel code only.', , Number of days after that users will be automatically removed from the group.
 //   * targetPixelId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * targetPixelRules - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (a Ads) Createtargetgroup(accountId int, clientId int, name string, lifetime int, targetPixelId int, targetPixelRules string) (resp responses.AdsCreatetargetgroup, err error) {
+func (a *Ads) Createtargetgroup(accountId int, clientId int, name string, lifetime int, targetPixelId int, targetPixelRules string) (resp responses.AdsCreatetargetgroup, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -162,7 +162,7 @@ func (a Ads) Createtargetgroup(accountId int, clientId int, name string, lifetim
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * ids - Serialized JSON array with ad IDs.
-func (a Ads) Deleteads(accountId int, ids string) (resp responses.AdsDeleteads, err error) {
+func (a *Ads) Deleteads(accountId int, ids string) (resp responses.AdsDeleteads, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -178,7 +178,7 @@ func (a Ads) Deleteads(accountId int, ids string) (resp responses.AdsDeleteads, 
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * ids - Serialized JSON array with IDs of deleted campaigns.
-func (a Ads) Deletecampaigns(accountId int, ids string) (resp responses.AdsDeletecampaigns, err error) {
+func (a *Ads) Deletecampaigns(accountId int, ids string) (resp responses.AdsDeletecampaigns, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -194,7 +194,7 @@ func (a Ads) Deletecampaigns(accountId int, ids string) (resp responses.AdsDelet
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * ids - Serialized JSON array with IDs of deleted clients.
-func (a Ads) Deleteclients(accountId int, ids string) (resp responses.AdsDeleteclients, err error) {
+func (a *Ads) Deleteclients(accountId int, ids string) (resp responses.AdsDeleteclients, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -211,7 +211,7 @@ func (a Ads) Deleteclients(accountId int, ids string) (resp responses.AdsDeletec
 //   * accountId - Advertising account ID.
 //   * clientId - 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
 //   * targetGroupId - Group ID.
-func (a Ads) Deletetargetgroup(accountId int, clientId int, targetGroupId int) (resp responses.Ok, err error) {
+func (a *Ads) Deletetargetgroup(accountId int, clientId int, targetGroupId int) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -228,7 +228,7 @@ func (a Ads) Deletetargetgroup(accountId int, clientId int, targetGroupId int) (
 }
 
 // Getaccounts - Returns a list of advertising accounts.
-func (a Ads) Getaccounts() (resp responses.AdsGetaccounts, err error) {
+func (a *Ads) Getaccounts() (resp responses.AdsGetaccounts, err error) {
 	params := map[string]interface{}{}
 
 	err = a.SendObjRequest("ads.getAccounts", params, &resp)
@@ -245,7 +245,7 @@ func (a Ads) Getaccounts() (resp responses.AdsGetaccounts, err error) {
 //   * includeDeleted - Flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
 //   * limit - Limit of number of returned ads. Used only if ad_ids parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
 //   * offset - Offset. Used in the same cases as 'limit' parameter.
-func (a Ads) Getads(accountId int, adIds string, campaignIds string, clientId int, includeDeleted bool, limit int, offset int) (resp responses.AdsGetads, err error) {
+func (a *Ads) Getads(accountId int, adIds string, campaignIds string, clientId int, includeDeleted bool, limit int, offset int) (resp responses.AdsGetads, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -286,7 +286,7 @@ func (a Ads) Getads(accountId int, adIds string, campaignIds string, clientId in
 //   * includeDeleted - Flag that specifies whether archived ads shall be shown. *0 — show only active ads,, *1 — show all ads.
 //   * limit - Limit of number of returned ads. Used only if 'ad_ids' parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
 //   * offset - Offset. Used in the same cases as 'limit' parameter.
-func (a Ads) Getadslayout(accountId int, adIds string, campaignIds string, clientId int, includeDeleted bool, limit int, offset int) (resp responses.AdsGetadslayout, err error) {
+func (a *Ads) Getadslayout(accountId int, adIds string, campaignIds string, clientId int, includeDeleted bool, limit int, offset int) (resp responses.AdsGetadslayout, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -327,7 +327,7 @@ func (a Ads) Getadslayout(accountId int, adIds string, campaignIds string, clien
 //   * includeDeleted - flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
 //   * limit - Limit of number of returned ads. Used only if 'ad_ids' parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
 //   * offset - Offset needed to return a specific subset of results.
-func (a Ads) Getadstargeting(accountId int, adIds string, campaignIds string, clientId int, includeDeleted bool, limit int, offset int) (resp responses.AdsGetadstargeting, err error) {
+func (a *Ads) Getadstargeting(accountId int, adIds string, campaignIds string, clientId int, includeDeleted bool, limit int, offset int) (resp responses.AdsGetadstargeting, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -362,7 +362,7 @@ func (a Ads) Getadstargeting(accountId int, adIds string, campaignIds string, cl
 // Getbudget - Returns current budget of the advertising account.
 // Parameters:
 //   * accountId - Advertising account ID.
-func (a Ads) Getbudget(accountId int) (resp responses.AdsGetbudget, err error) {
+func (a *Ads) Getbudget(accountId int) (resp responses.AdsGetbudget, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -378,7 +378,7 @@ func (a Ads) Getbudget(accountId int) (resp responses.AdsGetbudget, err error) {
 //   * clientId - 'For advertising agencies'. ID of the client advertising campaigns are retrieved from.
 //   * includeDeleted - Flag that specifies whether archived ads shall be shown. *0 — show only active campaigns,, *1 — show all campaigns.
 //   * campaignIds - Filter of advertising campaigns to show. Serialized JSON array with campaign IDs. Only campaigns that exist in 'campaign_ids' and belong to the specified advertising account will be shown. If the parameter is null, all campaigns will be shown.
-func (a Ads) Getcampaigns(accountId int, clientId int, includeDeleted bool, campaignIds string) (resp responses.AdsGetcampaigns, err error) {
+func (a *Ads) Getcampaigns(accountId int, clientId int, includeDeleted bool, campaignIds string) (resp responses.AdsGetcampaigns, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -401,7 +401,7 @@ func (a Ads) Getcampaigns(accountId int, clientId int, includeDeleted bool, camp
 // Getcategories - Returns a list of possible ad categories.
 // Parameters:
 //   * lang - Language. The full list of supported languages is [vk.com/dev/api_requests|here].
-func (a Ads) Getcategories(lang string) (resp responses.AdsGetcategories, err error) {
+func (a *Ads) Getcategories(lang string) (resp responses.AdsGetcategories, err error) {
 	params := map[string]interface{}{}
 
 	if lang != "" {
@@ -416,7 +416,7 @@ func (a Ads) Getcategories(lang string) (resp responses.AdsGetcategories, err er
 // Getclients - Returns a list of advertising agency's clients.
 // Parameters:
 //   * accountId - Advertising account ID.
-func (a Ads) Getclients(accountId int) (resp responses.AdsGetclients, err error) {
+func (a *Ads) Getclients(accountId int) (resp responses.AdsGetclients, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -434,7 +434,7 @@ func (a Ads) Getclients(accountId int) (resp responses.AdsGetclients, err error)
 //   * period - Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
 //   * dateFrom - Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
 //   * dateTo - Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
-func (a Ads) Getdemographics(accountId int, idsType string, ids string, period string, dateFrom string, dateTo string) (resp responses.AdsGetdemographics, err error) {
+func (a *Ads) Getdemographics(accountId int, idsType string, ids string, period string, dateFrom string, dateTo string) (resp responses.AdsGetdemographics, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -457,7 +457,7 @@ func (a Ads) Getdemographics(accountId int, idsType string, ids string, period s
 // Getfloodstats - Returns information about current state of a counter — number of remaining runs of methods and time to the next counter nulling in seconds.
 // Parameters:
 //   * accountId - Advertising account ID.
-func (a Ads) Getfloodstats(accountId int) (resp responses.AdsGetfloodstats, err error) {
+func (a *Ads) Getfloodstats(accountId int) (resp responses.AdsGetfloodstats, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -470,7 +470,7 @@ func (a Ads) Getfloodstats(accountId int) (resp responses.AdsGetfloodstats, err 
 // Getofficeusers - Returns a list of managers and supervisors of advertising account.
 // Parameters:
 //   * accountId - Advertising account ID.
-func (a Ads) Getofficeusers(accountId int) (resp responses.AdsGetofficeusers, err error) {
+func (a *Ads) Getofficeusers(accountId int) (resp responses.AdsGetofficeusers, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -485,7 +485,7 @@ func (a Ads) Getofficeusers(accountId int) (resp responses.AdsGetofficeusers, er
 //   * accountId - Advertising account ID.
 //   * idsType - Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
 //   * ids - IDs requested ads or campaigns, separated with a comma, depending on the value set in 'ids_type'. Maximum 100 objects.
-func (a Ads) Getpostsreach(accountId int, idsType string, ids string) (resp responses.AdsGetpostsreach, err error) {
+func (a *Ads) Getpostsreach(accountId int, idsType string, ids string) (resp responses.AdsGetpostsreach, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -503,7 +503,7 @@ func (a Ads) Getpostsreach(accountId int, idsType string, ids string) (resp resp
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * adId - Ad ID.
-func (a Ads) Getrejectionreason(accountId int, adId int) (resp responses.AdsGetrejectionreason, err error) {
+func (a *Ads) Getrejectionreason(accountId int, adId int) (resp responses.AdsGetrejectionreason, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -523,7 +523,7 @@ func (a Ads) Getrejectionreason(accountId int, adId int) (resp responses.AdsGetr
 //   * period - Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
 //   * dateFrom - Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
 //   * dateTo - Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
-func (a Ads) Getstatistics(accountId int, idsType string, ids string, period string, dateFrom string, dateTo string) (resp responses.AdsGetstatistics, err error) {
+func (a *Ads) Getstatistics(accountId int, idsType string, ids string, period string, dateFrom string, dateTo string) (resp responses.AdsGetstatistics, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -551,7 +551,7 @@ func (a Ads) Getstatistics(accountId int, idsType string, ids string, period str
 //   * country - ID of the country objects are searched in.
 //   * cities - IDs of cities where objects are searched in, separated with a comma.
 //   * lang - Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English.
-func (a Ads) Getsuggestions(section string, ids string, q string, country int, cities string, lang string) (resp responses.AdsGetsuggestions, err error) {
+func (a *Ads) Getsuggestions(section string, ids string, q string, country int, cities string, lang string) (resp responses.AdsGetsuggestions, err error) {
 	params := map[string]interface{}{}
 
 	params["section"] = section
@@ -586,7 +586,7 @@ func (a Ads) Getsuggestions(section string, ids string, q string, country int, c
 //   * accountId - Advertising account ID.
 //   * clientId - 'Only for advertising agencies.', ID of the client with the advertising account where the group will be created.
 //   * extended - '1' — to return pixel code.
-func (a Ads) Gettargetgroups(accountId int, clientId int) (resp responses.AdsGettargetgroups, err error) {
+func (a *Ads) Gettargetgroups(accountId int, clientId int) (resp responses.AdsGettargetgroups, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -612,7 +612,7 @@ func (a Ads) Gettargetgroups(accountId int, clientId int) (resp responses.AdsGet
 //   * adPlatformNoAdNetwork - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * linkUrl - URL for the advertised object.
 //   * linkDomain - Domain of the advertised object.
-func (a Ads) Gettargetingstats(accountId int, clientId int, criteria string, adId int, adFormat int, adPlatform string, adPlatformNoWall string, adPlatformNoAdNetwork string, linkUrl string, linkDomain string) (resp responses.AdsGettargetingstats, err error) {
+func (a *Ads) Gettargetingstats(accountId int, clientId int, criteria string, adId int, adFormat int, adPlatform string, adPlatformNoWall string, adPlatformNoAdNetwork string, linkUrl string, linkDomain string) (resp responses.AdsGettargetingstats, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -660,7 +660,7 @@ func (a Ads) Gettargetingstats(accountId int, clientId int, criteria string, adI
 // Parameters:
 //   * adFormat - Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
 //   * icon - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (a Ads) Getuploadurl(adFormat int, icon int) (resp responses.AdsGetuploadurl, err error) {
+func (a *Ads) Getuploadurl(adFormat int, icon int) (resp responses.AdsGetuploadurl, err error) {
 	params := map[string]interface{}{}
 
 	params["ad_format"] = adFormat
@@ -675,7 +675,7 @@ func (a Ads) Getuploadurl(adFormat int, icon int) (resp responses.AdsGetuploadur
 }
 
 // Getvideouploadurl - Returns URL to upload an ad video to.
-func (a Ads) Getvideouploadurl() (resp responses.AdsGetvideouploadurl, err error) {
+func (a *Ads) Getvideouploadurl() (resp responses.AdsGetvideouploadurl, err error) {
 	params := map[string]interface{}{}
 
 	err = a.SendObjRequest("ads.getVideoUploadURL", params, &resp)
@@ -689,7 +689,7 @@ func (a Ads) Getvideouploadurl() (resp responses.AdsGetvideouploadurl, err error
 //   * clientId - 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
 //   * targetGroupId - Target group ID.
 //   * contacts - List of phone numbers, emails or user IDs separated with a comma.
-func (a Ads) Importtargetcontacts(accountId int, clientId int, targetGroupId int, contacts string) (resp responses.AdsImporttargetcontacts, err error) {
+func (a *Ads) Importtargetcontacts(accountId int, clientId int, targetGroupId int, contacts string) (resp responses.AdsImporttargetcontacts, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -711,7 +711,7 @@ func (a Ads) Importtargetcontacts(accountId int, clientId int, targetGroupId int
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * ids - Serialized JSON array with IDs of deleted managers.
-func (a Ads) Removeofficeusers(accountId int, ids string) (resp responses.AdsRemoveofficeusers, err error) {
+func (a *Ads) Removeofficeusers(accountId int, ids string) (resp responses.AdsRemoveofficeusers, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -727,7 +727,7 @@ func (a Ads) Removeofficeusers(accountId int, ids string) (resp responses.AdsRem
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * data - Serialized JSON array of objects that describe changes in ads. Description of 'ad_edit_specification' objects see below.
-func (a Ads) Updateads(accountId int, data string) (resp responses.AdsUpdateads, err error) {
+func (a *Ads) Updateads(accountId int, data string) (resp responses.AdsUpdateads, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -743,7 +743,7 @@ func (a Ads) Updateads(accountId int, data string) (resp responses.AdsUpdateads,
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * data - Serialized JSON array of objects that describe changes in campaigns. Description of 'campaign_mod' objects see below.
-func (a Ads) Updatecampaigns(accountId int, data string) (resp responses.AdsUpdatecampaigns, err error) {
+func (a *Ads) Updatecampaigns(accountId int, data string) (resp responses.AdsUpdatecampaigns, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -759,7 +759,7 @@ func (a Ads) Updatecampaigns(accountId int, data string) (resp responses.AdsUpda
 // Parameters:
 //   * accountId - Advertising account ID.
 //   * data - Serialized JSON array of objects that describe changes in clients. Description of 'client_mod' objects see below.
-func (a Ads) Updateclients(accountId int, data string) (resp responses.AdsUpdateclients, err error) {
+func (a *Ads) Updateclients(accountId int, data string) (resp responses.AdsUpdateclients, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
@@ -781,7 +781,7 @@ func (a Ads) Updateclients(accountId int, data string) (resp responses.AdsUpdate
 //   * lifetime - 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' – automatic exclusion is off.
 //   * targetPixelId - !!! NO DESCRIPTION IN JSON SCHEMA !!!
 //   * targetPixelRules - !!! NO DESCRIPTION IN JSON SCHEMA !!!
-func (a Ads) Updatetargetgroup(accountId int, clientId int, targetGroupId int, name string, domain string, lifetime int, targetPixelId int, targetPixelRules string) (resp responses.Ok, err error) {
+func (a *Ads) Updatetargetgroup(accountId int, clientId int, targetGroupId int, name string, domain string, lifetime int, targetPixelId int, targetPixelRules string) (resp responses.Ok, err error) {
 	params := map[string]interface{}{}
 
 	params["account_id"] = accountId
