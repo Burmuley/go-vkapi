@@ -305,5 +305,6 @@ type MessagesPinnedMessage struct {
 
 // MessagesUserXtrInvitedBy type represents `messages_user_xtr_invited_by` API object
 type MessagesUserXtrInvitedBy struct {
-	UsersUserXtrType
+	InvitedBy int           `json:"invited_by"` // ID of the inviter
+	Type      UsersUserType `json:"type"`
 }

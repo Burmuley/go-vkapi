@@ -72,7 +72,27 @@ type MarketMarketItemAvailability int // Information whether the item is availab
 
 // MarketMarketItemFull type represents `market_market_item_full` API object
 type MarketMarketItemFull struct {
-	MarketMarketItem
+	AccessKey    string                       `json:"access_key"` // Access key for the market item
+	AlbumsIds    []int                        `json:"albums_ids"`
+	Availability MarketMarketItemAvailability `json:"availability"`
+	ButtonTitle  string                       `json:"button_title"` // Title for button for url
+	CanComment   BaseBoolInt                  `json:"can_comment"`  // Information whether current use can comment the item
+	CanRepost    BaseBoolInt                  `json:"can_repost"`   // Information whether current use can repost the item
+	Category     MarketMarketCategory         `json:"category"`
+	Date         int                          `json:"date"`        // Date when the item has been created in Unixtime
+	Description  string                       `json:"description"` // Item description
+	ExternalId   string                       `json:"external_id"`
+	Id           int                          `json:"id"` // Item ID
+	IsFavorite   bool                         `json:"is_favorite"`
+	Likes        BaseLikes                    `json:"likes"`
+	OwnerId      int                          `json:"owner_id"` // Item owner's ID
+	Photos       []PhotosPhoto                `json:"photos"`
+	Price        MarketPrice                  `json:"price"`
+	Reposts      BaseRepostsInfo              `json:"reposts"`
+	ThumbPhoto   string                       `json:"thumb_photo"` // URL of the preview image
+	Title        string                       `json:"title"`       // Item title
+	Url          string                       `json:"url"`         // URL to item
+	ViewsCount   int                          `json:"views_count"` // Views number
 }
 
 // MarketPrice type represents `market_price` API object

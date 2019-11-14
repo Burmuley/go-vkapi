@@ -296,7 +296,38 @@ type AdsStatsSexValue string // Sex
 
 // AdsTargSettings type represents `ads_targ_settings` API object
 type AdsTargSettings struct {
-	AdsCriteria
+	AgeFrom              int                `json:"age_from"`               // Age from
+	AgeTo                int                `json:"age_to"`                 // Age to
+	Apps                 string             `json:"apps"`                   // Apps IDs
+	AppsNot              string             `json:"apps_not"`               // Apps IDs to except
+	Birthday             int                `json:"birthday"`               // Days to birthday
+	CampaignId           int                `json:"campaign_id"`            // Campaign ID
+	Cities               string             `json:"cities"`                 // Cities IDs
+	CitiesNot            string             `json:"cities_not"`             // Cities IDs to except
+	Country              int                `json:"country"`                // Country ID
+	Districts            string             `json:"districts"`              // Districts IDs
+	Groups               string             `json:"groups"`                 // Communities IDs
+	Id                   int                `json:"id"`                     // Ad ID
+	InterestCategories   string             `json:"interest_categories"`    // Interests categories IDs
+	Interests            string             `json:"interests"`              // Interests
+	Paying               BaseBoolInt        `json:"paying"`                 // Information whether the user has proceeded VK payments before
+	Positions            string             `json:"positions"`              // Positions IDs
+	Religions            string             `json:"religions"`              // Religions IDs
+	RetargetingGroups    string             `json:"retargeting_groups"`     // Retargeting groups IDs
+	RetargetingGroupsNot string             `json:"retargeting_groups_not"` // Retargeting groups IDs to except
+	SchoolFrom           int                `json:"school_from"`            // School graduation year from
+	SchoolTo             int                `json:"school_to"`              // School graduation year to
+	Schools              string             `json:"schools"`                // Schools IDs
+	Sex                  AdsCriteriaSex     `json:"sex"`
+	Stations             string             `json:"stations"`      // Stations IDs
+	Statuses             string             `json:"statuses"`      // Relationship statuses
+	Streets              string             `json:"streets"`       // Streets IDs
+	Travellers           BasePropertyExists `json:"travellers"`    // Travellers only
+	UniFrom              int                `json:"uni_from"`      // University graduation year from
+	UniTo                int                `json:"uni_to"`        // University graduation year to
+	UserBrowsers         string             `json:"user_browsers"` // Browsers
+	UserDevices          string             `json:"user_devices"`  // Devices
+	UserOs               string             `json:"user_os"`       // Operating systems
 }
 
 // AdsTargStats type represents `ads_targ_stats` API object

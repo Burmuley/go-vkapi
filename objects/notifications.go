@@ -22,6 +22,10 @@ limitations under the License.
 
 package objects
 
+import (
+	"encoding/json"
+)
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // `notifications` group of objects
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,11 +52,60 @@ type NotificationsNotification struct {
 
 // NotificationsNotificationParent type represents `notifications_notification_parent` API object
 type NotificationsNotificationParent struct {
-	WallWallpostToId
-	PhotosPhoto
-	BoardTopic
-	VideoVideo
-	NotificationsNotificationsComment
+	AccessKey   string                   `json:"access_key"`  // Video access key
+	AddingDate  int                      `json:"adding_date"` // Date when the video has been added in Unixtime
+	AlbumId     int                      `json:"album_id"`    // Album ID
+	Attachments []WallWallpostAttachment `json:"attachments"`
+	CanAdd      BaseBoolInt              `json:"can_add"`       // Information whether current user can add the video
+	CanComment  BaseBoolInt              `json:"can_comment"`   // Information whether current user can comment the video
+	CanEdit     BaseBoolInt              `json:"can_edit"`      // Information whether current user can edit the video
+	CanLike     BaseBoolInt              `json:"can_like"`      // Information whether current user can like the video
+	CanRepost   BaseBoolInt              `json:"can_repost"`    // Information whether current user can repost this video
+	Comments    int                      `json:"comments"`      // Number of comments
+	CopyOwnerId int                      `json:"copy_owner_id"` // ID of the source post owner
+	CopyPostId  int                      `json:"copy_post_id"`  // ID of the source post
+	Created     int                      `json:"created"`       // Date when the topic has been created in Unixtime
+	CreatedBy   int                      `json:"created_by"`    // Creator ID
+	Date        int                      `json:"date"`          // Date when the comment has been added in Unixtime
+	Description string                   `json:"description"`   // Video description
+	Duration    int                      `json:"duration"`      // Video duration in seconds
+	Files       VideoVideoFiles          `json:"files"`
+	FirstFrame  []VideoVideoImage        `json:"first_frame"`
+	FromId      int                      `json:"from_id"` // Post author ID
+	Geo         WallGeo                  `json:"geo"`
+	Height      int                      `json:"height"` // Video height
+	Id          int                      `json:"id"`     // Comment ID
+	Image       []VideoVideoImage        `json:"image"`
+	Images      []PhotosImage            `json:"images"`
+	IsClosed    BaseBoolInt              `json:"is_closed"` // Information whether the topic is closed
+	IsFavorite  bool                     `json:"is_favorite"`
+	IsFixed     BaseBoolInt              `json:"is_fixed"` // Information whether the topic is fixed
+	Lat         json.Number              `json:"lat"`      // Latitude
+	Likes       BaseLikesInfo            `json:"likes"`
+	Live        BasePropertyExists       `json:"live"`     // Returns if the video is a live stream
+	Long        json.Number              `json:"long"`     // Longitude
+	OwnerId     int                      `json:"owner_id"` // Author ID
+	Photo       PhotosPhoto              `json:"photo"`
+	Player      string                   `json:"player"` // URL of the page with a player that can be used to play the video in the browser.
+	Post        WallWallpost             `json:"post"`
+	PostId      int                      `json:"post_id"` // Post ID
+	PostSource  WallPostSource           `json:"post_source"`
+	PostType    WallPostType             `json:"post_type"`
+	Processing  BasePropertyExists       `json:"processing"` // Returns if the video is processing
+	Reposts     BaseRepostsInfo          `json:"reposts"`
+	SignerId    int                      `json:"signer_id"` // Post signer ID
+	Sizes       []PhotosPhotoSizes       `json:"sizes"`
+	Text        string                   `json:"text"`  // Comment text
+	Title       string                   `json:"title"` // Video title
+	ToId        int                      `json:"to_id"` // Wall owner's ID
+	Topic       BoardTopic               `json:"topic"`
+	Type        string                   `json:"type"`
+	Updated     int                      `json:"updated"`    // Date when the topic has been updated in Unixtime
+	UpdatedBy   int                      `json:"updated_by"` // ID of user who updated the topic
+	UserId      int                      `json:"user_id"`    // ID of the user who have uploaded the photo
+	Video       VideoVideo               `json:"video"`
+	Views       int                      `json:"views"` // Number of views
+	Width       int                      `json:"width"` // Video width
 }
 
 // NotificationsNotificationsComment type represents `notifications_notifications_comment` API object
