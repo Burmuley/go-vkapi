@@ -333,7 +333,25 @@ type UsersUserXtrCounters struct {
 
 // UsersUserXtrType type represents `users_user_xtr_type` API object
 type UsersUserXtrType struct {
-	Type UsersUserType `json:"type"`
+	CanAccessClosed bool                      `json:"can_access_closed"`
+	Deactivated     string                    `json:"deactivated"` // Returns if a profile is deleted or blocked
+	FirstName       string                    `json:"first_name"`  // User first name
+	FriendStatus    FriendsFriendStatusStatus `json:"friend_status"`
+	Hidden          int                       `json:"hidden"` // Returns if a profile is hidden.
+	Id              int                       `json:"id"`     // User ID
+	IsClosed        bool                      `json:"is_closed"`
+	LastName        string                    `json:"last_name"` // User last name
+	Mutual          FriendsRequestsMutual     `json:"mutual"`
+	Online          BaseBoolInt               `json:"online"`        // Information whether the user is online
+	OnlineApp       int                       `json:"online_app"`    // Application ID
+	OnlineMobile    BaseBoolInt               `json:"online_mobile"` // Information whether the user is online in mobile site or application
+	Photo100        string                    `json:"photo_100"`     // URL of square photo of the user with 100 pixels in width
+	Photo50         string                    `json:"photo_50"`      // URL of square photo of the user with 50 pixels in width
+	ScreenName      string                    `json:"screen_name"`   // Domain name of the user's page
+	Sex             BaseSex                   `json:"sex"`           // User sex
+	Trending        BaseBoolInt               `json:"trending"`      // Information whether the user has a "fire" pictogram.
+	Type            UsersUserType             `json:"type"`
+	Verified        BaseBoolInt               `json:"verified"` // Information whether the user is verified
 }
 
 // UsersUsersArray type represents `users_users_array` API object
