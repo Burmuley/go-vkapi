@@ -92,7 +92,7 @@ type GroupsBanInfoReason int // Ban reason
 
 // GroupsBannedItem type represents `groups_banned_item` API object
 type GroupsBannedItem struct {
-	GroupsOwnerXtrBanInfo
+	GroupsOwnerXtrBanInfo GroupsOwnerXtrBanInfo `json:"groups_owner_xtr_ban_info"`
 }
 
 // GroupsCallbackServer type represents `groups_callback_server` API object
@@ -207,7 +207,57 @@ type GroupsGroupDocs int
 
 // GroupsGroupFull type represents `groups_group_full` API object
 type GroupsGroupFull struct {
-	GroupsGroup
+	Activity             string                      `json:"activity"`  // Type of group, start date of event or category of public page
+	Addresses            GroupsAddressesInfo         `json:"addresses"` // Info about addresses in groups
+	AdminLevel           GroupsGroupAdminLevel       `json:"admin_level"`
+	AgeLimits            GroupsGroupFullAgeLimits    `json:"age_limits"`             // Information whether age limit
+	BanInfo              GroupsGroupBanInfo          `json:"ban_info"`               // User ban info
+	CanCreateTopic       BaseBoolInt                 `json:"can_create_topic"`       // Information whether current user can create topic
+	CanMessage           BaseBoolInt                 `json:"can_message"`            // Information whether current user can send a message to community
+	CanPost              BaseBoolInt                 `json:"can_post"`               // Information whether current user can post on community's wall
+	CanSeeAllPosts       BaseBoolInt                 `json:"can_see_all_posts"`      // Information whether current user can see all posts on community's wall
+	CanSendNotify        BaseBoolInt                 `json:"can_send_notify"`        // Information whether community can send notifications by phone number to current user
+	CanSubscribePodcasts bool                        `json:"can_subscribe_podcasts"` // Owner in whitelist or not
+	CanSubscribePosts    bool                        `json:"can_subscribe_posts"`    // Can subscribe to wall
+	CanUploadVideo       BaseBoolInt                 `json:"can_upload_video"`       // Information whether current user can upload video
+	City                 BaseObject                  `json:"city"`
+	Contacts             []GroupsContactsItem        `json:"contacts"`
+	Counters             GroupsCountersGroup         `json:"counters"`
+	Country              BaseCountry                 `json:"country"`
+	Cover                GroupsCover                 `json:"cover"`
+	Deactivated          string                      `json:"deactivated"`   // Information whether community is banned
+	Description          string                      `json:"description"`   // Community description
+	FinishDate           int                         `json:"finish_date"`   // Finish date in Unixtime format
+	FixedPost            int                         `json:"fixed_post"`    // Fixed post ID
+	HasPhoto             BaseBoolInt                 `json:"has_photo"`     // Information whether community has photo
+	Id                   int                         `json:"id"`            // Community ID
+	IsAdmin              BaseBoolInt                 `json:"is_admin"`      // Information whether current user is administrator
+	IsAdvertiser         BaseBoolInt                 `json:"is_advertiser"` // Information whether current user is advertiser
+	IsClosed             GroupsGroupIsClosed         `json:"is_closed"`
+	IsFavorite           BaseBoolInt                 `json:"is_favorite"`            // Information whether community is in faves
+	IsMember             BaseBoolInt                 `json:"is_member"`              // Information whether current user is member
+	IsMessagesBlocked    BaseBoolInt                 `json:"is_messages_blocked"`    // Information whether community can send a message to current user
+	IsSubscribed         BaseBoolInt                 `json:"is_subscribed"`          // Information whether current user is subscribed
+	IsSubscribedPodcasts bool                        `json:"is_subscribed_podcasts"` // Information whether current user is subscribed to podcasts
+	Links                []GroupsLinksItem           `json:"links"`
+	MainAlbumId          int                         `json:"main_album_id"` // Community's main photo album ID
+	MainSection          GroupsGroupFullMainSection  `json:"main_section"`
+	Market               GroupsMarketInfo            `json:"market"`
+	MemberStatus         GroupsGroupFullMemberStatus `json:"member_status"` // Current user's member status
+	MembersCount         int                         `json:"members_count"` // Community members number
+	Name                 string                      `json:"name"`          // Community name
+	OnlineStatus         GroupsOnlineStatus          `json:"online_status"` // Status of replies in community messages
+	Photo100             string                      `json:"photo_100"`     // URL of square photo of the community with 100 pixels in width
+	Photo200             string                      `json:"photo_200"`     // URL of square photo of the community with 200 pixels in width
+	Photo50              string                      `json:"photo_50"`      // URL of square photo of the community with 50 pixels in width
+	ScreenName           string                      `json:"screen_name"`   // Domain of the community page
+	Site                 string                      `json:"site"`          // Community's website
+	StartDate            int                         `json:"start_date"`    // Start date in Unixtime format
+	Status               string                      `json:"status"`        // Community status
+	Trending             BaseBoolInt                 `json:"trending"`      // Information whether the community has a "fire" pictogram.
+	Type                 GroupsGroupType             `json:"type"`
+	Verified             BaseBoolInt                 `json:"verified"`  // Information whether community is verified
+	WikiPage             string                      `json:"wiki_page"` // Community's main wiki page title
 }
 
 // GroupsGroupFullAgeLimits type represents `groups_group_full_age_limits` API object
@@ -467,5 +517,80 @@ type GroupsTokenPermissionSetting struct {
 
 // GroupsUserXtrRole type represents `groups_user_xtr_role` API object
 type GroupsUserXtrRole struct {
-	UsersUserFull
+	Activity               string                    `json:"activity"`          // User's status
+	Bdate                  string                    `json:"bdate"`             // User's date of birth
+	Blacklisted            BaseBoolInt               `json:"blacklisted"`       // Information whether current user is in the requested user's blacklist.
+	BlacklistedByMe        BaseBoolInt               `json:"blacklisted_by_me"` // Information whether the requested user is in current user's blacklist
+	CanAccessClosed        bool                      `json:"can_access_closed"`
+	CanPost                BaseBoolInt               `json:"can_post"`                  // Information whether current user can post on the user's wall
+	CanSeeAllPosts         BaseBoolInt               `json:"can_see_all_posts"`         // Information whether current user can see other users' audio on the wall
+	CanSeeAudio            BaseBoolInt               `json:"can_see_audio"`             // Information whether current user can see the user's audio
+	CanSendFriendRequest   BaseBoolInt               `json:"can_send_friend_request"`   // Information whether current user can send a friend request
+	CanSubscribePodcasts   bool                      `json:"can_subscribe_podcasts"`    // Owner in whitelist or not
+	CanSubscribePosts      bool                      `json:"can_subscribe_posts"`       // Can subscribe to wall
+	CanWritePrivateMessage BaseBoolInt               `json:"can_write_private_message"` // Information whether current user can write private message
+	Career                 []UsersCareer             `json:"career"`
+	City                   BaseObject                `json:"city"`
+	CommonCount            int                       `json:"common_count"` // Number of common friends with current user
+	Country                BaseCountry               `json:"country"`
+	CropPhoto              UsersCropPhoto            `json:"crop_photo"`
+	Deactivated            string                    `json:"deactivated"`      // Returns if a profile is deleted or blocked
+	Domain                 string                    `json:"domain"`           // Domain name of the user's page
+	EducationForm          string                    `json:"education_form"`   // Education form
+	EducationStatus        string                    `json:"education_status"` // User's education status
+	Exports                UsersExports              `json:"exports"`
+	Faculty                int                       `json:"faculty"`         // Faculty ID
+	FacultyName            string                    `json:"faculty_name"`    // Faculty name
+	FirstName              string                    `json:"first_name"`      // User first name
+	FollowersCount         int                       `json:"followers_count"` // Number of user's followers
+	FriendStatus           FriendsFriendStatusStatus `json:"friend_status"`
+	Graduation             int                       `json:"graduation"` // Graduation year
+	HasMobile              BaseBoolInt               `json:"has_mobile"` // Information whether the user specified his phone number
+	HasPhoto               BaseBoolInt               `json:"has_photo"`  // Information whether the user has main photo
+	Hidden                 int                       `json:"hidden"`     // Returns if a profile is hidden.
+	HomePhone              string                    `json:"home_phone"` // User's mobile phone number
+	HomeTown               string                    `json:"home_town"`  // User hometown
+	Id                     int                       `json:"id"`         // User ID
+	IsClosed               bool                      `json:"is_closed"`
+	IsFavorite             BaseBoolInt               `json:"is_favorite"`            // Information whether the requested user is in faves of current user
+	IsFriend               BaseBoolInt               `json:"is_friend"`              // Information whether the user is a friend of current user
+	IsHiddenFromFeed       BaseBoolInt               `json:"is_hidden_from_feed"`    // Information whether the requested user is hidden from current user's newsfeed
+	IsSubscribedPodcasts   bool                      `json:"is_subscribed_podcasts"` // Information whether current user is subscribed to podcasts
+	LastName               string                    `json:"last_name"`              // User last name
+	LastSeen               UsersLastSeen             `json:"last_seen"`
+	MaidenName             string                    `json:"maiden_name"` // User maiden name
+	Military               []UsersMilitary           `json:"military"`
+	MobilePhone            string                    `json:"mobile_phone"` // Information whether current user can see
+	Mutual                 FriendsRequestsMutual     `json:"mutual"`
+	Nickname               string                    `json:"nickname"` // User nickname
+	Occupation             UsersOccupation           `json:"occupation"`
+	Online                 BaseBoolInt               `json:"online"`        // Information whether the user is online
+	OnlineApp              int                       `json:"online_app"`    // Application ID
+	OnlineMobile           BaseBoolInt               `json:"online_mobile"` // Information whether the user is online in mobile site or application
+	Personal               UsersPersonal             `json:"personal"`
+	Photo100               string                    `json:"photo_100"`      // URL of square photo of the user with 100 pixels in width
+	Photo200               string                    `json:"photo_200"`      // URL of square photo of the user with 200 pixels in width
+	Photo200Orig           string                    `json:"photo_200_orig"` // URL of user's photo with 200 pixels in width
+	Photo400Orig           string                    `json:"photo_400_orig"` // URL of user's photo with 400 pixels in width
+	Photo50                string                    `json:"photo_50"`       // URL of square photo of the user with 50 pixels in width
+	PhotoId                string                    `json:"photo_id"`       // ID of the user's main photo
+	PhotoMax               string                    `json:"photo_max"`      // URL of square photo of the user with maximum width
+	PhotoMaxOrig           string                    `json:"photo_max_orig"` // URL of user's photo of maximum size
+	Relation               UsersUserRelation         `json:"relation"`       // User relationship status
+	RelationPartner        UsersUserMin              `json:"relation_partner"`
+	Relatives              []UsersRelative           `json:"relatives"`
+	Role                   GroupsRoleOptions         `json:"role"`
+	Schools                []UsersSchool             `json:"schools"`
+	ScreenName             string                    `json:"screen_name"` // Domain name of the user's page
+	Sex                    BaseSex                   `json:"sex"`         // User sex
+	Site                   string                    `json:"site"`        // User's website
+	Status                 string                    `json:"status"`      // User's status
+	StatusAudio            AudioAudio                `json:"status_audio"`
+	Timezone               int                       `json:"timezone"` // User's timezone
+	Trending               BaseBoolInt               `json:"trending"` // Information whether the user has a "fire" pictogram.
+	Universities           []UsersUniversity         `json:"universities"`
+	University             int                       `json:"university"`      // University ID
+	UniversityName         string                    `json:"university_name"` // University name
+	Verified               BaseBoolInt               `json:"verified"`        // Information whether the user is verified
+	WallComments           BaseBoolInt               `json:"wall_comments"`   // Information whether current user can comment wall posts
 }

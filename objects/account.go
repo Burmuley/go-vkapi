@@ -131,8 +131,33 @@ type AccountPushSettings struct {
 
 // AccountUserSettings type represents `account_user_settings` API object
 type AccountUserSettings struct {
-	UsersUserMin
-	UsersUserSettingsXtr
+	Bdate            string                       `json:"bdate"`            // User's date of birth
+	BdateVisibility  int                          `json:"bdate_visibility"` // Information whether user's birthdate are hidden
+	CanAccessClosed  bool                         `json:"can_access_closed"`
+	City             BaseCity                     `json:"city"`
+	Connections      UsersUserConnections         `json:"connections"`
+	Country          BaseCountry                  `json:"country"`
+	Deactivated      string                       `json:"deactivated"` // Returns if a profile is deleted or blocked
+	FirstName        string                       `json:"first_name"`  // User first name
+	Hidden           int                          `json:"hidden"`      // Returns if a profile is hidden.
+	HomeTown         string                       `json:"home_town"`   // User's hometown
+	Id               int                          `json:"id"`          // User ID
+	Interests        AccountUserSettingsInterests `json:"interests"`
+	IsClosed         bool                         `json:"is_closed"`
+	Languages        []string                     `json:"languages"`
+	LastName         string                       `json:"last_name"`   // User last name
+	MaidenName       string                       `json:"maiden_name"` // User maiden name
+	NameRequest      AccountNameRequest           `json:"name_request"`
+	Personal         UsersPersonal                `json:"personal"`
+	Phone            string                       `json:"phone"`    // User phone number with some hidden digits
+	Relation         UsersUserRelation            `json:"relation"` // User relationship status
+	RelationPartner  UsersUserMin                 `json:"relation_partner"`
+	RelationPending  BaseBoolInt                  `json:"relation_pending"` // Information whether relation status is pending
+	RelationRequests []UsersUserMin               `json:"relation_requests"`
+	ScreenName       string                       `json:"screen_name"` // Domain name of the user's page
+	Sex              BaseSex                      `json:"sex"`         // User sex
+	Status           string                       `json:"status"`      // User status
+	StatusAudio      AudioAudio                   `json:"status_audio"`
 }
 
 // AccountUserSettingsInterest type represents `account_user_settings_interest` API object

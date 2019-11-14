@@ -74,10 +74,10 @@ type FriendsRequestsXtrMessage struct {
 
 // FriendsUserXtrLists type represents `friends_user_xtr_lists` API object
 type FriendsUserXtrLists struct {
-	UsersUserFull
+	Lists []int `json:"lists"`
 }
 
 // FriendsUserXtrPhone type represents `friends_user_xtr_phone` API object
 type FriendsUserXtrPhone struct {
-	UsersUserFull
+	Phone string `json:"phone"` // User phone
 }

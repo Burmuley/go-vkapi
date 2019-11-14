@@ -102,7 +102,32 @@ type StoriesStoryType string // Story type.
 
 // StoriesStoryVideo type represents `stories_story_video` API object
 type StoriesStoryVideo struct {
-	VideoVideo
+	AccessKey   string             `json:"access_key"`  // Video access key
+	AddingDate  int                `json:"adding_date"` // Date when the video has been added in Unixtime
+	CanAdd      BaseBoolInt        `json:"can_add"`     // Information whether current user can add the video
+	CanComment  BaseBoolInt        `json:"can_comment"` // Information whether current user can comment the video
+	CanEdit     BaseBoolInt        `json:"can_edit"`    // Information whether current user can edit the video
+	CanLike     BaseBoolInt        `json:"can_like"`    // Information whether current user can like the video
+	CanRepost   BaseBoolInt        `json:"can_repost"`  // Information whether current user can repost this video
+	Comments    int                `json:"comments"`    // Number of comments
+	Date        int                `json:"date"`        // Date when video has been uploaded in Unixtime
+	Description string             `json:"description"` // Video description
+	Duration    int                `json:"duration"`    // Video duration in seconds
+	Files       VideoVideoFiles    `json:"files"`
+	FirstFrame  []VideoVideoImage  `json:"first_frame"`
+	Height      int                `json:"height"` // Video height
+	Id          int                `json:"id"`     // Video ID
+	Image       []VideoVideoImage  `json:"image"`
+	IsFavorite  bool               `json:"is_favorite"`
+	IsPrivate   BaseBoolInt        `json:"is_private"` // Information whether story is private (0 - no, 1 - yes).
+	Live        BasePropertyExists `json:"live"`       // Returns if the video is a live stream
+	OwnerId     int                `json:"owner_id"`   // Video owner ID
+	Player      string             `json:"player"`     // URL of the page with a player that can be used to play the video in the browser.
+	Processing  BasePropertyExists `json:"processing"` // Returns if the video is processing
+	Title       string             `json:"title"`      // Video title
+	Type        string             `json:"type"`
+	Views       int                `json:"views"` // Number of views
+	Width       int                `json:"width"` // Video width
 }
 
 // StoriesUploadLinkText type represents `stories_upload_link_text` API object

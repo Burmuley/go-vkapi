@@ -172,7 +172,31 @@ type WallWallpostAttachmentType string // Attachment type
 
 // WallWallpostFull type represents `wall_wallpost_full` API object
 type WallWallpostFull struct {
-	WallWallpost
+	AccessKey   string                   `json:"access_key"` // Access key to private object
+	Attachments []WallWallpostAttachment `json:"attachments"`
+	CanDelete   BaseBoolInt              `json:"can_delete"` // Information whether current user can delete the post
+	CanEdit     BaseBoolInt              `json:"can_edit"`   // Information whether current user can edit the post
+	CanPin      BaseBoolInt              `json:"can_pin"`    // Information whether current user can pin the post
+	Comments    BaseCommentsInfo         `json:"comments"`
+	CopyHistory []WallWallpost           `json:"copy_history"`
+	CreatedBy   int                      `json:"created_by"` // Post creator ID (if post still can be edited)
+	Date        int                      `json:"date"`       // Date of publishing in Unixtime
+	Edited      int                      `json:"edited"`     // Date of editing in Unixtime
+	FromId      int                      `json:"from_id"`    // Post author ID
+	Geo         WallGeo                  `json:"geo"`
+	Id          int                      `json:"id"`            // Post ID
+	IsArchived  bool                     `json:"is_archived"`   // Is post archived, only for post owners
+	IsFavorite  bool                     `json:"is_favorite"`   // Information whether the post in favorites list
+	IsPinned    int                      `json:"is_pinned"`     // Information whether the post is pinned
+	Likes       BaseLikesInfo            `json:"likes"`         // Count of likes
+	MarkedAsAds BaseBoolInt              `json:"marked_as_ads"` // Information whether the post is marked as ads
+	OwnerId     int                      `json:"owner_id"`      // Wall owner's ID
+	PostSource  WallPostSource           `json:"post_source"`
+	PostType    WallPostType             `json:"post_type"`
+	Reposts     BaseRepostsInfo          `json:"reposts"`   // Count of views
+	SignerId    int                      `json:"signer_id"` // Post signer ID
+	Text        string                   `json:"text"`      // Post text
+	Views       WallViews                `json:"views"`     // Count of views
 }
 
 // WallWallpostToId type represents `wall_wallpost_to_id` API object

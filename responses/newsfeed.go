@@ -79,9 +79,60 @@ type NewsfeedGetrecommended struct {
 
 // NewsfeedGetsuggestedsources type represents `newsfeed_getSuggestedSources_response` API response object
 type NewsfeedGetsuggestedsources struct {
-	Count                    int `json:"count"` // Total number
-	Items                    []objects.GroupsGroupFull
-	objects.UsersUserXtrType `json:"items"`
+	Count int `json:"count"` // Total number
+	Items []struct {
+		Activity             string                              `json:"activity"`  // Type of group, start date of event or category of public page
+		Addresses            objects.GroupsAddressesInfo         `json:"addresses"` // Info about addresses in groups
+		AdminLevel           objects.GroupsGroupAdminLevel       `json:"admin_level"`
+		AgeLimits            objects.GroupsGroupFullAgeLimits    `json:"age_limits"`             // Information whether age limit
+		BanInfo              objects.GroupsGroupBanInfo          `json:"ban_info"`               // User ban info
+		CanCreateTopic       objects.BaseBoolInt                 `json:"can_create_topic"`       // Information whether current user can create topic
+		CanMessage           objects.BaseBoolInt                 `json:"can_message"`            // Information whether current user can send a message to community
+		CanPost              objects.BaseBoolInt                 `json:"can_post"`               // Information whether current user can post on community's wall
+		CanSeeAllPosts       objects.BaseBoolInt                 `json:"can_see_all_posts"`      // Information whether current user can see all posts on community's wall
+		CanSendNotify        objects.BaseBoolInt                 `json:"can_send_notify"`        // Information whether community can send notifications by phone number to current user
+		CanSubscribePodcasts bool                                `json:"can_subscribe_podcasts"` // Owner in whitelist or not
+		CanSubscribePosts    bool                                `json:"can_subscribe_posts"`    // Can subscribe to wall
+		CanUploadVideo       objects.BaseBoolInt                 `json:"can_upload_video"`       // Information whether current user can upload video
+		City                 objects.BaseObject                  `json:"city"`
+		Contacts             []objects.GroupsContactsItem        `json:"contacts"`
+		Counters             objects.GroupsCountersGroup         `json:"counters"`
+		Country              objects.BaseCountry                 `json:"country"`
+		Cover                objects.GroupsCover                 `json:"cover"`
+		Deactivated          string                              `json:"deactivated"`   // Information whether community is banned
+		Description          string                              `json:"description"`   // Community description
+		FinishDate           int                                 `json:"finish_date"`   // Finish date in Unixtime format
+		FixedPost            int                                 `json:"fixed_post"`    // Fixed post ID
+		HasPhoto             objects.BaseBoolInt                 `json:"has_photo"`     // Information whether community has photo
+		Id                   int                                 `json:"id"`            // Community ID
+		IsAdmin              objects.BaseBoolInt                 `json:"is_admin"`      // Information whether current user is administrator
+		IsAdvertiser         objects.BaseBoolInt                 `json:"is_advertiser"` // Information whether current user is advertiser
+		IsClosed             objects.GroupsGroupIsClosed         `json:"is_closed"`
+		IsFavorite           objects.BaseBoolInt                 `json:"is_favorite"`            // Information whether community is in faves
+		IsMember             objects.BaseBoolInt                 `json:"is_member"`              // Information whether current user is member
+		IsMessagesBlocked    objects.BaseBoolInt                 `json:"is_messages_blocked"`    // Information whether community can send a message to current user
+		IsSubscribed         objects.BaseBoolInt                 `json:"is_subscribed"`          // Information whether current user is subscribed
+		IsSubscribedPodcasts bool                                `json:"is_subscribed_podcasts"` // Information whether current user is subscribed to podcasts
+		Links                []objects.GroupsLinksItem           `json:"links"`
+		MainAlbumId          int                                 `json:"main_album_id"` // Community's main photo album ID
+		MainSection          objects.GroupsGroupFullMainSection  `json:"main_section"`
+		Market               objects.GroupsMarketInfo            `json:"market"`
+		MemberStatus         objects.GroupsGroupFullMemberStatus `json:"member_status"` // Current user's member status
+		MembersCount         int                                 `json:"members_count"` // Community members number
+		Name                 string                              `json:"name"`          // Community name
+		OnlineStatus         objects.GroupsOnlineStatus          `json:"online_status"` // Status of replies in community messages
+		Photo100             string                              `json:"photo_100"`     // URL of square photo of the community with 100 pixels in width
+		Photo200             string                              `json:"photo_200"`     // URL of square photo of the community with 200 pixels in width
+		Photo50              string                              `json:"photo_50"`      // URL of square photo of the community with 50 pixels in width
+		ScreenName           string                              `json:"screen_name"`   // Domain of the community page
+		Site                 string                              `json:"site"`          // Community's website
+		StartDate            int                                 `json:"start_date"`    // Start date in Unixtime format
+		Status               string                              `json:"status"`        // Community status
+		Trending             objects.BaseBoolInt                 `json:"trending"`      // Information whether the community has a "fire" pictogram.
+		Type                 objects.UsersUserType               `json:"type"`
+		Verified             objects.BaseBoolInt                 `json:"verified"`  // Information whether community is verified
+		WikiPage             string                              `json:"wiki_page"` // Community's main wiki page title
+	} `json:"items"`
 }
 
 // NewsfeedGet type represents `newsfeed_get_response` API response object

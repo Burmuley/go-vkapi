@@ -117,5 +117,8 @@ type VideoVideoFull struct {
 
 // VideoVideoImage type represents `video_video_image` API object
 type VideoVideoImage struct {
-	BaseImage
+	Height      int         `json:"height"` // Image height
+	Url         string      `json:"url"`    // Image url
+	Width       int         `json:"width"`  // Image width
+	WithPadding BaseBoolInt `json:"with_padding"`
 }
