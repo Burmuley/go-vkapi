@@ -84,8 +84,9 @@ type NewsfeedGetsuggestedsources struct {
 		Activity             string                              `json:"activity"`  // Type of group, start date of event or category of public page
 		Addresses            objects.GroupsAddressesInfo         `json:"addresses"` // Info about addresses in groups
 		AdminLevel           objects.GroupsGroupAdminLevel       `json:"admin_level"`
-		AgeLimits            objects.GroupsGroupFullAgeLimits    `json:"age_limits"`             // Information whether age limit
-		BanInfo              objects.GroupsGroupBanInfo          `json:"ban_info"`               // User ban info
+		AgeLimits            objects.GroupsGroupFullAgeLimits    `json:"age_limits"` // Information whether age limit
+		BanInfo              objects.GroupsGroupBanInfo          `json:"ban_info"`   // User ban info
+		CanAccessClosed      bool                                `json:"can_access_closed"`
 		CanCreateTopic       objects.BaseBoolInt                 `json:"can_create_topic"`       // Information whether current user can create topic
 		CanMessage           objects.BaseBoolInt                 `json:"can_message"`            // Information whether current user can send a message to community
 		CanPost              objects.BaseBoolInt                 `json:"can_post"`               // Information whether current user can post on community's wall
@@ -99,38 +100,47 @@ type NewsfeedGetsuggestedsources struct {
 		Counters             objects.GroupsCountersGroup         `json:"counters"`
 		Country              objects.BaseCountry                 `json:"country"`
 		Cover                objects.GroupsCover                 `json:"cover"`
-		Deactivated          string                              `json:"deactivated"`   // Information whether community is banned
-		Description          string                              `json:"description"`   // Community description
-		FinishDate           int                                 `json:"finish_date"`   // Finish date in Unixtime format
-		FixedPost            int                                 `json:"fixed_post"`    // Fixed post ID
+		Deactivated          string                              `json:"deactivated"` // Returns if a profile is deleted or blocked
+		Description          string                              `json:"description"` // Community description
+		FinishDate           int                                 `json:"finish_date"` // Finish date in Unixtime format
+		FirstName            string                              `json:"first_name"`  // User first name
+		FixedPost            int                                 `json:"fixed_post"`  // Fixed post ID
+		FriendStatus         objects.FriendsFriendStatusStatus   `json:"friend_status"`
 		HasPhoto             objects.BaseBoolInt                 `json:"has_photo"`     // Information whether community has photo
-		Id                   int                                 `json:"id"`            // Community ID
+		Hidden               int                                 `json:"hidden"`        // Returns if a profile is hidden.
+		Id                   int                                 `json:"id"`            // User ID
 		IsAdmin              objects.BaseBoolInt                 `json:"is_admin"`      // Information whether current user is administrator
 		IsAdvertiser         objects.BaseBoolInt                 `json:"is_advertiser"` // Information whether current user is advertiser
-		IsClosed             objects.GroupsGroupIsClosed         `json:"is_closed"`
+		IsClosed             bool                                `json:"is_closed"`
 		IsFavorite           objects.BaseBoolInt                 `json:"is_favorite"`            // Information whether community is in faves
 		IsMember             objects.BaseBoolInt                 `json:"is_member"`              // Information whether current user is member
 		IsMessagesBlocked    objects.BaseBoolInt                 `json:"is_messages_blocked"`    // Information whether community can send a message to current user
 		IsSubscribed         objects.BaseBoolInt                 `json:"is_subscribed"`          // Information whether current user is subscribed
 		IsSubscribedPodcasts bool                                `json:"is_subscribed_podcasts"` // Information whether current user is subscribed to podcasts
+		LastName             string                              `json:"last_name"`              // User last name
 		Links                []objects.GroupsLinksItem           `json:"links"`
 		MainAlbumId          int                                 `json:"main_album_id"` // Community's main photo album ID
 		MainSection          objects.GroupsGroupFullMainSection  `json:"main_section"`
 		Market               objects.GroupsMarketInfo            `json:"market"`
 		MemberStatus         objects.GroupsGroupFullMemberStatus `json:"member_status"` // Current user's member status
 		MembersCount         int                                 `json:"members_count"` // Community members number
+		Mutual               objects.FriendsRequestsMutual       `json:"mutual"`
 		Name                 string                              `json:"name"`          // Community name
+		Online               objects.BaseBoolInt                 `json:"online"`        // Information whether the user is online
+		OnlineApp            int                                 `json:"online_app"`    // Application ID
+		OnlineMobile         objects.BaseBoolInt                 `json:"online_mobile"` // Information whether the user is online in mobile site or application
 		OnlineStatus         objects.GroupsOnlineStatus          `json:"online_status"` // Status of replies in community messages
-		Photo100             string                              `json:"photo_100"`     // URL of square photo of the community with 100 pixels in width
+		Photo100             string                              `json:"photo_100"`     // URL of square photo of the user with 100 pixels in width
 		Photo200             string                              `json:"photo_200"`     // URL of square photo of the community with 200 pixels in width
-		Photo50              string                              `json:"photo_50"`      // URL of square photo of the community with 50 pixels in width
-		ScreenName           string                              `json:"screen_name"`   // Domain of the community page
+		Photo50              string                              `json:"photo_50"`      // URL of square photo of the user with 50 pixels in width
+		ScreenName           string                              `json:"screen_name"`   // Domain name of the user's page
+		Sex                  objects.BaseSex                     `json:"sex"`           // User sex
 		Site                 string                              `json:"site"`          // Community's website
 		StartDate            int                                 `json:"start_date"`    // Start date in Unixtime format
 		Status               string                              `json:"status"`        // Community status
-		Trending             objects.BaseBoolInt                 `json:"trending"`      // Information whether the community has a "fire" pictogram.
+		Trending             objects.BaseBoolInt                 `json:"trending"`      // Information whether the user has a "fire" pictogram.
 		Type                 objects.UsersUserType               `json:"type"`
-		Verified             objects.BaseBoolInt                 `json:"verified"`  // Information whether community is verified
+		Verified             objects.BaseBoolInt                 `json:"verified"`  // Information whether the user is verified
 		WikiPage             string                              `json:"wiki_page"` // Community's main wiki page title
 	} `json:"items"`
 }
