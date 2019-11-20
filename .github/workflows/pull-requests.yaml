@@ -2,7 +2,8 @@ name: Create new pull request
 
 on:
   create:
-    - '**generated**'
+    branches:
+      - '**generated**'
 
 jobs:
   pullrequest:
