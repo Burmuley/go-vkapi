@@ -10,6 +10,7 @@ jobs:
     name: Kick on a new PR for auto-generated changes
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - uses: repo-sync/pull-request@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
