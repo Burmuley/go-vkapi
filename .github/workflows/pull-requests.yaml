@@ -8,9 +8,11 @@ on:
 jobs:
   pullrequest:
     name: Kick on a new PR for auto-generated changes
-    uses: repo-sync/pull-request@v2
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      pr_title: Auto-generated VK API SDK build from ${{ github.ref }}
-      pr_body: "Pulling changes from branch ${{ github.ref }}"
-      pr_assignee: "Burmuley"
+    runs-on: ubuntu-latest
+    steps:
+      uses: repo-sync/pull-request@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: Auto-generated VK API SDK build from ${{ github.ref }}
+        pr_body: "Pulling changes from branch ${{ github.ref }}"
+        pr_assignee: "Burmuley"
