@@ -1,5 +1,5 @@
 # VK (Vkontakte) API SDK for Golang
-
+TEST2
 ** Reviews appreciated! **
 
 This repo contains [Golang](https://www.golang.org) Software Development Kit for the [VK](https://vk.com/) using public API of this social network. 
